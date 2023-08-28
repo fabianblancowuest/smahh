@@ -1,8 +1,10 @@
 const express = require('express');
 const server = express();
+const { conn } = require("./DB_connection")
 const PORT = 3001;
 
-const morgan = require("morgan")
+const morgan = require("morgan");
+const mainRouter = require('./routes');
 
 server.use(morgan("dev"));
 server.use(express.json());
@@ -28,11 +30,15 @@ server.get("/health-check", (req, res)=>{
    res.send("Working")
 })
 
+// http://localhost:3001/
+server.use("/", mainRouter)
 
+conn.sync({ force: true }).then(
+   server.listen(PORT, () => {
+      console.log('Server raised in port: ' + PORT);
+   })
+)
 
-server.listen(PORT, () => {
-   console.log('Server raised in port: ' + PORT);
-});
 
 module.exports = { 
     server
