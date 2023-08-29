@@ -1,4 +1,4 @@
-const {Ticket} = require("../DB_connection")
+const {Ticket} = require("../../DB_connection")
 
 const postTicket = async (req, res) => {
     try {

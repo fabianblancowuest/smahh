@@ -1,5 +1,5 @@
 const express = require("express");
-const { updateTicket } = require("../controllers/updateTicket");
+const { updateTicket } = require("../controllers/staffControllers/updateTicket");
 
 const staffRouter = express.Router();
 

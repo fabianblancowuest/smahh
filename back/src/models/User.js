@@ -10,13 +10,14 @@ module.exports = (sequelize) => {
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
             unique: true,
             isEmail: true
         },
+        password: {
+            type: DataTypes.STRING,
+         },
         phone: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
         userType: {
             type: DataTypes.ENUM("user", "staff"),
