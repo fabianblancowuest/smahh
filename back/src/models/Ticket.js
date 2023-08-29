@@ -2,12 +2,6 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define("Ticket", {
-        ticketId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
         issueTitle: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,32 +15,12 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         status: {
-            type: DataTypes.STRING,
-            default: 'Not Started',
-            enum: ['Not Started', 'In Progress', 'Completed', 'Closed'],
-        },
+            type: DataTypes.ENUM('Not Started', 'In Progress', 'Completed', 'Closed'),
+            defaultValue: 'Not Started',
+          },
         priority: {
-            type: DataTypes.STRING,
+            type: DataTypes.ENUM('High', 'Low', 'Medium'),
             allowNull: false,
         },
-        createdAt: {
-            type: DataTypes.DATE,
-            default: Date.now,
-        },
-        updatedAt: {
-            type: DataTypes.STRING,
-            default: Date.now,
-        },
-        assignedTo: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        createdBy: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        closedBy: {
-            type: DataTypes.STRING,
-        },
-    }, { timestamps: false })
+    })
 }

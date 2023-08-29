@@ -5,7 +5,7 @@ const UserModel = require("./models/User")
 const sequelize = new Sequelize(
    "postgres://postgres:1234@localhost:5432/securityDB",
    { logging: false, native: false }
- );
+);
 
 // EJERCICIO 05
 // Debajo de este comentario puedes ejecutar la función de los modelos.
@@ -15,10 +15,14 @@ UserModel(sequelize);
 
 
 // ¡Relaciona tus modelos aquí abajo!
-const {Ticket, User} = sequelize.models;
+const { Ticket, User } = sequelize.models;
 
-User.hasMany(Ticket) // Un usuario puede tener varios tickets (uno a muchos) 
-Ticket.belongsTo(User)
+User.hasMany(Ticket, {
+   foreignKey: {
+      name: "UserId",
+   }
+});
+Ticket.belongsTo(User);
 
 
 module.exports = {

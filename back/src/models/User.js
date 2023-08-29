@@ -2,12 +2,6 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define("User", {
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
         firstName: {
             type: DataTypes.STRING,
         },
@@ -26,7 +20,6 @@ module.exports = (sequelize) => {
         },
         userType: {
             type: DataTypes.ENUM("user", "staff"),
-            default: "user",
         },
     }, { timestamps: false })
 }
