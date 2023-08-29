@@ -1,16 +1,16 @@
 const {Ticket} = require("../../DB_connection")
 
-// Status to update: 'In Progress', 'Completed', 'Closed'
-// This function will be able only to staff. 
+// This function will be able to staff-user Only. 
+
+// update [status] from : 'Not Started' wich is default value to ==> 'In Progress', 'Completed' or 'Closed'
 
 const updateTicket = async (req, res) => {
     try {
       const { ticketId, newStatus } = req.body;
       if (ticketId, newStatus) {
-        const statusUpdated = await Ticket.update({ status: newStatus }, { where: { id: ticketId } });
+        await Ticket.update({ status: newStatus }, { where: { id: ticketId } });
         return res.status(200).json({ 
           message: 'Status updated correctly', 
-          payload: statusUpdated
       });
       } else {
         return res.status(400).json({message: "Ticket not Found"})
