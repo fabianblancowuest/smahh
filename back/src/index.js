@@ -24,12 +24,6 @@ server.use((req, res, next) => {
    next();
 });
 
-// http://localhost:3001/health-check
-
-server.get("/health-check", (req, res)=>{
-   res.send("Working")
-})
-
 // http://localhost:3001/
 server.use("/", mainRouter)
 
