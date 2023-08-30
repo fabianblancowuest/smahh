@@ -1,8 +1,10 @@
-import { logIn } from "../actions/actions"
+import { LOG_IN, RISE_TICKET, SIGN_UP } from "../actions/types"
 
 const inicialState = {
     access: false,
+    userId: null,
     userType: null,
+
     userTickets: [],
     userTicketsCopy: [],
     
@@ -13,17 +15,25 @@ const rootReducer = (state = inicialState, actions) => {
     const {type, payload} = actions
 
     switch (type) {
-        case logIn:
+        case SIGN_UP:
             return {
                 ...state,
-                userType: payload.userType
             }
 
-        // case "EXAMPLE TWO":
-        //     return {
-        //         ...state,
-        //         userTickets: payload
-        //     }
+        case LOG_IN:
+            return {
+                ...state,
+                access: payload.access,
+                userType: payload.userType,
+                userId: payload.userId,
+            }
+
+        case RISE_TICKET:
+            return {
+                ...state,
+                userTickets: [...state.userTickets, payload.ticket],
+                userTicketsCopy: [...state.userTickets, payload.ticket]
+            }
 
         default:
             return state

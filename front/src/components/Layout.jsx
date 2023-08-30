@@ -1,30 +1,42 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Nav from './Nav/Nav';
-import About from './About';
+import About from './About/About';
 import Login from './Login/Login';
+import TicketForm from './TicketForm';
+import { useSelector } from 'react-redux';
+import AllTickets from './AllTickets';
+import SignUp from './SignUp/SIgnUp';
 
 
 const Layout = () => {
-    // Simula el tipo de usuario (por ejemplo, 'user' o 'staff')
-    const userType = "staff"; // Puedes cambiar esto según tu lógica
+    const userType = useSelector(state => state.userType);
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        if (userType === 'user') {
+            navigate('/home');
+        } else if (userType === 'staff') {
+            navigate('/');
+        }
+    }, [userType]);
+
 
     return (
         <div>
-            {/* Rutas comunes */}
+
             {!userType &&
 
                 <Routes>
-                    <Route exact path='/' element={<Nav />} />
+                    <Route path='/' element={<Nav />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
                 </Routes>}
 
-            {/* Renderizado condicional de acuerdo al tipo de usuario */}
             {userType === 'user' && (
                 <Routes>
-                    <Route exact path='/' element={<Nav />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path='/*' element={<UserRoutes />} />
                 </Routes>
             )}
 
@@ -33,6 +45,19 @@ const Layout = () => {
                     <Route exact path='/' element={<Nav />} />
                 </Routes>
             )}
+        </div>
+    );
+}
+
+const UserRoutes = () => {
+    return (
+        <div>
+            <Nav />
+            <Routes>
+                <Route path='/home' element={<AllTickets />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/riseticket" element={<TicketForm />} />
+            </Routes>
         </div>
     );
 }

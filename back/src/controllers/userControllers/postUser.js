@@ -2,9 +2,9 @@ const { User } = require("../../DB_connection");
 
 const postUser = async (req, res) => {
     try {
-        const { firstName, lastName, email, password, phone, userType,  } = req.body;
-        
-        if (!firstName || !lastName || !email || !password || !phone || !userType ) {
+        const { firstName, lastName, email, password, phone, userType, } = req.body;
+
+        if (!firstName || !lastName || !email || !password || !phone || !userType) {
             return res.status(400).json({ error: "Faltan Datos" });
         }
         const [user, created] = await User.findOrCreate({
@@ -21,8 +21,7 @@ const postUser = async (req, res) => {
         if (!created) {
             return res.status(409).json({ error: "El usuario ya existe" });
         }
-
-        return res.status(200).json(user);
+        return res.status(200).json({ message: "User created succesfully"});
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Error al crear el usuario" });

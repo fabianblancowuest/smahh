@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
+import { useSelector } from "react-redux";
 
 
 const Nav = () => {
+  const userType = useSelector(state => state.userType);
+
+  useEffect(() => {
+
+  }, [userType])
 
   return (
     <nav className={styles.navContainer}>
-      <NavLink to="/about" className={({isActive})=> (isActive ? styles.activeLink : styles.navLink)}>
+      
+      <NavLink to="/about" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         ABOUT
       </NavLink>
-      <NavLink to="/register" className={({isActive})=> (isActive ? styles.activeLink : styles.navLink)}>
+
+      {!userType ? <NavLink to="/signup" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         SIGNUP
-      </NavLink>
-      <NavLink to="/login" className={({isActive})=> (isActive ? styles.activeLink : styles.navLink)}>
+      </NavLink> : null}
+
+      {!userType ? <NavLink to="/login" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         LOGIN
-      </NavLink>
+      </NavLink> : null}
+
+      {userType === "user" ? <NavLink to="/riseticket" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+        RISE TICKET
+      </NavLink> : null}
+
+      {userType === "user" ? <NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+        HOME
+      </NavLink> : null }
 
     </nav>
   );

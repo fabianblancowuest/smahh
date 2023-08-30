@@ -1,0 +1,60 @@
+.container {
+	margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form {
+	border-radius: 0.3rem;
+	background-color: antiquewhite;
+	box-shadow: 0.1rem 0.1rem 1rem black;
+	width: 30%;
+	font-size: 1.2rem;
+	margin: 4rem auto;
+	text-align: center;
+	padding: 4rem 3rem;
+}
+.label,
+.input,
+.btnSubmit {
+	display: block;
+	margin: 0 auto;
+}
+
+.label {
+	font-size: bold;
+}
+
+.input {
+	width: 80%;
+	font-size: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.3rem;
+}
+
+.label {
+	margin-top: 1rem;
+	margin-bottom: 0.3rem;
+}
+
+.select {
+	font-size: 1rem;
+	margin: 2rem 0 4rem;
+	width: 15%;
+	text-align: center;
+}
+
+.btnSubmit {
+	width: 80%;
+	font-size: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.3rem;
+	font-weight: bold;
+}
+
+.btnSubmit:hover {
+	background-color: black;
+	color: aliceblue;
+	cursor: pointer;
+}
