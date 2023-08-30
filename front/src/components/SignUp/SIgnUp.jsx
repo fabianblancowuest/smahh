@@ -3,10 +3,8 @@ import { signUp } from "../../redux/actions/actions";
 import styles from "./SignUp.module.css";
 import { useState } from "react";
 
-
 const SignUp = () => {
-
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	const initialState = {
 		firstName: "",
@@ -14,7 +12,7 @@ const SignUp = () => {
 		email: "",
 		password: "",
 		phone: "",
-		userType: "",
+		userType: "user",
 	};
 
 	const [userData, setUserData] = useState(initialState);
@@ -32,11 +30,11 @@ const SignUp = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(userData);
-		dispatch(signUp(userData))
+		dispatch(signUp(userData));
 		setUserData("");
 	};
 	return (
-		<div className={styles.container} >
+		<div className={styles.container}>
 			<form className={styles.form} onSubmit={handleSubmit}>
 				<label className={styles.label}>First Name</label>
 				<input
@@ -58,11 +56,13 @@ const SignUp = () => {
 				></input>
 				<label className={styles.label}>Email</label>
 				<input
-					className={styles.input} type="email"
+					className={styles.input}
+					type="email"
 					name="email"
 					placeholder="Enter your email"
 					value={userData.email}
-					onChange={handleChange} />
+					onChange={handleChange}
+				/>
 
 				<label className={styles.label}>Password</label>
 				<input
@@ -82,10 +82,6 @@ const SignUp = () => {
 					value={userData.phone}
 					onChange={handleChange}
 				></input>
-				<select className={styles.select} value={userData.userType} name="userType" onChange={handleChange}>
-					<option value="user" selected>User</option>
-					<option value="staff">Staff</option>
-				</select>
 				<input
 					className={styles.btnSubmit}
 					type="submit"

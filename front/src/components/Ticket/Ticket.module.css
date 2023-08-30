@@ -1,0 +1,62 @@
+.card {
+	font-size: 0.7rem;
+	width: 13rem;
+	height: 23.5rem;
+	margin: 2em;
+	border-radius: 1rem;
+	box-shadow: 2px 2px 10px #301950;
+	background-color: rgba(0, 0, 0, 0.5);
+	/* transition: transform 0.5s ease; */
+}
+
+.card:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+	/* transform: rotate(-10deg); */
+	background-color: #070101b9;
+	/* color: aliceblue; */
+	/* transform: rotate(1deg); */
+}
+
+.title {
+	font-size: 1.27rem;
+}
+
+a:link,
+a:visited {
+	color: white;
+	text-decoration: none;
+}
+.btn {
+	background-color: rgba(122, 122, 233, 0.1);
+	border: 0.1rem rgba(0, 0, 0, 0.3) solid;
+	/* color: white; */
+	font-size: large;
+	font-weight: bold;
+}
+.btn:hover {
+	border: 0.1rem rgba(0, 0, 0, 0.1) solid;
+	background-color: rgb(78, 53, 101);
+	box-shadow: 0.2rem 0.2rem 3rem #69e0e4;
+	color: white;
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+@keyframes scaleAnimation {
+	/* 0% {
+        scale: 1.1;
+    } */
+
+	50% {
+		scale: 1.1;
+	}
+
+	75% {
+		scale: 1.1;
+	}
+
+	100% {
+		scale: 1;
+	}
+}
