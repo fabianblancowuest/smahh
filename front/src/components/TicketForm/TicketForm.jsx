@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { riseTicket } from "../redux/actions/actions";
+import { riseTicket } from "../../redux/actions/actions";
+
 
 const TicketForm = () => {
     const userId = useSelector(state => state.userId);

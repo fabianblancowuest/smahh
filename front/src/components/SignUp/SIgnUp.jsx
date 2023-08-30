@@ -29,9 +29,8 @@ const SignUp = () => {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(userData);
 		dispatch(signUp(userData));
-		setUserData("");
+		setUserData(initialState);
 	};
 	return (
 		<div className={styles.container}>

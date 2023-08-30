@@ -3,9 +3,9 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Nav from './Nav/Nav';
 import About from './About/About';
 import Login from './Login/Login';
-import TicketForm from './TicketForm';
+import TicketForm from './TicketForm/TicketForm';
 import { useSelector } from 'react-redux';
-import AllTickets from './AllTickets';
+import AllTickets from './AllTickets/AllTickets';
 import SignUp from './SignUp/SIgnUp';
 
 
@@ -42,7 +42,7 @@ const Layout = () => {
 
             {userType === 'staff' && (
                 <Routes>
-                    <Route exact path='/' element={<Nav />} />
+                    <Route path='/*' element={<StaffRoutes />} />
                 </Routes>
             )}
         </div>
@@ -60,6 +60,17 @@ const UserRoutes = () => {
             </Routes>
         </div>
     );
+}
+
+const StaffRoutes = () => {
+    return (
+        <div>
+            <Nav />
+            <Routes>
+                <Route path="/about" element={<About />} />
+            </Routes>
+        </div>
+    )
 }
 
 export default Layout;

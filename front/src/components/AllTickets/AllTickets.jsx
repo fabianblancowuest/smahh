@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Ticket from "./Ticket";
+import Ticket from "../Ticket/Ticket";
 
 const AllTickets = () => {
     const userTickets = useSelector(state => state.userTickets);
