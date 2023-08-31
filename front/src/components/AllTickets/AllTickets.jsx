@@ -8,6 +8,7 @@ const AllTickets = () => {
 	const userType = useSelector(state => state.userType);
 	const userId = useSelector(state=> state.userId)
 	const userTickets = useSelector(state => state.userTickets);
+	
 	const dispatch = useDispatch();
 	
 	useEffect(() => {

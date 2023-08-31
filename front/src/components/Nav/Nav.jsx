@@ -7,15 +7,15 @@ import { useSelector } from "react-redux";
 const Nav = () => {
   const userType = useSelector(state => state.userType);
 
-  useEffect(() => {
-
-  }, [userType])
-
   return (
     <nav className={styles.navContainer}>
-      
-      {!userType || userType === "user"? <NavLink to="/about" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+
+      {!userType || userType === "user" ? <NavLink to="/about" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         ABOUT
+      </NavLink> : null}
+
+      {!userType ? <NavLink to="/" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+        HOME
       </NavLink> : null}
 
       {!userType ? <NavLink to="/signup" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
@@ -30,9 +30,9 @@ const Nav = () => {
         RISE TICKET
       </NavLink> : null}
 
-      {userType === "user"? <NavLink to="/tickets" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+      {userType === "user" ? <NavLink to="/tickets" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         VIEW TICKETS
-      </NavLink> : null }
+      </NavLink> : null}
 
     </nav>
   );
