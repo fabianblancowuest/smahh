@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Ticket.module.css";
 
 const Ticket = ({ ticket }) => {
-	const { issueDescription, issueType, priority, issueTitle, status } = ticket;
+	const { issueDescription, issueType, priority, issueTitle, status, createdAt } = ticket;
 
 	return (
 		<div className={styles.card}>
@@ -11,6 +11,7 @@ const Ticket = ({ ticket }) => {
 			<h3 className={styles.type}>Type: {issueType}</h3>
 			<h3 className={styles.priority}>Priority: {priority}</h3>
 			<h3 className={styles.status}>Status: {status}</h3>
+			<h3> Date: {createdAt}</h3>
 		</div>
 	);
 };

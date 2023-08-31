@@ -14,10 +14,12 @@ const AllTickets = () => {
 			dispatch(getAllTickets());
 		}
 	}, [userType, dispatch]);
-	
+
 	return (
 		<div>
-			<h1 className={styles.title}>All Tickets</h1>
+			<h1 className={styles.title}>
+				{userType === "staff" ? "All Tickets" : "My Tickets"}
+			</h1>
 			<section className={styles.container}>
 				{userTickets?.map((ticket) => (
 					<Ticket key={ticket.id} ticket={ticket} />

@@ -64,7 +64,7 @@ const UserRoutes = () => {
 		<div>
 			<Nav />
 			<Routes>
-				<Route path="/home" element={<AllTickets />} />
+				<Route path="/tickets" element={<AllTickets />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/riseticket" element={<TicketForm />} />
 			</Routes>

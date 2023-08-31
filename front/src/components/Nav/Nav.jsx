@@ -30,7 +30,7 @@ const Nav = () => {
         RISE TICKET
       </NavLink> : null}
 
-      {userType === "user"? <NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+      {userType === "user"? <NavLink to="/tickets" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         VIEW TICKETS
       </NavLink> : null }
 
