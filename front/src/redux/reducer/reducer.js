@@ -1,4 +1,4 @@
-import { GET_ALL_TICKETS, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP } from "../actions/types"
+import { GET_ALL_TICKETS, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     access: false,
@@ -49,6 +49,11 @@ const rootReducer = (state = inicialState, actions) => {
                 userTickets: [...payload.tickets],
                 userTicketsCopy: [...payload.tickets]
             }
+
+        case UPDATE_TICKET: 
+            return {
+                ...state,
+            }    
         default:
             return state
     }

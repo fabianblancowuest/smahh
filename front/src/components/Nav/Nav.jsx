@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET } from "./types";
 import axios from "axios";
 
 export const signUp = (userData) => {
@@ -53,10 +53,10 @@ export const riseTicket = (newTicket, userId) => {
 
 export const getUserTickets = (userId) => {
 	const URL = `http://localhost:3001/user/ticket/`
-	
+
 	return async (dispatch) => {
 		try {
-			const {data}= await axios.get(URL + userId) //
+			const { data } = await axios.get(URL + userId) //
 
 			dispatch({
 				type: GET_USER_TICKETS,
@@ -81,5 +81,23 @@ export const getAllTickets = () => {
 		} catch (error) {
 			alert(error.response.data.error)
 		}
+	}
+}
+
+export const updateTicket = (ticketId, newStatus) => {
+	const URL = "http://localhost:3001/staff/update-ticket"
+
+	try {
+		return async (dispatch) => {
+			
+			const {data}= await axios.put(URL, {ticketId, newStatus})
+			
+			dispatch({
+				type: UPDATE_TICKET,
+				payload: data  // por ahora solo recibe propiedad message: "Status updated correctly"
+			})
+		}
+	} catch (error) {
+		console.log(error);
 	}
 }

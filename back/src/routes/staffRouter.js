@@ -12,3 +12,5 @@ staffRouter.get("/allTickets", getAllTickets) // This will bring all the tickets
 module.exports = {
     staffRouter
 }
+
+// "http://localhost:3001/staff/update-ticket"
