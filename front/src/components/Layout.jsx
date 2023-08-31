@@ -15,7 +15,7 @@ const Layout = () => {
 
 	React.useEffect(() => {
 		if (userType === "user") {
-			navigate("/home");
+			navigate("/");
 		} else if (userType === "staff") {
 			navigate("/");
 		}
@@ -25,12 +25,7 @@ const Layout = () => {
 		<div>
 			{!userType && (
 				<Routes>
-					<Route exact path="/" element={<Nav />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/" element={<Landing></Landing>} />
-					<Route path="/login" element={<Login />} />
-					{/* <Route path="/login" element={<Login />} /> */}
-					<Route path="/signup" element={<SignUp />} />
+					<Route path="/*" element={<CommonRoutes />} />
 				</Routes>
 			)}
 
@@ -49,12 +44,28 @@ const Layout = () => {
 	);
 };
 
+const CommonRoutes = () => {
+	return (
+		<div>
+			<Nav />
+			<Routes>
+				<Route path="/" element={<Landing></Landing>} />
+				<Route path="/about" element={<About />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/signup" element={<SignUp />} />
+			</Routes>
+
+		</div>
+	)
+}
+
 const UserRoutes = () => {
 	return (
 		<div>
 			<Nav />
 			<Routes>
 				<Route path="/home" element={<AllTickets />} />
+				<Route path="/about" element={<About />} />
 				<Route path="/riseticket" element={<TicketForm />} />
 			</Routes>
 		</div>
@@ -67,6 +78,7 @@ const StaffRoutes = () => {
 			<Nav />
 			<Routes>
 				<Route path="/about" element={<About />} />
+				<Route path="/" element={<AllTickets />} />
 			</Routes>
 		</div>
 	);

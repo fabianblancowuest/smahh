@@ -1,44 +1,23 @@
 .navContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border: solid #FF6600; /* Borde naranja (#FF6600) */
-  border-radius: 10px;
-  background-color: #003399; /* Fondo azul oscuro (#003399) */
+	background-color: #333;
+	display: flex;
+	justify-content: center ;
+  gap: 1rem ;
+	align-items: center;
+	height: 60px;
 }
 
-/* Estilos para los enlaces en el Nav */
 .navLink {
-  color: #ff6600; /* Texto en color naranja (#FF6600) para los enlaces */
-  font-size: 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0 10px;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 20px;
+	transition: background-color 0.3s;
 }
 
-/* Estilos para el enlace activo */
+.navLink:hover {
+	background-color: #555;
+}
+
 .activeLink {
-  color: #fff; /* Texto en color blanco (#FFFFFF) para el enlace activo */
-  background-color:  #FF9933; /* Fondo naranja (#FF6600) para el enlace activo */
-  padding: 10px;
-  border-radius: 5px;
+	color: #8b7bcc;
 }
-
-/* Estilos para el botón de Logout */
-.logoutButton {
-  background-color: rgba(22, 133, 213, 0.733); /* Color naranja para el botón */
-  color: #FFFFFF; /* Texto en color blanco para resaltar */
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.logoutButton:hover {
-  background-color: #FF9933; /* Cambia a un tono más claro de naranja en el hover */
-  transform: scale(1.1); /* Aumenta el tamaño del botón en un 10% en el hover */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Agrega una transición suave al hover */
-}
-
