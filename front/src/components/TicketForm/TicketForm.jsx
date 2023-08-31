@@ -10,7 +10,7 @@ const TicketForm = () => {
 	const [newTicket, setNewTicket] = useState({
 		issueTitle: "",
 		issueDescription: "",
-		issueType: "generic-issue",
+		issueType: "",
 		priority: "",
 	});
 
@@ -62,29 +62,47 @@ const TicketForm = () => {
 					onChange={handleChange}
 					autoComplete="off"
 				>
-					<option value="virus-malware">
+					<option value="virus-malwares">
 						Detection of malware or viruses on systems
 					</option>
 					<option value="unauthorized-access">
 						Unauthorized access or compromised accounts
 					</option>
-					<option value="3">Leakage of sensitive data</option>
-					<option value="4">Phishing and social engineering attacks</option>
-					<option value="5">Slow network or system performance</option>
-					<option value="6">Non-compliance with security regulations</option>
-					<option value="7">
+					<option value="sensitive-data">Leakage of sensitive data</option>
+					<option value="phishing">
+						Phishing and social engineering attacks
+					</option>
+					<option value="slow-performance">
+						Slow network or system performance
+					</option>
+					<option value="non-compliance">
+						Non-compliance with security regulations
+					</option>
+					<option value="authentication">
 						Issues with multi-factor authentication (MFA)
 					</option>
-					<option value="8">
+					<option value="ddos">
 						Distributed Denial of Service (DDoS) attacks
 					</option>
-					<option value="9">Vulnerabilities in web applications</option>
-					<option value="10">Security patching and updates problems</option>
-					<option value="11">Mobile device security vulnerabilities</option>
-					<option value="12">Lack of security awareness and training</option>
-					<option value="13">Network infrastructure vulnerabilities</option>
-					<option value="14">Cloud security incidents</option>
-					<option value="15">Encryption and data protection issues</option>
+					<option value="vulnerabilities-web">
+						Vulnerabilities in web applications
+					</option>
+					<option value="security-patching">
+						Security patching and updates problems
+					</option>
+					<option value="mobile-device">
+						Mobile device security vulnerabilities
+					</option>
+					<option value="lack-of-security">
+						Lack of security awareness and training
+					</option>
+					<option value="network-insfrastructure">
+						Network infrastructure vulnerabilities
+					</option>
+					<option value="cloud-incidents">Cloud security incidents</option>
+					<option value="encryption-data">
+						Encryption and data protection issues
+					</option>
 				</select>
 
 				<label>Priority:</label>
