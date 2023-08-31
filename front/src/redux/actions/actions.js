@@ -52,11 +52,11 @@ export const riseTicket = (newTicket, userId) => {
 };
 
 export const getUserTickets = (userId) => {
-	const URL = "http://localhost:3001/user/getUserTickets"
+	const URL = `http://localhost:3001/user/ticket/`
 	
 	return async (dispatch) => {
 		try {
-			const { data } = await axios.get(URL)
+			const {data}= await axios.get(URL + userId) //
 
 			dispatch({
 				type: GET_USER_TICKETS,

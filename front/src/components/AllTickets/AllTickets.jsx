@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import Ticket from "../Ticket/Ticket";
 import styles from "./AllTickets.module.css";
-import { getAllTickets } from "../../redux/actions/actions";
+import { getAllTickets, getUserTickets } from "../../redux/actions/actions";
 
 const AllTickets = () => {
 	const userType = useSelector(state => state.userType);
-	const dispatch = useDispatch();
+	const userId = useSelector(state=> state.userId)
 	const userTickets = useSelector(state => state.userTickets);
-
+	const dispatch = useDispatch();
+	
 	useEffect(() => {
 		if (userType === "user" && userTickets.length === 0) {
-			// Aquí podrías despachar la acción para obtener los tickets del usuario.
-			// Ejemplo:
-			// dispatch(getUserTickets());
+			// Despachar la acción para obtener los tickets del usuario.
+			dispatch(getUserTickets(userId));
 		}
 	}, [userType, userTickets, dispatch]);
 
