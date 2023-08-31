@@ -26,7 +26,7 @@ const Ticket = ({ ticket }) => {
 			<h3 className={styles.status}>Status: {status}</h3>
 			<h3> Date: {createdAt} </h3>
 
-			<button onClick={handleUpdate}>UPDATE</button>
+			{userType=== "staff " && <button onClick={handleUpdate}>UPDATE</button>}
 
 		</div>
 	);
