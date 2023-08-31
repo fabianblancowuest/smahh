@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import AllTickets from "./AllTickets/AllTickets";
 import SignUp from "./SignUp/SIgnUp";
 import Landing from "./Landing/Landing";
+import Contact from "./Contact/Contact";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -53,6 +54,7 @@ const CommonRoutes = () => {
 				<Route path="/about" element={<About />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/contact" element={<Contact />} />
 			</Routes>
 
 		</div>
@@ -64,9 +66,11 @@ const UserRoutes = () => {
 		<div>
 			<Nav />
 			<Routes>
+				<Route path="/" element={<Landing></Landing>} />
 				<Route path="/tickets" element={<AllTickets />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/riseticket" element={<TicketForm />} />
+				<Route path="/contact" element={<Contact />} />
 			</Routes>
 		</div>
 	);

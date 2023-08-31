@@ -14,7 +14,11 @@ const Nav = () => {
         ABOUT
       </NavLink> : null}
 
-      {!userType ? <NavLink to="/" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+      {!userType || userType === "user" ? <NavLink to="/contact" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+        CONTACT
+      </NavLink> : null}
+
+      {!userType || userType === "user"? <NavLink to="/" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         HOME
       </NavLink> : null}
 
