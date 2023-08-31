@@ -31,7 +31,7 @@ const Nav = () => {
       </NavLink> : null}
 
       {userType === "user"? <NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
-        HOME
+        VIEW TICKETS
       </NavLink> : null }
 
     </nav>

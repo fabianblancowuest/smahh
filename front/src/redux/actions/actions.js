@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS } from "./types";
 import axios from "axios";
 
 export const signUp = (userData) => {
@@ -50,3 +50,19 @@ export const riseTicket = (newTicket, userId) => {
 		}
 	};
 };
+
+export const getAllTickets = ()=>{
+	const URL = "http://localhost:3001/staff/allTickets"
+
+	return async (dispatch) => {
+		try {
+			const {data} = await axios.get(URL)
+			dispatch({
+				type: GET_ALL_TICKETS,
+				payload: data,
+			});
+		} catch (error) {
+			alert(error.response.data.error)
+		}
+	}
+}

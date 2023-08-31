@@ -1,11 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector, } from "react-redux";
 import Ticket from "../Ticket/Ticket";
 import styles from "./AllTickets.module.css";
+import { getAllTickets } from "../../redux/actions/actions";
 
 const AllTickets = () => {
-	const userTickets = useSelector((state) => state.userTickets);
+	const userType = useSelector(state => state.userType);
+	const dispatch = useDispatch();
+	const userTickets = useSelector(state => state.userTickets);
 
+	useEffect(() => {
+		if (userType === "staff") {
+			dispatch(getAllTickets());
+		}
+	}, [userType, dispatch]);
+	
 	return (
 		<div>
 			<h1 className={styles.title}>All Tickets</h1>
