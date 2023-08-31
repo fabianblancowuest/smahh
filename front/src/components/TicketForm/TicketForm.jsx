@@ -10,7 +10,7 @@ const TicketForm = () => {
 	const [newTicket, setNewTicket] = useState({
 		issueTitle: "",
 		issueDescription: "",
-		issueType: "",
+		issueType: "generic-issue",
 		priority: "",
 	});
 
@@ -62,8 +62,12 @@ const TicketForm = () => {
 					onChange={handleChange}
 					autoComplete="off"
 				>
-					<option value="1">Detection of malware or viruses on systems</option>
-					<option value="2">Unauthorized access or compromised accounts</option>
+					<option value="virus-malware">
+						Detection of malware or viruses on systems
+					</option>
+					<option value="unauthorized-access">
+						Unauthorized access or compromised accounts
+					</option>
 					<option value="3">Leakage of sensitive data</option>
 					<option value="4">Phishing and social engineering attacks</option>
 					<option value="5">Slow network or system performance</option>

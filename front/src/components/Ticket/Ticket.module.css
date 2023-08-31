@@ -12,6 +12,7 @@
 .card:hover {
 	transform: translateY(-4px);
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	/* scale: 1.1; */
 }
 
 .title {
@@ -23,9 +24,10 @@
 .description,
 .type,
 .priority,
-.status {
+.status,
+.date {
 	color: #666;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	margin: 5px 0;
 }
 
@@ -43,4 +45,8 @@
 
 .status {
 	color: #33aa33;
+}
+
+.date {
+	color: #222;
 }
