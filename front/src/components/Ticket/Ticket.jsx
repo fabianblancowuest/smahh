@@ -6,11 +6,11 @@ const Ticket = ({ ticket }) => {
 
 	return (
 		<div className={styles.card}>
-			<h3 className={styles.title}>Title: {issueTitle}</h3>
-			<p>Description: {issueDescription}</p>
-			<p>Type: {issueType}</p>
-			<p>Priority: {priority}</p>
-			<p>Status: {status}</p>
+			<h2 className={styles.title}>Title: {issueTitle}</h2>
+			<h3 className={styles.description}>Description: {issueDescription}</h3>
+			<h3 className={styles.type}>Type: {issueType}</h3>
+			<h3 className={styles.priority}>Priority: {priority}</h3>
+			<h3 className={styles.status}>Status: {status}</h3>
 		</div>
 	);
 };

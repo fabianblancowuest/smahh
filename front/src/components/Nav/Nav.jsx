@@ -14,9 +14,9 @@ const Nav = () => {
   return (
     <nav className={styles.navContainer}>
       
-      <NavLink to="/about" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+      {userType !== "staff" ? <NavLink to="/about" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         ABOUT
-      </NavLink>
+      </NavLink> : null}
 
       {!userType ? <NavLink to="/signup" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         SIGNUP
@@ -30,7 +30,7 @@ const Nav = () => {
         RISE TICKET
       </NavLink> : null}
 
-      {userType === "user" ? <NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+      {userType === "staff"? <NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         HOME
       </NavLink> : null }
 
