@@ -10,10 +10,18 @@ const AllTickets = () => {
 	const userTickets = useSelector(state => state.userTickets);
 
 	useEffect(() => {
+		if (userType === "user" && userTickets.length === 0) {
+			// Aquí podrías despachar la acción para obtener los tickets del usuario.
+			// Ejemplo:
+			// dispatch(getUserTickets());
+		}
+	}, [userType, userTickets, dispatch]);
+
+	useEffect(() => {
 		if (userType === "staff") {
 			dispatch(getAllTickets());
 		}
-	}, [userType, dispatch]);
+	}, []);
 
 	return (
 		<div>
