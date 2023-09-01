@@ -85,7 +85,7 @@ const StaffRoutes = () => {
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
-				<Route path="/detail" element={<Detail />} />
+				<Route path="/detail/:id" element={<Detail />} />
 			</Routes>
 		</div>
 	);

@@ -5,9 +5,10 @@ import styles from "./AllTickets.module.css";
 import { getUserTickets } from "../../redux/actions/actions";
 
 const AllTickets = () => {
-
+	const userName= useSelector(state => state.userName)
 	const userId = useSelector(state => state.userId)
 	const userTickets = useSelector(state => state.userTickets);
+	const ticketsAmount = userTickets.length
 
 	const dispatch = useDispatch();
 
@@ -17,11 +18,18 @@ const AllTickets = () => {
 		}
 	}, [userTickets, dispatch]);
 
+	const handleRefresh= ()=>{
+		dispatch(getUserTickets(userId))
+	}
+
 	return (
 		<div>
+			<button onClick={handleRefresh}>Refresh status</button>
+			
 			<h2 className={styles.title}>
-				My Tickets
+				Hi {userName}! Your tickets: {ticketsAmount}
 			</h2>
+			
 			<section className={styles.container}>
 				{userTickets?.map((ticket) => (
 					<Ticket key={ticket.id} ticket={ticket} />
