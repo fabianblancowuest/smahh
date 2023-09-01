@@ -25,13 +25,12 @@ const AllTickets = () => {
 
 	return (
 		<div>
+			<div className={styles.title}>
+				<span>Hi {userName},</span>
+				<span>Your tickets: {ticketsAmount}</span>
+			</div>
+			<Filters />
 			<button onClick={handleRefresh}>Refresh status</button>
-
-			<h2 className={styles.title}>
-				Hi {userName}! See a list of your tickets: {ticketsAmount}
-			</h2>
-
-			<Filters/>
 
 			<section className={styles.container}>
 				{userTickets?.map((ticket) => (
