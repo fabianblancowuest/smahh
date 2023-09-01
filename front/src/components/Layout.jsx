@@ -10,6 +10,7 @@ import SignUp from "./SignUp/SIgnUp";
 import Landing from "./Landing/Landing";
 import Contact from "./Contact/Contact";
 import Dashboard from "./Dashboard/Dashboard";
+import Detail from "./Detail/Detail";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -72,6 +73,7 @@ const UserRoutes = () => {
 				<Route path="/about" element={<About />} />
 				<Route path="/riseticket" element={<TicketForm />} />
 				<Route path="/contact" element={<Contact />} />
+				<Route path="/detail" element={<Detail />} />
 			</Routes>
 		</div>
 	);
@@ -83,6 +85,7 @@ const StaffRoutes = () => {
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
+				<Route path="/detail" element={<Detail />} />
 			</Routes>
 		</div>
 	);

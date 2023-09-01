@@ -28,7 +28,7 @@ const Ticket = ({ ticket }) => {
 
 	return (
 		<div className={styles.card}>
-			<Link to = "/detail"></Link>
+			<Link to = "/detail">detail</Link>
 			<h3 className={styles.type}>Type: {issueType}</h3>
 			<h3 className={styles.title}>Title: {issueTitle}</h3>
 			<h3 className={styles.description}>Description: {issueDescription}</h3>
