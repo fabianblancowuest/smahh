@@ -1,4 +1,4 @@
-import { GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, UPDATE_TICKET } from "../actions/types"
+import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     logInMessage: null,
@@ -13,12 +13,12 @@ const inicialState = {
     userTicketsCopy: [],
 
     ticketDetail: {}
-    
+
 }
 
 const rootReducer = (state = inicialState, actions) => {
 
-    const {type, payload} = actions
+    const { type, payload } = actions
 
     switch (type) {
 
@@ -43,7 +43,7 @@ const rootReducer = (state = inicialState, actions) => {
                 userTickets: [...state.userTickets, payload.ticket],
                 userTicketsCopy: [...state.userTickets, payload.ticket]
             }
-        
+
         case GET_USER_TICKETS:
             return {
                 ...state,
@@ -51,23 +51,56 @@ const rootReducer = (state = inicialState, actions) => {
                 userTicketsCopy: [...payload.tickets]
             }
 
-        case GET_ALL_TICKETS: 
+        case GET_ALL_TICKETS:
             return {
                 ...state,
                 userTickets: [...payload.tickets],
                 userTicketsCopy: [...payload.tickets]
             }
 
-        case UPDATE_TICKET: 
+        case UPDATE_TICKET:
             return {
                 ...state,
                 updateMessage: payload.message
             }
-            
+
         case GET_TICKET_DETAIL:
             return {
                 ...state,
-                ticketDetail: {...payload.ticket}
+                ticketDetail: { ...payload.ticket }
+            }
+
+        //FILTERS
+
+        case FILTER_BY_PRIORITY:
+
+            const filteredByPriority = state.userTicketsCopy.filter((tickets) => {
+
+                if (payload === "All") {
+                    return true;
+                } else {
+                    return tickets.priority === payload
+                }
+            });
+
+            return {
+                ...state,
+                userTickets: filteredByPriority
+            }
+
+        case FILTER_BY_STATUS:
+            const filteredByStatus = state.userTicketsCopy.filter((tickets) => {
+
+                if (payload === "All") {
+                    return true;
+                } else {
+                    return tickets.status === payload
+                }
+            });
+            
+            return {
+                ...state,
+                userTickets: filteredByStatus
             }
 
         default:

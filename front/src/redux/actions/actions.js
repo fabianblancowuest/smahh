@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS } from "./types";
 import axios from "axios";
 
 // COMMON 
@@ -126,5 +126,21 @@ export const getTicketDetail = (id)=>{
 		} catch (error) {
 			
 		}
+	}
+}
+
+// FILTERS
+
+export const filterPriority = (priority)=>{
+	return {
+		type: FILTER_BY_PRIORITY,
+		payload: priority
+	}
+}
+
+export const filterStatus = (status)=>{
+	return {
+		type: FILTER_BY_STATUS,
+		payload: status
 	}
 }
