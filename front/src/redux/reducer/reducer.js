@@ -1,12 +1,16 @@
-import { GET_ALL_TICKETS, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, UPDATE_TICKET } from "../actions/types"
+import { GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
+    logInMessage: null,
     access: false,
     userId: null,
     userType: null,
+    userName: null,
 
     userTickets: [],
     userTicketsCopy: [],
+
+    ticketDetail: {}
     
 }
 
@@ -24,9 +28,11 @@ const rootReducer = (state = inicialState, actions) => {
         case LOG_IN:
             return {
                 ...state,
+                logInMessage: payload.message,
                 access: payload.access,
                 userType: payload.userType,
                 userId: payload.userId,
+                userName: payload.userName,
             }
 
         case RISE_TICKET:
@@ -53,7 +59,14 @@ const rootReducer = (state = inicialState, actions) => {
         case UPDATE_TICKET: 
             return {
                 ...state,
-            }    
+            }
+            
+        case GET_TICKET_DETAIL:
+            return {
+                ...state,
+                ticketDetail: {...payload.ticket}
+            }
+
         default:
             return state
     }

@@ -1,5 +1,7 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL } from "./types";
 import axios from "axios";
+
+// COMMON 
 
 export const signUp = (userData) => {
 	const URL = "http://localhost:3001/user/register";
@@ -32,6 +34,8 @@ export const logIn = (userData) => {
 		}
 	};
 };
+
+// USER 
 
 export const riseTicket = (newTicket, userId) => {
 	const URL = "http://localhost:3001/user/ticket";
@@ -68,7 +72,7 @@ export const getUserTickets = (userId) => {
 	}
 }
 
-// STAFF ONLY
+// STAFF 
 
 export const getAllTickets = () => {
 	const URL = "http://localhost:3001/staff/allTickets"
@@ -101,5 +105,27 @@ export const updateTicket = (ticketId, newStatus) => {
 		}
 	} catch (error) {
 		console.log(error);
+	}
+}
+
+// USER- STAFF
+
+export const getTicketDetail = (id)=>{	
+	const URL= "http://localhost:3001/user/ticket-detail/"
+
+	console.log(id);
+
+	return async (dispatch) => {
+		try {
+			const {data}= await axios.get(URL + Number(id))
+			
+			dispatch({
+				type: GET_TICKET_DETAIL,
+				payload: data
+			})	
+
+		} catch (error) {
+			
+		}
 	}
 }

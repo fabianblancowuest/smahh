@@ -2,11 +2,11 @@ const {Ticket} = require("../../DB_connection")
 
 const getTicketDetail = async (req, res) => {
     try {
-        const ticketId = req.params.id;
+        const id = req.params.id;
 
         const ticket = await Ticket.findOne({
             where: {
-                id: ticketId,
+                id: id,
             }
         });
         

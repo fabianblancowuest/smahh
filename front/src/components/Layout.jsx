@@ -73,7 +73,7 @@ const UserRoutes = () => {
 				<Route path="/about" element={<About />} />
 				<Route path="/riseticket" element={<TicketForm />} />
 				<Route path="/contact" element={<Contact />} />
-				<Route path="/detail" element={<Detail />} />
+				<Route path="/detail/:id" element={<Detail />} />
 			</Routes>
 		</div>
 	);

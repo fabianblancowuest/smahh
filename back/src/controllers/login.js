@@ -20,7 +20,9 @@ const login = async (req, res) => {
             message: "Login successfull",
             access: true,
             userType: user.userType,
-            userId: user.id 
+            userId: user.id,
+            userName: user.firstName,
+            userEmail: user.email 
         });
 
     } catch (error) {
