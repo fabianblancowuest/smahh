@@ -1,0 +1,57 @@
+/* Dashboard.module.css */
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ticketGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .type {
+    font-weight: bold;
+  }
+  
+  .description {
+    margin-top: 10px;
+  }
+  
+  .priority {
+    margin-top: 10px;
+  }
+  
+  .status {
+    margin-top: 10px;
+  }
+  
+  .date {
+    margin-top: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

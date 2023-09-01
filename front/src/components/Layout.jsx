@@ -9,6 +9,7 @@ import AllTickets from "./AllTickets/AllTickets";
 import SignUp from "./SignUp/SIgnUp";
 import Landing from "./Landing/Landing";
 import Contact from "./Contact/Contact";
+import Dashboard from "./Dashboard/Dashboard";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -81,8 +82,7 @@ const StaffRoutes = () => {
 		<div>
 			<Nav />
 			<Routes>
-				<Route path="/about" element={<About />} />
-				<Route path="/" element={<AllTickets />} />
+				<Route path="/" element={<Dashboard />} />
 			</Routes>
 		</div>
 	);

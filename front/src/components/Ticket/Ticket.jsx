@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Ticket.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTicket } from "../../redux/actions/actions";
+import { Link } from "react-router-dom";
 
 const Ticket = ({ ticket }) => {
 	const {
@@ -27,14 +28,15 @@ const Ticket = ({ ticket }) => {
 
 	return (
 		<div className={styles.card}>
-			{/* <h2 className={styles.title}>Title: {issueTitle}</h2> */}
+			<Link to = "/detail"></Link>
 			<h3 className={styles.type}>Type: {issueType}</h3>
+			<h3 className={styles.title}>Title: {issueTitle}</h3>
 			<h3 className={styles.description}>Description: {issueDescription}</h3>
 			<h3 className={styles.priority}>Priority: {priority}</h3>
 			<h3 className={styles.status}>Status: {status}</h3>
 			<h3 className={styles.date}> Date: {createdAt} </h3>
 
-			{userType === "staff " && <button onClick={handleUpdate}>UPDATE</button>}
+			{userType === "staff" ? <button onClick={handleUpdate}>UPDATE</button> : null}
 		</div>
 	);
 };

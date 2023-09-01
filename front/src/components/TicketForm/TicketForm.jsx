@@ -25,10 +25,9 @@ const TicketForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(userId);
 		dispatch(riseTicket(newTicket, userId));
 		setNewTicket({
-			issueTitle: "",
+		issueTitle: "",
 		issueDescription: "",
 		issueType: "",
 		priority: "",

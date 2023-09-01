@@ -28,7 +28,7 @@ export const logIn = (userData) => {
 				payload: data,
 			});
 		} catch (error) {
-			alert("An error has ocurred" + error);
+			alert(error.response.data.error);
 		}
 	};
 };
@@ -46,7 +46,7 @@ export const riseTicket = (newTicket, userId) => {
 				payload: data,
 			});
 		} catch (error) {
-			alert("An error ocurred" + error.response.data.error);
+			console.log(error);
 		}
 	};
 };
