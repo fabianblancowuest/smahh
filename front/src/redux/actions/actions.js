@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE } from "./types";
 import axios from "axios";
 
 // COMMON 
@@ -142,5 +142,12 @@ export const filterStatus = (status)=>{
 	return {
 		type: FILTER_BY_STATUS,
 		payload: status
+	}
+}
+
+export const sortByDate = (date)=>{
+	return {
+		type: SORT_BY_DATE,
+		payload: date
 	}
 }
