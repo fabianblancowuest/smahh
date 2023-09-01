@@ -68,6 +68,8 @@ export const getUserTickets = (userId) => {
 	}
 }
 
+// STAFF ONLY
+
 export const getAllTickets = () => {
 	const URL = "http://localhost:3001/staff/allTickets"
 

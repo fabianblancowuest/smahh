@@ -19,13 +19,16 @@ const Contact = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		// Aquí puedes agregar la lógica para enviar el formulario o realizar otras acciones necesarias
-		console.log(contactData);
 		setContactData({
 			name: "",
 			email: "",
 			message: "",
 		});
 	};
+
+	const handleSimulation = ()=>{
+		alert("In progress")
+	}
 
 	return (
 		<div className={styles.container}>
@@ -60,7 +63,7 @@ const Contact = () => {
 					onChange={handleChange}
 				></textarea>
 
-				<button className={styles.button} type="submit">
+				<button onClick={handleSimulation} className={styles.button} type="submit">
 					Send Message
 				</button>
 			</form>

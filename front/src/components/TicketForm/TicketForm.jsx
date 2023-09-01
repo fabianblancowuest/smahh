@@ -27,6 +27,12 @@ const TicketForm = () => {
 		event.preventDefault();
 		console.log(userId);
 		dispatch(riseTicket(newTicket, userId));
+		setNewTicket({
+			issueTitle: "",
+		issueDescription: "",
+		issueType: "",
+		priority: "",
+		})
 	};
 
 	return (

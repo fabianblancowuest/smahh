@@ -16,8 +16,7 @@ const SignUp = () => {
 	};
 
 	const [userData, setUserData] = useState(initialState);
-	// const [errors, setErrors] = useState(initialState);
-
+	
 	const handleChange = (event) => {
 		// ** Agrega las propiedades al objeto inputs que coincida con el valor de input del evento que se está ejecutando
 		setUserData({ ...userData, [event.target.name]: event.target.value });
