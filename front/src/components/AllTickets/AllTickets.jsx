@@ -27,7 +27,7 @@ const AllTickets = () => {
 			<button onClick={handleRefresh}>Refresh status</button>
 			
 			<h2 className={styles.title}>
-				Hi {userName}! Your tickets: {ticketsAmount}
+				Hi {userName}! See a list of your tickets: {ticketsAmount}
 			</h2>
 			
 			<section className={styles.container}>

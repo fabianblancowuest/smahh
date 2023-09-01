@@ -7,6 +7,8 @@ const inicialState = {
     userType: null,
     userName: null,
 
+    updateMessage: null,
+
     userTickets: [],
     userTicketsCopy: [],
 
@@ -59,6 +61,7 @@ const rootReducer = (state = inicialState, actions) => {
         case UPDATE_TICKET: 
             return {
                 ...state,
+                updateMessage: payload.message
             }
             
         case GET_TICKET_DETAIL:

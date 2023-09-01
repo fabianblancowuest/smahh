@@ -97,6 +97,7 @@ export const updateTicket = (ticketId, newStatus) => {
 		return async (dispatch) => {
 			
 			const {data}= await axios.put(URL, {ticketId, newStatus})
+			console.log(data);
 			
 			dispatch({
 				type: UPDATE_TICKET,
@@ -104,7 +105,7 @@ export const updateTicket = (ticketId, newStatus) => {
 			})
 		}
 	} catch (error) {
-		console.log(error);
+		alert(error.response.data.error);
 	}
 }
 
@@ -112,8 +113,6 @@ export const updateTicket = (ticketId, newStatus) => {
 
 export const getTicketDetail = (id)=>{	
 	const URL= "http://localhost:3001/user/ticket-detail/"
-
-	console.log(id);
 
 	return async (dispatch) => {
 		try {
