@@ -14,13 +14,13 @@ const TicketStaff = ({ ticket }) => {
         createdAt,
         updatedAt,
         id,
+        userName
     } = ticket;
 
     const updateMessage = useSelector((state) => state.updateMessage)
-
     const dispatch = useDispatch();
 
-    const newStatusOptions = ["In Progress", "Completed", "Closed"];
+    const newStatusOptions = ["Not Started", "In Progress", "Completed", "Closed"];
     const [selectedStatus, setSelectedStatus] = useState(status);
 
     const handleStatusChange = (event) => {
@@ -35,13 +35,33 @@ const TicketStaff = ({ ticket }) => {
 
     return (
         <div>
+            {/* <div >
+                <select value={selectedStatus} onChange={handleStatusChange}>
+                    {newStatusOptions.map((option) => (
+                        <option key={option} value={option}>
+                            {option}
+                        </option>
+                    ))}
+                </select>
+                <button onClick={handleUpdate}>UPDATE</button>
+            </div> */}
+
             <div className="ticket-container">
                 <div className="ticket-item">{id}</div>
                 <div className="ticket-item">{issueType}</div>
                 <div className="ticket-item">{priority}</div>
                 <div className="ticket-item">{status}</div>
                 <div className="ticket-item">{createdAt}</div>
-                <div className="ticket-item">{updatedAt}</div>
+                <div className="ticket-item">
+                    <select value={selectedStatus} onChange={handleStatusChange}>
+                        {newStatusOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                    <button onClick={handleUpdate}>UPDATE</button>
+                </div>
                 <div className="ticket-item">
                     <Link to={`/detail/${id}`}>
                         Detail
@@ -57,17 +77,7 @@ const TicketStaff = ({ ticket }) => {
 export default TicketStaff;
 
 
-/*
 
-<div className={styles.updateSection}>
-                    <select value={selectedStatus} onChange={handleStatusChange}>
-                        {newStatusOptions.map((option) => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-                    <button onClick={handleUpdate}>UPDATE</button>
-                </div>
 
-*/
+
+

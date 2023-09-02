@@ -37,10 +37,11 @@ export const logIn = (userData) => {
 
 // USER 
 
-export const riseTicket = (newTicket, userId) => {
+export const riseTicket = (newTicket, userId, userName) => {
 	const URL = "http://localhost:3001/user/ticket";
 	// Agregar userId al objeto newTicket
 	newTicket.userId = userId;
+	newTicket.userName = userName;
 	return async (dispatch) => {
 		try {
 			const { data } = await axios.post(URL, newTicket);

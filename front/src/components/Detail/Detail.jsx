@@ -17,7 +17,7 @@ const Detail = () => {
     status,
     createdAt,
     updatedAt,
-    UserId,
+    userName,
   } = ticketDetail;
 
   useEffect(() => {
@@ -27,6 +27,14 @@ const Detail = () => {
   return (
     <div className="detail-container">
       <h2 className="detail-title">Ticket Detail</h2>
+      <div className="detail-info">
+        <p className="detail-heading">User Name:  </p>
+        <p>{userName}</p>
+      </div>
+      <div className="detail-info">
+        <p className="detail-heading">Ticket Id:  </p>
+        <p>{id}</p>
+      </div>
       <div className="detail-info">
         <p className="detail-heading">Type:</p>
         <p>{issueType}</p>

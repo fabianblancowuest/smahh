@@ -5,7 +5,7 @@ const postUser = async (req, res) => {
         const { firstName, lastName, email, password, phone, userType, } = req.body;
 
         if (!firstName || !lastName || !email || !password || !phone || !userType) {
-            return res.status(400).json({ error: "Faltan Datos" });
+            return res.status(400).json({ error: "Missing data to create user in DataBase" });
         }
         const [user, created] = await User.findOrCreate({
             where: { email },
@@ -19,12 +19,12 @@ const postUser = async (req, res) => {
         });
 
         if (!created) {
-            return res.status(409).json({ error: "El usuario ya existe" });
+            return res.status(409).json({ error: "This user already exist" });
         }
         return res.status(200).json({ message: "User created succesfully"});
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Error al crear el usuario" });
+        return res.status(500).json({ error: "Error while creating user" });
     }
 };
 

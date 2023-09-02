@@ -22,5 +22,10 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('High', 'Low', 'Medium'),
             allowNull: false,
         },
+
+        userName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     })
 }

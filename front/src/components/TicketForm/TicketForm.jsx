@@ -5,6 +5,7 @@ import styles from "./TicketForm.module.css";
 
 const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
+	const userName = useSelector(state=> state.userName)
 	const dispatch = useDispatch();
 
 	const [newTicket, setNewTicket] = useState({
@@ -25,7 +26,7 @@ const TicketForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(riseTicket(newTicket, userId));
+		dispatch(riseTicket(newTicket, userId, userName));
 		setNewTicket({
 			issueTitle: "",
 			issueDescription: "",

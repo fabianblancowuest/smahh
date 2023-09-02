@@ -11,6 +11,7 @@ const Ticket = ({ ticket }) => {
 		status,
 		createdAt,
 		id,
+		userName
 	} = ticket;
 
 	return (
