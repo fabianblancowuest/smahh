@@ -1,4 +1,4 @@
-import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
+import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     access: false,
@@ -37,6 +37,12 @@ const rootReducer = (state = inicialState, actions) => {
                 userType: payload.userType,
                 userId: payload.userId,
                 userName: payload.userName,
+            }
+
+        case LOG_OUT:
+            return {
+                ...state,
+                access: payload
             }
 
         case RISE_TICKET:

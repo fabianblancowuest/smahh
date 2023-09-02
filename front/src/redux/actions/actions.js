@@ -130,6 +130,13 @@ export const getTicketDetail = (id)=>{
 	}
 }
 
+export const logOut= (out)=>{
+	return {
+		type: LOG_OUT,
+		payload: out
+	}
+}
+
 // FILTERS
 
 export const filterPriority = (priority)=>{

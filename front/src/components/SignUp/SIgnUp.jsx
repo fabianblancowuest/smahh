@@ -3,6 +3,7 @@ import { signUp } from "../../redux/actions/actions";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Swal from "sweetalert2"
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,16 @@ const SignUp = () => {
       setSuccessMessage("SignUp successful!"); // Actualiza el mensaje de éxito
       setUserData(initialState);
     }
+
+    Swal.fire({
+			position: "top-end",
+			icon: "success",
+			title: "User created succesfully!",
+			showConfirmButton: false,
+			timer: 1500,
+		});
+
+
   };
 
   const handleGoToLogin = () => {

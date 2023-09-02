@@ -1,11 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../redux/actions/actions";
 
 
 const Nav = () => {
   const userType = useSelector(state => state.userType);
+  const dispatch = useDispatch()
+
+
+  const handleLogOut=()=> {
+    dispatch(logOut(false))
+  }
 
   return (
     <nav className={styles.navContainer}>
@@ -38,9 +45,14 @@ const Nav = () => {
         VIEW TICKETS
       </NavLink> : null}
 
+
       {userType === "staff" ? <NavLink to="/" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
         DASHBOARD
       </NavLink> : null }
+
+      {/* {userType === "user" || userType === "staff" ?  <button className={styles.navLink} onClick={handleLogOut}>
+        LOG OUT
+      </button> : null} */}
 
     </nav>
   );

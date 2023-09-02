@@ -1,13 +1,14 @@
 .navContainer {
 	background-color: #333;
 	display: flex;
-	justify-content: center ;
-  gap: 1rem ;
+	justify-content: space-evenly ;
+    gap: 1rem ;
 	align-items: center;
 	height: 60px;
 }
 
 .navLink {
+	border-radius: 3px;
 	color: #fff;
 	text-decoration: none;
 	padding: 10px 20px;
@@ -19,5 +20,5 @@
 }
 
 .activeLink {
-	color: #8b7bcc;
+	color: #6c5ca0;
 }
