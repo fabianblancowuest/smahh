@@ -1,4 +1,4 @@
-import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, UPDATE_TICKET } from "../actions/types"
+import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     logInMessage: null,
@@ -102,7 +102,21 @@ const rootReducer = (state = inicialState, actions) => {
                 ...state,
                 userTickets: filteredByStatus
             }
+        
+        case SORT_BY_DATE:
+            const sortedTickets = [...state.userTickets]
 
+            if (payload === "A") {
+                sortedTickets.sort((a, b) => a.id - b.id)
+            }
+
+            if (payload === "D") {
+                sortedTickets.sort((a, b) => b.id - a.id)
+            }
+            return {
+                ...state,
+                userTickets: sortedTickets
+            }
         default:
             return state
     }

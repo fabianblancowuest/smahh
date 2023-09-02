@@ -16,7 +16,7 @@ const AllTickets = () => {
 		if (userTickets.length === 0) {
 			dispatch(getUserTickets(userId));
 		}
-	}, [userTickets, dispatch]);
+	}, []);
 
 	const handleRefresh = () => {
 		dispatch(getUserTickets(userId))

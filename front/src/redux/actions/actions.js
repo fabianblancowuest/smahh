@@ -146,9 +146,9 @@ export const filterStatus = (status)=>{
 	}
 }
 
-export const sortByDate = (date)=>{
+export const sortByDate = (order)=>{
 	return {
 		type: SORT_BY_DATE,
-		payload: date
+		payload: order
 	}
 }
