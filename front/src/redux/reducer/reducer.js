@@ -1,13 +1,14 @@
 import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, RISE_TICKET, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
-    logInMessage: null,
     access: false,
     userId: null,
     userType: null,
     userName: null,
-
+    
+    logInMessage: null,
     updateMessage: null,
+    signUpMessage: null,
 
     userTickets: [],
     userTicketsCopy: [],
@@ -25,6 +26,7 @@ const rootReducer = (state = inicialState, actions) => {
         case SIGN_UP:
             return {
                 ...state,
+                signUpMessage: payload.message
             }
 
         case LOG_IN:

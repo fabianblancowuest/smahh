@@ -38,6 +38,10 @@ const Nav = () => {
         VIEW TICKETS
       </NavLink> : null}
 
+      {userType === "staff" ? <NavLink to="/" className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
+        DASHBOARD
+      </NavLink> : null }
+
     </nav>
   );
 };

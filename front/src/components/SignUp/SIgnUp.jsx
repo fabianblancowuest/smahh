@@ -1,30 +1,41 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../redux/actions/actions";
 import styles from "./SignUp.module.css";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const signUpMessage = useSelector((state) => state.signUpMessage);
 
   const initialState = {
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-    phone: "",
+    confirmPassword: "",
     userType: "user",
   };
 
   const [userData, setUserData] = useState(initialState);
+  const [successMessage, setSuccessMessage] = useState(""); // Estado para el mensaje de éxito
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(signUp(userData));
-    setUserData(initialState);
+    if (signUpMessage) {
+      setSuccessMessage("SignUp successful!"); // Actualiza el mensaje de éxito
+      setUserData(initialState);
+    }
+  };
+
+  const handleGoToLogin = () => {
+    navigate("/login"); // Navega a la ruta de inicio de sesión
   };
 
   return (
@@ -70,17 +81,24 @@ const SignUp = () => {
           onChange={handleChange}
         />
 
-        <label className={styles.label}>Phone</label>
+        <label className={styles.label}>Confirm Password</label>
         <input
           className={styles.input}
-          name="phone"
+          name="confirmPassword"
           type="text"
-          placeholder="Enter your phone"
-          value={userData.phone}
+          placeholder="Confirm your password"
+          value={userData.confirmPassword}
           onChange={handleChange}
         />
 
-        <input className={styles.btnSubmit} type="submit" value="Submit" />
+        {!successMessage && <input className={styles.btnSubmit} type="submit" value="Submit" />}
+
+        {successMessage && (
+          <div className={styles.successMessage}>
+            {successMessage}
+            <button onClick={handleGoToLogin} className={styles.btnNavigate}>Go to Log In</button> {/* Botón para navegar */}
+          </div>
+        )}
       </form>
     </div>
   );

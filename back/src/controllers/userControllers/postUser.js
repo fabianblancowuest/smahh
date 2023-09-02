@@ -2,9 +2,9 @@ const { User } = require("../../DB_connection");
 
 const postUser = async (req, res) => {
     try {
-        const { firstName, lastName, email, password, phone, userType, } = req.body;
+        const { firstName, lastName, email, password, userType, } = req.body;
 
-        if (!firstName || !lastName || !email || !password || !phone || !userType) {
+        if (!firstName || !lastName || !email || !password || !userType) {
             return res.status(400).json({ error: "Missing data to create user in DataBase" });
         }
         const [user, created] = await User.findOrCreate({
@@ -13,7 +13,6 @@ const postUser = async (req, res) => {
                 firstName,
                 lastName,
                 password,
-                phone,
                 userType
             }
         });
