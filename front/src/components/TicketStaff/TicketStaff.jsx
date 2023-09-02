@@ -47,6 +47,7 @@ const TicketStaff = ({ ticket }) => {
             </div> */}
 
             <div className="ticket-container">
+                <div className="ticket-item">{userName}</div>
                 <div className="ticket-item">{id}</div>
                 <div className="ticket-item">{issueType}</div>
                 <div className="ticket-item">{priority}</div>
