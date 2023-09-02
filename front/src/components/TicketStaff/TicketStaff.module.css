@@ -1,0 +1,28 @@
+ 
+  /* TicketStaff.module.css */
+  
+  .ticket {
+	display: flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 10px;
+  }
+  
+  .ticketInfo {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+  }
+  
+  .updateSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  select,
+  button {
+	margin-top: 5px;
+  }

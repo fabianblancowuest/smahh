@@ -1,0 +1,35 @@
+/* CombinedStyles.css */
+.ticket-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  
+  .ticket-item {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .ticket-item:last-child {
+    border-right: none;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  
+  .dashboard-header div {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .dashboard-header div:last-child {
+    border-right: none;
+  }
+  

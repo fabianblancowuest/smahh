@@ -40,26 +40,5 @@
 	color: #555;
   }
   
-  /* Estilos para usuarios de tipo "staff" */
-  select {
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 10px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-  }
-  
-  button {
-	background-color: #333;
-	color: #fff;
-	font-size: 1rem;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-  }
-  
-  button:hover {
-	background-color: #555;
-  }
+
   

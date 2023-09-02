@@ -1,12 +1,20 @@
 /* Dashboard.module.css */
 
 .title {
-	text-align: center;
-}
-
-.container {
+	font-size: 24px;
+	margin-bottom: 20px;
+  }
+  
+  .container {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 0 2rem;
-}
+	flex-direction: column;
+  }
+  
+  .columnHeaders {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr); /* Ajusta el número de columnas según tus necesidades */
+	font-weight: bold;
+	background-color: #f0f0f0;
+	padding: 8px;
+	margin-bottom: 10px;
+  }
