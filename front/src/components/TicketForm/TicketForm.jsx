@@ -27,45 +27,28 @@ const TicketForm = () => {
 		event.preventDefault();
 		dispatch(riseTicket(newTicket, userId));
 		setNewTicket({
-		issueTitle: "",
-		issueDescription: "",
-		issueType: "",
-		priority: "",
+			issueTitle: "",
+			issueDescription: "",
+			issueType: "",
+			priority: "",
 		})
 	};
 
 	return (
-		<form className={styles.form} onSubmit={handleSubmit}>
-			<fieldset>
-				<legend>Issue Details</legend>
+		<div className={styles.formBackground}>
 
-				<label>Issue title:</label>
-				<input
-					type="text"
-					name="issueTitle"
-					placeholder="Issue Title..."
-					value={newTicket.issueTitle}
-					onChange={handleChange}
-					autoComplete="off"
-				/>
+			<h3 className={styles.title}>Rise your Ticket</h3>
 
-				<label htmlFor="description">Issue description:</label>
-				<textarea
-					id="description"
-					name="issueDescription"
-					placeholder="Description..."
-					value={newTicket.issueDescription}
-					onChange={handleChange}
-				/>
+			<form className={styles.formContainer} onSubmit={handleSubmit}>
 
-				<label>Issue type:</label>
+				<label className={styles.formLabels}>Select a Type:</label>
 				<select
+					className={styles.select}
 					type="text"
 					name="issueType"
 					placeholder="Issue type..."
 					value={newTicket.issueType}
 					onChange={handleChange}
-					autoComplete="off"
 				>
 					<option value="virus-malwares">
 						Detection of malware or viruses on systems
@@ -110,7 +93,7 @@ const TicketForm = () => {
 					</option>
 				</select>
 
-				<label>Priority:</label>
+				<label className={styles.formLabels}>Select a Priority:</label>
 				<select
 					className={styles.select}
 					name="priority"
@@ -121,12 +104,34 @@ const TicketForm = () => {
 					<option value="Medium">Medium</option>
 					<option value="Low">Low</option>
 				</select>
-			</fieldset>
 
-			<button className={styles.button} type="submit">
-				Submit Ticket
-			</button>
-		</form>
+
+				<label className={styles.formLabels}> Issue title: </label>
+				<input
+					className={styles.textarea}
+					type="text"
+					name="issueTitle"
+					placeholder="Issue Title..."
+					value={newTicket.issueTitle}
+					onChange={handleChange}
+				/>
+
+				<label className={styles.formLabels}>Send us a message:</label>
+				<textarea
+					className={styles.textarea}
+					id="description"
+					name="issueDescription"
+					placeholder="Describe your problem here..."
+					value={newTicket.issueDescription}
+					onChange={handleChange}
+				/>
+
+
+				<button className={styles.formButton} type="submit">
+					Submit Ticket
+				</button>
+			</form>
+		</div>
 	);
 };
 

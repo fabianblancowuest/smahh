@@ -32,7 +32,7 @@ const Login = () => {
           <b>Email:</b>
         </label>
         <input
-          className={`${styles.formInputs} ${styles.customInput}`}
+          className={styles.formInputs} 
           type="email"
           id="email"
           placeholder="Email..."
@@ -45,7 +45,7 @@ const Login = () => {
           <b>Password:</b>
         </label>
         <input
-          className={`${styles.formInputs} ${styles.customInput}`}
+          className={styles.formInputs}
           type="password"
           id="password"
           placeholder="Password..."

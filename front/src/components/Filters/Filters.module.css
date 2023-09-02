@@ -4,8 +4,8 @@
     margin-bottom: 20px;
   }
   
-  select {
-    width: 15%;
+.select {
+    width: 30%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
