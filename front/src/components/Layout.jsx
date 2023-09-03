@@ -12,6 +12,8 @@ import Contact from "./Contact/Contact";
 import Dashboard from "./Dashboard/Dashboard";
 import Detail from "./Detail/Detail";
 import Footer from "./Footer/Footer";
+import "./Layout.css"
+
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -50,32 +52,36 @@ const Layout = () => {
 
 const CommonRoutes = () => {
 	return (
-		<div>
-			<Nav />
-			<Routes>
-				<Route path="/" element={<Landing></Landing>} />
-				<Route path="/about" element={<About />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/signup" element={<SignUp />} />
-				<Route path="/contact" element={<Contact />} />
-			</Routes>
-			<Footer />
+		<div className="main-container">
+			<Nav className="content" />
+			<div className="content">
+				<Routes>
+					<Route path="/" element={<Landing />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<SignUp />} />
+					<Route path="/contact" element={<Contact />} />
+				</Routes>
+			</div>
+			<Footer className="footer" />
 		</div>
-	)
+	);
 }
 
 const UserRoutes = () => {
 	return (
-		<div>
+		<div className="main-container">
 			<Nav />
-			<Routes>
-				<Route path="/" element={<Landing></Landing>} />
-				<Route path="/tickets" element={<AllTickets />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/riseticket" element={<TicketForm />} />
-				<Route path="/contact" element={<Contact />} />
-				<Route path="/detail/:id" element={<Detail />} />
-			</Routes>
+			<div className="content">
+				<Routes>
+					<Route path="/" element={<Landing></Landing>} />
+					<Route path="/tickets" element={<AllTickets />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/riseticket" element={<TicketForm />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/detail/:id" element={<Detail />} />
+				</Routes>
+			</div>
 			<Footer />
 		</div>
 	);
@@ -83,13 +89,15 @@ const UserRoutes = () => {
 
 const StaffRoutes = () => {
 	return (
-		<div>
+		<div className="main-container">
 			<Nav />
-			<Routes>
-				<Route path="/" element={<Dashboard />} />
-				<Route path="/detail/:id" element={<Detail />} />
-			</Routes>
-			<Footer />
+			<div className="content">
+				<Routes>
+					<Route path="/" element={<Dashboard />} />
+					<Route path="/detail/:id" element={<Detail />} />
+				</Routes>
+				<Footer />
+			</div>
 		</div>
 	);
 };
