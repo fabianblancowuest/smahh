@@ -5,7 +5,7 @@ const inicialState = {
     userId: null,
     userType: null,
     userName: null,
-    
+
     logInMessage: null,
     updateMessage: null,
     signUpMessage: null,
@@ -42,7 +42,11 @@ const rootReducer = (state = inicialState, actions) => {
         case LOG_OUT:
             return {
                 ...state,
-                access: payload
+                access: false,
+                userId: null,
+                userType: null,
+                userName: null,
+                logInMessage: null,
             }
 
         case RISE_TICKET:
@@ -105,12 +109,12 @@ const rootReducer = (state = inicialState, actions) => {
                     return tickets.status === payload
                 }
             });
-            
+
             return {
                 ...state,
                 userTickets: filteredByStatus
             }
-        
+
         case SORT_BY_DATE:
             const sortedTickets = [...state.userTickets]
 
