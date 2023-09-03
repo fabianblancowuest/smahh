@@ -21,7 +21,7 @@ const Nav = () => {
     <nav className={styles.navContainer}>
       
       <div className={styles.logoContainer}>
-        <FaAtom className={styles.atomIcon} />
+        <FaVirus className={styles.atomIcon} />
         <span className={styles.logoText}>SMAHH</span>
       </div>
 
@@ -78,7 +78,6 @@ const Nav = () => {
         </>
       ) : null}
 
-      
       {userType === "user" ? (
         <>
           <NavLink
@@ -100,8 +99,7 @@ const Nav = () => {
           </NavLink>
         </>
       ) : null}
-      
-
+    
       {userType === "staff" ? (
         <NavLink
           to="/"

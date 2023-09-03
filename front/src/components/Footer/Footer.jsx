@@ -60,7 +60,7 @@ export default function Footer() {
                         </a>
                     ))}
                 </div>
-                <p style={{ textAlign: 'center', fontSize: '12px' }}>&copy; 2023 Your Company, Inc. All rights reserved.</p>
+                <p style={{ textAlign: 'center', fontSize: '12px' }}>&copy; 2023 Smahh. All rights reserved.</p>
             </div>
         </footer>
     );
