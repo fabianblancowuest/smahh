@@ -11,19 +11,41 @@ const Ticket = ({ ticket }) => {
 		status,
 		createdAt,
 		id,
-		userName
+		userName,
 	} = ticket;
 
+	const statusClass =
+		status === "Not Started"
+			? styles.notStarted
+			: status === "In Progress"
+				? styles.inProgress
+				: styles.completed;
+
 	return (
-		<div className={styles.card}>
-			<Link to={`/detail/${id}`}>detail</Link>
-			{/* <h3 className={styles.title}>Title: {issueTitle}</h3> */}
-			<h3 className={styles.type}>Type: {issueType}</h3>
-			<h3 className={styles.priority}>Priority: {priority}</h3>
-			<h3 className={styles.status}>Status: {status}</h3>
-			{/* <h3 className={styles.description}>Description: {issueDescription}</h3> */}
-			{/* <h3 className={styles.date}> Date: {createdAt} </h3> */}
+		<div className={`${styles.card}  ${statusClass}`}>
+
+			<div className={styles.cardContent}>
+				
+			<div className={styles.column}>
+					<h3 className={styles.status}>Status:</h3>
+					<span>{status}</span>
+				</div>
+
+				<div className={styles.column}>
+					<h3 className={styles.priority}>Priority: </h3>
+					<span>{priority}</span>
+					
+				</div>
+
+				<div className={styles.column}>
+					<Link to={`/detail/${id}`}>
+						<button className={styles.detailButton}>Detail</button>
+					</Link>
+					<h3 className={styles.type}>Type: </h3>
+					<span>{issueType}</span>
 			
+				</div>
+			</div>
 		</div>
 	);
 };

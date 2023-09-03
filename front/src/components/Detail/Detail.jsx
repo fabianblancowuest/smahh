@@ -41,11 +41,16 @@ const Detail = () => {
       </div>
       <div className="detail-info">
         <p className="detail-heading">Title:</p>
-        <p>{issueTitle}</p>
+        <p>{
+          issueTitle ? 
+          issueTitle :
+        "Sequi quidem atque aliquid facilis"}</p>
       </div>
       <div className="detail-info">
         <p className="detail-heading">Description:</p>
-        <p>{issueDescription}</p>
+        <p>{issueDescription ?
+         issueDescription 
+         : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias facere alias esse autem id earum tempora, inventore, ut deleniti doloremque explicabo excepturi sunt fugit sequi voluptatibus voluptates. Possimus, eveniet dolor!"}</p>
       </div>
       <div className="detail-info">
         <p className="detail-heading">Priority:</p>

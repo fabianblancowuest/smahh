@@ -1,12 +1,9 @@
 .formBackground {
-	max-width: 800px;
-	/* Ajusta el ancho máximo según tus necesidades */
+	max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
 	margin: 0 auto;
 	padding: 20px;
-	background-color: #f5f5f5;
-	/* Color de fondo */
-	border: 1px solid #ddd;
-	/* Borde */
+	background-color: #f5f5f5; /* Color de fondo */
+	border: 1px solid #ddd; /* Borde */
 	border-radius: 8px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -32,12 +29,10 @@
 
 
 .formLabels {
-	display: block;
-	font-weight: bold;
 	font-size: 1.2rem;
-	margin-top: 10px;
     color: #333;
     margin-bottom: 10px;
+    font-weight: bold;
   }
 
   .input,

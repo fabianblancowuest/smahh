@@ -1,44 +1,61 @@
-/* Ticket.module.css */
-
 .card {
-	background-color: #f5f5f5;
-	border-radius: 8px;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	margin-bottom: 20px;
-	position: relative;
+	border: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+	margin: 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: #444;
+	position: relative; /* Agrega posición relativa al contenedor */
+  }
+  
+  .cardContent {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+  }
+  
+  .column {
+	flex: 1;
+	padding: 0 16px;
+  }
+  
+  .notStarted {
+	background-color: #edd4d4;
+  }
+  
+  .inProgress {
+	background-color: #f5f5c2;
+  }
+  
+  .completed {
+	background-color: #c2dbc2;
+  }
+  
+  .detailButton {
+	position: absolute; /* Agrega posición absoluta para alinear el botón */
+	top: 8px; /* Ajusta la distancia desde la parte superior */
+	right: 8px; /* Ajusta la distancia desde la derecha */
+	padding: 8px 16px;
+	background-color: #888;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
   }
   
   .type {
-	font-size: 1.2rem;
-	color: #333;
-	margin-bottom: 10px;
+	margin: 8px 0;
+	font-weight: bold; /* Añadir negrita para la clave "Type" */
   }
   
-  .priority {
-	font-size: 1.2rem;
-	color: #333;
-	margin-bottom: 10px;
+  .priority,
+  .status,
+  .title,
+  .description,
+  .userName,
+  .createdAt {
+	margin: 8px 0;
   }
-  
-  .status {
-	font-size: 1.2rem;
-	color: #333;
-	margin-bottom: 10px;
-  }
-  
-  .card a {
-	text-decoration: none;
-	color: #333;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	font-size: 1rem;
-  }
-  
-  .card a:hover {
-	color: #555;
-  }
-  
-
   

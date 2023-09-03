@@ -5,28 +5,43 @@
 	margin: 0 auto;
 	padding: 20px;
   }
+
+.welcomeContainer {
+	display: flex;
+	justify-content: space-around;
+}
   
   .title {
 	font-size: 1.5rem; 
 	color: #333;
-	margin-bottom: 20px;
+	text-align: start; 
+	padding-left: 2rem;
+	margin-bottom: 10px;
+  }
+
+  .spanContainer{
+	display: flex;
+	justify-content: center;
+  }
+  .spanInfo {
+	font-size: 1.5rem;
+	color: #333;
 	text-align: start; 
 	padding-left: 2rem;
   }
   
   .button {
-	background-color: #333;
+	background-color: #555;
 	color: #fff;
 	font-size: 1rem;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-	margin-bottom: 20px;
   }
   
   .button:hover {
-	background-color: #555;
+	background-color: #777;
   }
   
   .section {
@@ -56,6 +71,6 @@
   }
   
   .ticket a:hover {
-	color: #555;
+	color: tr;
   }
   

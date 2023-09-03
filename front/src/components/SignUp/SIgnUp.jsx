@@ -29,6 +29,7 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(signUp(userData));
+    
     if (signUpMessage) {
       setSuccessMessage("SignUp successful!"); // Actualiza el mensaje de éxito
       setUserData(initialState);
@@ -39,11 +40,8 @@ const SignUp = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+    navigate("/login")
     }
-  };
-
-  const handleGoToLogin = () => {
-    navigate("/login"); // Navega a la ruta de inicio de sesión
   };
 
   return (
@@ -104,9 +102,11 @@ const SignUp = () => {
         {successMessage && (
           <div className={styles.successMessage}>
             {successMessage}
-            <button onClick={handleGoToLogin} className={styles.btnNavigate}>Go to Log In</button> {/* Botón para navegar */}
+            <button onClick={handleGoToLogin} className={styles.btnNavigate}>Go to Log In</button> 
           </div>
         )}
+
+
       </form>
     </div>
   );

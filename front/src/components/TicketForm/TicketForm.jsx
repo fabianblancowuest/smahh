@@ -101,12 +101,12 @@ const TicketForm = () => {
 					<option value="Low">Low</option>
 				</select>
 
-				<label className={styles.formLabels}> Issue title: </label>
+				<label className={styles.formLabels}> Subject: </label>
 				<input
 					className={styles.textarea}
 					type="text"
 					name="issueTitle"
-					placeholder="Issue Title..."
+					placeholder="Subject..."
 					value={newTicket.issueTitle}
 					onChange={handleChange}
 				/>

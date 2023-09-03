@@ -9,7 +9,11 @@ const AllTickets = () => {
 	const userName = useSelector(state => state.userName)
 	const userId = useSelector(state => state.userId)
 	const userTickets = useSelector(state => state.userTickets);
-	const ticketsAmount = userTickets.length
+	const userTicketsCopy = useSelector(state => state.userTicketsCopy)
+
+	const totalAmount = userTicketsCopy.length
+	const filteredTickets = userTickets.length
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -25,13 +29,15 @@ const AllTickets = () => {
 
 	return (
 		<div>
-			<div className={styles.title}>
-				<h3>Hi {userName},</h3>
-				<span>Your tickets: {ticketsAmount}</span>
-			</div>
+
+			<h5 className={styles.title}>Hi {userName},</h5>
 
 			<Filters />
-
+			<div className={styles.spanContainer}>
+			<span className={styles.spanInfo} >All your tickets: {totalAmount} </span>
+			<span className={styles.spanInfo}>||</span>
+			<span className={styles.spanInfo}>Filtered tickets: {filteredTickets}</span>
+			</div>
 			<button onClick={handleRefresh} className={styles.button}>Refresh status</button>
 
 			<section className={styles.container}>
