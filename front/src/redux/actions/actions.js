@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID } from "./types";
 import axios from "axios";
 
 // COMMON 
@@ -134,6 +134,15 @@ export const logOut= (out)=>{
 	return {
 		type: LOG_OUT,
 		payload: out
+	}
+}
+
+// SEARCH-BAR
+
+export const searchById = (id)=> {
+	return {
+		type: SEARCH_BY_ID,
+		payload: id
 	}
 }
 

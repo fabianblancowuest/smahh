@@ -17,11 +17,10 @@ const TicketStaff = ({ ticket }) => {
         userName
     } = ticket;
 
-    const updateMessage = useSelector((state) => state.updateMessage)
     const dispatch = useDispatch();
 
     const newStatusOptions = ["Not Started", "In Progress", "Completed", "Closed"];
-    const [selectedStatus, setSelectedStatus] = useState(status);
+    const [selectedStatus, setSelectedStatus] = useState("");
 
     const handleStatusChange = (event) => {
         const newStatus = event.target.value;
@@ -29,22 +28,16 @@ const TicketStaff = ({ ticket }) => {
     };
 
     const handleUpdate = () => {
-        dispatch(updateTicket(id, selectedStatus));
-        alert(updateMessage)
+        if (selectedStatus) { // Verifica si se ha seleccionado un estado
+            dispatch(updateTicket(id, selectedStatus));
+            alert("Update successful");
+        } else {
+            alert("Please select a status before updating.");
+        }
     };
 
     return (
         <div>
-            {/* <div >
-                <select value={selectedStatus} onChange={handleStatusChange}>
-                    {newStatusOptions.map((option) => (
-                        <option key={option} value={option}>
-                            {option}
-                        </option>
-                    ))}
-                </select>
-                <button onClick={handleUpdate}>UPDATE</button>
-            </div> */}
 
             <div className="ticket-container">
                 <div className="ticket-item">{userName}</div>
@@ -52,7 +45,6 @@ const TicketStaff = ({ ticket }) => {
                 <div className="ticket-item">{issueType}</div>
                 <div className="ticket-item">{priority}</div>
                 <div className="ticket-item">{status}</div>
-                <div className="ticket-item">{createdAt}</div>
                 <div className="ticket-item">
                     <select value={selectedStatus} onChange={handleStatusChange}>
                         {newStatusOptions.map((option) => (
@@ -63,6 +55,7 @@ const TicketStaff = ({ ticket }) => {
                     </select>
                     <button onClick={handleUpdate}>UPDATE</button>
                 </div>
+                <div className="ticket-item">{createdAt}</div>
                 <div className="ticket-item">
                     <Link to={`/detail/${id}`}>
                         Detail

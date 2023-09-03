@@ -36,7 +36,6 @@ const Filters = () => {
                 <option value="Not Started">Not Started</option>
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
-                <option value="Closed">Closed</option>
             </select>
 
             <select className={styles.select} value={selectedPriority} onChange={handlePriority}>

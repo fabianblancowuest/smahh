@@ -43,6 +43,9 @@ const Ticket = ({ ticket }) => {
 					</Link>
 					<h3 className={styles.type}>Type: </h3>
 					<span>{issueType}</span>
+					<br />
+					<h4 className={styles.type}>Date:</h4>
+					<span>{createdAt}</span>
 			
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
+import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     access: false,
@@ -129,6 +129,14 @@ const rootReducer = (state = inicialState, actions) => {
                 ...state,
                 userTickets: sortedTickets
             }
+
+        case SEARCH_BY_ID: {
+            const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload))
+            return {
+                ...state, 
+                userTickets: [ticketFinded]
+            }
+        }
         default:
             return state
     }
