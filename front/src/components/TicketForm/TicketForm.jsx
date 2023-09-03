@@ -5,7 +5,7 @@ import styles from "./TicketForm.module.css";
 
 const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
-	const userName = useSelector(state=> state.userName)
+	const userName = useSelector(state => state.userName);
 	const dispatch = useDispatch();
 
 	const [newTicket, setNewTicket] = useState({
@@ -37,61 +37,56 @@ const TicketForm = () => {
 
 	return (
 		<div className={styles.formBackground}>
-
 			<h3 className={styles.title}>Rise your Ticket</h3>
-
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
-
-				<label className={styles.formLabels}>Select a Type:</label>
+				<label className={styles.formLabels}>Select a Service:</label>
 				<select
 					className={styles.select}
 					type="text"
 					name="issueType"
-					placeholder="Issue type..."
+					placeholder="Service needed..."
 					value={newTicket.issueType}
 					onChange={handleChange}
 				>
-					<option value="virus-malwares">
-						Detection of malware or viruses on systems
+					<option value="">Please select a Service</option>
+					<option value="Cyber Security Consulting">
+						Cyber Security Consulting
 					</option>
-					<option value="unauthorized-access">
-						Unauthorized access or compromised accounts
+					<option value="Compliance Security Program">
+						Compliance Security Program
 					</option>
-					<option value="sensitive-data">Leakage of sensitive data</option>
-					<option value="phishing">
-						Phishing and social engineering attacks
+					<option value="Cyber Awareness Education">
+						Cyber Awareness Education
 					</option>
-					<option value="slow-performance">
-						Slow network or system performance
+					<option value="Cloud Access Security Broker (CASB)">
+						Cloud Access Security Broker (CASB)
 					</option>
-					<option value="non-compliance">
-						Non-compliance with security regulations
+					<option value="Digital Forensics & Dark Web">
+						Digital Forensics & Dark Web
 					</option>
-					<option value="authentication">
-						Issues with multi-factor authentication (MFA)
+					<option value="Data Loss Prevention (DLP)">
+						Data Loss Prevention (DLP)
 					</option>
-					<option value="ddos">
-						Distributed Denial of Service (DDoS) attacks
+					<option value="Incident Response & Ransom Payment">
+						Incident Response & Ransom Payment
 					</option>
-					<option value="vulnerabilities-web">
-						Vulnerabilities in web applications
+					<option value="Managed Security Services">
+						Managed Security Services
 					</option>
-					<option value="security-patching">
-						Security patching and updates problems
+					<option value="Managed Detection & Response (MDR)">
+						Managed Detection & Response (MDR)
 					</option>
-					<option value="mobile-device">
-						Mobile device security vulnerabilities
+					<option value="Penetration Testing">Penetration Testing</option>
+					<option value="Security Assessment & Audit">
+						Security Assessment & Audit
 					</option>
-					<option value="lack-of-security">
-						Lack of security awareness and training
+					<option value="Security Operation Center (SOC)">
+						Security Operation Center (SOC)
 					</option>
-					<option value="network-insfrastructure">
-						Network infrastructure vulnerabilities
+					<option value="Vulnerability Testing">
+						Vulnerability Testing
 					</option>
-					<option value="cloud-incidents">Cloud security incidents</option>
-					<option value="encryption-data">
-						Encryption and data protection issues
-					</option>
+					<option value="Others">Others</option>
 				</select>
 
 				<label className={styles.formLabels}>Select a Priority:</label>
@@ -105,7 +100,6 @@ const TicketForm = () => {
 					<option value="Medium">Medium</option>
 					<option value="Low">Low</option>
 				</select>
-
 
 				<label className={styles.formLabels}> Issue title: </label>
 				<input
@@ -127,9 +121,8 @@ const TicketForm = () => {
 					onChange={handleChange}
 				/>
 
-
 				<button className={styles.formButton} type="submit">
-					Submit Ticket
+					Raise Ticket
 				</button>
 			</form>
 		</div>
