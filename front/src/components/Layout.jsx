@@ -11,6 +11,7 @@ import Landing from "./Landing/Landing";
 import Contact from "./Contact/Contact";
 import Dashboard from "./Dashboard/Dashboard";
 import Detail from "./Detail/Detail";
+import Footer from "./Footer/Footer";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -58,7 +59,7 @@ const CommonRoutes = () => {
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/contact" element={<Contact />} />
 			</Routes>
-
+			<Footer />
 		</div>
 	)
 }
@@ -75,6 +76,7 @@ const UserRoutes = () => {
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/detail/:id" element={<Detail />} />
 			</Routes>
+			<Footer />
 		</div>
 	);
 };
@@ -87,6 +89,7 @@ const StaffRoutes = () => {
 				<Route path="/" element={<Dashboard />} />
 				<Route path="/detail/:id" element={<Detail />} />
 			</Routes>
+			<Footer />
 		</div>
 	);
 };
