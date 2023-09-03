@@ -32,17 +32,14 @@ const SignUp = () => {
     if (signUpMessage) {
       setSuccessMessage("SignUp successful!"); // Actualiza el mensaje de éxito
       setUserData(initialState);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User created succesfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
-
-    Swal.fire({
-			position: "top-end",
-			icon: "success",
-			title: "User created succesfully!",
-			showConfirmButton: false,
-			timer: 1500,
-		});
-
-
   };
 
   const handleGoToLogin = () => {

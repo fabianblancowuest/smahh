@@ -50,9 +50,9 @@ const Nav = () => {
         DASHBOARD
       </NavLink> : null }
 
-      {/* {userType === "user" || userType === "staff" ?  <button className={styles.navLink} onClick={handleLogOut}>
+      {userType === "user" || userType === "staff" ?  <button className={styles.navLink} onClick={handleLogOut}>
         LOG OUT
-      </button> : null} */}
+      </button> : null}
 
     </nav>
   );
