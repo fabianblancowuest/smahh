@@ -24,8 +24,8 @@ const SignUp = () => {
 
   const handleChange = (event) => {
 
-    const {name, value} = event.target
-    
+    const { name, value } = event.target
+
     setUserData({
       ...userData,
       [name]: value,
@@ -43,16 +43,18 @@ const SignUp = () => {
     const formErrors = errors
 
     if (Object.keys(formErrors).length === 0) {
-      // No hay errores de validación, puedes continuar con el envío
-      dispatch(signUp(userData));
-      // Limpia los campos después del envío
+      dispatch(signUp(userData)); 
       setUserData(initialState);
+      navigate("/login")
     }
 
   };
 
   return (
     <div className={styles.container}>
+
+      <h3 className={styles.title}>Sign Up</h3>
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.label}>First Name</label>
         <input

@@ -21,7 +21,7 @@ const Login = () => {
       ...prevUserData,
       [name]: value,
     }));
-  
+
     setErrors(validateLogin({
       ...userData,
       [name]: value,
@@ -49,6 +49,9 @@ const Login = () => {
 
   return (
     <div className={styles.formBackground}>
+
+      <h3 className={styles.title}>Log In</h3>
+
       <form className={styles.formContainer} onSubmit={handleSubmit}>
 
         <label htmlFor="email" className={styles.formLabels}>
