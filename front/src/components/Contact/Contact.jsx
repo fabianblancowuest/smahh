@@ -5,6 +5,7 @@ const Contact = () => {
 	const [contactData, setContactData] = useState({
 		name: "",
 		email: "",
+		subject: "",
 		message: "",
 	});
 
@@ -22,12 +23,14 @@ const Contact = () => {
 		setContactData({
 			name: "",
 			email: "",
+			subject: "",
 			message: "",
 		});
 	};
 
-	const handleSimulation = ()=>{
-		alert("In progress")
+	const handleSend = (event)=>{
+		event.preventDefault()
+		alert("Message Send Correctly ---> In progress")
 	}
 
 	return (
@@ -57,6 +60,14 @@ const Contact = () => {
 					onChange={handleChange}
 				/>
 
+				<label className={styles.label}>Subject:</label>
+				<input
+				className={styles.input} 
+				type="text"
+				name= "subject"
+				placeholder= "Subject"
+				value={contactData.subject} />
+
 				<label className={styles.label}>Message:</label>
 				<textarea
 					className={styles.textarea}
@@ -66,7 +77,7 @@ const Contact = () => {
 					onChange={handleChange}
 				></textarea>
 
-				<button onClick={handleSimulation} className={styles.button} type="submit">
+				<button onClick={handleSend} className={styles.button} type="submit">
 					Send Message
 				</button>
 			</form>
