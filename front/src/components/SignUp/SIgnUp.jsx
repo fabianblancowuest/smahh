@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../../redux/actions/actions";
+import { clearError, clearSuccessMessage, signUp } from "../../redux/actions/actions";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2"
 
 const SignUp = () => {
-  const dispatch = useDispatch();
-  const signUpMessage = useSelector((state) => state.signUpMessage);
 
   const initialState = {
     firstName: "",
@@ -19,28 +17,42 @@ const SignUp = () => {
   };
 
   const [userData, setUserData] = useState(initialState);
-  const [successMessage, setSuccessMessage] = useState(""); // Estado para el mensaje de éxito
+  const successMessage = useSelector((state) => state.successMessage);
+  const errorMessage = useSelector((state) => state.errorMessage)
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    setUserData({ ...userData, [event.target.name]: event.target.value });
+    setUserData({
+      ...userData,
+      [event.target.name]: event.target.value
+    });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     dispatch(signUp(userData));
-    
-    if (signUpMessage) {
-      setSuccessMessage("SignUp successful!"); // Actualiza el mensaje de éxito
-      setUserData(initialState);
+
+    if (errorMessage){
+			console.log(errorMessage);
+			alert(errorMessage)
+			dispatch(clearError())
+		}
+		else if( successMessage) {
+      
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "User created succesfully!",
+        title: successMessage,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2500, 
       });
-    navigate("/login")
+			
+			dispatch(clearSuccessMessage())
+      setUserData(initialState);
+      navigate("/login")
     }
   };
 
@@ -102,7 +114,7 @@ const SignUp = () => {
         {successMessage && (
           <div className={styles.successMessage}>
             {successMessage}
-            <button onClick={handleGoToLogin} className={styles.btnNavigate}>Go to Log In</button> 
+            <button onClick={handleGoToLogin} className={styles.btnNavigate}>Go to Log In</button>
           </div>
         )}
 

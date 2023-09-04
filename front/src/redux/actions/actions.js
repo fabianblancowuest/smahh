@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID, SEARCH_BY_NAME, CLEAR_ERROR } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID, SEARCH_BY_NAME, CLEAR_ERROR, SET_SUCCESS_MESSAGE, SET_ERROR, CLEAR_SUCCESS_MESSAGE } from "./types";
 import axios from "axios";
 
 // COMMON 
@@ -12,9 +12,15 @@ export const signUp = (userData) => {
 				type: SIGN_UP,
 				payload: data,
 			});
+			dispatch({
+				type: SET_SUCCESS_MESSAGE,
+				payload: 'SignUp succesfull.'
+			 });
 		} catch (error) {
-			console.log(error);
-			alert(error.response.data.error);
+			dispatch({
+				type: SET_ERROR,
+				payload: error.response.data.error
+			})
 		}
 	};
 };
@@ -29,8 +35,16 @@ export const logIn = (userData) => {
 				type: LOG_IN,
 				payload: data,
 			});
+			dispatch({
+				type: SET_SUCCESS_MESSAGE,
+				payload: "Login successful"
+			 });
 		} catch (error) {
-			alert(error.response.data.error);
+			dispatch({
+				type: SET_ERROR,
+				payload: error.response.data.error
+			})
+			// alert(error.response.data.error);
 		}
 	};
 };
@@ -196,4 +210,10 @@ export const clearError = () => {
 	return {
 		type: CLEAR_ERROR
 	};
+}
+
+export const clearSuccessMessage = () => {
+	return {
+		type: CLEAR_SUCCESS_MESSAGE
+	}
 }

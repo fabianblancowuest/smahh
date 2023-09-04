@@ -6,7 +6,6 @@ import styles from "./Login.module.css" // Importa la hoja de estilos como "styl
 const Login = () => {
   const dispatch = useDispatch();
 
-
   const [userData, setUserData] = useState({
     email: "",
     password: "",

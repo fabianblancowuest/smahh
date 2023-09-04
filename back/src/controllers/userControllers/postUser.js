@@ -18,7 +18,7 @@ const postUser = async (req, res) => {
         });
 
         if (!created) {
-            return res.status(409).json({ error: "This user already exist" });
+            return res.status(409).json({ message: "This user already exist" });
         }
         return res.status(200).json({ message: "User created succesfully"});
     } catch (error) {

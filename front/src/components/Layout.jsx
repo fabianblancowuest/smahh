@@ -4,7 +4,7 @@ import Nav from "./Nav/Nav";
 import About from "./About/About";
 import Login from "./Login/Login";
 import TicketForm from "./TicketForm/TicketForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AllTickets from "./AllTickets/AllTickets";
 import SignUp from "./SignUp/SIgnUp";
 import Landing from "./Landing/Landing";
@@ -13,19 +13,45 @@ import Dashboard from "./Dashboard/Dashboard";
 import Detail from "./Detail/Detail";
 import Footer from "./Footer/Footer";
 import "./Layout.css"
+import { clearError, clearSuccessMessage } from "../redux/actions/actions";
+import Swal from "sweetalert2"
 
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
+	const successMessage = useSelector((state) => state.successMessage);
+	const errorMessage = useSelector((state) => state.errorMessage)
 	const navigate = useNavigate();
+	const dispatch = useDispatch()
 
 	React.useEffect(() => {
+		if (errorMessage){
+			Swal.fire({
+				position: "top-end",
+				icon: "warning",
+				title: errorMessage,
+				showConfirmButton: true,
+				timer: 2500, 
+			  });
+			dispatch(clearError())
+		}
+		else if( successMessage) {
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: successMessage,
+				showConfirmButton: false,
+				timer: 2500, 
+			  });
+			dispatch(clearSuccessMessage())
+		  }
+	  
 		if (userType === "user") {
 			navigate("/");
 		} else if (userType === "staff") {
 			navigate("/");
 		}
-	}, [userType]);
+	}, [userType, errorMessage, successMessage]);
 
 	return (
 		<div>

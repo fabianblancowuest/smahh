@@ -1,4 +1,4 @@
-import { CLEAR_ERROR, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
+import { CLEAR_ERROR, CLEAR_SUCCESS_MESSAGE, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SET_SUCCESS_MESSAGE, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     access: false,
@@ -7,11 +7,8 @@ const inicialState = {
     userName: null,
 
     errorMessage: null,
-    succesMessage: null,
-
-    logInMessage: null,
-    updateMessage: null,
-    signUpMessage: null,
+    successMessage: null,
+    loginMessage: null,
 
     userTickets: [],
     userTicketsCopy: [],
@@ -29,13 +26,12 @@ const rootReducer = (state = inicialState, actions) => {
         case SIGN_UP:
             return {
                 ...state,
-                signUpMessage: payload.message
+                successMessage: payload,
             }
 
         case LOG_IN:
             return {
                 ...state,
-                logInMessage: payload.message,
                 access: payload.access,
                 userType: payload.userType,
                 userId: payload.userId,
@@ -49,7 +45,11 @@ const rootReducer = (state = inicialState, actions) => {
                 userId: null,
                 userType: null,
                 userName: null,
-                logInMessage: null,
+                errorMessage: null,
+                successMessage: null,
+                userTickets: [],
+                userTicketsCopy: [],
+                ticketDetail: {}
             }
 
         case RISE_TICKET:
@@ -76,7 +76,6 @@ const rootReducer = (state = inicialState, actions) => {
         case UPDATE_TICKET:
             return {
                 ...state,
-                updateMessage: payload.message
             }
 
         case GET_TICKET_DETAIL:
@@ -136,13 +135,13 @@ const rootReducer = (state = inicialState, actions) => {
         case SEARCH_BY_ID: {
             const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload))
             return {
-                ...state, 
+                ...state,
                 userTickets: [ticketFinded]
             }
         }
 
         case SEARCH_BY_NAME: {
-            
+
             return {
                 ...state,
                 userTickets: payload.tickets
@@ -162,9 +161,26 @@ const rootReducer = (state = inicialState, actions) => {
                 errorMessage: null
             }
         }
+
+        case SET_SUCCESS_MESSAGE: {
+            return {
+                ...state,
+                successMessage: payload
+            }
+        }
+
+        case CLEAR_SUCCESS_MESSAGE: {
+            return {
+                ...state,
+                successMessage: null 
+            }
+        }
+
         default:
             return state
     }
+
+
 }
 
 export default rootReducer
