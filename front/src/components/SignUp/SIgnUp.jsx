@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import {signUp } from "../../redux/actions/actions";
+import { signUp } from "../../redux/actions/actions";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import validateSignUp from "./validateSignUp"
 
 const SignUp = () => {
 
@@ -16,22 +17,38 @@ const SignUp = () => {
   };
 
   const [userData, setUserData] = useState(initialState);
+  const [errors, setErrors] = useState({}); // Estado para almacenar errores
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (event) => {
+
+    const {name, value} = event.target
+    
     setUserData({
       ...userData,
-      [event.target.name]: event.target.value
+      [name]: value,
     });
+
+    setErrors(validateSignUp({
+      ...userData,
+      [name]: value,
+    }))
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(signUp(userData));
-  
+    const formErrors = errors
+
+    if (Object.keys(formErrors).length === 0) {
+      // No hay errores de validación, puedes continuar con el envío
+      dispatch(signUp(userData));
+      // Limpia los campos después del envío
+      setUserData(initialState);
+    }
+
   };
 
   return (
@@ -46,6 +63,7 @@ const SignUp = () => {
           value={userData.firstName}
           onChange={handleChange}
         />
+        {errors.firstName && <p className={styles.errors}>{errors.firstName}</p>}
 
         <label className={styles.label}>Last Name</label>
         <input
@@ -56,6 +74,7 @@ const SignUp = () => {
           value={userData.lastName}
           onChange={handleChange}
         />
+        {errors.lastName && <p className={styles.errors}>{errors.lastName}</p>}
 
         <label className={styles.label}>Email</label>
         <input
@@ -66,6 +85,7 @@ const SignUp = () => {
           value={userData.email}
           onChange={handleChange}
         />
+        {errors.email && <p className={styles.errors}>{errors.email}</p>}
 
         <label className={styles.label}>Password</label>
         <input
@@ -76,6 +96,7 @@ const SignUp = () => {
           value={userData.password}
           onChange={handleChange}
         />
+        {errors.password && <p className={styles.errors}>{errors.password}</p>}
 
         <label className={styles.label}>Confirm Password</label>
         <input
@@ -86,6 +107,9 @@ const SignUp = () => {
           value={userData.confirmPassword}
           onChange={handleChange}
         />
+        {errors.confirmPassword && (
+          <p className={styles.errors}>{errors.confirmPassword}</p>
+        )}
 
         <input className={styles.btnSubmit} type="submit" value="Submit" />
 

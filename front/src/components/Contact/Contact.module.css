@@ -44,6 +44,15 @@
 	border: 1px solid #ddd;
 	border-radius: 4px;
   }
+
+  .errors {
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 1.3rem;
+
+  }
   
   .button {
 	background-color: #333;

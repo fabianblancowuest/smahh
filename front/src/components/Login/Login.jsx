@@ -17,15 +17,15 @@ const Login = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setUserData({
-      ...userData,
+    setUserData((prevUserData) => ({
+      ...prevUserData,
       [name]: value,
-    });
-
+    }));
+  
     setErrors(validateLogin({
       ...userData,
       [name]: value,
-    }))
+    }));
 
   };
 
