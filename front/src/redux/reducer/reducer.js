@@ -8,6 +8,7 @@ const inicialState = {
 
     errorMessage: null,
     successMessage: null,
+
     loginMessage: null,
 
     userTickets: [],
@@ -26,7 +27,6 @@ const rootReducer = (state = inicialState, actions) => {
         case SIGN_UP:
             return {
                 ...state,
-                successMessage: payload,
             }
 
         case LOG_IN:
@@ -145,34 +145,6 @@ const rootReducer = (state = inicialState, actions) => {
             return {
                 ...state,
                 userTickets: payload.tickets
-            }
-        }
-
-        case SET_ERROR: {
-            return {
-                ...state,
-                errorMessage: payload
-            }
-        }
-
-        case CLEAR_ERROR: {
-            return {
-                ...state,
-                errorMessage: null
-            }
-        }
-
-        case SET_SUCCESS_MESSAGE: {
-            return {
-                ...state,
-                successMessage: payload
-            }
-        }
-
-        case CLEAR_SUCCESS_MESSAGE: {
-            return {
-                ...state,
-                successMessage: null 
             }
         }
 

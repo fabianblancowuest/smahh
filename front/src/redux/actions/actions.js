@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID, SEARCH_BY_NAME, CLEAR_ERROR, SET_SUCCESS_MESSAGE, SET_ERROR, CLEAR_SUCCESS_MESSAGE } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID, SEARCH_BY_NAME} from "./types";
 import axios from "axios";
 
 // COMMON 
@@ -12,15 +12,9 @@ export const signUp = (userData) => {
 				type: SIGN_UP,
 				payload: data,
 			});
-			dispatch({
-				type: SET_SUCCESS_MESSAGE,
-				payload: 'SignUp succesfull.'
-			 });
+
 		} catch (error) {
-			dispatch({
-				type: SET_ERROR,
-				payload: error.response.data.error
-			})
+			alert(error.response.data.error)
 		}
 	};
 };
@@ -35,16 +29,8 @@ export const logIn = (userData) => {
 				type: LOG_IN,
 				payload: data,
 			});
-			dispatch({
-				type: SET_SUCCESS_MESSAGE,
-				payload: "Login successful"
-			 });
 		} catch (error) {
-			dispatch({
-				type: SET_ERROR,
-				payload: error.response.data.error
-			})
-			// alert(error.response.data.error);
+			alert(error.response.data.error);
 		}
 	};
 };
@@ -53,7 +39,7 @@ export const logIn = (userData) => {
 
 export const riseTicket = (newTicket, userId, userName) => {
 	const URL = "http://localhost:3001/user/ticket";
-	// Agregar userId al objeto newTicket
+	// Add userId to the object newTicket
 	newTicket.userId = userId;
 	newTicket.userName = userName;
 	return async (dispatch) => {
@@ -139,10 +125,7 @@ export const getTicketDetail = (id) => {
 			})
 
 		} catch (error) {
-			dispatch({
-				type: SET_ERROR,
-				payload: error.message
-			});
+			alert(error.response.data.error)
 		}
 	}
 }
@@ -173,10 +156,7 @@ export const searchByName = (userName) => {
 				payload: data
 			})
 		} catch (error) {
-			dispatch({
-				type: SET_ERROR,
-				payload: error.message
-			 });
+			alert(error.response.data.error)
 		}
 	}
 }
@@ -204,16 +184,3 @@ export const sortByDate = (order) => {
 	}
 }
 
-// ERROR MESSAGES
-
-export const clearError = () => {
-	return {
-		type: CLEAR_ERROR
-	};
-}
-
-export const clearSuccessMessage = () => {
-	return {
-		type: CLEAR_SUCCESS_MESSAGE
-	}
-}

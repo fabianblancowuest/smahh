@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearError, clearSuccessMessage, signUp } from "../../redux/actions/actions";
+import {signUp } from "../../redux/actions/actions";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Swal from "sweetalert2"
 
 const SignUp = () => {
 
@@ -17,8 +16,6 @@ const SignUp = () => {
   };
 
   const [userData, setUserData] = useState(initialState);
-  const successMessage = useSelector((state) => state.successMessage);
-  const errorMessage = useSelector((state) => state.errorMessage)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,26 +31,7 @@ const SignUp = () => {
     event.preventDefault();
 
     dispatch(signUp(userData));
-
-    if (errorMessage){
-			console.log(errorMessage);
-			alert(errorMessage)
-			dispatch(clearError())
-		}
-		else if( successMessage) {
-      
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: successMessage,
-        showConfirmButton: false,
-        timer: 2500, 
-      });
-			
-			dispatch(clearSuccessMessage())
-      setUserData(initialState);
-      navigate("/login")
-    }
+  
   };
 
   return (
@@ -103,21 +81,13 @@ const SignUp = () => {
         <input
           className={styles.input}
           name="confirmPassword"
-          type="text"
+          type="password"
           placeholder="Confirm your password"
           value={userData.confirmPassword}
           onChange={handleChange}
         />
 
-        {!successMessage && <input className={styles.btnSubmit} type="submit" value="Submit" />}
-
-        {successMessage && (
-          <div className={styles.successMessage}>
-            {successMessage}
-            <button onClick={handleGoToLogin} className={styles.btnNavigate}>Go to Log In</button>
-          </div>
-        )}
-
+        <input className={styles.btnSubmit} type="submit" value="Submit" />
 
       </form>
     </div>
