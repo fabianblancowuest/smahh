@@ -17,7 +17,7 @@ const updateTicket = async (req, res) => {
       }
     } catch (error) {
       console.error(error);
-      return res.status(500).json({message: 'Error updating Ticket' });
+      return res.status(500).json({error: 'Error updating Ticket' });
     }
   };
 

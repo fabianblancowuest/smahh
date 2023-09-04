@@ -1,6 +1,7 @@
 const express = require("express");
 const { updateTicket } = require("../controllers/staffControllers/updateTicket");
 const { getAllTickets } = require("../controllers/staffControllers/getAllTickets");
+const { getTicketsByUserName } = require("../controllers/staffControllers/getTicketsByUserName");
 
 const staffRouter = express.Router();
 
@@ -8,6 +9,7 @@ const staffRouter = express.Router();
 
 staffRouter.put("/update-ticket", updateTicket ) // This update the "status" atribute of one specific ticket 
 staffRouter.get("/allTickets", getAllTickets) // This will bring all the tickets from all users 
+staffRouter.get("/userName",getTicketsByUserName) //Bring all the tickets from an especific User
 
 module.exports = {
     staffRouter

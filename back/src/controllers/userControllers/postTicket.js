@@ -37,7 +37,7 @@ const postTicket = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      message: 'Error al crear el ticket'
+      error: 'Error al crear el ticket'
     });
   }
 };

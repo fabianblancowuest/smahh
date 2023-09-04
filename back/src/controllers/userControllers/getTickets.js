@@ -15,7 +15,7 @@ const getTickets = async (req, res) => {
         });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Error al obtener los tickets" });
+        return res.status(500).json({ error: "Error while trying to obtain tickets" });
     }
 };
 
