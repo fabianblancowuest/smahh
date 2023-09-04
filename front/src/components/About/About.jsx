@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./About.module.css";
+import about from "./../../assets/images/About/banner-bg-2.jpg";
 
 const About = () => {
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}>About Our Cybersecurity Initiative</h1>
+			<img className={styles.aboutImg} src={about}></img>
 			<p className={styles.description}>
 				Welcome to our comprehensive Cybersecurity Initiative, where your
 				digital safety is our top priority. In today's interconnected world,

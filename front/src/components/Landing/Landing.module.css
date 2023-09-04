@@ -1,12 +1,25 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap");
+
+html,
+body {
+	font-family: "Lato", sans-serif;
+	scroll-behavior: smooth;
+	margin: 0;
+
+	background-image: linear-gradient(-225deg, #77ffd2 0%, #56317a 100%);
+	background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+}
+
 .container {
-	max-width: 1200px;
+	/* max-width: 1200px; */
 	margin: 0 auto;
-	padding: 40px;
+	/* padding: 40px; */
 }
 
 .title {
 	font-size: 2.5rem;
-	color: #333;
+	color: #f5faf8;
 	margin-bottom: 20px;
 	text-align: center;
 }
@@ -14,21 +27,49 @@
 .description {
 	font-size: 1.2rem;
 	color: #666;
+	color: #f5faf8;
+
 	margin-bottom: 30px;
 	text-align: center;
 }
 
 .cards {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4rem;
+	width: 85%;
+	flex-wrap: wrap;
+	gap: 5.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+a {
+	text-decoration: none;
 }
 
 .card {
 	background-color: #fff;
+	background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+	width: 20rem;
+	height: 35rem;
 	border-radius: 8px;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 	padding: 20px;
+	transition: transform 0.5s ease;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.card:hover {
+	transform: scale(1.1);
+	/* background-color: #333;
+	.cardTitle,
+	.cardText {
+		color: aliceblue;
+	} */
 }
 
 .cardTitle {
@@ -38,6 +79,63 @@
 }
 
 .cardText {
-	font-size: 1rem;
+	font-size: 1.3rem;
 	color: #666;
+}
+
+.img {
+	width: 18rem;
+	display: block;
+	margin: 1rem auto;
+}
+
+section {
+	/* width: 80%; */
+	margin-left: auto;
+	margin-right: auto;
+}
+
+main {
+	margin-top: 3rem;
+}
+
+main section h2 {
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+main section p {
+	font-size: 1.5rem;
+}
+
+.sectionService {
+	transform-style: preserve-3d;
+	height: 100vh;
+	/* margin: 5rem auto; */
+	/* background-color: #fff; */
+	background-image: linear-gradient(
+		to top,
+		#0c3483 0%,
+		#a2b6df 100%,
+		#6b8cce 100%,
+		#a2b6df 100%
+	);
+	color: rgb(226, 216, 216);
+	/* width: 70vw; */
+	/* border-radius: 8px; */
+	/* box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1); */
+	padding: 20px;
+	transition: transform 0.5s ease;
+	text-align: center;
+}
+
+.sectionService h2 {
+	margin-bottom: 2rem;
+}
+.sectionService p {
+	margin-top: 2rem;
+}
+
+.sectionService img {
+	width: 35vw;
 }
