@@ -5,7 +5,7 @@ import styles from "./Login.module.css" // Importa la hoja de estilos como "styl
 
 const Login = () => {
   const dispatch = useDispatch();
-  const logInMessage = useSelector(state=> state.logInMessage) 
+
 
   const [userData, setUserData] = useState({
     email: "",
@@ -24,9 +24,6 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(logIn(userData));
-    console.log(logInMessage);
-    if(logInMessage)
-    alert(logInMessage)
   };
 
   return (

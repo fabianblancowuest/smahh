@@ -2,7 +2,7 @@
   display: flex;
   width: 30%; /* Ajusta el ancho según tus necesidades */
   margin: 0 auto;
-  padding: 20px;
+  padding: 0.5rem;
   background-color: #f5f5f5; /* Color de fondo */
   border: 1px solid #ddd; /* Borde */
   border-radius: 8px;
@@ -11,19 +11,19 @@
 
 .searchbar input {
   flex: 1;
-  padding: 10px;
+  padding: 0.6rem;
   margin-right: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 1.2rem; /* Tamaño de fuente similar al de Contact.module.css */
+  font-size: 1rem; /* Tamaño de fuente similar al de Contact.module.css */
   background-color: #FFFFFF;
 }
 
 .searchButton {
-  background-color: #333;
+  background-color: #444;
   color: #fff;
   font-size: 1rem;
-  padding: 10px 20px;
+  padding: 0.6rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;

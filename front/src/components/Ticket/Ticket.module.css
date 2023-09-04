@@ -22,15 +22,15 @@
   }
   
   .notStarted {
-	background-color: #edd4d4;
+	background-color: #ebe1e1;
   }
   
   .inProgress {
-	background-color: #f5f5c2;
+	background-color: #ffffeb;
   }
   
   .completed {
-	background-color: #c2dbc2;
+	background-color: #e6f3e6;
   }
   
   .detailButton {
@@ -43,6 +43,10 @@
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
+  }
+
+  .detailButton:hover {
+	background-color: #555;
   }
   
   .type {

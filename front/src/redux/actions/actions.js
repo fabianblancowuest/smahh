@@ -1,4 +1,4 @@
-import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID } from "./types";
+import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID, SEARCH_BY_NAME, CLEAR_ERROR } from "./types";
 import axios from "axios";
 
 // COMMON 
@@ -96,13 +96,13 @@ export const updateTicket = (ticketId, newStatus) => {
 
 	try {
 		return async (dispatch) => {
-			
-			const {data}= await axios.put(URL, {ticketId, newStatus})
+
+			const { data } = await axios.put(URL, { ticketId, newStatus })
 			console.log(data);
-			
+
 			dispatch({
 				type: UPDATE_TICKET,
-				payload: data  // por ahora solo recibe propiedad message: "Status updated correctly"
+				payload: data
 			})
 		}
 	} catch (error) {
@@ -112,25 +112,28 @@ export const updateTicket = (ticketId, newStatus) => {
 
 // USER- STAFF
 
-export const getTicketDetail = (id)=>{	
-	const URL= "http://localhost:3001/user/ticket-detail/"
+export const getTicketDetail = (id) => {
+	const URL = "http://localhost:3001/user/ticket-detail/"
 
 	return async (dispatch) => {
 		try {
-			const {data}= await axios.get(URL + Number(id))
-			
+			const { data } = await axios.get(URL + Number(id))
+
 			dispatch({
 				type: GET_TICKET_DETAIL,
 				payload: data
-			})	
+			})
 
 		} catch (error) {
-			
+			dispatch({
+				type: SET_ERROR,
+				payload: error.message
+			});
 		}
 	}
 }
 
-export const logOut= (out)=>{
+export const logOut = (out) => {
 	return {
 		type: LOG_OUT,
 		payload: out
@@ -139,32 +142,58 @@ export const logOut= (out)=>{
 
 // SEARCH-BAR
 
-export const searchById = (id)=> {
+export const searchById = (id) => {
 	return {
 		type: SEARCH_BY_ID,
 		payload: id
 	}
 }
 
+export const searchByName = (userName) => {
+	return async (dispatch) => {
+
+		try {
+			const { data } = await axios.get(`http://localhost:3001/staff/userName?userName=${userName}`)
+			dispatch({
+				type: SEARCH_BY_NAME,
+				payload: data
+			})
+		} catch (error) {
+			dispatch({
+				type: SET_ERROR,
+				payload: error.message
+			 });
+		}
+	}
+}
+
 // FILTERS
 
-export const filterPriority = (priority)=>{
+export const filterPriority = (priority) => {
 	return {
 		type: FILTER_BY_PRIORITY,
 		payload: priority
 	}
 }
 
-export const filterStatus = (status)=>{
+export const filterStatus = (status) => {
 	return {
 		type: FILTER_BY_STATUS,
 		payload: status
 	}
 }
 
-export const sortByDate = (order)=>{
+export const sortByDate = (order) => {
 	return {
 		type: SORT_BY_DATE,
 		payload: order
 	}
+}
+
+// ERROR MESSAGES
+
+export const clearError = () => {
+	return {
+		type: CLEAR_ERROR
+	};
 }

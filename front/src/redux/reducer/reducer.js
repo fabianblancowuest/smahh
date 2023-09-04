@@ -1,10 +1,13 @@
-import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
+import { CLEAR_ERROR, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
 
 const inicialState = {
     access: false,
     userId: null,
     userType: null,
     userName: null,
+
+    errorMessage: null,
+    succesMessage: null,
 
     logInMessage: null,
     updateMessage: null,
@@ -135,6 +138,28 @@ const rootReducer = (state = inicialState, actions) => {
             return {
                 ...state, 
                 userTickets: [ticketFinded]
+            }
+        }
+
+        case SEARCH_BY_NAME: {
+            
+            return {
+                ...state,
+                userTickets: payload.tickets
+            }
+        }
+
+        case SET_ERROR: {
+            return {
+                ...state,
+                errorMessage: payload
+            }
+        }
+
+        case CLEAR_ERROR: {
+            return {
+                ...state,
+                errorMessage: null
             }
         }
         default:
