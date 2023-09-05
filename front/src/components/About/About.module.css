@@ -1,25 +1,54 @@
 .container {
-	max-width: 1200px;
 	margin: 0 auto;
-	padding: 40px;
+	color: white;
 }
 
 .title {
 	font-size: 2.5rem;
-	color: #333;
 	margin-bottom: 4rem;
 	text-align: center;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.box1,
+.box2 {
+	width: 70%;
+	display: flex;
+	gap: 3rem;
+	align-items: center;
+	line-height: 1.5;
+	font-weight: bold;
+	letter-spacing: 0.1rem;
+	margin-bottom: 5rem;
+}
+
+.box2 {
+	flex-direction: row-reverse;
 }
 
 .description {
 	font-size: 1.2rem;
-	color: #666;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 }
 
-.aboutImg {
+img {
 	width: 40rem;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border-radius: 0.5rem;
+}
+
+/* div section:nth-child(even) {
+	background: linear-gradient(
+		90deg,
+		hsla(186, 33%, 94%, 1) 0%,
+		hsla(216, 41%, 79%, 1) 100%
+	);
+	color: black;
+} */
+
+.contactImg {
+	padding: 5rem 0;
+	text-align: center;
 }
