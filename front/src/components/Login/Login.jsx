@@ -55,7 +55,7 @@ const Login = () => {
       <form className={styles.formContainer} onSubmit={handleSubmit}>
 
         <label htmlFor="email" className={styles.formLabels}>
-          <b>Email:</b>
+        Email:
         </label>
 
         <input
@@ -70,7 +70,7 @@ const Login = () => {
         {errors.email && <p className={styles.errors}>{errors.email}</p>}
 
         <label htmlFor="password" className={styles.formLabels}>
-          <b>Password:</b>
+        Password:
         </label>
         <input
           className={styles.formInputs}
