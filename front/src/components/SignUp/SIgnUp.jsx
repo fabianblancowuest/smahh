@@ -13,7 +13,7 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    userType: "user",
+    userType: "staff",
   };
 
   const [userData, setUserData] = useState(initialState);
@@ -43,9 +43,14 @@ const SignUp = () => {
     const formErrors = errors
 
     if (Object.keys(formErrors).length === 0) {
-      dispatch(signUp(userData)); 
+      dispatch(signUp(userData));
       setUserData(initialState);
+      alert(
+      `Sign up succesful! 
+      Go to log in`)
       navigate("/login")
+    } else {
+      alert("Please correct the errors in the form")
     }
 
   };

@@ -39,6 +39,7 @@ const TicketForm = () => {
 		<div className={styles.formBackground}>
 			<h3 className={styles.title}>Rise your Ticket</h3>
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
+				
 				<label className={styles.formLabels}>Select a Service:</label>
 				<select
 					className={styles.select}
@@ -47,6 +48,7 @@ const TicketForm = () => {
 					placeholder="Service needed..."
 					value={newTicket.issueType}
 					onChange={handleChange}
+					required
 				>
 					<option value="">Please select a Service</option>
 					<option value="Cyber Security Consulting">
@@ -89,13 +91,15 @@ const TicketForm = () => {
 					<option value="Others">Others</option>
 				</select>
 
-				<label className={styles.formLabels}>Select a Priority:</label>
+				<label className={styles.formLabels}>Select a Priority</label>
 				<select
 					className={styles.select}
 					name="priority"
 					value={newTicket.priority}
 					onChange={handleChange}
+					required
 				>
+					<option value="">Please select a Priority</option>
 					<option value="High">High</option>
 					<option value="Medium">Medium</option>
 					<option value="Low">Low</option>
@@ -106,9 +110,10 @@ const TicketForm = () => {
 					className={styles.textarea}
 					type="text"
 					name="issueTitle"
-					placeholder="Subject..."
+					placeholder="Briefly describe your problem..."
 					value={newTicket.issueTitle}
 					onChange={handleChange}
+					required
 				/>
 
 				<label className={styles.formLabels}>Send us a message:</label>
@@ -116,9 +121,10 @@ const TicketForm = () => {
 					className={styles.textarea}
 					id="description"
 					name="issueDescription"
-					placeholder="Describe your problem here..."
+					placeholder="Describe your problem in detail..."
 					value={newTicket.issueDescription}
 					onChange={handleChange}
+					required
 				/>
 
 				<button className={styles.formButton} type="submit">
