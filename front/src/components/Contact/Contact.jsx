@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Contact.module.css";
 import validateContact from "./validateContact"; // Import your validation function
+import {useNavigate} from "react-router-dom"
 
 const Contact = () => {
   const [contactData, setContactData] = useState({
@@ -9,9 +10,10 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-
+  
+  const navigate = useNavigate()
   const [errors, setErrors] = useState({});
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setContactData({
@@ -32,16 +34,18 @@ const Contact = () => {
     const existError = Object.keys(errors);
 
     if (existError.length === 0) {
-      // Perform actions when there are no errors, like sending the form.
-      // For now, let's reset the form.
+
+      alert("Message send succesfully")
+
       setContactData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
+
+      navigate("/")
     } else {
-      // Display a generic error message
       alert("Please correct the errors in the form");
     }
   };
