@@ -124,7 +124,7 @@ const TicketForm = () => {
 					placeholder="Briefly describe your problem..."
 					value={newTicket.issueTitle}
 					onChange={handleChange}
-					required
+					// required
 				/>
 
 				<label className={styles.formLabels}>Send us a message:</label>
@@ -135,7 +135,7 @@ const TicketForm = () => {
 					placeholder="Describe your problem in detail..."
 					value={newTicket.issueDescription}
 					onChange={handleChange}
-					required
+					// required
 				/>
 
 				<button className={styles.formButton} type="submit">

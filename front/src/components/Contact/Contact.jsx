@@ -9,6 +9,7 @@ const Contact = () => {
     email: "",
     subject: "",
     message: "",
+    phoneNumber: "",
   });
 
   const navigate = useNavigate()
@@ -54,7 +55,7 @@ const Contact = () => {
     <div className={styles.container}>
       <h3 className={styles.title}>Contact Us</h3>
       <form className={styles.form} onSubmit={handleSubmit}>
-        
+
         {/* Name */}
         <label className={styles.label} htmlFor="name">
           Name:
@@ -87,6 +88,20 @@ const Contact = () => {
         />
         {errors.email && <p className={styles.errors}>{errors.email}</p>}
 
+        {/* Phone Number */}
+        <label className={styles.label} htmlFor="phoneNumber">
+          Phone Number:
+        </label>
+        <input
+          className={styles.input}
+          type="tel"
+          name="phoneNumber"
+          id="phoneNumber"
+          placeholder="Your Phone Number"
+          value={contactData.phoneNumber}
+          onChange={handleChange}
+        />
+        {errors.phoneNumber && <p className={styles.errors}>{errors.phoneNumber}</p> }
 
         {/* Subject */}
         <label className={styles.label} htmlFor="subject">
