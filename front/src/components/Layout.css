@@ -1,20 +1,21 @@
 /* Estilo del componente principal */
 .main-container {
-  min-height: 100vh; /* Al menos el 100% de la altura de la ventana */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 /* Estilo del contenido principal (excluyendo el footer) */
 .content {
-  flex-grow: 1; /* El contenido principal crecerá para ocupar el espacio restante */
-  padding: 0px; /* Ajusta el espaciado según tus necesidades */
+  flex-grow: 1; 
+  padding-top: 60px; 
+  z-index: 1;
 }
 
 /* Estilo del footer */
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 0px; /* Ajusta el espaciado según tus necesidades */
+  padding: 0px; 
   text-align: center;
 }
