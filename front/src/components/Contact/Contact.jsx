@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Contact.module.css";
 import validateContact from "./validateContact"; // Import your validation function
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Contact = () => {
   const [contactData, setContactData] = useState({
@@ -10,10 +10,10 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  
+
   const navigate = useNavigate()
   const [errors, setErrors] = useState({});
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setContactData({
@@ -54,6 +54,7 @@ const Contact = () => {
     <div className={styles.container}>
       <h3 className={styles.title}>Contact Us</h3>
       <form className={styles.form} onSubmit={handleSubmit}>
+        
         {/* Name */}
         <label className={styles.label} htmlFor="name">
           Name:
@@ -85,6 +86,7 @@ const Contact = () => {
           required
         />
         {errors.email && <p className={styles.errors}>{errors.email}</p>}
+
 
         {/* Subject */}
         <label className={styles.label} htmlFor="subject">

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { riseTicket } from "../../redux/actions/actions";
+import { useNavigate } from "react-router-dom"
 import styles from "./TicketForm.module.css";
 
 const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector(state => state.userName);
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 
 	const [newTicket, setNewTicket] = useState({
 		issueTitle: "",
@@ -26,20 +28,29 @@ const TicketForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+
 		dispatch(riseTicket(newTicket, userId, userName));
+
+		alert(`Ticket raised succesfully!
+		Go to your tickets`)
+
 		setNewTicket({
 			issueTitle: "",
 			issueDescription: "",
 			issueType: "",
 			priority: "",
 		})
+
+		navigate("/tickets")
 	};
 
 	return (
 		<div className={styles.formBackground}>
+
 			<h3 className={styles.title}>Rise your Ticket</h3>
+
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
-				
+
 				<label className={styles.formLabels}>Select a Service:</label>
 				<select
 					className={styles.select}
@@ -106,8 +117,8 @@ const TicketForm = () => {
 				</select>
 
 				<label className={styles.formLabels}> Subject: </label>
-				<input
-					className={styles.textarea}
+				<textarea
+					className={styles.textareaSubject}
 					type="text"
 					name="issueTitle"
 					placeholder="Briefly describe your problem..."

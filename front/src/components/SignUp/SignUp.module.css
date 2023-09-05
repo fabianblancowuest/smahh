@@ -1,66 +1,66 @@
 /* SignUp.module.css */
 
 .container {
-	max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
-	margin: 0 auto;
-	padding: 20px;
-	background-color: #f5f5f5; /* Color de fondo */
-	border: 1px solid #ddd; /* Borde */
+	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	color: #f5faf8;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	margin: 4rem auto 0;
+	margin-bottom: 5rem;
+	max-width: 800px;
+	padding: 2rem;
 	border-radius: 8px;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form {
+	box-shadow: 0px 2px 8px rgb(255, 255, 255);
+}
+
+.form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 400px;
-    margin: 3rem auto;
-  }
+	gap: 1rem;
+	padding: 3rem;
+	padding-bottom: 0;
+}
 
-  .title {
-	font-size: 2rem;
-	color: #333;
-	margin-bottom: 20px;
+.title {
+	font-size: 2.5rem;
+	margin-bottom: 0;
+	margin-top: 0;
 	text-align: center;
-  }
-  
-  .label {
+}
+
+.label {
 	font-size: 1.2rem;
-	color: #333;
-	margin-bottom: 10px;
-	font-weight: bold;
-  }
-  
-  .input {
-	width: 100%;
+	color: #f5faf8;
+}
+
+.input {
+	width: 80%;
 	padding: 10px;
-	margin-bottom: 15px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-  }
-  
-  .btnSubmit {
-	background-color: #333;
+}
+
+.errors {
+    color: #f00;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.btnSubmit {
+	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
 	color: #fff;
 	font-size: 1rem;
-	padding: 10px 20px;
+	padding: 12px 22px;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-  }
-  
-  .btnSubmit:hover {
-	background-color: #555;
-  }
-  
-  .errors {
-    color: #444;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
+	transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+	margin-top: 1rem;
+	display: inline-block;
+}
 
+.button:hover {
+	background: linear-gradient(90deg, rgb(9, 19, 160) 0%, rgb(15, 108, 207) 100%);
+	transform: scale(1.05);
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
