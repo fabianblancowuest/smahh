@@ -42,7 +42,7 @@ const Dashboard = () => {
         <div>Detail </div>
       </div>
 
-      <section >
+      <div >
         {userTickets?.length > 0 ? (
           userTickets.map((ticket) => (
             <TicketStaff key={ticket.id} ticket={ticket} />
@@ -50,7 +50,7 @@ const Dashboard = () => {
         ) : (
           <p>No se encontraron tickets</p>
         )}
-      </section>
+      </div>
     </div>
   );
 };
