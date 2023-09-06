@@ -94,6 +94,15 @@ const Nav = () => {
 					>
 						VIEW TICKETS
 					</NavLink>
+
+					<NavLink
+						to="/profile"
+						className={({ isActive }) =>
+							isActive ? styles.activeLink : styles.navLink
+						}
+					>
+						PROFILE
+					</NavLink>
 				</>
 			) : null}
 

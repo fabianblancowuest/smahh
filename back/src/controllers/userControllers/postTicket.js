@@ -16,7 +16,7 @@ const postTicket = async (req, res) => {
     const existingUser = await User.findByPk(userId);
     if (!existingUser) {
       return res.status(400).json({
-        message: 'El ID de usuario no existe en la base de datos'
+        error: 'El ID de usuario no existe en la base de datos'
       });
     }
 

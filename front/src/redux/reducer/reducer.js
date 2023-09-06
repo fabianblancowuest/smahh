@@ -1,10 +1,13 @@
-import { CLEAR_ERROR, CLEAR_SUCCESS_MESSAGE, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SET_SUCCESS_MESSAGE, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET } from "../actions/types"
+import { CLEAR_ERROR, CLEAR_SUCCESS_MESSAGE, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SET_SUCCESS_MESSAGE, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET, UPDATE_USER } from "../actions/types"
 
 const inicialState = {
     access: false,
     userId: null,
     userType: null,
     userName: null,
+    userLastName: null,
+    userEmail: null,
+    userPhone: null,
 
     errorMessage: null,
     successMessage: null,
@@ -27,6 +30,7 @@ const rootReducer = (state = inicialState, actions) => {
         case SIGN_UP:
             return {
                 ...state,
+
             }
 
         case LOG_IN:
@@ -50,6 +54,15 @@ const rootReducer = (state = inicialState, actions) => {
                 userTickets: [],
                 userTicketsCopy: [],
                 ticketDetail: {}
+            }
+
+        case UPDATE_USER:
+            return {
+                ...state,
+                userName: payload.newUser.firstName,
+                userLastName: payload.newUser.lastName,
+                userEmail: payload.newUser.email,
+                userPhone: payload.newUser.phone
             }
 
         case RISE_TICKET:
