@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { riseTicket } from "../../redux/actions/actions";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import styles from "./TicketForm.module.css";
 
 const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
-	const userName = useSelector(state => state.userName);
+	const userName = useSelector((state) => state.userName);
 	const dispatch = useDispatch();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const [newTicket, setNewTicket] = useState({
 		issueTitle: "",
@@ -32,25 +32,23 @@ const TicketForm = () => {
 		dispatch(riseTicket(newTicket, userId, userName));
 
 		alert(`Ticket raised succesfully!
-		Go to your tickets`)
+		Go to your tickets`);
 
 		setNewTicket({
 			issueTitle: "",
 			issueDescription: "",
 			issueType: "",
 			priority: "",
-		})
+		});
 
-		navigate("/tickets")
+		navigate("/tickets");
 	};
 
 	return (
 		<div className={styles.formBackground}>
-
 			<h3 className={styles.title}>Rise your Ticket</h3>
 
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
-
 				<label className={styles.formLabels}>Select a Service:</label>
 				<select
 					className={styles.select}
@@ -96,9 +94,7 @@ const TicketForm = () => {
 					<option value="Security Operation Center (SOC)">
 						Security Operation Center (SOC)
 					</option>
-					<option value="Vulnerability Testing">
-						Vulnerability Testing
-					</option>
+					<option value="Vulnerability Testing">Vulnerability Testing</option>
 					<option value="Others">Others</option>
 				</select>
 

@@ -1,85 +1,94 @@
 /* TicketForm.module.css */
 
 .formBackground {
-	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	background: linear-gradient(
+		90deg,
+		hsla(236, 100%, 8%, 1) 0%,
+		hsla(211, 100%, 28%, 1) 100%
+	);
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	margin: 4rem auto 0;
 	margin-bottom: 5rem;
-	max-width: 800px;
+	max-width: 40vw;
+	max-height: 100vh;
 	padding: 2rem;
 	border-radius: 8px;
 	box-shadow: 0px 2px 8px rgb(255, 255, 255);
-  }
-  
-  .formContainer {
+}
+
+.formContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
 	padding: 3rem;
 	padding-bottom: 0;
-  }
-  
-  .title {
-	font-size: 2.5rem;
+}
+
+.title {
+	font-size: 1.5rem;
 	margin-bottom: 0;
 	margin-top: 0;
 	text-align: center;
-  }
-  
-  .formLabels {
+}
+
+.formLabels {
 	font-size: 1.2rem;
 	color: #f5faf8;
-  }
-  
-  .select {
+}
+
+.select {
 	width: 80%;
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	font-size: 16px; 
-	background-color: #f8f8f8; 
-	color: #333; 
-	
-  }
-  
-  .select option {
-	font-size: 14px; 
+	font-size: 16px;
+	background-color: #f8f8f8;
+	color: #333;
+}
+
+.select option {
+	font-size: 14px;
 	color: #555;
-  }
-  
-  .input {
+}
+
+.input {
 	width: 80%;
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-  }
-  
-  .textareaSubject {
+}
+
+.textareaSubject {
 	width: 80%;
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	height: 80px;
-	font-family: "Arial", sans-serif; 
-	font-size: 15px; 
-	color: #333; 
-  }
-  
-  .textarea {
+	height: 15vh;
+	font-family: "Arial", sans-serif;
+	font-size: 15px;
+	color: #333;
+}
+
+.textarea {
 	width: 80%;
 	padding: 15px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	height: 150px;
-	font-family: "Arial", sans-serif;
-	font-size: 16px; 
-	color: #333; 
-	}
+	height: 15vh;
 
-  .formButton {
-	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	font-family: "Arial", sans-serif;
+	font-size: 16px;
+	color: #333;
+}
+
+.formButton {
+	background: linear-gradient(
+		90deg,
+		hsla(236, 100%, 8%, 1) 0%,
+		hsla(211, 100%, 28%, 1) 100%
+	);
 	color: #fff;
 	font-size: 1rem;
 	padding: 12px 22px;
@@ -90,11 +99,14 @@
 	margin-top: 1rem;
 	display: inline-block;
 	text-align: center;
-  }
-  
-  .formButton:hover {
-	background: linear-gradient(90deg, rgb(9, 19, 160) 0%, rgb(15, 108, 207) 100%);
+}
+
+.formButton:hover {
+	background: linear-gradient(
+		90deg,
+		rgb(9, 19, 160) 0%,
+		rgb(15, 108, 207) 100%
+	);
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-  }
-  
+}

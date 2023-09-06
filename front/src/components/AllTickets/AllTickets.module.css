@@ -48,9 +48,9 @@
 .button {
 	font-weight: bold;
 	position: absolute;
-	top: 10rem;
+	top: 25vh;
 	right: 0;
-	margin-right: 10rem;
+	margin-right: 11vw;
 	background: linear-gradient(
 		90deg,
 		hsla(236, 100%, 8%, 1) 0%,
