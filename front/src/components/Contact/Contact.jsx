@@ -1,146 +1,169 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./Contact.module.css";
 import validateContact from "./validateContact"; // Import your validation function
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const [contactData, setContactData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    phoneNumber: "",
-  });
+	const initialState = {
+		name: "",
+		email: "",
+		subject: "",
+		message: "",
+		phoneNumber: "",
+	};
+	const [contactData, setContactData] = useState(initialState);
 
-  const navigate = useNavigate()
-  const [errors, setErrors] = useState({});
+	const navigate = useNavigate();
+	const [errors, setErrors] = useState({});
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setContactData({
-      ...contactData,
-      [name]: value,
-    });
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+		setContactData({
+			...contactData,
+			[name]: value,
+		});
 
-    // Validation on value change
-    setErrors(validateContact({
-      ...contactData,
-      [name]: value,
-    }));
-  };
+		// Validation on value change
+		setErrors(
+			validateContact({
+				...contactData,
+				[name]: value,
+			}),
+		);
+	};
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+	const form = useRef();
 
-    const existError = Object.keys(errors);
+	const sendEmail = (e) => {
+		e.preventDefault();
 
-    if (existError.length === 0) {
+		emailjs
+			.sendForm(
+				"service_hre43nq",
+				"template_it5kkwt",
+				form.current,
+				"Qj-2BHcvaJJZlfg9O",
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				},
+			);
+	};
 
-      alert("Message send succesfully")
+	const handleSubmit = (event) => {
+		event.preventDefault();
 
-      setContactData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+		const existError = Object.keys(errors);
 
-      navigate("/")
-    } else {
-      alert("Please correct the errors in the form");
-    }
-  };
+		if (existError.length === 0) {
+			alert("Message send succesfully");
 
-  return (
-    <div className={styles.container}>
-      <h3 className={styles.title}>Contact Us</h3>
-      <form className={styles.form} onSubmit={handleSubmit}>
+			setContactData(initialState);
 
-        {/* Name */}
-        <label className={styles.label} htmlFor="name">
-          Name:
-        </label>
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Your Name"
-          value={contactData.name}
-          onChange={handleChange}
-          required
-        />
-        {errors.name && <p className={styles.errors}>{errors.name}</p>}
+			navigate("/");
+		} else {
+			alert("Please correct the errors in the form");
+		}
 
-        {/* Email */}
-        <label className={styles.label} htmlFor="email">
-          Email:
-        </label>
-        <input
-          className={styles.input}
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Your Email"
-          value={contactData.email}
-          onChange={handleChange}
-          required
-        />
-        {errors.email && <p className={styles.errors}>{errors.email}</p>}
+		sendEmail();
+	};
 
-        {/* Phone Number */}
-        <label className={styles.label} htmlFor="phoneNumber">
-          Phone Number:
-        </label>
-        <input
-          className={styles.input}
-          type="tel"
-          name="phoneNumber"
-          id="phoneNumber"
-          placeholder="Your Phone Number"
-          value={contactData.phoneNumber}
-          onChange={handleChange}
-        />
-        {errors.phoneNumber && <p className={styles.errors}>{errors.phoneNumber}</p> }
+	return (
+		<div className={styles.container}>
+			<h3 className={styles.title}>Contact Us</h3>
+			<form ref={form} className={styles.form} onSubmit={handleSubmit}>
+				{/* Name */}
+				<label className={styles.label} htmlFor="name">
+					Name:
+				</label>
+				<input
+					className={styles.input}
+					type="text"
+					name="name"
+					id="name"
+					placeholder="Your Name"
+					value={contactData.name}
+					onChange={handleChange}
+					required
+				/>
+				{errors.name && <p className={styles.errors}>{errors.name}</p>}
 
-        {/* Subject */}
-        <label className={styles.label} htmlFor="subject">
-          Subject:
-        </label>
-        <input
-          className={styles.input}
-          type="text"
-          name="subject"
-          id="subject"
-          placeholder="Subject"
-          value={contactData.subject}
-          onChange={handleChange}
-          required
-        />
-        {errors.subject && <p className={styles.errors}>{errors.subject}</p>}
+				{/* Email */}
+				<label className={styles.label} htmlFor="email">
+					Email:
+				</label>
+				<input
+					className={styles.input}
+					type="email"
+					name="email"
+					id="email"
+					placeholder="Your Email"
+					value={contactData.email}
+					onChange={handleChange}
+					required
+				/>
+				{errors.email && <p className={styles.errors}>{errors.email}</p>}
 
-        {/* Message */}
-        <label className={styles.label} htmlFor="message">
-          Message:
-        </label>
-        <textarea
-          className={styles.textarea}
-          name="message"
-          id="message"
-          placeholder="Your Message"
-          value={contactData.message}
-          onChange={handleChange}
-          required
-        ></textarea>
-        {errors.message && <p className={styles.errors}>{errors.message}</p>}
+				{/* Phone Number */}
+				<label className={styles.label} htmlFor="phoneNumber">
+					Phone Number:
+				</label>
+				<input
+					className={styles.input}
+					type="tel"
+					name="phoneNumber"
+					id="phoneNumber"
+					placeholder="Your Phone Number"
+					value={contactData.phoneNumber}
+					onChange={handleChange}
+				/>
+				{errors.phoneNumber && (
+					<p className={styles.errors}>{errors.phoneNumber}</p>
+				)}
 
-        {/* Submit Button */}
-        <button className={styles.button} type="submit">
-          Send Message
-        </button>
-      </form>
-    </div>
-  );
+				{/* Subject */}
+				<label className={styles.label} htmlFor="subject">
+					Subject:
+				</label>
+				<input
+					className={styles.input}
+					type="text"
+					name="subject"
+					id="subject"
+					placeholder="Subject"
+					value={contactData.subject}
+					onChange={handleChange}
+					required
+				/>
+				{errors.subject && <p className={styles.errors}>{errors.subject}</p>}
+
+				{/* Message */}
+				<label className={styles.label} htmlFor="message">
+					Message:
+				</label>
+				<textarea
+					className={styles.textarea}
+					name="message"
+					id="message"
+					placeholder="Your Message"
+					value={contactData.message}
+					onChange={handleChange}
+					required
+				></textarea>
+				{errors.message && <p className={styles.errors}>{errors.message}</p>}
+
+				{/* Submit Button */}
+				<button className={styles.button} type="submit">
+					Send Message
+				</button>
+			</form>
+		</div>
+	);
 };
 
 export default Contact;
