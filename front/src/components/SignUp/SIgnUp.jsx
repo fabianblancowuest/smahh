@@ -4,6 +4,7 @@ import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import validateSignUp from "./validateSignUp";
+import PopUp from "../PopUp/PopUp";
 
 const SignUp = () => {
 	const initialState = {
@@ -17,13 +18,28 @@ const SignUp = () => {
 	};
 
 	const [userData, setUserData] = useState(initialState);
-	const [errors, setErrors] = useState({}); // Estado para almacenar errores
+	const [errors, setErrors] = useState({}); // Estado para almacenar errores y validarlos
+
+	const [successMessage, setSuccessMessage] = useState(""); // Estado para el mensaje de éxito
+	const [errorMessage, setErrorMessage] = useState("")
+
+	const [showPopUp, setShowPopUp] = useState(false); // Estado para mostrar/ocultar el PopUp
 
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+
+	//mensaje de exito- esto se seteará en el submit en el bloque try
+	const message = (
+		<>
+			You've signed up succesfuly ✔️<br />
+			A confirmation email will be sent to you.
+		</>
+	);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
+		if (errorMessage) {
+			setErrorMessage("");
+		}
 
 		setUserData({
 			...userData,
@@ -38,29 +54,43 @@ const SignUp = () => {
 		);
 	};
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
 
+	const handleSubmit = async (event) => {
+		event.preventDefault();
 		const formErrors = errors;
 
 		if (Object.keys(formErrors).length === 0) {
-			dispatch(signUp(userData));
-			setUserData(initialState);
-			alert(
-				`Sign up succesful! 
-      		Go to log in`,
-			);
-			navigate("/login");
-		} else {
-			alert("Please correct the errors in the form");
+			try {
+				await dispatch(signUp(userData));
+				setSuccessMessage(message);
+
+				setShowPopUp(true) // en caso de utilizar el PopUp
+
+				setUserData(initialState);
+				setErrorMessage("")
+
+			} catch (error) {
+				setSuccessMessage("");
+				setErrorMessage(error.response.data.error)
+			}
 		}
+	};
+
+	const closePopUp = () => {
+		setShowPopUp(false);
 	};
 
 	return (
 		<div className={styles.container}>
 			<h3 className={styles.title}>Sign Up</h3>
 
+			{showPopUp && (
+				<PopUp message={successMessage} />
+			)}
+
 			<form className={styles.form} onSubmit={handleSubmit}>
+
+				{/* First Name */}
 				<label className={styles.label}>First Name</label>
 				<input
 					className={styles.input}
@@ -74,6 +104,7 @@ const SignUp = () => {
 					<p className={styles.errors}>{errors.firstName}</p>
 				)}
 
+				{/* Last Name */}
 				<label className={styles.label}>Last Name</label>
 				<input
 					className={styles.input}
@@ -100,6 +131,7 @@ const SignUp = () => {
 				/>
 				{errors.phoneNumber && <p className={styles.errors}>{errors.phoneNumber}</p>}
 
+				{/* Email */}
 				<label className={styles.label}>Email</label>
 				<input
 					className={styles.input}
@@ -111,6 +143,7 @@ const SignUp = () => {
 				/>
 				{errors.email && <p className={styles.errors}>{errors.email}</p>}
 
+				{/* Password */}
 				<label className={styles.label}>Password</label>
 				<input
 					className={styles.input}
@@ -122,6 +155,7 @@ const SignUp = () => {
 				/>
 				{errors.password && <p className={styles.errors}>{errors.password}</p>}
 
+				{/* Confirm Password */}
 				<label className={styles.label}>Confirm Password</label>
 				<input
 					className={styles.input}
@@ -131,12 +165,29 @@ const SignUp = () => {
 					value={userData.confirmPassword}
 					onChange={handleChange}
 				/>
-				{errors.confirmPassword && (
-					<p className={styles.errors}>{errors.confirmPassword}</p>
+				{errors.confirmPassword && <p className={styles.errors}>{errors.confirmPassword}</p>}
+
+
+				{!successMessage && <input
+					className={styles.btnSubmit}
+					type="submit"
+					value="Submit"
+					disabled={Object.keys(errors).length > 0 || successMessage !== ""}
+				/>}
+
+				{successMessage && (
+					<p className={styles.successMessage}>{successMessage}</p>
 				)}
 
-				<input className={styles.btnSubmit} type="submit" value="Submit" />
+				{successMessage && <button className={styles.btnSubmit}>Go to Log In</button>}
+
+				{errorMessage && (
+					<p className={styles.errorMessage}>{errorMessage}</p>
+				)}
+
+
 			</form>
+
 		</div>
 	);
 };
