@@ -26,6 +26,7 @@ const SignUp = () => {
 	const [showPopUp, setShowPopUp] = useState(false); // Estado para mostrar/ocultar el PopUp
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 
 	//mensaje de exito- esto se seteará en el submit en el bloque try
 	const message = (
@@ -64,7 +65,7 @@ const SignUp = () => {
 				await dispatch(signUp(userData));
 				setSuccessMessage(message);
 
-				setShowPopUp(true) // en caso de utilizar el PopUp
+				// setShowPopUp(true) // en caso de utilizar el PopUp
 
 				setUserData(initialState);
 				setErrorMessage("")
@@ -76,6 +77,10 @@ const SignUp = () => {
 		}
 	};
 
+	const handleNavigate = ()=>{
+		navigate("/login")
+	}
+
 	const closePopUp = () => {
 		setShowPopUp(false);
 	};
@@ -84,9 +89,9 @@ const SignUp = () => {
 		<div className={styles.container}>
 			<h3 className={styles.title}>Sign Up</h3>
 
-			{showPopUp && (
+			{/* {showPopUp && (
 				<PopUp message={successMessage} />
-			)}
+			)} */}
 
 			<form className={styles.form} onSubmit={handleSubmit}>
 
@@ -179,7 +184,7 @@ const SignUp = () => {
 					<p className={styles.successMessage}>{successMessage}</p>
 				)}
 
-				{successMessage && <button className={styles.btnSubmit}>Go to Log In</button>}
+				{successMessage && <button onClick={handleNavigate} className={styles.btnSubmit}>Go to Log In</button>}
 
 				{errorMessage && (
 					<p className={styles.errorMessage}>{errorMessage}</p>

@@ -3,22 +3,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { riseTicket } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import styles from "./TicketForm.module.css";
+import PopUp from "../PopUp/PopUp";
 
 const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector((state) => state.userName);
+
+	const [successMessage, setSuccessMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("")
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const [newTicket, setNewTicket] = useState({
+	const initialState ={
 		issueTitle: "",
 		issueDescription: "",
 		issueType: "",
 		priority: "",
-	});
+	}
+	const [newTicket, setNewTicket] = useState(initialState);
+
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
+
+		if (errorMessage || successMessage) {
+			setErrorMessage("");
+			setSuccessMessage("");
+		}
 
 		setNewTicket({
 			...newTicket,
@@ -26,27 +38,39 @@ const TicketForm = () => {
 		});
 	};
 
-	const handleSubmit = (event) => {
+	const message = (
+		<>
+			You've raised a ticket ✔️<br />
+			A confirmation email will be sent to you.
+		</>
+	);
+
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		dispatch(riseTicket(newTicket, userId, userName));
+		try {
+			await dispatch(riseTicket(newTicket, userId, userName));
+			setSuccessMessage(message)
 
-		alert(`Ticket raised succesfully!
-		Go to your tickets`);
-
+		} catch (error) {
+			setNewTicket(initialState)
+			setErrorMessage(error.response.data.error)
+		}
+	
 		setNewTicket({
 			issueTitle: "",
 			issueDescription: "",
 			issueType: "",
 			priority: "",
 		});
-
-		navigate("/tickets");
+		// navigate("/tickets");
 	};
 
 	return (
 		<div className={styles.formBackground}>
 			<h3 className={styles.title}>Rise your Ticket</h3>
+
+			<PopUp message={successMessage}/>
 
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
 				<label className={styles.formLabels}>Select a Service:</label>
@@ -120,7 +144,7 @@ const TicketForm = () => {
 					placeholder="Briefly describe your problem..."
 					value={newTicket.issueTitle}
 					onChange={handleChange}
-					// required
+					required
 				/>
 
 				<label className={styles.formLabels}>Send us a message:</label>
@@ -137,6 +161,15 @@ const TicketForm = () => {
 				<button className={styles.formButton} type="submit">
 					Raise Ticket
 				</button>
+
+				{successMessage && (
+					<p className={styles.successMessage}>{successMessage}</p>
+				)}
+
+				{errorMessage && (
+					<p className={styles.errorMessage}>{errorMessage}</p>
+				)}
+
 			</form>
 		</div>
 	);
