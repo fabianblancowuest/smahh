@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Nav/Nav";
 import About from "./About/About";
 import Login from "./Login/Login";
 import TicketForm from "./TicketForm/TicketForm";
-import { useDispatch, useSelector } from "react-redux";
 import AllTickets from "./AllTickets/AllTickets";
 import SignUp from "./SignUp/SIgnUp";
 import Landing from "./Landing/Landing";
@@ -12,6 +12,7 @@ import Contact from "./Contact/Contact";
 import Dashboard from "./Dashboard/Dashboard";
 import Detail from "./Detail/Detail";
 import Footer from "./Footer/Footer";
+import Profile from "./Profile/Profile"
 import "./Layout.css"
 
 
@@ -84,6 +85,8 @@ const UserRoutes = () => {
 					<Route path="/riseticket" element={<TicketForm />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/detail/:id" element={<Detail />} />
+					<Route path="/profile" element={<Profile />} />
+
 				</Routes>
 			</div>
 			<Footer />

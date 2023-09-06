@@ -1,6 +1,8 @@
 const validateSignUp = (data) => {
     let errors = {};
 
+    const nzPhoneNumberRegex = /^(?:\+?64|0)[1-9]\d{7,9}$/;
+
     if (!data.firstName.trim()) {
       errors.firstName = "First Name is required";
     }
@@ -8,6 +10,10 @@ const validateSignUp = (data) => {
     if (!data.lastName.trim()) {
       errors.lastName = "Last Name is required";
     }
+
+    if (!nzPhoneNumberRegex.test(data.phoneNumber)) {
+      errors.phoneNumber = "The phone number format is not valid (e.g., +64xxxxxxxxx or 0xxxxxxxxx)";
+      }
 
     if (!data.email.trim()) {
       errors.email = "Email is required";

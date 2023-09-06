@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Dashboard/CombinedStyles.css"
 import { useDispatch, useSelector } from "react-redux";
-import { updateTicket } from "../../redux/actions/actions";
+import { getAllTickets, updateTicket } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 
 const TicketStaff = ({ ticket }) => {
@@ -27,10 +27,10 @@ const TicketStaff = ({ ticket }) => {
         setSelectedStatus(newStatus);
     };
 
-    const handleUpdate = () => {
-        if (selectedStatus) { // Verifica si se ha seleccionado un estado
-            dispatch(updateTicket(id, selectedStatus));
-            alert("Update successful");
+    const handleUpdate = async () => {
+        if (selectedStatus) { 
+            await dispatch(updateTicket(id, selectedStatus)); 
+            await dispatch(getAllTickets()); 
         } else {
             alert("Please select a status before updating.");
         }
@@ -56,6 +56,7 @@ const TicketStaff = ({ ticket }) => {
                     <button onClick={handleUpdate}>UPDATE</button>
                 </div>
                 <div className="ticket-item">{createdAt}</div>
+
                 <div className="ticket-item">
                     <Link to={`/detail/${id}`}>
                         Detail
