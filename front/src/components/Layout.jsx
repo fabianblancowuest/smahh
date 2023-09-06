@@ -12,19 +12,15 @@ import Contact from "./Contact/Contact";
 import Dashboard from "./Dashboard/Dashboard";
 import Detail from "./Detail/Detail";
 import Footer from "./Footer/Footer";
-import Profile from "./Profile/Profile"
-import "./Layout.css"
-
-
+import Profile from "./Profile/Profile";
+import "./Layout.css";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
-	
+
 	const navigate = useNavigate();
-	
 
 	React.useEffect(() => {
-	  
 		if (userType === "user") {
 			navigate("/");
 		} else if (userType === "staff") {
@@ -71,7 +67,7 @@ const CommonRoutes = () => {
 			<Footer className="footer" />
 		</div>
 	);
-}
+};
 
 const UserRoutes = () => {
 	return (
@@ -86,7 +82,6 @@ const UserRoutes = () => {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/detail/:id" element={<Detail />} />
 					<Route path="/profile" element={<Profile />} />
-
 				</Routes>
 			</div>
 			<Footer />

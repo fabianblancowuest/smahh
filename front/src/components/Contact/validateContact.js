@@ -1,4 +1,3 @@
-
 const validateContact = (inputs) => {
 	let errors = {};
 
@@ -18,10 +17,11 @@ const validateContact = (inputs) => {
 	}
 
 	if (!nzPhoneNumberRegex.test(inputs.phoneNumber)) {
-		errors.phoneNumber = "The phone number format is not valid (e.g., +64xxxxxxxxx or 0xxxxxxxxx)";
-	  }
+		errors.phoneNumber =
+			"The phone number format is not valid (e.g., +64xxxxxxxxx or 0xxxxxxxxx)";
+	}
 
 	return errors;
 };
 
-export default validateContact
+export default validateContact;
