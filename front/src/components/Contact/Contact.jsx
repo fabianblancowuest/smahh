@@ -15,6 +15,7 @@ const Contact = () => {
 	const [contactData, setContactData] = useState(initialState);
 
 	const navigate = useNavigate();
+	const form = useRef();
 	const [errors, setErrors] = useState({});
 
 	const handleChange = (event) => {
@@ -32,8 +33,6 @@ const Contact = () => {
 			}),
 		);
 	};
-
-	const form = useRef();
 
 	const sendEmail = (e) => {
 		e.preventDefault();
@@ -70,7 +69,7 @@ const Contact = () => {
 			alert("Please correct the errors in the form");
 		}
 
-		sendEmail();
+		sendEmail(event);
 	};
 
 	return (
