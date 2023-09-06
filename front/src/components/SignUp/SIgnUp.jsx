@@ -12,6 +12,7 @@ const SignUp = () => {
 		email: "",
 		password: "",
 		confirmPassword: "",
+		phoneNumber: "",
 		userType: "user",
 	};
 
@@ -47,7 +48,7 @@ const SignUp = () => {
 			setUserData(initialState);
 			alert(
 				`Sign up succesful! 
-      Go to log in`,
+      		Go to log in`,
 			);
 			navigate("/login");
 		} else {
@@ -83,6 +84,21 @@ const SignUp = () => {
 					onChange={handleChange}
 				/>
 				{errors.lastName && <p className={styles.errors}>{errors.lastName}</p>}
+
+				{/* Phone Number */}
+				<label className={styles.label} htmlFor="phoneNumber">
+					Phone Number:
+				</label>
+				<input
+					className={styles.input}
+					type="tel"
+					name="phoneNumber"
+					id="phoneNumber"
+					placeholder="Your Phone Number"
+					value={userData.phoneNumber}
+					onChange={handleChange}
+				/>
+				{errors.phoneNumber && <p className={styles.errors}>{errors.phoneNumber}</p>}
 
 				<label className={styles.label}>Email</label>
 				<input
