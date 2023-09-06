@@ -1,0 +1,41 @@
+/* PopUp.css */
+
+/* Estilos para el fondo oscuro de fondo */
+.pop-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    z-index: 1000; /* Asegura que esté en la parte superior */
+}
+
+/* Estilos para el cuerpo del PopUp */
+.pop-body {
+    background-color: aliceblue;
+    border-radius: 5px;
+    text-align: center; /* Centra el contenido dentro del PopUp */
+    padding: 20px;
+}
+
+/* Estilos para el texto dentro del PopUp */
+.pop-text {
+    color: green;
+    font-size: 1.2rem;
+}
+
+/* Estilos para el botón de cierre */
+.pop-button {
+    background-color: red; /* Cambia el color del botón de cierre según tus preferencias */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+}
