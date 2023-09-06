@@ -1,9 +1,13 @@
 .navContainer {
+	background: linear-gradient(
+		90deg,
+		hsla(213, 77%, 14%, 1) 0%,
+		hsla(202, 27%, 45%, 1) 100%
+	);
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	background-color: #333;
 	display: flex;
 	justify-content: space-evenly;
 	gap: 1rem;
@@ -14,18 +18,26 @@
 
 .navLink {
 	border-radius: 3px;
-	color: #fff;
+	color: white;
+	font-weight: bold;
+	letter-spacing: 0.2rem;
 	text-decoration: none;
 	padding: 10px 20px;
 	transition: background-color 0.3s;
 }
 
 .navLink:hover {
-	background-color: #555;
+	background-color: #0968e5;
 }
 
 .activeLink {
-	color: #6c5ca0;
+	color: rgb(230, 218, 218);
+	transform: scale(1.1);
+	font-weight: bolder;
+	letter-spacing: 0.2rem;
+	padding: 10px 20px;
+	background-color: #0968e5;
+	border-radius: 0.5rem;
 }
 
 .logoText {

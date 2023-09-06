@@ -6,34 +6,38 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	color: #444;
+	color: #fff;
+	text-shadow: 0.1rem 0.1rem 0.7rem rgba(0, 0, 0, 0.8);
 	position: relative; /* Agrega posición relativa al contenedor */
-  }
-  
-  .cardContent {
+}
+
+.cardContent {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-  }
-  
-  .column {
+}
+
+.column {
 	flex: 1;
 	padding: 0 16px;
-  }
-  
-  .notStarted {
-	background-color: #ebe1e1;
-  }
-  
-  .inProgress {
-	background-color: #ffffeb;
-  }
-  
-  .completed {
-	background-color: #e6f3e6;
-  }
-  
-  .detailButton {
+}
+
+.notStarted {
+	background-color: #1e6091;
+}
+
+.inProgress {
+	background-color: #52b69a;
+}
+
+.completed {
+	background-color: #99d98c;
+}
+.closed {
+	background-color: #d9ed92;
+}
+
+.detailButton {
 	position: absolute; /* Agrega posición absoluta para alinear el botón */
 	top: 8px; /* Ajusta la distancia desde la parte superior */
 	right: 8px; /* Ajusta la distancia desde la derecha */
@@ -43,23 +47,22 @@
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-  }
+}
 
-  .detailButton:hover {
+.detailButton:hover {
 	background-color: #555;
-  }
-  
-  .type {
+}
+
+.type {
 	margin: 8px 0;
 	font-weight: bold; /* Añadir negrita para la clave "Type" */
-  }
-  
-  .priority,
-  .status,
-  .title,
-  .description,
-  .userName,
-  .createdAt {
+}
+
+.priority,
+.status,
+.title,
+.description,
+.userName,
+.createdAt {
 	margin: 8px 0;
-  }
-  
+}

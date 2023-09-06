@@ -18,15 +18,15 @@ const Ticket = ({ ticket }) => {
 		status === "Not Started"
 			? styles.notStarted
 			: status === "In Progress"
-				? styles.inProgress
-				: styles.completed;
+			? styles.inProgress
+			: status === "Completed"
+			? styles.completed
+			: styles.closed;
 
 	return (
 		<div className={`${styles.card}  ${statusClass}`}>
-
 			<div className={styles.cardContent}>
-				
-			<div className={styles.column}>
+				<div className={styles.column}>
 					<h3 className={styles.status}>Status:</h3>
 					<span>{status}</span>
 				</div>
@@ -34,7 +34,6 @@ const Ticket = ({ ticket }) => {
 				<div className={styles.column}>
 					<h3 className={styles.priority}>Priority: </h3>
 					<span>{priority}</span>
-					
 				</div>
 
 				<div className={styles.column}>
@@ -46,7 +45,6 @@ const Ticket = ({ ticket }) => {
 					<br />
 					<h4 className={styles.type}>Date:</h4>
 					<span>{createdAt}</span>
-			
 				</div>
 			</div>
 		</div>

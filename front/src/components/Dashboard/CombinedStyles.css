@@ -2,76 +2,76 @@
 
 /* Contenedor de tickets */
 .ticket-container {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #ccc;
-  margin: 0 2rem;
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #ccc;
+	margin: 0 2rem;
 
-  border-radius: 4px;
-  font-size: 1rem;
-  color: #333;
+	border-radius: 4px;
+	font-size: 1rem;
+	color: #333;
 }
 
 /* Elemento de ticket */
 .ticket-item {
-  flex: 1;
-  padding: 10px;
-  border-right: 1px solid #ccc;
-  background-color: #f5f5f5; /* Fondo más claro */
-  font-weight: normal /* Peso de fuente en negrita */
+	flex: 1;
+	padding: 10px;
+	border-right: 1px solid #ccc;
+	background-color: #f5f5f5; /* Fondo más claro */
+	font-weight: normal; /* Peso de fuente en negrita */
 }
 
 /* Elimina el borde derecho del último elemento de ticket */
 .ticket-item:last-child {
-  border-right: none;
+	border-right: none;
 }
 
 /* Encabezado del dashboard */
 .dashboard-header {
-  display: flex;
-  flex-direction: row;
-  color: #333;
-  border: 1px solid #ccc;
-  margin: 0 2rem;
+	display: flex;
+	flex-direction: row;
+	color: #333;
+	border: 1px solid #ccc;
+	margin: 0 2rem;
 }
 
 /* Elemento del encabezado del dashboard */
 .dashboard-header div {
-  flex: 1;
-  padding: 10px;
-  border-right: 1px solid #ccc;
-  background-color: #f5f5f5; /* Fondo más claro */
-  font-weight: bold; /* Peso de fuente en negrita */
+	flex: 1;
+	padding: 10px;
+	border-right: 1px solid #ccc;
+	background-color: #f5f5f5; /* Fondo más claro */
+	font-weight: bold; /* Peso de fuente en negrita */
 }
 
 /* Elimina el borde derecho del último elemento del encabezado del dashboard */
 .dashboard-header div:last-child {
-  border-right: none;
+	border-right: none;
 }
 
 /* Título común */
 .title {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold; /* Peso de fuente en negrita */
+	font-size: 1.5rem;
+	color: white;
+	margin-bottom: 20px;
+	text-align: center;
+	font-weight: bold; /* Peso de fuente en negrita */
 }
 
 /* Botón común */
 .buttonRefresh {
-  background-color: #333;
-  color: #fff;
-  font-size: 1rem;
-  padding: 10px 20px;
-  margin-left: 2rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold; /* Peso de fuente en negrita */
+	background-color: #333;
+	color: #fff;
+	font-size: 1rem;
+	padding: 10px 20px;
+	margin-left: 2rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold; /* Peso de fuente en negrita */
 }
 
 /* Cambio de color al pasar el mouse sobre el botón */
 .buttonRefresh:hover {
-  background-color: #555;
+	background-color: #555;
 }
