@@ -75,40 +75,31 @@ export const getUserTickets = (userId) => {
 
 // STAFF 
 
-export const getAllTickets = () => {
-	const URL = "http://localhost:3001/staff/allTickets"
+export const getAllTickets = () => async (dispatch) => {
+    const URL = "http://localhost:3001/staff/allTickets";
+    try {
+        const { data } = await axios.get(URL);
+        dispatch({
+            type: GET_ALL_TICKETS,
+            payload: data
+        });
+    } catch (error) {
+        alert(error.response.data.error);
+    }
+};
 
-	return async (dispatch) => {
-		try {
-			const { data } = await axios.get(URL)
-			dispatch({
-				type: GET_ALL_TICKETS,
-				payload: data,
-			});
-		} catch (error) {
-			alert(error.response.data.error)
-		}
-	}
-}
-
-export const updateTicket = (ticketId, newStatus) => {
-	const URL = "http://localhost:3001/staff/update-ticket"
-
-	try {
-		return async (dispatch) => {
-
-			const { data } = await axios.put(URL, { ticketId, newStatus })
-			console.log(data);
-
-			dispatch({
-				type: UPDATE_TICKET,
-				payload: data
-			})
-		}
-	} catch (error) {
-		alert(error.response.data.error);
-	}
-}
+export const updateTicket = (ticketId, newStatus) => async (dispatch) => {
+    const URL = "http://localhost:3001/staff/update-ticket";
+    try {
+        const { data } = await axios.put(URL, { ticketId, newStatus });
+        dispatch({
+            type: UPDATE_TICKET,
+            payload: data
+        });
+    } catch (error) {
+        alert(error.response.data.error);
+    }
+};
 
 // USER- STAFF
 
