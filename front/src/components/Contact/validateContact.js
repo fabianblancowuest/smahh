@@ -8,8 +8,8 @@ const validateContact = (inputs) => {
 		errors.email = "The email format is not valid";
 	}
 
-	if (inputs.subject.trim() === "") {
-		errors.subject = "Subject is required";
+	if (inputs.service.trim() === "") {
+		errors.service = "Subject is required";
 	}
 
 	if (inputs.message.trim() === "") {

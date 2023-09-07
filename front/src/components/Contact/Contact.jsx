@@ -8,18 +8,32 @@ const Contact = () => {
 	const initialState = {
 		name: "",
 		email: "",
-		subject: "",
+		service: "",
 		message: "",
 		phoneNumber: "",
 	};
 	const [contactData, setContactData] = useState(initialState);
 
-	const navigate = useNavigate();
 	const form = useRef();
 	const [errors, setErrors] = useState({});
+	const [successMessage, setSuccesMessage] = useState("")
+
+	const message = (
+		<>
+			We recibed your message ✔️<br />
+			We wil be answering as soon as posible to your consulting.
+		</>
+	);
+
+	const navigate = useNavigate();
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
+
+		if (successMessage) {
+			setSuccesMessage("")
+		}
+
 		setContactData({
 			...contactData,
 			[name]: value,
@@ -60,15 +74,10 @@ const Contact = () => {
 		const existError = Object.keys(errors);
 
 		if (existError.length === 0) {
-			alert("Message send succesfully");
-
 			setContactData(initialState);
+			setSuccesMessage(message)
 
-			navigate("/");
-		} else {
-			alert("Please correct the errors in the form");
 		}
-
 		sendEmail(event);
 	};
 
@@ -126,20 +135,61 @@ const Contact = () => {
 				)}
 
 				{/* Subject */}
-				<label className={styles.label} htmlFor="subject">
-					Subject:
+				<label className={styles.label} htmlFor="service">
+					Choose a Service:
 				</label>
-				<input
-					className={styles.input}
+				<select
+					className={styles.select}
 					type="text"
-					name="subject"
-					id="subject"
-					placeholder="Subject"
-					value={contactData.subject}
+					name="service"
+					placeholder="Service needed..."
+					value={contactData.service}
 					onChange={handleChange}
 					required
-				/>
-				{errors.subject && <p className={styles.errors}>{errors.subject}</p>}
+				>
+					<option value="">Subject</option>
+					<option value="Cyber Security Consulting">
+						Cyber Security Consulting
+					</option>
+					<option value="Compliance Security Program">
+						Compliance Security Program
+					</option>
+					<option value="Cyber Awareness Education">
+						Cyber Awareness Education
+					</option>
+					<option value="Cloud Access Security Broker (CASB)">
+						Cloud Access Security Broker (CASB)
+					</option>
+					<option value="Digital Forensics & Dark Web">
+						Digital Forensics & Dark Web
+					</option>
+					<option value="Data Loss Prevention (DLP)">
+						Data Loss Prevention (DLP)
+					</option>
+					<option value="Incident Response & Ransom Payment">
+						Incident Response & Ransom Payment
+					</option>
+					<option value="Managed Security Services">
+						Managed Security Services
+					</option>
+					<option value="Managed Detection & Response (MDR)">
+						Managed Detection & Response (MDR)
+					</option>
+					<option value="Penetration Testing">Penetration Testing</option>
+					<option value="Security Assessment & Audit">
+						Security Assessment & Audit
+					</option>
+					<option value="Security Operation Center (SOC)">
+						Security Operation Center (SOC)
+					</option>
+					<option value="Vulnerability Testing">
+						Vulnerability Testing
+					</option>
+
+					<option value="Others">
+						Others
+					</option>
+				</select>
 
 				{/* Message */}
 				<label className={styles.label} htmlFor="message">
@@ -157,9 +207,20 @@ const Contact = () => {
 				{errors.message && <p className={styles.errors}>{errors.message}</p>}
 
 				{/* Submit Button */}
-				<button className={styles.button} type="submit">
+
+
+				{successMessage !== "" && <button className={styles.button} type="submit">
 					Send Message
-				</button>
+				</button>}
+
+				{successMessage && <p>{successMessage}</p>}
+
+				{successMessage && <button className={styles.button}>Do another consulting</button>}
+				
+
+				{successMessage && <button className={styles.button} >Explore other services</button>}
+				
+
 			</form>
 		</div>
 	);

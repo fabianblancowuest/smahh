@@ -17,8 +17,8 @@ const Nav = () => {
 			title: "Are you sure you want to log out?",
 			showDenyButton: true,
 			showCancelButton: false,
-			confirmButtonText: "Save",
-			denyButtonText: `Don't save`,
+			confirmButtonText: "Yes",
+			denyButtonText: `No`,
 		}).then((result) => {
 			/* Read more about isConfirmed, isDenied below */
 			if (!result.isConfirmed) {
