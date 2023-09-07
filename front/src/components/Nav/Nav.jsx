@@ -4,6 +4,7 @@ import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/actions/actions";
 import { FaAtom, FaVirus } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Nav = () => {
 	const userType = useSelector((state) => state.userType);
@@ -11,8 +12,22 @@ const Nav = () => {
 	const navigate = useNavigate();
 
 	const handleLogOut = () => {
-		dispatch(logOut(false));
-		navigate("/");
+		dispatch(logOut(true));
+		Swal.fire({
+			title: "Are you sure you want to log out?",
+			showDenyButton: true,
+			showCancelButton: false,
+			confirmButtonText: "Save",
+			denyButtonText: `Don't save`,
+		}).then((result) => {
+			/* Read more about isConfirmed, isDenied below */
+			if (!result.isConfirmed) {
+				Swal.fire("Good choice!");
+			} else if (result.isCofirmed) {
+				Swal.fire("Goodbye!");
+				navigate("/");
+			}
+		});
 	};
 
 	return (

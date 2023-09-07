@@ -77,15 +77,3 @@
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
-
-/* .successMesage {
-	color: rgb(0, 255, 13);
-	font-size: 0.9rem;
-	font-weight: bold;
-}
-
-.errorMessage {
-	color: #f00;
-	font-size: 0.9rem;
-    font-weight: bold;
-}

@@ -85,7 +85,7 @@ const Contact = () => {
 					type="text"
 					name="name"
 					id="name"
-					placeholder="Your Name"
+					placeholder="Name"
 					value={contactData.name}
 					onChange={handleChange}
 					required
@@ -101,7 +101,7 @@ const Contact = () => {
 					type="email"
 					name="email"
 					id="email"
-					placeholder="Your Email"
+					placeholder="Email"
 					value={contactData.email}
 					onChange={handleChange}
 					required
@@ -117,7 +117,7 @@ const Contact = () => {
 					type="tel"
 					name="phoneNumber"
 					id="phoneNumber"
-					placeholder="Your Phone Number"
+					placeholder="Phone number"
 					value={contactData.phoneNumber}
 					onChange={handleChange}
 				/>
@@ -149,7 +149,7 @@ const Contact = () => {
 					className={styles.textarea}
 					name="message"
 					id="message"
-					placeholder="Your Message"
+					placeholder="Please enter your message here. We're happy to assist you and will respond as soon as possible."
 					value={contactData.message}
 					onChange={handleChange}
 					required
