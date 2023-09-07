@@ -21,7 +21,9 @@ const login = async (req, res) => {
             userType: user.userType,
             userId: user.id,
             userName: user.firstName,
-            userEmail: user.email 
+            userEmail: user.email,
+            userLastName: user.lastName,
+            userPhone: user.phone
         });
 
     } catch (error) {

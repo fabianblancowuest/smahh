@@ -40,6 +40,9 @@ const rootReducer = (state = inicialState, actions) => {
                 userType: payload.userType,
                 userId: payload.userId,
                 userName: payload.userName,
+                userLastName: payload.userLastName,
+                userEmail: payload.userEmail,
+                userPhone: payload.userPhone
             }
 
         case LOG_OUT:
