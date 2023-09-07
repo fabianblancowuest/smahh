@@ -37,39 +37,41 @@ const Nav = () => {
 				<span className={styles.logoText}>SMAHH</span>
 			</div>
 
-			{!userType || userType === "user" ? (
-				<>
-					<NavLink
-						to="/about"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						ABOUT
-					</NavLink>
+			<div className={styles.navPrincipalBtns}>
+				{!userType || userType === "user" ? (
+					<>
+						<NavLink
+							to="/about"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							ABOUT
+						</NavLink>
 
-					<NavLink
-						to="/contact"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						CONTACT
-					</NavLink>
+						<NavLink
+							to="/contact"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							CONTACT
+						</NavLink>
 
-					<NavLink
-						to="/"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						HOME
-					</NavLink>
-				</>
-			) : null}
+						<NavLink
+							to="/"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							HOME
+						</NavLink>
+					</>
+				) : null}
+			</div>
 
 			{!userType ? (
-				<>
+				<div className={styles.logs}>
 					<NavLink
 						to="/signup"
 						className={({ isActive }) =>
@@ -87,7 +89,7 @@ const Nav = () => {
 					>
 						LOGIN
 					</NavLink>
-				</>
+				</div>
 			) : null}
 
 			{userType === "user" ? (

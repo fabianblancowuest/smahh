@@ -10,19 +10,18 @@ const TicketForm = () => {
 	const userName = useSelector((state) => state.userName);
 
 	const [successMessage, setSuccessMessage] = useState("");
-	const [errorMessage, setErrorMessage] = useState("")
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const initialState ={
+	const initialState = {
 		issueTitle: "",
 		issueDescription: "",
 		issueType: "",
 		priority: "",
-	}
+	};
 	const [newTicket, setNewTicket] = useState(initialState);
-
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -40,8 +39,8 @@ const TicketForm = () => {
 
 	const message = (
 		<>
-			You've raised a ticket ✔️<br />
-			A confirmation email will be sent to you.
+			You've raised a ticket ✔️
+			<br />A confirmation email will be sent to you.
 		</>
 	);
 
@@ -50,13 +49,12 @@ const TicketForm = () => {
 
 		try {
 			await dispatch(riseTicket(newTicket, userId, userName));
-			setSuccessMessage(message)
-
+			setSuccessMessage(message);
 		} catch (error) {
-			setNewTicket(initialState)
-			setErrorMessage(error.response.data.error)
+			setNewTicket(initialState);
+			setErrorMessage(error.response.data.error);
 		}
-	
+
 		setNewTicket({
 			issueTitle: "",
 			issueDescription: "",
@@ -120,6 +118,7 @@ const TicketForm = () => {
 					</option>
 					<option value="Vulnerability Testing">Vulnerability Testing</option>
 					<option value="Others">Others</option>
+					{/* <option value={navigate("/profile")}>Edit Profile</option> */}
 				</select>
 
 				<label className={styles.formLabels}>Select a Priority</label>
@@ -166,10 +165,7 @@ const TicketForm = () => {
 					<p className={styles.successMessage}>{successMessage}</p>
 				)}
 
-				{errorMessage && (
-					<p className={styles.error}>{errorMessage}</p>
-				)}
-
+				{errorMessage && <p className={styles.error}>{errorMessage}</p>}
 			</form>
 		</div>
 	);
