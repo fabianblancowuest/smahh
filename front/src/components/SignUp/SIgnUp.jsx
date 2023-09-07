@@ -28,7 +28,7 @@ const SignUp = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate()
 
-	//mensaje de exito- esto se seteará en el submit en el bloque try
+	//mensaje de exito para el signUp- esto se seteará en el submit en el bloque try
 	const message = (
 		<>
 			You've signed up succesfuly ✔️<br />
@@ -54,7 +54,6 @@ const SignUp = () => {
 			}),
 		);
 	};
-
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();

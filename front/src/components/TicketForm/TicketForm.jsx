@@ -70,7 +70,7 @@ const TicketForm = () => {
 		<div className={styles.formBackground}>
 			<h3 className={styles.title}>Rise your Ticket</h3>
 
-			<PopUp message={successMessage}/>
+			{/* <PopUp message={successMessage}/> */}
 
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
 				<label className={styles.formLabels}>Select a Service:</label>
@@ -155,7 +155,7 @@ const TicketForm = () => {
 					placeholder="Describe your problem in detail..."
 					value={newTicket.issueDescription}
 					onChange={handleChange}
-					// required
+					required
 				/>
 
 				<button className={styles.formButton} type="submit">
@@ -167,7 +167,7 @@ const TicketForm = () => {
 				)}
 
 				{errorMessage && (
-					<p className={styles.errorMessage}>{errorMessage}</p>
+					<p className={styles.error}>{errorMessage}</p>
 				)}
 
 			</form>

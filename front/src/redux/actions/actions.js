@@ -20,20 +20,23 @@ export const signUp = (userData) => async (dispatch) => {
 
 };
 
-export const logIn = (userData) => {
+export const logIn = (userData) => async (dispatch) => {
 	//LocalHost Request
 	const URL = "http://localhost:3001/login";
-	return async (dispatch) => {
+	
 		try {
 			const { data } = await axios.post(URL, userData);
 			dispatch({
 				type: LOG_IN,
 				payload: data,
 			});
+
+			return data
+
 		} catch (error) {
-			alert(error.response.data.error);
+			throw error; 
 		}
-	};
+	
 };
 
 // USER 

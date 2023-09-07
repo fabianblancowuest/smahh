@@ -5,17 +5,24 @@ import styles from "./Login.module.css" // Importa la hoja de estilos como "styl
 import validateLogin from "./validateLogin";
 
 const Login = () => {
-  const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
-
   const [errors, setErrors] = useState({})
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    if (errorMessage) {
+      setErrorMessage("");
+    }
 
     setUserData((prevUserData) => ({
       ...prevUserData,
@@ -29,21 +36,19 @@ const Login = () => {
 
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-
     const existError = Object.keys(errors)
 
     if (existError.length === 0) {
-      dispatch(logIn(userData));
+      try {
+        await dispatch(logIn(userData));
+        setSuccessMessage("Sign up Successful ✔️")
 
-      setUserData({
-        email: "",
-        password: "",
-      })
-
-    } else {
-      alert("You must correct the fields")
+      } catch (error) {
+        setSuccessMessage("")
+        setErrorMessage(error.response.data.error)
+      }
     }
   };
 
@@ -55,7 +60,7 @@ const Login = () => {
       <form className={styles.formContainer} onSubmit={handleSubmit}>
 
         <label htmlFor="email" className={styles.formLabels}>
-        Email:
+          Email:
         </label>
 
         <input
@@ -70,7 +75,7 @@ const Login = () => {
         {errors.email && <p className={styles.errors}>{errors.email}</p>}
 
         <label htmlFor="password" className={styles.formLabels}>
-        Password:
+          Password:
         </label>
         <input
           className={styles.formInputs}
@@ -87,6 +92,18 @@ const Login = () => {
           Submit
         </button>
       </form>
+
+      {errorMessage && (
+        <p className={styles.errors}>{errorMessage}</p>
+      )}
+
+      {successMessage && (
+        <p>{successMessage}</p>
+      )}
+
+
+
+
     </div>
   );
 };

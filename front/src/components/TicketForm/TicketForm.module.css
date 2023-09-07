@@ -113,13 +113,11 @@
 
 
 .successMesage {
-	color: rgb(0, 255, 13);
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
 .errorMessage {
-	color:  #f00;
-	font-size: 0.9rem;
+	font-size: 1.3rem;
     font-weight: bold;
 }
