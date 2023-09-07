@@ -65,7 +65,7 @@
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	height: 15vh;
+	height: 5vh;
 	font-family: "Arial", sans-serif;
 	font-size: 15px;
 	color: #333;
@@ -76,7 +76,7 @@
 	padding: 15px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	height: 15vh;
+	height: 10vh;
 
 	font-family: "Arial", sans-serif;
 	font-size: 16px;
@@ -109,4 +109,15 @@
 	);
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.successMesage {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.errorMessage {
+	font-size: 1.3rem;
+    font-weight: bold;
 }

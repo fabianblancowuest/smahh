@@ -8,7 +8,7 @@ export const signUp = (userData) => async (dispatch) => {
 
 	try {
 		const { data } = await axios.post(URL, userData);
-		
+
 		dispatch({
 			type: SIGN_UP,
 		});
@@ -17,44 +17,49 @@ export const signUp = (userData) => async (dispatch) => {
 	} catch (error) {
 		throw error;
 	}
-	
+
 };
 
-export const logIn = (userData) => {
+export const logIn = (userData) => async (dispatch) => {
 	//LocalHost Request
 	const URL = "http://localhost:3001/login";
-	return async (dispatch) => {
+	
 		try {
 			const { data } = await axios.post(URL, userData);
 			dispatch({
 				type: LOG_IN,
 				payload: data,
 			});
+
+			return data
+
 		} catch (error) {
-			alert(error.response.data.error);
+			throw error; 
 		}
-	};
+	
 };
 
 // USER 
 
-export const riseTicket = (newTicket, userId, userName) => {
+export const riseTicket = (newTicket , userId, userName) => async (dispatch) => {
 	const URL = "http://localhost:3001/user/ticket";
-	// Add userId to the object newTicket
-	newTicket.userId = userId;
-	newTicket.userName = userName;
-	return async (dispatch) => {
-		try {
-			const { data } = await axios.post(URL, newTicket);
 
-			dispatch({
-				type: RISE_TICKET,
-				payload: data,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	newTicket.userId = userId;
+	newTicket.userName = userName
+
+	try {
+		const { data } = await axios.post(URL, newTicket);
+		dispatch({
+			type: RISE_TICKET,
+			payload: data,
+		});
+
+		return data;
+
+	} catch (error) {
+		throw error;
+	}
+
 };
 
 export const updateUser = (userId, formData) => async (dispatch) => {

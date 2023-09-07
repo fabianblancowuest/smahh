@@ -3,7 +3,7 @@ import "./PopUp.css"
 
 
 
-function PopUp({ message, closePopUp }) {
+function PopUp({ message, close, stay, navigate }) {
     return (
         <div className='pop-background'>
             <div className='pop-body'>
