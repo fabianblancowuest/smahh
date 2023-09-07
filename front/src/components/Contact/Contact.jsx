@@ -16,12 +16,12 @@ const Contact = () => {
 
 	const form = useRef();
 	const [errors, setErrors] = useState({});
-	const [successMessage, setSuccesMessage] = useState("")
+	const [successMessage, setSuccessMessage] = useState("")
 
 	const message = (
 		<>
-			We recibed your message ✔️<br />
-			We wil be answering as soon as posible to your consulting.
+			Your message has been received! ✔️<br />
+			We will get back to you as soon as possible.
 		</>
 	);
 
@@ -31,7 +31,7 @@ const Contact = () => {
 		const { name, value } = event.target;
 
 		if (successMessage) {
-			setSuccesMessage("")
+			setSuccessMessage("")
 		}
 
 		setContactData({
@@ -75,10 +75,22 @@ const Contact = () => {
 
 		if (existError.length === 0) {
 			setContactData(initialState);
-			setSuccesMessage(message)
+			setSuccessMessage(message)
 
 		}
 		sendEmail(event);
+	};
+
+	const handleRequestAnotherConsultation = () => {
+		setSuccessMessage("");
+		const firstInputField = form.current.querySelector('input[name="name"]');
+		if (firstInputField) {
+			firstInputField.focus();
+		}
+	};
+
+	const handleExploreMoreServices = () => {
+		navigate("/services");
 	};
 
 	return (
@@ -136,7 +148,7 @@ const Contact = () => {
 
 				{/* Subject */}
 				<label className={styles.label} htmlFor="service">
-					Choose a Service:
+					Select a Service:
 				</label>
 				<select
 					className={styles.select}
@@ -147,7 +159,7 @@ const Contact = () => {
 					onChange={handleChange}
 					required
 				>
-					<option value="">Subject</option>
+					<option value="">Choose a Service</option>
 					<option value="Cyber Security Consulting">
 						Cyber Security Consulting
 					</option>
@@ -207,19 +219,31 @@ const Contact = () => {
 				{errors.message && <p className={styles.errors}>{errors.message}</p>}
 
 				{/* Submit Button */}
-
-
-				{successMessage !== "" && <button className={styles.button} type="submit">
-					Send Message
-				</button>}
+				{!successMessage && (
+					<button className={styles.button} type="submit">
+						Send Message
+					</button>
+				)}
 
 				{successMessage && <p>{successMessage}</p>}
 
-				{successMessage && <button className={styles.button}>Do another consulting</button>}
-				
+				{successMessage && (
+					<button
+						className={styles.button}
+						onClick={handleRequestAnotherConsultation}
+					>
+						Request Another Consultation
+					</button>
+				)}
 
-				{successMessage && <button className={styles.button} >Explore other services</button>}
-				
+				{successMessage && (
+					<button
+						className={styles.button}
+						onClick={handleExploreMoreServices}
+					>
+						Explore More Services
+					</button>
+				)}
 
 			</form>
 		</div>
