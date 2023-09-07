@@ -1,10 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/actions/actions";
 import { FaAtom, FaVirus } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Services from "./../Sevices/Services";
 
 const Nav = () => {
 	const userType = useSelector((state) => state.userType);
@@ -65,6 +66,14 @@ const Nav = () => {
 							}
 						>
 							HOME
+						</NavLink>
+						<NavLink
+							to="/services"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							<Services />
 						</NavLink>
 					</>
 				) : null}
