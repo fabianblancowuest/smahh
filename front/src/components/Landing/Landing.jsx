@@ -12,15 +12,18 @@ import dataSection from "./../../assets/images/services/sections/data-protection
 import securitySection from "./../../assets/images/services/sections/security-news.jpg";
 import dataLossSection from "./../../assets/images/services/sections/data-loss.jpg";
 // import { useRef, useEffect } from "react";
+import banner from "../../assets/images/Landing/banner-bg-5.jpg";
 const Landing = () => {
 	return (
 		<div className={styles.container}>
-			<section id="principal-main">
+			<section className={styles.mainHeader}>
 				<h1 className={styles.title}>Welcome to the Cybersecurity Smahh</h1>
 				<p className={styles.description}>
 					Explore the latest trends and insights in cybersecurity to protect
 					your digital world.
 				</p>
+			</section>
+			<section id="principal-main">
 				<div className={styles.cards}>
 					<a href="#website-scanning">
 						<div className={styles.card}>

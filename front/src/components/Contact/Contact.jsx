@@ -114,7 +114,7 @@ const Contact = () => {
 				</label>
 				<input
 					className={styles.input}
-					type="tel"
+					type="text"
 					name="phoneNumber"
 					id="phoneNumber"
 					placeholder="Phone number"
