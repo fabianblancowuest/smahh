@@ -1,12 +1,17 @@
 /* SignUp.module.css */
 
 .container {
-	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	background: linear-gradient(
+		90deg,
+		hsla(236, 100%, 8%, 1) 0%,
+		hsla(211, 100%, 28%, 1) 100%
+	);
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	margin: 4rem auto 0;
 	margin-bottom: 5rem;
-	max-width: 800px;
+	max-width: 40vw;
+	max-height: 100vh;
 	padding: 2rem;
 	border-radius: 8px;
 	box-shadow: 0px 2px 8px rgb(255, 255, 255);
@@ -22,7 +27,7 @@
 }
 
 .title {
-	font-size: 2.5rem;
+	font-size: 1.5rem;
 	margin-bottom: 0;
 	margin-top: 0;
 	text-align: center;
@@ -41,13 +46,17 @@
 }
 
 .errors {
-    color: #f00;
-    font-size: 0.9rem;
-    font-weight: bold;
+	color: #f00;
+	font-size: 0.9rem;
+	font-weight: bold;
 }
 
 .btnSubmit {
-	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	background: linear-gradient(
+		90deg,
+		hsla(236, 100%, 8%, 1) 0%,
+		hsla(211, 100%, 28%, 1) 100%
+	);
 	color: #fff;
 	font-size: 1rem;
 	padding: 12px 22px;
@@ -60,19 +69,23 @@
 }
 
 .button:hover {
-	background: linear-gradient(90deg, rgb(9, 19, 160) 0%, rgb(15, 108, 207) 100%);
+	background: linear-gradient(
+		90deg,
+		rgb(9, 19, 160) 0%,
+		rgb(15, 108, 207) 100%
+	);
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .successMesage {
 	color: rgb(0, 255, 13);
-    font-size: 0.9rem;
-    font-weight: bold;
+	font-size: 0.9rem;
+	font-weight: bold;
 }
 
 .errorMessage {
-	color:  #f00;
+	color: #f00;
 	font-size: 0.9rem;
-    font-weight: bold;
+	font-weight: bold;
 }
