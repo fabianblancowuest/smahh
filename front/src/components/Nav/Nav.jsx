@@ -32,123 +32,125 @@ const Nav = () => {
 	};
 
 	return (
-		<nav className={styles.navContainer}>
-			<div className={styles.logoContainer}>
-				<FaVirus className={styles.atomIcon} />
-				<span className={styles.logoText}>SMAHH</span>
-			</div>
+		<div className={styles.container}>
+			<nav className={styles.navContainer}>
+				<div className={styles.logoContainer}>
+					<FaVirus className={styles.atomIcon} />
+					<span className={styles.logoText}>SMAHH</span>
+				</div>
 
-			<div className={styles.navPrincipalBtns}>
-				{!userType || userType === "user" ? (
-					<>
-						<NavLink
-							to="/about"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							ABOUT
-						</NavLink>
+				<div className={styles.navPrincipalBtns}>
+					{!userType || userType === "user" ? (
+						<>
+							<NavLink
+								to="/about"
+								className={({ isActive }) =>
+									isActive ? styles.activeLink : styles.navLink
+								}
+							>
+								ABOUT
+							</NavLink>
 
-						<NavLink
-							to="/contact"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							CONTACT
-						</NavLink>
+							<NavLink
+								to="/contact"
+								className={({ isActive }) =>
+									isActive ? styles.activeLink : styles.navLink
+								}
+							>
+								CONTACT
+							</NavLink>
 
-						<NavLink
-							to="/"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							HOME
-						</NavLink>
-						<NavLink
+							<NavLink
+								to="/"
+								className={({ isActive }) =>
+									isActive ? styles.activeLink : styles.navLink
+								}
+							>
+								HOME
+							</NavLink>
+							{/* <NavLink
 							to="/services"
 							className={({ isActive }) =>
 								isActive ? styles.activeLink : styles.navLink
 							}
 						>
 							<Services />
+						</NavLink> */}
+						</>
+					) : null}
+				</div>
+
+				{!userType ? (
+					<div className={styles.logs}>
+						<NavLink
+							to="/signup"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							SIGNUP
+						</NavLink>
+
+						<NavLink
+							to="/login"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							LOGIN
+						</NavLink>
+					</div>
+				) : null}
+
+				{userType === "user" ? (
+					<>
+						<NavLink
+							to="/riseticket"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							RAISE TICKET
+						</NavLink>
+
+						<NavLink
+							to="/tickets"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							VIEW TICKETS
+						</NavLink>
+
+						<NavLink
+							to="/profile"
+							className={({ isActive }) =>
+								isActive ? styles.activeLink : styles.navLink
+							}
+						>
+							PROFILE
 						</NavLink>
 					</>
 				) : null}
-			</div>
 
-			{!userType ? (
-				<div className={styles.logs}>
+				{userType === "staff" ? (
 					<NavLink
-						to="/signup"
+						to="/"
 						className={({ isActive }) =>
 							isActive ? styles.activeLink : styles.navLink
 						}
 					>
-						SIGNUP
+						DASHBOARD
 					</NavLink>
+				) : null}
 
-					<NavLink
-						to="/login"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						LOGIN
-					</NavLink>
-				</div>
-			) : null}
-
-			{userType === "user" ? (
-				<>
-					<NavLink
-						to="/riseticket"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						RAISE TICKET
-					</NavLink>
-
-					<NavLink
-						to="/tickets"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						VIEW TICKETS
-					</NavLink>
-
-					<NavLink
-						to="/profile"
-						className={({ isActive }) =>
-							isActive ? styles.activeLink : styles.navLink
-						}
-					>
-						PROFILE
-					</NavLink>
-				</>
-			) : null}
-
-			{userType === "staff" ? (
-				<NavLink
-					to="/"
-					className={({ isActive }) =>
-						isActive ? styles.activeLink : styles.navLink
-					}
-				>
-					DASHBOARD
-				</NavLink>
-			) : null}
-
-			{userType === "user" || userType === "staff" ? (
-				<button onClick={handleLogOut} to="/" className={styles.logOutButton}>
-					LOG OUT
-				</button>
-			) : null}
-		</nav>
+				{userType === "user" || userType === "staff" ? (
+					<button onClick={handleLogOut} to="/" className={styles.logOutButton}>
+						LOG OUT
+					</button>
+				) : null}
+			</nav>
+		</div>
 	);
 };
 
