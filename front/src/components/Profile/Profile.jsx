@@ -5,11 +5,23 @@ import styles from "./Profile.module.css";
 import validateProfile from "./validateProfile";
 
 const Profile = () => {
-    const dispatch = useDispatch();
+
+    const initialState = {
+        email: null,
+        phoneNumber: null,
+        password: null,
+        confirmPassword: null,
+    };
 
     const [isUpdating, setIsUpdating] = useState(false);
+
     const [updateSuccess, setUpdateSuccess] = useState(null);
     const [updateError, setUpdateError] = useState(null);
+
+    const [formData, setFormData] = useState(initialState);
+    const [errors, setErrors] = useState({});
+
+    const dispatch = useDispatch();
 
     const user = useSelector((state) => ({
         userId: state.userId,
@@ -20,15 +32,7 @@ const Profile = () => {
         email: state.userEmail,
     }));
 
-    const defaultFormData = {
-        email: null,
-        phoneNumber: null,
-        password: null,
-        confirmPassword: null,
-    };
 
-    const [formData, setFormData] = useState(defaultFormData);
-    const [errors, setErrors] = useState({});
 
     const message = (
         <>

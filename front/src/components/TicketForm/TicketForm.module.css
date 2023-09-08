@@ -1,11 +1,9 @@
 /* TicketForm.module.css */
 
 .formBackground {
-	background: linear-gradient(
-		90deg,
-		hsla(236, 100%, 8%, 1) 0%,
-		hsla(211, 100%, 28%, 1) 100%
-	);
+	background: linear-gradient(90deg,
+			hsla(236, 100%, 8%, 1) 0%,
+			hsla(211, 100%, 28%, 1) 100%);
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	margin: 4rem auto 0;
@@ -83,12 +81,16 @@
 	color: #333;
 }
 
-.formButton {
-	background: linear-gradient(
-		90deg,
-		hsla(236, 100%, 8%, 1) 0%,
-		hsla(211, 100%, 28%, 1) 100%
-	);
+.errors {
+	color: #f00;
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+
+.button {
+	background: linear-gradient(90deg,
+			hsla(236, 100%, 8%, 1) 0%,
+			hsla(211, 100%, 28%, 1) 100%);
 	color: #fff;
 	font-size: 1rem;
 	padding: 12px 22px;
@@ -101,23 +103,27 @@
 	text-align: center;
 }
 
-.formButton:hover {
-	background: linear-gradient(
-		90deg,
-		rgb(9, 19, 160) 0%,
-		rgb(15, 108, 207) 100%
-	);
+.button:hover {
+	background: linear-gradient(90deg,
+			rgb(9, 19, 160) 0%,
+			rgb(15, 108, 207) 100%);
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.disabledButton {
+	background-color: #ccc;
+	color: #666;
+	cursor: not-allowed;
+	transition: none;
+}
 
 .successMesage {
-    font-size: 1.3rem;
-    font-weight: bold;
+	font-size: 1.3rem;
+	font-weight: bold;
 }
 
 .errorMessage {
 	font-size: 1.3rem;
-    font-weight: bold;
+	font-weight: bold;
 }

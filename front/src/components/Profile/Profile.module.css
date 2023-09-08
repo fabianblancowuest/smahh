@@ -67,8 +67,8 @@
 }
 
 .disabledButton {
-	background-color: #ccc; /* Color de fondo más claro */
-	color: #666; /* Color de texto más oscuro */
+	background-color: #ccc; 
+	color: #666; 
 	cursor: not-allowed; /* Cambia el cursor a "no permitido" */
 	transition: none; /* Elimina cualquier transición */
   }

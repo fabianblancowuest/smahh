@@ -19,8 +19,10 @@ const AllTickets = () => {
 	useEffect(() => {
 		if (userTickets.length === 0) {
 			dispatch(getUserTickets(userId));
+		} else if (!userTickets.length  ) {   // si el userTickets se actualiza su propiedad status necesito que se despache la accion de nuevo 
+			dispatch(getUserTickets(userId))
 		}
-	}, []);
+	}, [userTickets]);
 
 	const handleRefresh = () => {
 		dispatch(getUserTickets(userId));

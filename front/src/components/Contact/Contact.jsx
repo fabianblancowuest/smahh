@@ -13,10 +13,11 @@ const Contact = () => {
 		phoneNumber: "",
 	};
 	const [contactData, setContactData] = useState(initialState);
-
-	const form = useRef();
 	const [errors, setErrors] = useState({});
 	const [successMessage, setSuccessMessage] = useState("")
+
+	const form = useRef();
+
 
 	const message = (
 		<>
@@ -26,6 +27,10 @@ const Contact = () => {
 	);
 
 	const navigate = useNavigate();
+
+	const isButtonDisabled =
+		Object.values(contactData).some((value) => !value) ||
+		Object.values(errors).some((error) => error);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -39,7 +44,6 @@ const Contact = () => {
 			[name]: value,
 		});
 
-		// Validation on value change
 		setErrors(
 			validateContact({
 				...contactData,
@@ -73,7 +77,7 @@ const Contact = () => {
 
 		const existError = Object.keys(errors);
 
-		if (existError.length === 0) {
+		if (!existError.length) {
 			setContactData(initialState);
 			setSuccessMessage(message)
 
@@ -81,7 +85,7 @@ const Contact = () => {
 		sendEmail(event);
 	};
 
-	const handleRequestAnotherConsultation = () => {
+	const handleStay = () => {
 		setSuccessMessage("");
 		const firstInputField = form.current.querySelector('input[name="name"]');
 		if (firstInputField) {
@@ -89,7 +93,7 @@ const Contact = () => {
 		}
 	};
 
-	const handleExploreMoreServices = () => {
+	const handleExplore = () => {
 		navigate("/services");
 	};
 
@@ -220,17 +224,23 @@ const Contact = () => {
 
 				{/* Submit Button */}
 				{!successMessage && (
-					<button className={styles.button} type="submit">
+					<button
+						className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
+						type="submit"
+						disabled={isButtonDisabled}
+					>
 						Send Message
 					</button>
 				)}
 
 				{successMessage && <p>{successMessage}</p>}
 
+
+				{/* Conditional Navigators */}
 				{successMessage && (
 					<button
 						className={styles.button}
-						onClick={handleRequestAnotherConsultation}
+						onClick={handleStay}
 					>
 						Request Another Consultation
 					</button>
@@ -239,7 +249,7 @@ const Contact = () => {
 				{successMessage && (
 					<button
 						className={styles.button}
-						onClick={handleExploreMoreServices}
+						onClick={handleExplore}
 					>
 						Explore More Services
 					</button>
