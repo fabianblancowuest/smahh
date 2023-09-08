@@ -1,4 +1,5 @@
 .container {
+	padding-top: 6rem;
 	margin: 0 auto;
 	color: white;
 }
@@ -28,7 +29,6 @@
 
 .description {
 	font-size: 1.2rem;
-	/* margin-bottom: 20px; */
 }
 
 img {
@@ -82,4 +82,54 @@ div section:nth-child(even) {
 	font-style: italic;
 	font-size: 1.1rem;
 	font-weight: bold;
+}
+
+@media (max-width: 767px) {
+	.container {
+		padding-top: 3rem; /* Cambiar el padding para dispositivos móviles */
+	}
+
+	.title {
+		font-size: 2rem; /* Cambiar el tamaño de fuente para dispositivos móviles */
+		margin-bottom: 2rem; /* Cambiar el margen inferior para dispositivos móviles */
+	}
+
+	.box1,
+	.box2 {
+		height: auto; /* Cambiar la altura a automática para dispositivos móviles */
+		flex-direction: column; /* Cambiar la dirección de la flexbox para dispositivos móviles */
+		align-items: center; /* Centrar elementos para dispositivos móviles */
+		padding: 0 2rem; /* Cambiar el padding para dispositivos móviles */
+	}
+
+	.box2 {
+		flex-direction: column; /* Cambiar la dirección de la flexbox para dispositivos móviles */
+	}
+
+	.description {
+		font-size: 1rem; /* Cambiar el tamaño de fuente para dispositivos móviles */
+	}
+
+	img {
+		width: 100%; /* Hacer que la imagen ocupe el 100% del ancho del contenedor */
+		border-radius: 0.2rem; /* Cambiar el radio de borde para dispositivos móviles */
+	}
+
+	div section:nth-child(even) {
+		background: white; /* Cambiar el fondo para dispositivos móviles */
+		color: black; /* Cambiar el color de texto para dispositivos móviles */
+	}
+
+	.contactImg {
+		padding: 3rem 0; /* Cambiar el padding para dispositivos móviles */
+	}
+
+	.contactLink {
+		font-size: 2rem; /* Cambiar el tamaño de fuente para dispositivos móviles */
+		padding: 0.8rem 1.6rem; /* Cambiar el padding para dispositivos móviles */
+	}
+
+	.contactParagraph {
+		font-size: 1rem; /* Cambiar el tamaño de fuente para dispositivos móviles */
+	}
 }

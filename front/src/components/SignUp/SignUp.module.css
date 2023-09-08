@@ -9,11 +9,11 @@
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	margin: 4rem auto 0;
-	margin-bottom: 5rem;
+	margin: 6rem auto;
 	max-width: 40vw;
 	max-height: 100vh;
 	padding: 2rem;
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	box-shadow: 0px 2px 8px rgb(255, 255, 255);
 }
 
@@ -84,3 +84,30 @@
 	cursor: not-allowed; 
 	transition: none; 
   }
+@media only screen and (max-width: 600px) {
+	.container {
+		max-width: 80vw;
+		margin: 3rem auto;
+		padding: 2rem;
+	}
+
+	.form {
+		padding: 2rem;
+	}
+
+	.title {
+		font-size: 1.2rem;
+	}
+
+	.label {
+		font-size: 1rem;
+	}
+
+	.input {
+		width: 100%;
+	}
+
+	.btnSubmit {
+		font-size: 0.9rem;
+	}
+}

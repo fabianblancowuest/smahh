@@ -27,11 +27,18 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 100vh;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .title {
-	padding-top: 4rem;
-	font-size: 2.5rem;
+	padding-top: 6rem;
+	font-size: 4rem;
+	line-height: 1.5;
+	letter-spacing: 0.2rem;
+	font-weight: 900;
 	color: #f5faf8;
 	text-align: center;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -154,4 +161,50 @@ main section:nth-child(even) {
 		hsla(216, 41%, 79%, 1) 100%
 	);
 	color: black;
+}
+
+@media (max-width: 767px) {
+	.mainHeader {
+		padding-top: 4rem; /* Ajuste del espacio en la cabecera */
+	}
+
+	.title {
+		font-size: 3rem; /* Cambio de tamaño de título */
+	}
+
+	.description {
+		font-size: 1rem; /* Cambio de tamaño de descripción */
+	}
+
+	.cards {
+		padding: 2rem 0; /* Ajuste del espacio en las tarjetas */
+		width: 100%; /* Ancho completo para dispositivos móviles */
+	}
+
+	.card {
+		width: 100%; /* Ancho completo para dispositivos móviles */
+		height: auto; /* Altura automática para dispositivos móviles */
+		margin-bottom: 2rem; /* Espacio entre tarjetas */
+	}
+
+	.cardTitle {
+		font-size: 1.2rem; /* Cambio de tamaño de título de tarjeta */
+	}
+
+	.cardText {
+		font-size: 1rem; /* Cambio de tamaño de texto de tarjeta */
+	}
+
+	.img {
+		width: 100%; /* Ancho completo para imágenes de tarjetas */
+	}
+
+	.sectionService {
+		height: auto; /* Altura automática para sección de servicios */
+		padding: 1rem; /* Ajuste de espacio en sección de servicios */
+	}
+
+	.sectionService img {
+		width: 100%; /* Ancho completo para imágenes en sección de servicios */
+	}
 }

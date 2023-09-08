@@ -8,12 +8,11 @@
 	);
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	margin: 4rem auto 0;
-	margin-bottom: 5rem;
+	margin: 6rem auto;
 	max-width: 40vw;
 	max-height: 100vh;
 	padding: 2rem;
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	box-shadow: 0px 2px 8px rgb(255, 255, 255);
 }
 
@@ -40,29 +39,29 @@
 
 .input {
 	width: 80%;
-	padding: 10px;
+	padding: 0.5rem;
 	border: 1px solid #ddd;
-	border-radius: 4px;
+	border-radius: 0.5rem;
 }
 .select {
-	width: 80%;
-	padding: 10px;
+	width: 83%;
+	padding: 0.5rem;
 	border: 1px solid #ddd;
-	border-radius: 4px;
-	font-size: 16px;
+	border-radius: 0.5rem;
+	font-size: 1rem;
 	background-color: #f8f8f8;
 	color: #333;
 }
 
 .select option {
-	font-size: 14px;
+	font-size: 1rem;
 	color: #555;
 }
 .textarea {
 	width: 80%;
-	padding: 10px;
+	padding: 0.5rem;
 	border: 1px solid #ddd;
-	border-radius: 4px;
+	border-radius: 0.5rem;
 	height: 15vh;
 }
 
@@ -105,3 +104,36 @@
 	cursor: not-allowed; 
 	transition: none; 
   }
+::placeholder {
+	font-size: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+	.container {
+		max-width: 80vw;
+		margin: 3rem auto;
+		padding: 1rem;
+	}
+
+	.form {
+		padding: 1rem;
+	}
+
+	.title {
+		font-size: 1.2rem;
+	}
+
+	.label {
+		font-size: 1rem;
+	}
+
+	.input,
+	.select,
+	.textarea {
+		width: 100%;
+	}
+
+	.button {
+		font-size: 0.9rem;
+	}
+}
