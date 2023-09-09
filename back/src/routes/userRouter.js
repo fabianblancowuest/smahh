@@ -4,6 +4,7 @@ const { postUser } = require ("../controllers/userControllers/postUser");
 const { getTickets } = require("../controllers/userControllers/getTickets");
 const { getTicketDetail } = require("../controllers/userControllers/getTicketDetail");
 const { updateUser } = require("../controllers/userControllers/updateUser");
+const { changePassword } = require("../controllers/userControllers/changePassword");
 
 
 const userRouter = express.Router();
@@ -16,6 +17,7 @@ userRouter.get("/ticket/:id", getTickets); // get all the tickets acording to Us
 userRouter.get("/ticket-detail/:id", getTicketDetail); //get the detail for one Ticket
 
 userRouter.put("/updateUser/:id", updateUser) //get the user id and update the info
+userRouter.put("/change-password/:id", changePassword); //modify userPassword
 
 module.exports = {
     userRouter
