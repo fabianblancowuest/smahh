@@ -1,95 +1,120 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import styles from "./TicketResponseForm.module.css"; 
+import styles from "./TicketResponseForm.module.css";
 
-const TicketResponseForm = ({userEmail}) => {
-  const [response, setResponse] = useState({
-    subject: "",
-    messageBody: "",
-    adressy: userEmail,
-    adresser: "",
-  });
+const TicketResponseForm = ({ ticketData }) => {
+	const {
+		issueDescription,
+		issueType,
+		priority,
+		issueTitle,
+		status,
+		createdAt,
+		updatedAt,
+		userName,
+		userEmail,
+	} = ticketData;
 
-  const form = useRef();
+	console.log(userEmail);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+	const [response, setResponse] = useState({
+		userName: userName,
+		userEmail: userEmail,
+		subject: "",
+		messageBody: "",
+	});
 
-    setResponse({
-      ...response,
-      [name]: value,
-    });
-  };
+	const form = useRef();
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+	const handleChange = (event) => {
+		const { name, value } = event.target;
 
-    emailjs
-      .sendForm(
-        "service_hre43nq",
-        "template_it5kkwt",
-        form.current,
-        "Qj-2BHcvaJJZlfg9O",
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        },
-      );
-  };
+		setResponse({
+			...response,
+			[name]: value,
+		});
+	};
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+	const sendEmail = (e) => {
+		e.preventDefault();
 
-    sendEmail(event);
+		emailjs
+			.sendForm(
+				"service_hre43nq", // Service ID
+				"template_9gkmm5q", // Template ID
+				form.current,
+				"Qj-2BHcvaJJZlfg9O", // Your Public Key
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				},
+			);
+	};
 
-    setResponse({
-      subject: "",
-      messageBody: "",
-    });
-  };
+	const handleSubmit = (event) => {
+		event.preventDefault();
 
-  return (
-    <div className={styles.formBackground}>
-      <h3 className={styles.title}>Response to User</h3>
-      <form ref={form} className={styles.formContainer} onSubmit={handleSubmit}>
-        <label htmlFor="subject" className={styles.formLabels}>
-          Subject:
-        </label>
-        <textarea
-          id="subject"
-          name="subject"
-          value={response.subject}
-          onChange={handleChange}
-          required
-          className={styles.formInputs}
-        ></textarea>
+		sendEmail(event);
 
-        <div>
-          <label htmlFor="messageBody" className={styles.formLabels}>
-            Response:
-          </label>
-          <textarea
-            id="messageBody"
-            name="messageBody"
-            value={response.messageBody}
-            onChange={handleChange}
-            required
-            className={styles.textarea}
-          ></textarea>
-        </div>
+		setResponse({
+			subject: "",
+			messageBody: "",
+		});
+	};
 
-        <div>
-          <button type="submit" className={styles.formButton}>
-            Send Response
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+	return (
+		<div className={styles.formBackground}>
+			<h3 className={styles.title}>Response to User</h3>
+			<form ref={form} className={styles.formContainer} onSubmit={handleSubmit}>
+				{/* <div> */}
+				<label htmlFor="subject" className={styles.formLabels}>
+					Subject:
+				</label>
+				<input
+					id="subject"
+					name="subject"
+					value={response.subject}
+					onChange={handleChange}
+					required
+					className={styles.formInputs}
+					placeholder="Subject..."
+				></input>
+				{/* </div> */}
+				{/* <div> */}
+				<label htmlFor="messageBody" className={styles.formLabels}>
+					Response:
+				</label>
+				<textarea
+					id="messageBody"
+					name="messageBody"
+					value={response.messageBody}
+					onChange={handleChange}
+					required
+					className={styles.textarea}
+					placeholder="Send response to user..."
+				></textarea>
+				<label>Response to:</label>
+				<input
+					name="userEmail"
+					id="userEmail"
+					value={userEmail}
+					// onChange={handleChange}
+					disabled
+				></input>
+				{/* </div> */}
+
+				<div>
+					<button type="submit" className={styles.formButton}>
+						Send Response
+					</button>
+				</div>
+			</form>
+		</div>
+	);
 };
 
 export default TicketResponseForm;
