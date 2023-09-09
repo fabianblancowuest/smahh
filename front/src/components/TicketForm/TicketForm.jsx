@@ -8,18 +8,22 @@ import validateTicketForm from "./validateTicketForm";
 
 const TicketForm = () => {
 
+	const userId = useSelector((state) => state.userId);
+	const userName = useSelector((state) => state.userName);
+	const userEmail = useSelector((state)=> state.userEmail)
+
 	const initialState = {
 		issueTitle: "",
 		issueDescription: "",
 		issueType: "",
 		priority: "",
+		userEmail: userEmail,
 	};
-
+	
 	const [newTicket, setNewTicket] = useState(initialState);
 	const [errors, setErrors] = useState({})
 
-	const userId = useSelector((state) => state.userId);
-	const userName = useSelector((state) => state.userName);
+
 
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -179,9 +183,6 @@ const TicketForm = () => {
 					required
 				/>
 				{errors.issueDescription && <p className={styles.errors}> {errors.issueDescription} </p>}
-
-
-
 
 
 				{/*Submit Button */}

@@ -4,20 +4,20 @@ import { useParams } from "react-router-dom";
 import { format } from "date-fns"; 
 import { getTicketDetail } from "../../redux/actions/actions";
 import styles from "./Detail.module.css";
-import TicketResponseForm from "../FormStaff/TicketResponseForm";
+import TicketResponseForm from "../TicketResponseForm/TicketResponseForm";
 
 const DetailTicket = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
+
   dispatch(getTicketDetail(id));
+
   }, [id]);
 
-  const userEmail = useSelector((state)=> state.userEmail)
   const ticketDetail = useSelector((state) => state.ticketDetail);
-  console.log(userEmail);
-  
+
   const {
     issueDescription,
     issueType,
@@ -27,6 +27,7 @@ const DetailTicket = () => {
     createdAt,
     updatedAt,
     userName,
+    userEmail
   } = ticketDetail;
 
   const statusClass =

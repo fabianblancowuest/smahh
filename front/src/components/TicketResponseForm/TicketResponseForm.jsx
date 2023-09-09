@@ -2,11 +2,11 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import styles from "./TicketResponseForm.module.css"; 
 
-const TicketResponseForm = () => {
+const TicketResponseForm = ({userEmail}) => {
   const [response, setResponse] = useState({
     subject: "",
     messageBody: "",
-    adressy: "",
+    adressy: userEmail,
     adresser: "",
   });
 
