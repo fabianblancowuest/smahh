@@ -14,6 +14,7 @@ const Nav = () => {
 
 	const handleLogOut = () => {
 		dispatch(logOut(true));
+		navigate("/")
 		// Swal.fire({
 		// 	title: "Are you sure you want to log out?",
 		// 	showDenyButton: true,

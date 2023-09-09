@@ -13,6 +13,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Detail from "./Detail/Detail";
 import Footer from "./Footer/Footer";
 import Profile from "./Profile/Profile";
+import ChangePassword from "./ChangePassword/ChangePassword";
 import "./Layout.css";
 import Services from "./Sevices/Services";
 
@@ -84,6 +85,7 @@ const UserRoutes = () => {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/detail/:id" element={<Detail />} />
 					<Route path="/profile" element={<Profile />} />
+					<Route path="/profile/editpassword" element={<ChangePassword />} />
 				</Routes>
 			</div>
 			<Footer />
