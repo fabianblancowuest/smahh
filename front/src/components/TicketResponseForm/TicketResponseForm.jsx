@@ -55,7 +55,7 @@ const TicketResponseForm = ({userEmail}) => {
   return (
     <div className={styles.formBackground}>
       <h3 className={styles.title}>Response to User</h3>
-      <form className={styles.formContainer} onSubmit={handleSubmit}>
+      <form ref={form} className={styles.formContainer} onSubmit={handleSubmit}>
         <label htmlFor="subject" className={styles.formLabels}>
           Subject:
         </label>
