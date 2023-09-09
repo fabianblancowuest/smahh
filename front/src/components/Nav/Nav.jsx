@@ -68,14 +68,6 @@ const Nav = () => {
 							>
 								HOME
 							</NavLink>
-							{/* <NavLink
-							to="/services"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							<Services />
-						</NavLink> */}
 						</>
 					) : null}
 				</div>
@@ -104,32 +96,34 @@ const Nav = () => {
 
 				{userType === "user" ? (
 					<>
-						<NavLink
-							to="/riseticket"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							RAISE TICKET
-						</NavLink>
+						<div className={styles.logs}>
+							<NavLink
+								to="/riseticket"
+								className={({ isActive }) =>
+									isActive ? styles.activeLink : styles.navLink
+								}
+							>
+								RAISE TICKET
+							</NavLink>
 
-						<NavLink
-							to="/tickets"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							VIEW TICKETS
-						</NavLink>
+							<NavLink
+								to="/tickets"
+								className={({ isActive }) =>
+									isActive ? styles.activeLink : styles.navLink
+								}
+							>
+								VIEW TICKETS
+							</NavLink>
 
-						<NavLink
-							to="/profile"
-							className={({ isActive }) =>
-								isActive ? styles.activeLink : styles.navLink
-							}
-						>
-							PROFILE
-						</NavLink>
+							<NavLink
+								to="/profile"
+								className={({ isActive }) =>
+									isActive ? styles.activeLink : styles.navLink
+								}
+							>
+								PROFILE
+							</NavLink>
+						</div>
 					</>
 				) : null}
 
