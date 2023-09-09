@@ -101,6 +101,7 @@ const Contact = () => {
 		<div className={styles.container}>
 			<h3 className={styles.title}>Contact Us</h3>
 			<form ref={form} className={styles.form} onSubmit={handleSubmit}>
+				
 				{/* Name */}
 				<label className={styles.label} htmlFor="name">
 					Name:
