@@ -1,8 +1,9 @@
+const bcrypt = require('bcrypt');
 const { User } = require("../DB_connection");
 
 const login = async (req, res) => {
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
         
         if (!email || !password) {
             return res.status(400).json({ error: "Missing data" });
@@ -10,9 +11,14 @@ const login = async (req, res) => {
 
         const user = await User.findOne({ where: { email } });
 
-        if (!user) return res.status(404).json({ error: "User not Found" });
-        
-        if (user.dataValues.password !== password) {
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // Compara la contraseña proporcionada con la contraseña almacenada de forma segura
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
             return res.status(403).json({ error: "Incorrect password" });
         }
 
@@ -27,7 +33,8 @@ const login = async (req, res) => {
         });
 
     } catch (error) {
-        return res.status(500).json({ error: error });
+        console.error(error);
+        return res.status(500).json({ error: "Internal server error" });
     }
 };
 

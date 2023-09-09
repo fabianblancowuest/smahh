@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ChangePassword.module.css"; // Estilos específicos para este componente
-import { updateUser } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const ChangePassword = () => {
     const [passwordData, setPasswordData] = useState({
@@ -13,7 +13,6 @@ const ChangePassword = () => {
     const [updateSuccess, setUpdateSuccess] = useState(null);
     const [updateError, setUpdateError] = useState(null);
 
-    const dispatch = useDispatch()
     const userId = useSelector(state => state.userId)
 
     const message = (
@@ -36,7 +35,7 @@ const ChangePassword = () => {
         event.preventDefault();
 
         try {
-            await dispatch(updateUser(userId, {password: passwordData.newPassword}))
+            await axios.put(`http://localhost:3001/user/change-password/${userId}`, passwordData)
             setPasswordData({
                 currentPassword: "",
                 newPassword: "",

@@ -3,11 +3,11 @@ const { User } = require('../../DB_connection');
 
 const changePassword = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { id } = req.params;
     const { currentPassword, newPassword } = req.body;
 
-    const user = await User.findByPk(userId);
-
+    const user = await User.findByPk(id);
+  
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
