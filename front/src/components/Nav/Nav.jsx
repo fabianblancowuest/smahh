@@ -14,21 +14,23 @@ const Nav = () => {
 
 	const handleLogOut = () => {
 		dispatch(logOut(true));
-		Swal.fire({
-			title: "Are you sure you want to log out?",
-			showDenyButton: true,
-			showCancelButton: false,
-			confirmButtonText: "Yes",
-			denyButtonText: `No`,
-		}).then((result) => {
-			/* Read more about isConfirmed, isDenied below */
-			if (!result.isConfirmed) {
-				Swal.fire("Good choice!");
-			} else if (result.isCofirmed) {
-				Swal.fire("Goodbye!");
-				navigate("/");
-			}
-		});
+		navigate("/")
+		// Swal.fire({
+		// 	title: "Are you sure you want to log out?",
+		// 	showDenyButton: true,
+		// 	showCancelButton: false,
+		// 	confirmButtonText: "Yes",
+		// 	denyButtonText: `No`,
+		// }).then((result) => {
+		// 	/* Read more about isConfirmed, isDenied below */
+		// 	if (!result.isConfirmed) {
+		// 		Swal.fire("Good choice!");
+		// 	} else if (result.isCofirmed) {
+		// 		Swal.fire("Goodbye!");
+		// 		// navigate("/");
+		// 		dispatch(logOut(true));
+		// 	}
+		// });
 	};
 
 	return (

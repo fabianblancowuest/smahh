@@ -51,7 +51,7 @@
 	font-weight: bold;
 }
 
-.btnSubmit {
+.button {
 	background: linear-gradient(
 		90deg,
 		hsla(236, 100%, 8%, 1) 0%,
@@ -78,6 +78,12 @@
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.disabledButton {
+	background-color: #ccc; 
+	color: #666; 
+	cursor: not-allowed; 
+	transition: none; 
+  }
 @media only screen and (max-width: 600px) {
 	.container {
 		max-width: 80vw;

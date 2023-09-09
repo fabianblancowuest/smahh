@@ -9,14 +9,15 @@ const postTicket = async (req, res) => {
       issueType,
       priority,
       userId,
-      userName
+      userName,
+      userEmail
     } = req.body;
 
     // Verifica si el ID de usuario existe en la base de datos
     const existingUser = await User.findByPk(userId);
     if (!existingUser) {
       return res.status(400).json({
-        error: 'El ID de usuario no existe en la base de datos'
+        message: 'Id user does not exist',
       });
     }
 
@@ -27,17 +28,19 @@ const postTicket = async (req, res) => {
       issueType,
       priority,
       UserId: userId,
-      userName
+      userName,
+      userEmail
     });
 
     return res.status(201).json({
-      message: 'Ticket creado exitosamente',
+      message: 'Ticket created Successfully',
       ticket: newTicket
     });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      error: 'Error al crear el ticket'
+      message: 'Error while creating ticket',
+      error: error.original ? error.original.message : 'Unknown error'
     });
   }
 };

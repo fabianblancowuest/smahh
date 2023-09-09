@@ -30,21 +30,6 @@
 	padding-left: 2rem;
 }
 
-/* .button {
-	display: inline;
-	background-color: #555;
-	color: #fff;
-	font-size: 1rem;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-.button:hover {
-	background-color: #777;
-} */
-
 .button {
 	font-weight: bold;
 	position: absolute;

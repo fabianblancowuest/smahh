@@ -98,6 +98,12 @@
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.disabledButton {
+	background-color: #ccc; 
+	color: #666; 
+	cursor: not-allowed; 
+	transition: none; 
+  }
 ::placeholder {
 	font-size: 1rem;
 }

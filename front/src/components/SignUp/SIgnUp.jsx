@@ -7,6 +7,7 @@ import validateSignUp from "./validateSignUp";
 import PopUp from "../PopUp/PopUp";
 
 const SignUp = () => {
+
 	const initialState = {
 		firstName: "",
 		lastName: "",
@@ -18,23 +19,24 @@ const SignUp = () => {
 	};
 
 	const [userData, setUserData] = useState(initialState);
-	const [errors, setErrors] = useState({}); // Estado para almacenar errores y validarlos
+	const [errors, setErrors] = useState({});
 
-	const [successMessage, setSuccessMessage] = useState(""); // Estado para el mensaje de éxito
+	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-
-	const [showPopUp, setShowPopUp] = useState(false); // Estado para mostrar/ocultar el PopUp
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	//mensaje de exito para el signUp- esto se seteará en el submit en el bloque try
 	const message = (
 		<>
 			You've signed up succesfuly ✔️
 			<br />A confirmation email will be sent to you.
 		</>
 	);
+
+	const isButtonDisabled =
+		Object.values(userData).some((value) => !value) ||
+		Object.values(errors).some((error) => error);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -63,9 +65,6 @@ const SignUp = () => {
 			try {
 				await dispatch(signUp(userData));
 				setSuccessMessage(message);
-
-				// setShowPopUp(true) // en caso de utilizar el PopUp
-
 				setUserData(initialState);
 				setErrorMessage("");
 			} catch (error) {
@@ -173,12 +172,13 @@ const SignUp = () => {
 					<p className={styles.errors}>{errors.confirmPassword}</p>
 				)}
 
+				{/*Submit Button */}
 				{!successMessage && (
 					<input
-						className={styles.btnSubmit}
 						type="submit"
 						value="Submit"
-						disabled={Object.keys(errors).length > 0 || successMessage !== ""}
+						className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
+						disabled={isButtonDisabled}
 					/>
 				)}
 
@@ -187,7 +187,7 @@ const SignUp = () => {
 				)}
 
 				{successMessage && (
-					<button onClick={handleNavigate} className={styles.btnSubmit}>
+					<button onClick={handleNavigate} className={styles.button}>
 						Go to Log In
 					</button>
 				)}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Dashboard/CombinedStyles.css"
 import { useDispatch, useSelector } from "react-redux";
+import { format } from "date-fns"; 
 import { getAllTickets, updateTicket } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 
@@ -36,6 +37,11 @@ const TicketStaff = ({ ticket }) => {
         }
     };
 
+    const formatDate = (stringDate) => {
+        const date = new Date(stringDate);
+        return format(date, "MMMM dd, yyyy HH:mm:ss");
+      };
+
     return (
         <div>
 
@@ -55,7 +61,8 @@ const TicketStaff = ({ ticket }) => {
                     </select>
                     <button onClick={handleUpdate}>UPDATE</button>
                 </div>
-                <div className="ticket-item">{createdAt}</div>
+                <div className="ticket-item">{formatDate(createdAt)}</div>
+                <div className="ticket-item">{formatDate(updatedAt)}</div>
 
                 <div className="ticket-item">
                     <Link to={`/detail/${id}`}>

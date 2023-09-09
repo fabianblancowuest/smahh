@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TicketStaff from "../TicketStaff/TicketStaff";
 import { getAllTickets } from "../../redux/actions/actions";
+import { format } from "date-fns"; 
 import "./CombinedStyles.css"
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
@@ -12,12 +13,15 @@ const Dashboard = () => {
   const totalTickets = userTickets.length
 
   useEffect(() => {
-    dispatch(getAllTickets())
-  }, []);
+    if (userTickets.length === 0) {
+      dispatch(getAllTickets());
+    } 
+    // dispatch(getAllTickets())
+  }, [userTickets]);
 
-  const handleRefresh = () => {
-    dispatch(getAllTickets());
-  }
+  // const handleRefresh = () => {
+  //   dispatch(getAllTickets());
+  // }
 
   return (
     <div>
@@ -27,7 +31,7 @@ const Dashboard = () => {
 
       <SearchBar />
 
-      <button onClick={handleRefresh} className="buttonRefresh">Refresh</button>
+      {/* <button onClick={handleRefresh} className="buttonRefresh">Refresh</button> */}
 
       <Filters />
 
@@ -39,6 +43,7 @@ const Dashboard = () => {
         <div>Status</div>
         <div>Update Status</div>
         <div>Created At</div>
+        <div>Updated At</div>
         <div>Detail </div>
       </div>
 

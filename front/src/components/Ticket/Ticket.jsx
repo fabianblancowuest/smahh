@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Ticket.module.css";
 import { Link } from "react-router-dom";
+import { format } from "date-fns"; 
 
 const Ticket = ({ ticket }) => {
 	const {
@@ -18,10 +19,15 @@ const Ticket = ({ ticket }) => {
 		status === "Not Started"
 			? styles.notStarted
 			: status === "In Progress"
-			? styles.inProgress
-			: status === "Completed"
-			? styles.completed
-			: styles.closed;
+				? styles.inProgress
+				: status === "Completed"
+					? styles.completed
+					: styles.closed;
+
+	const formatDate = (stringDate) => {
+		const date = new Date(stringDate);
+		return format(date, "MMMM dd, yyyy HH:mm:ss");
+	};
 
 	return (
 		<div className={`${styles.card}  ${statusClass}`}>
@@ -44,7 +50,7 @@ const Ticket = ({ ticket }) => {
 					<span>{issueType}</span>
 					<br />
 					<h4 className={styles.type}>Date:</h4>
-					<span>{createdAt}</span>
+					<span>{createdAt && formatDate(createdAt)}</span>
 				</div>
 			</div>
 		</div>

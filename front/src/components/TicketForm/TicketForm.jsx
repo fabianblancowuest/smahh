@@ -3,11 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { riseTicket } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import styles from "./TicketForm.module.css";
-import PopUp from "../PopUp/PopUp";
+import validateTicketForm from "./validateTicketForm";
+
 
 const TicketForm = () => {
+
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector((state) => state.userName);
+	const userEmail = useSelector((state)=> state.userEmail)
+
+	const initialState = {
+		issueTitle: "",
+		issueDescription: "",
+		issueType: "",
+		priority: "",
+		userEmail: userEmail,
+	};
+	
+	const [newTicket, setNewTicket] = useState(initialState);
+	const [errors, setErrors] = useState({})
+
+
 
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -15,13 +31,6 @@ const TicketForm = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const initialState = {
-		issueTitle: "",
-		issueDescription: "",
-		issueType: "",
-		priority: "",
-	};
-	const [newTicket, setNewTicket] = useState(initialState);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -35,6 +44,12 @@ const TicketForm = () => {
 			...newTicket,
 			[name]: value,
 		});
+
+		setErrors(validateTicketForm({
+			...newTicket,
+			[name]: value,
+		}))
+
 	};
 
 	const message = (
@@ -43,6 +58,10 @@ const TicketForm = () => {
 			<br />A confirmation email will be sent to you.
 		</>
 	);
+
+	const isButtonDisabled =
+		Object.values(newTicket).some((value) => !value) ||
+		Object.values(errors).some((error)=> error)
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -61,14 +80,20 @@ const TicketForm = () => {
 			issueType: "",
 			priority: "",
 		});
-		// navigate("/tickets");
+
 	};
+
+	const handleStay = () => {
+		setSuccessMessage("")
+	}
+
+	const handleNavigate = () => {
+		navigate("/tickets")
+	}
 
 	return (
 		<div className={styles.formBackground}>
 			<h3 className={styles.title}>Rise your Ticket</h3>
-
-			{/* <PopUp message={successMessage}/> */}
 
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
 				<label className={styles.formLabels}>Select a Service:</label>
@@ -145,6 +170,7 @@ const TicketForm = () => {
 					onChange={handleChange}
 					required
 				/>
+				{errors.issueTitle && <p className={styles.errors}> {errors.issueTitle} </p>}
 
 				<label className={styles.formLabels}>Send us a message:</label>
 				<textarea
@@ -156,16 +182,44 @@ const TicketForm = () => {
 					onChange={handleChange}
 					required
 				/>
+				{errors.issueDescription && <p className={styles.errors}> {errors.issueDescription} </p>}
 
-				<button className={styles.formButton} type="submit">
+
+				{/*Submit Button */}
+
+				{!successMessage && <button
+					className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
+					type="submit"
+					disabled={isButtonDisabled}
+				>
 					Raise Ticket
-				</button>
+				</button>}
 
+				{/* Messages */}
+				{successMessage && (<p className={styles.successMessage}>{successMessage}</p>)}
+
+				{errorMessage && <p className={styles.errors}>{errorMessage}</p>}
+
+				{/* Conditional Options To Navigate or Stay */}
 				{successMessage && (
-					<p className={styles.successMessage}>{successMessage}</p>
+					<button
+						className={styles.button}
+						onClick={handleStay}
+					>
+						Request Another Ticket
+					</button>
 				)}
 
-				{errorMessage && <p className={styles.error}>{errorMessage}</p>}
+				{successMessage && (
+					<button
+						className={styles.button}
+						onClick={handleNavigate}
+					>
+						Go To My Tickets
+					</button>
+				)}
+
+
 			</form>
 		</div>
 	);

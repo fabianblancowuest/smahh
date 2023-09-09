@@ -9,11 +9,6 @@ const inicialState = {
     userEmail: null,
     userPhone: null,
 
-    errorMessage: null,
-    successMessage: null,
-
-    loginMessage: null,
-
     userTickets: [],
     userTicketsCopy: [],
 
@@ -52,8 +47,10 @@ const rootReducer = (state = inicialState, actions) => {
                 userId: null,
                 userType: null,
                 userName: null,
-                errorMessage: null,
-                successMessage: null,
+                userLastName: null,
+                userEmail: null,
+                userPhone: null,
+
                 userTickets: [],
                 userTicketsCopy: [],
                 ticketDetail: {}

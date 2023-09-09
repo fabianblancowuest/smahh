@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../redux/actions/actions";
 import styles from "./Profile.module.css";
-import validateProfile from "./validateProfile";
+import { AiOutlineEdit } from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-    const dispatch = useDispatch();
-
-    const [isUpdating, setIsUpdating] = useState(false);
-    const [updateSuccess, setUpdateSuccess] = useState(null);
-    const [updateError, setUpdateError] = useState(null);
 
     const user = useSelector((state) => ({
         userId: state.userId,
@@ -20,39 +16,53 @@ const Profile = () => {
         email: state.userEmail,
     }));
 
-    const defaultFormData = {
-        email: null,
-        phoneNumber: null,
-        password: null,
-        confirmPassword: null,
-    };
+    const [formData, setFormData] = useState({
+        firstName: user?.userName || "",
+        lastName: user?.userLastName || "",
+        email: "",
+        phoneNumber: "",
+    });
 
-    const [formData, setFormData] = useState(defaultFormData);
+    // Usa useEffect para actualizar initialState cuando cambien los campos firstName y lastName
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            firstName: user?.userName,
+            lastName: user?.userLastName,
+        });
+    }, [user.userName, user.userLastName]);
+
     const [errors, setErrors] = useState({});
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [updateSuccess, setUpdateSuccess] = useState(null);
+    const [updateError, setUpdateError] = useState(null);
 
     const message = (
         <>
-            User updated successfully ✔️
+            User info updated successfully ✔️
             <br />
-            Changes made:
+            {formData.email && "Changes made:"}
             <ul>
-                <li>
-                    <strong>Email:</strong> {formData.email}
-                </li>
-                <li>
-                    <strong>Phone Number:</strong> {formData.phoneNumber}
-                </li>
-                <li>
-                    <strong>New Password:</strong> {formData.password}
-                </li>
+                {formData.email &&
+                    <li>
+                        <strong>Email:</strong> {formData.email}
+                    </li>}
+
+                {formData.phoneNumber &&
+                    <li>
+                        <strong>Phone Number:</strong> {formData.phoneNumber}
+                    </li>}
+
+                {formData.password &&
+                    <li>
+                        <strong>New Password:</strong> {formData.password}
+                    </li>}
             </ul>
         </>
     );
-
-    const isButtonDisabled =
-        isUpdating ||
-        Object.values(formData).some((value) => !value) ||
-        Object.values(errors).some((error) => error);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -67,39 +77,42 @@ const Profile = () => {
             [name]: value,
         });
 
-        setErrors(validateProfile({
-            ...formData,
-            [name]: value,
-        }));
     };
 
-    const handleSubmit = async () => {
-        setIsUpdating(true);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-        const existErrors = Object.keys(errors)
+        try {
+            const responseData = await dispatch(updateUser(user.userId, formData));
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                email: "",
+                phoneNumber: "",
+            }));
+            setUpdateSuccess(message);
+            setUpdateError(null);
+        } catch (error) {
+            console.log(error);
+            let errorMessage = "Internal server Error";
 
-        if (existErrors.length === 0) {
-            try {
-                const responseData = await dispatch(updateUser(user.userId, formData));
-                setFormData({
-                    email: "",
-                    phoneNumber: "",
-                    password: "",
-                    confirmPassword: "",
-                });
-                setUpdateSuccess(message);
-                setUpdateError(null);
-            } catch (error) {
+            if (error.response) {
                 setUpdateError(error.response.data.error);
                 setUpdateSuccess(null);
-            } finally {
-                setIsUpdating(false);
-            }
-        } else {
-
+            } else
+                setUpdateError(errorMessage)
         }
-
     };
+
+    const handleFormClick = () => {
+        if (updateSuccess) {
+            setUpdateSuccess(null);
+            setUpdateError(null)
+        }
+    }
+
+    const handleNavigate = () => {
+        navigate("/profile/editpassword")
+    }
 
     return (
         <div className={styles.container}>
@@ -118,32 +131,39 @@ const Profile = () => {
                 </p>
             </div>
 
-            <form className={styles.form}>
+            <form className={styles.form} onClick={handleFormClick}>
+
                 {/*First Name */}
-                {/* <div>
-                    <label className={styles.label}>First Name</label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className={styles.input}
-                    />
-                </div> */}
+                <label className={styles.label}>
+                    First Name
+                    <span className={styles.editIcon}>
+                        <AiOutlineEdit />
+                    </span>
+                </label>
+                <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+
                 {/*Last Name */}
-                {/* <div>
-                    <label className={styles.label}>Last Name</label>
-                    <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className={styles.input}
-                    />
-                </div> */}
+                <label className={styles.label}>
+                    Last Name
+                    <span className={styles.editIcon}>
+                        <AiOutlineEdit />
+                    </span>
+                </label>
+                <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
 
                 {/* Email */}
-
                 <label className={styles.label}>New Email</label>
                 <input
                     type="email"
@@ -155,9 +175,7 @@ const Profile = () => {
                 />
                 {errors.email && <p className={styles.errors}>{errors.email}</p>}
 
-
                 {/*Phone Number */}
-
                 <label className={styles.label}>New Phone Number</label>
                 <input
                     type="text"
@@ -171,51 +189,35 @@ const Profile = () => {
                     <p className={styles.errors}>{errors.phoneNumber}</p>
                 )}
 
-                {/* Password */}
-                <label className={styles.label}>New Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    className={styles.input}
-                    placeholder="Enter your new password"
-                />
-                {errors.password && (
-                    <p className={styles.errors}>{errors.password}</p>
-                )}
-
-                {/* Confirm Password */}
-                <label className={styles.label}>Confirm New Password</label>
-                <input
-                    type="password"
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    className={styles.input}
-                    placeholder="Confirm your new password"
-                />
-                {errors.confirmPassword && (
-                    <p className={styles.errors}>{errors.confirmPassword}</p>
-                )}
-
                 {/*Submit Button */}
-                <button
-                    type="button"
-                    onClick={handleSubmit}
-                    className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
-                    disabled={isButtonDisabled}
-                >
-                    {isUpdating ? "Updating..." : "Update Profile"}
-                </button>
 
-                {/* Error & Succes Messages */}
+                {(
+                    formData.firstName !== user.userName ||
+                    formData.lastName !== user.userLastName ||
+                    formData.email !== '' ||
+                    formData.phoneNumber !== ''
+                ) && (
+                        <button
+                            type="button"
+                            onClick={handleSubmit}
+                            className={styles.button}
+                        >
+                            Save Changes
+                        </button>
+                    )}
+
+                {/* Error & Success Messages */}
                 {updateError && <p className={styles.errors}>{updateError}</p>}
-                {updateSuccess && <p className={styles.successMessage}>{updateSuccess}</p>}
+                {updateSuccess && <p>{updateSuccess}</p>}
+
+
+                ***************************
+
+                <button onClick={handleNavigate} className={styles.button}>Change Password</button>
 
             </form>
         </div>
     );
-};
+}
 
 export default Profile;

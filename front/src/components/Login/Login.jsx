@@ -101,9 +101,6 @@ const Login = () => {
         <p>{successMessage}</p>
       )}
 
-
-
-
     </div>
   );
 };
