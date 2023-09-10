@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 const ChangePassword = () => {
+
     const [passwordData, setPasswordData] = useState({
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
     });
 
+    const [errors, setErrors] = useState({})
     const [updateSuccess, setUpdateSuccess] = useState(null);
     const [updateError, setUpdateError] = useState(null);
 
@@ -25,9 +27,25 @@ const ChangePassword = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        if (updateError || updateSuccess) {
+            setUpdateError(null);
+            setUpdateSuccess(null);
+        }
+
         setPasswordData({
             ...passwordData,
             [name]: value,
+        });
+
+        const fieldErrors = validatePasswordMatch({
+            ...passwordData,
+            [name]: value,
+        });
+
+        setErrors({
+            ...errors,
+            [name]: fieldErrors[name],
         });
     };
 
@@ -81,6 +99,7 @@ const ChangePassword = () => {
                     onChange={handleChange}
                     className={styles.input}
                 />
+                {errors.newPassword && <p className={styles.errors}>{errors.newPassword}</p>}
 
                 {/* Confirm New Password */}
                 <label className={styles.label}>Confirm New Password</label>
@@ -91,6 +110,7 @@ const ChangePassword = () => {
                     onChange={handleChange}
                     className={styles.input}
                 />
+                {errors.confirmPassword && <p className={styles.errors}>{errors.confirmPassword}</p>}
 
                 {/* Submit Button */}
                 <button type="submit" className={styles.button}>
@@ -107,3 +127,17 @@ const ChangePassword = () => {
 };
 
 export default ChangePassword;
+
+const validatePasswordMatch = (input) => {
+    let errors = {}
+
+    if (!/^(?=.*\d).{6,}$/.test(input.newPassword)) {
+        errors.newPassword = "Password must contain at least one digit and be 6 characters or longer";
+    }
+
+    if (input.newPassword !== input.confirmPassword) {
+        errors.confirmPassword = "Passwords do not match";
+    }
+
+    return errors
+}

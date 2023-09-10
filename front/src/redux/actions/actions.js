@@ -111,17 +111,24 @@ export const getAllTickets = () => async (dispatch) => {
 	}
 };
 
-export const updateTicket = (ticketId, newStatus) => async (dispatch) => {
+export const updateTicket = (ticketId, newStatus) => {
+
 	const URL = "http://localhost:3001/staff/update-ticket";
-	try {
-		const { data } = await axios.put(URL, { ticketId, newStatus });
-		dispatch({
-			type: UPDATE_TICKET,
-			payload: data
-		});
-	} catch (error) {
-		alert(error.response.data.error);
+
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.put(URL, { ticketId, newStatus });
+			dispatch({
+				type: UPDATE_TICKET,
+				payload: data
+			});
+
+			dispatch(getAllTickets());
+		} catch (error) {
+			alert(error);
+		}
 	}
+
 };
 
 // USER- STAFF

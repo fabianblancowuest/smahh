@@ -1,4 +1,4 @@
-import { CLEAR_ERROR, CLEAR_SUCCESS_MESSAGE, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SET_SUCCESS_MESSAGE, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET, UPDATE_USER } from "../actions/types"
+import { FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SET_SUCCESS_MESSAGE, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET, UPDATE_USER } from "../actions/types"
 
 const inicialState = {
     access: false,
@@ -87,8 +87,11 @@ const rootReducer = (state = inicialState, actions) => {
             }
 
         case UPDATE_TICKET:
+
             return {
                 ...state,
+                userTicketsCopy: [...payload.allTicketsUpdated],
+                userTickets: [...state.userTicketsCopy]
             }
 
         case GET_TICKET_DETAIL:

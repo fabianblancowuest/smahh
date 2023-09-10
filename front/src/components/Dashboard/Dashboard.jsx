@@ -16,12 +16,11 @@ const Dashboard = () => {
     if (userTickets.length === 0) {
       dispatch(getAllTickets());
     } 
-    // dispatch(getAllTickets())
   }, [userTickets]);
 
-  // const handleRefresh = () => {
-  //   dispatch(getAllTickets());
-  // }
+  const handleRefresh = () => {
+    dispatch(getAllTickets());
+  }
 
   return (
     <div>
@@ -31,7 +30,7 @@ const Dashboard = () => {
 
       <SearchBar />
 
-      {/* <button onClick={handleRefresh} className="buttonRefresh">Refresh</button> */}
+      <button onClick={handleRefresh} className="buttonRefresh">Refresh</button>
 
       <Filters />
 

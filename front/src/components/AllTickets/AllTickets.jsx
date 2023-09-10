@@ -17,12 +17,11 @@ const AllTickets = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (userTickets.length === 0) {
+		if (userTickets.length === 0) { // si el estado global userTickets se modifica. y solo si se modifica quiero que se despache la accion
 			dispatch(getUserTickets(userId));
-		} else if (!userTickets.length  ) {   // si el userTickets se actualiza su propiedad status necesito que se despache la accion de nuevo 
-			dispatch(getUserTickets(userId))
 		}
 	}, [userTickets]);
+
 
 	const handleRefresh = () => {
 		dispatch(getUserTickets(userId));

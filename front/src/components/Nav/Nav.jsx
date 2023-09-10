@@ -6,31 +6,26 @@ import { logOut } from "../../redux/actions/actions";
 import { FaAtom, FaVirus } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Services from "./../Sevices/Services";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 
 const Nav = () => {
-	const userType = useSelector((state) => state.userType);
+	const user = useSelector((state) => ({
+        userId: state.userId,
+        userType: state.userType,
+        userName: state.userName,
+        userLastName: state.userLastName,
+        userPhone: state.userPhone,
+        email: state.userEmail,
+    }));
+
+	const {userType} = user
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const handleLogOut = () => {
-		dispatch(logOut(true));
-		navigate("/")
-		// Swal.fire({
-		// 	title: "Are you sure you want to log out?",
-		// 	showDenyButton: true,
-		// 	showCancelButton: false,
-		// 	confirmButtonText: "Yes",
-		// 	denyButtonText: `No`,
-		// }).then((result) => {
-		// 	/* Read more about isConfirmed, isDenied below */
-		// 	if (!result.isConfirmed) {
-		// 		Swal.fire("Good choice!");
-		// 	} else if (result.isCofirmed) {
-		// 		Swal.fire("Goodbye!");
-		// 		// navigate("/");
-		// 		dispatch(logOut(true));
-		// 	}
-		// });
+	const [isMenuOpen, setMenuOpen] = useState(false);
+
+	const toggleMenu = () => {
+	  setMenuOpen(!isMenuOpen);
 	};
 
 	return (
@@ -117,14 +112,6 @@ const Nav = () => {
 								VIEW TICKETS
 							</NavLink>
 
-							<NavLink
-								to="/profile"
-								className={({ isActive }) =>
-									isActive ? styles.activeLink : styles.navLink
-								}
-							>
-								PROFILE
-							</NavLink>
 						</div>
 					</>
 				) : null}
@@ -140,11 +127,20 @@ const Nav = () => {
 					</NavLink>
 				) : null}
 
+				
+				
 				{userType === "user" || userType === "staff" ? (
-					<button onClick={handleLogOut} to="/" className={styles.logOutButton}>
-						LOG OUT
-					</button>
+
+					<div onClick={toggleMenu} className={styles.navLink} >
+						<span>{user.userName} {user.userLastName} </span>
+					</div>
+
 				) : null}
+
+
+				{isMenuOpen && 	<ProfileMenu toggleMenu={toggleMenu}/>	}
+
+
 			</nav>
 		</div>
 	);

@@ -57,10 +57,10 @@ const Contact = () => {
 
 		emailjs
 			.sendForm(
-				"service_hre43nq",
-				"template_it5kkwt",
+				"service_beowxyr",
+				"template_kq5tt6g",
 				form.current,
-				"Qj-2BHcvaJJZlfg9O",
+				"Kcc3NYDpXQNi9jixp",
 			)
 			.then(
 				(result) => {
@@ -233,6 +233,9 @@ const Contact = () => {
 						Send Message
 					</button>
 				)}
+
+
+				{/* Messges */}
 
 				{successMessage && <p>{successMessage}</p>}
 

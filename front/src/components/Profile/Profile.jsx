@@ -110,10 +110,6 @@ const Profile = () => {
         }
     }
 
-    const handleNavigate = () => {
-        navigate("/profile/editpassword")
-    }
-
     return (
         <div className={styles.container}>
 
@@ -209,11 +205,6 @@ const Profile = () => {
                 {/* Error & Success Messages */}
                 {updateError && <p className={styles.errors}>{updateError}</p>}
                 {updateSuccess && <p>{updateSuccess}</p>}
-
-
-                ***************************
-
-                <button onClick={handleNavigate} className={styles.button}>Change Password</button>
 
             </form>
         </div>

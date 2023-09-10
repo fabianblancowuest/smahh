@@ -1,0 +1,25 @@
+.dropdown {
+    position: absolute;
+    top: 60px; /* Ajusta la posición según sea necesario */
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  /* Controla el orden de apilamiento, ajusta según sea necesario */
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu.active {
+    display: block;
+  }

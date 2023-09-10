@@ -7,6 +7,7 @@ import styles from "./Detail.module.css";
 import TicketResponseForm from "../TicketResponseForm/TicketResponseForm";
 
 const DetailTicket = () => {
+	const userType = useSelector(state=> state.userType)
 	const { id } = useParams();
 	const dispatch = useDispatch();
 
@@ -98,7 +99,8 @@ const DetailTicket = () => {
 				</div>
 			</div>
 
-			<TicketResponseForm ticketData={ticketDetail} />
+			{userType == "staff" && <TicketResponseForm ticketData={ticketDetail} />}
+
 		</div>
 	);
 };

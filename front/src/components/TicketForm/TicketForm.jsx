@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { riseTicket } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
@@ -17,20 +17,23 @@ const TicketForm = () => {
 		issueDescription: "",
 		issueType: "",
 		priority: "",
-		userEmail: userEmail,
 	};
 	
 	const [newTicket, setNewTicket] = useState(initialState);
 	const [errors, setErrors] = useState({})
-
-
-
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		if (userEmail) {
+		  setNewTicket({
+			...newTicket,
+			userEmail: userEmail,
+		  });
+		}
+	  }, [userEmail]);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -39,6 +42,7 @@ const TicketForm = () => {
 			setErrorMessage("");
 			setSuccessMessage("");
 		}
+
 
 		setNewTicket({
 			...newTicket,
@@ -60,8 +64,8 @@ const TicketForm = () => {
 	);
 
 	const isButtonDisabled =
-		Object.values(newTicket).some((value) => !value) ||
-		Object.values(errors).some((error)=> error)
+    Object.values(newTicket).some((value) => !value) ||
+    Object.values(errors).some((error) => error);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -79,6 +83,7 @@ const TicketForm = () => {
 			issueDescription: "",
 			issueType: "",
 			priority: "",
+			userEmail: newTicket.userEmail
 		});
 
 	};

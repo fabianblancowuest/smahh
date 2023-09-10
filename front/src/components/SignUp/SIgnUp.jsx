@@ -86,10 +86,6 @@ const SignUp = () => {
 		<div className={styles.container}>
 			<h3 className={styles.title}>Sign Up</h3>
 
-			{/* {showPopUp && (
-				<PopUp message={successMessage} />
-			)} */}
-
 			<form className={styles.form} onSubmit={handleSubmit}>
 				{/* First Name */}
 				<label className={styles.label}>First Name</label>

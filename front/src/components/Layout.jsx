@@ -101,6 +101,8 @@ const StaffRoutes = () => {
 				<Routes>
 					<Route path="/" element={<Dashboard />} />
 					<Route path="/detail/:id" element={<Detail />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="/profile/editpassword" element={<ChangePassword />} />
 				</Routes>
 			</div>
 			<Footer />
