@@ -33,10 +33,15 @@ body {
 	justify-content: center;
 }
 
+.mainHeader img {
+	width: auto;
+}
+
 .title {
-	padding-top: 6rem;
+	width: 40%;
 	font-size: 4rem;
-	line-height: 1.5;
+	line-height: 1.8;
+	font-weight: bolder;
 	letter-spacing: 0.2rem;
 	font-weight: 900;
 	color: #f5faf8;
@@ -45,11 +50,14 @@ body {
 }
 
 .description {
-	font-size: 1.2rem;
+	width: 40%;
+	font-size: 1.4rem;
+	font-weight: bold;
 	color: #666;
 	color: #f5faf8;
 	text-align: center;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	line-height: 1.8;
 }
 
 .cards {
@@ -57,10 +65,9 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	width: 85%;
+	flex-direction: row;
 	flex-wrap: wrap;
+	/* width: 100%; */
 	gap: 5.5rem;
 }
 
@@ -123,19 +130,24 @@ main section h2 {
 }
 
 .sectionService {
+	background-image: url(./../../assets/images/Landing/banner-bg-5.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 	height: 100vh;
-	background: linear-gradient(
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	/* background: linear-gradient(
 		90deg,
 		hsla(208, 33%, 21%, 1) 0%,
 		hsla(211, 36%, 46%, 1) 100%
-	);
+	); */
 	color: white;
 	transition: transform 0.5s ease;
 	text-align: center;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	gap: 3rem;
 	padding: 2rem;
 }

@@ -11,6 +11,11 @@ import cloudSection from "./../../assets/images/services/sections/cloud-security
 import dataSection from "./../../assets/images/services/sections/data-protection.jpg";
 import securitySection from "./../../assets/images/services/sections/security-news.jpg";
 import dataLossSection from "./../../assets/images/services/sections/data-loss.jpg";
+import banerLogo from "./../../assets/images/Landing/banner-logo.png";
+import { NavLink, Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // import { useRef, useEffect } from "react";
 const Landing = () => {
 	return (
@@ -21,6 +26,7 @@ const Landing = () => {
 					Explore the latest trends and insights in cybersecurity to protect
 					your digital world.
 				</p> */}
+				<img src={banerLogo}></img>
 				<span>World Class Cyber Security</span>
 				<h1 className={styles.title}>
 					Real-Time Monitoring Your Infrastructure
@@ -85,7 +91,7 @@ const Landing = () => {
 							<img className={styles.img} src={securityNews}></img>
 						</div>
 					</a>
-					<a href="#data-loss">
+					<a href="/#data-loss">
 						<div className={styles.card}>
 							<h2 className={styles.cardTitle}>Data Loss Prevention</h2>
 							<p className={styles.cardText}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,9 +12,19 @@ const Nav = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const handleGoToPrincipalMain = () => {
+		navigate("/");
+		setTimeout(() => {
+			const element = document.getElementById("principal-main");
+			if (element) {
+				element.scrollIntoView({ behavior: "smooth" });
+			}
+		}, 100); // Espera un momento para que se renderice la página antes de hacer scroll
+	};
+
 	const handleLogOut = () => {
 		dispatch(logOut(true));
-		navigate("/")
+		navigate("/");
 		// Swal.fire({
 		// 	title: "Are you sure you want to log out?",
 		// 	showDenyButton: true,
@@ -69,6 +79,13 @@ const Nav = () => {
 								}
 							>
 								HOME
+							</NavLink>
+							<NavLink
+								to=""
+								className={styles.navLink}
+								onClick={handleGoToPrincipalMain}
+							>
+								SERVICIOS
 							</NavLink>
 						</>
 					) : null}
