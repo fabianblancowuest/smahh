@@ -205,3 +205,33 @@ export const sortByDate = (order) => {
 	}
 }
 
+export const applyCombinedFilters = (priority, status, order) => {
+	return (dispatch, getState) => {
+	  // Get the current state
+	  const { userTicketsCopy } = getState()
+  
+	  // Apply filters based on user input
+	  let filteredTickets = [...userTicketsCopy];
+  
+	  if (priority !== "All") {
+		filteredTickets = filteredTickets.filter((ticket) => ticket.priority === priority);
+	  }
+  
+	  if (status !== "All") {
+		filteredTickets = filteredTickets.filter((ticket) => ticket.status === status);
+	  }
+  
+	  if (order === "A") {
+		filteredTickets.sort((a, b) => a.id - b.id);
+	  } else if (order === "D") {
+		filteredTickets.sort((a, b) => b.id - a.id);
+	  }
+  
+	  // Dispatch the filtered tickets to update the state
+	  dispatch({
+		type: "FILTERED_TICKETS",
+		payload: filteredTickets,
+	  });
+	};
+  };
+

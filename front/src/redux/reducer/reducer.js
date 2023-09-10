@@ -11,6 +11,7 @@ const inicialState = {
 
     userTickets: [],
     userTicketsCopy: [],
+    filteredTickets: [],
 
     ticketDetail: {}
 
@@ -147,6 +148,12 @@ const rootReducer = (state = inicialState, actions) => {
                 ...state,
                 userTickets: sortedTickets
             }
+
+        case "FILTERED_TICKETS":
+            return {
+                ...state,
+                filteredTickets: payload,
+            };
 
         case SEARCH_BY_ID: {
             const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload))
