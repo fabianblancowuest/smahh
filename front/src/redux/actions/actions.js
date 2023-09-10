@@ -23,25 +23,25 @@ export const signUp = (userData) => async (dispatch) => {
 export const logIn = (userData) => async (dispatch) => {
 	//LocalHost Request
 	const URL = "http://localhost:3001/login";
-	
-		try {
-			const { data } = await axios.post(URL, userData);
-			dispatch({
-				type: LOG_IN,
-				payload: data,
-			});
 
-			return data
+	try {
+		const { data } = await axios.post(URL, userData);
+		dispatch({
+			type: LOG_IN,
+			payload: data,
+		});
 
-		} catch (error) {
-			throw error; 
-		}
-	
+		return data
+
+	} catch (error) {
+		throw error;
+	}
+
 };
 
 // USER 
 
-export const riseTicket = (newTicket , userId, userName) => async (dispatch) => {
+export const riseTicket = (newTicket, userId, userName) => async (dispatch) => {
 	const URL = "http://localhost:3001/user/ticket";
 
 	newTicket.userId = userId;
@@ -79,21 +79,19 @@ export const updateUser = (userId, formData) => async (dispatch) => {
 	}
 };
 
-export const getUserTickets = (userId) => {
+export const getUserTickets = (userId) => async (dispatch) => {
 	const URL = `http://localhost:3001/user/ticket/`
+	try {
+		const { data } = await axios.get(URL + userId) //
 
-	return async (dispatch) => {
-		try {
-			const { data } = await axios.get(URL + userId) //
-
-			dispatch({
-				type: GET_USER_TICKETS,
-				payload: data,
-			})
-		} catch (error) {
-			console.log(error);
-		}
+		dispatch({
+			type: GET_USER_TICKETS,
+			payload: data,
+		})
+	} catch (error) {
+		console.log(error);
 	}
+
 }
 
 // STAFF 
@@ -102,6 +100,7 @@ export const getAllTickets = () => async (dispatch) => {
 	const URL = "http://localhost:3001/staff/allTickets";
 	try {
 		const { data } = await axios.get(URL);
+
 		dispatch({
 			type: GET_ALL_TICKETS,
 			payload: data
@@ -123,7 +122,6 @@ export const updateTicket = (ticketId, newStatus) => {
 				payload: data
 			});
 
-			dispatch(getAllTickets());
 		} catch (error) {
 			alert(error);
 		}
@@ -207,31 +205,31 @@ export const sortByDate = (order) => {
 
 export const applyCombinedFilters = (priority, status, order) => {
 	return (dispatch, getState) => {
-	  // Get the current state
-	  const { userTicketsCopy } = getState()
-  
-	  // Apply filters based on user input
-	  let filteredTickets = [...userTicketsCopy];
-  
-	  if (priority !== "All") {
-		filteredTickets = filteredTickets.filter((ticket) => ticket.priority === priority);
-	  }
-  
-	  if (status !== "All") {
-		filteredTickets = filteredTickets.filter((ticket) => ticket.status === status);
-	  }
-  
-	  if (order === "A") {
-		filteredTickets.sort((a, b) => a.id - b.id);
-	  } else if (order === "D") {
-		filteredTickets.sort((a, b) => b.id - a.id);
-	  }
-  
-	  // Dispatch the filtered tickets to update the state
-	  dispatch({
-		type: "FILTERED_TICKETS",
-		payload: filteredTickets,
-	  });
+		// Get the current state
+		const { userTicketsCopy } = getState()
+
+		// Apply filters based on user input
+		let filteredTickets = [...userTicketsCopy];
+
+		if (priority !== "All") {
+			filteredTickets = filteredTickets.filter((ticket) => ticket.priority === priority);
+		}
+
+		if (status !== "All") {
+			filteredTickets = filteredTickets.filter((ticket) => ticket.status === status);
+		}
+
+		if (order === "A") {
+			filteredTickets.sort((a, b) => a.id - b.id);
+		} else if (order === "D") {
+			filteredTickets.sort((a, b) => b.id - a.id);
+		}
+
+		// Dispatch the filtered tickets to update the state
+		dispatch({
+			type: "FILTERED_TICKETS",
+			payload: filteredTickets,
+		});
 	};
-  };
+};
 

@@ -1,36 +1,44 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TicketStaff from "../TicketStaff/TicketStaff";
-import { getAllTickets } from "../../redux/actions/actions";
-import { format } from "date-fns"; 
+import { getAllTickets, applyCombinedFilters} from "../../redux/actions/actions";
 import "./CombinedStyles.css"
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Dashboard = () => {
-  const userTickets = useSelector((state) => state.userTickets);
-  const dispatch = useDispatch();
-  const totalTickets = userTickets.length
+  const userTicketsCopy = useSelector((state) => state.userTicketsCopy);
+  const filteredTickets = useSelector((state) => state.filteredTickets);
 
+  const totalAmount = userTicketsCopy.length;
+  const totalFilteredTickets = filteredTickets.length;
+  
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    if (userTickets.length === 0) {
+    if (userTicketsCopy.length === 0) {
       dispatch(getAllTickets());
-    } 
-  }, [userTickets]);
+    } else {
+      // Cuando userTicketsCopy se actualiza, también actualizamos filteredTickets
+      dispatch(applyCombinedFilters("All", "All", "A")); // Aplica los filtros iniciales
+    }
+  }, [userTicketsCopy, dispatch]);
 
   const handleRefresh = () => {
     dispatch(getAllTickets());
-  }
+  };
 
   return (
     <div>
-      <h1 className="title">
-        Dashboard of tickets in total: {totalTickets}
-      </h1>
+      <h1 className="title">Dashboard</h1>
+      <h2 className="title">All tickets: {totalAmount} </h2>
+      <h2 className="title">Filtered tickets: {totalFilteredTickets}</h2>
 
       <SearchBar />
 
-      <button onClick={handleRefresh} className="buttonRefresh">Refresh</button>
+      <button onClick={handleRefresh} className="buttonRefresh">
+        Refresh
+      </button>
 
       <Filters />
 
@@ -46,9 +54,9 @@ const Dashboard = () => {
         <div>Detail </div>
       </div>
 
-      <div >
-        {userTickets?.length > 0 ? (
-          userTickets.map((ticket) => (
+      <div>
+        {filteredTickets?.length > 0 ? (
+          filteredTickets.map((ticket) => (
             <TicketStaff key={ticket.id} ticket={ticket} />
           ))
         ) : (

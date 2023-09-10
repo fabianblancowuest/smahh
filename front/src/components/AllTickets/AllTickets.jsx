@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Ticket from "../Ticket/Ticket";
 import styles from "./AllTickets.module.css";
-import { getUserTickets, applyCombinedFilters } from "../../redux/actions/actions"; // Importa la acción applyCombinedFilters
+import { applyCombinedFilters, getUserTickets } from "../../redux/actions/actions"; // Importa la acción applyCombinedFilters
 import Filters from "../Filters/Filters";
 
 const AllTickets = () => {
   const userName = useSelector((state) => state.userName);
   const userId = useSelector((state) => state.userId);
 
-  const userTickets = useSelector((state) => state.userTickets);
   const userTicketsCopy = useSelector((state) => state.userTicketsCopy);
   const filteredTickets = useSelector((state) => state.filteredTickets); // Nuevo estado para los tickets filtrados
 
@@ -19,10 +18,13 @@ const AllTickets = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userTickets.length === 0) {
+    if (userTicketsCopy.length === 0) {
       dispatch(getUserTickets(userId));
+    } else {
+      // Cuando userTicketsCopy se actualiza, también actualizamos filteredTickets
+      dispatch(applyCombinedFilters("All", "All", "A")); // Aplica los filtros iniciales
     }
-  }, [userTickets]);
+  }, [userTicketsCopy, dispatch]);
 
   const handleRefresh = () => {
     dispatch(getUserTickets(userId));
@@ -47,9 +49,13 @@ const AllTickets = () => {
       </button>
 
       <section className={styles.container}>
-        {filteredTickets?.map((ticket) => ( 
-          <Ticket key={ticket.id} ticket={ticket} />
-        ))}
+      {filteredTickets?.length > 0 ? (
+          filteredTickets.map((ticket) => (
+            <Ticket key={ticket.id} ticket={ticket} />
+          ))
+        ) : (
+          <h2 className={styles.title}>No se encontraron tickets</h2>
+        )}
       </section>
     </div>
   );
