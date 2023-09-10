@@ -27,7 +27,7 @@ const ProfileMenu = ({toggleMenu}) => {
     return (
         <div className={styles.dropdown}>
             <ul>
-                <Link to="/profile">
+                <Link className={styles.link} to="/profile">
                     <li onClick={toggleMenu}>Edit Profile</li>
                 </Link>
 
