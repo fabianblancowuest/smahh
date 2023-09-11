@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../redux/actions/actions";
 import styles from "./Profile.module.css";
 import { AiOutlineEdit } from 'react-icons/ai';
+import { FaEnvelope, FaPhone, FaExclamationCircle, FaAt, FaSave, FaEdit } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
@@ -110,10 +111,6 @@ const Profile = () => {
         }
     }
 
-    const handleNavigate = () => {
-        navigate("/profile/editpassword")
-    }
-
     return (
         <div className={styles.container}>
 
@@ -135,10 +132,7 @@ const Profile = () => {
 
                 {/*First Name */}
                 <label className={styles.label}>
-                    First Name
-                    <span className={styles.editIcon}>
-                        <AiOutlineEdit />
-                    </span>
+                    <AiOutlineEdit /> First Name
                 </label>
                 <input
                     type="text"
@@ -150,10 +144,7 @@ const Profile = () => {
 
                 {/*Last Name */}
                 <label className={styles.label}>
-                    Last Name
-                    <span className={styles.editIcon}>
-                        <AiOutlineEdit />
-                    </span>
+                    <AiOutlineEdit /> Last Name
                 </label>
                 <input
                     type="text"
@@ -164,7 +155,9 @@ const Profile = () => {
                 />
 
                 {/* Email */}
-                <label className={styles.label}>New Email</label>
+                <label className={styles.label}>
+                    <FaAt /> Email
+                </label>
                 <input
                     type="email"
                     name="email"
@@ -172,11 +165,12 @@ const Profile = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={styles.input}
-                />
-                {errors.email && <p className={styles.errors}>{errors.email}</p>}
+                />    
 
                 {/*Phone Number */}
-                <label className={styles.label}>New Phone Number</label>
+                <label className={styles.label}>
+                    <FaPhone /> Phone Number
+                </label>
                 <input
                     type="text"
                     name="phoneNumber"
@@ -185,9 +179,6 @@ const Profile = () => {
                     onChange={handleChange}
                     className={styles.input}
                 />
-                {errors.phoneNumber && (
-                    <p className={styles.errors}>{errors.phoneNumber}</p>
-                )}
 
                 {/*Submit Button */}
 
@@ -202,18 +193,13 @@ const Profile = () => {
                             onClick={handleSubmit}
                             className={styles.button}
                         >
-                            Save Changes
+                            <FaEdit/> Save Changes
                         </button>
                     )}
 
                 {/* Error & Success Messages */}
-                {updateError && <p className={styles.errors}>{updateError}</p>}
+                {updateError && <p className={styles.errors}><FaExclamationCircle /> {updateError}</p>}
                 {updateSuccess && <p>{updateSuccess}</p>}
-
-
-                ***************************
-
-                <button onClick={handleNavigate} className={styles.button}>Change Password</button>
 
             </form>
         </div>

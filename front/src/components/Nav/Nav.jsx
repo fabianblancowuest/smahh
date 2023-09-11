@@ -2,13 +2,24 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../redux/actions/actions";
-import { FaVirus } from "react-icons/fa";
+import { FaAtom, FaVirus, FaUser } from "react-icons/fa"; // Importa el ícono de usuario
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import { useLocation } from "react-router-dom";
 
 const Nav = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const userType = useSelector((state) => state.userType);
+	const [isProfileOpen, setIsProfileOpen] = useState(false);
+	
+	const user = useSelector((state) => ({
+		userId: state.userId,
+		userType: state.userType,
+		userName: state.userName,
+		userLastName: state.userLastName,
+		userPhone: state.userPhone,
+		email: state.userEmail,
+	}));
+
+	const { userType } = user;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -28,18 +39,19 @@ const Nav = () => {
 		}, 100); // Espera un momento para que se renderice la página antes de hacer scroll
 	};
 
-	const handleLogOut = () => {
-		dispatch(logOut(true));
-		navigate("/");
-	};
 
 	const handleToggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
+	
+	// const handleLinkClick = () => {
+	// 	setIsMenuOpen(false);
+	// };
 
-	const handleLinkClick = () => {
-		setIsMenuOpen(false);
-	};
+
+	const toggleProfile = () => {
+		setIsProfileOpen(!isProfileOpen)
+	}
 
 	return (
 		<div className={styles.container}>
@@ -148,15 +160,6 @@ const Nav = () => {
 							>
 								VIEW TICKETS
 							</NavLink>
-
-							<NavLink
-								to="/profile"
-								className={({ isActive }) =>
-									isActive ? styles.activeLink : styles.navLink
-								}
-							>
-								PROFILE
-							</NavLink>
 						</div>
 					</>
 				) : null}
@@ -172,14 +175,29 @@ const Nav = () => {
 					</NavLink>
 				) : null}
 
-				{userType === "user" || userType === "staff" ? (
-					<button onClick={handleLogOut} to="/" className={styles.logOutButton}>
-						LOG OUT
-					</button>
-				) : null}
+
+				{userType === "user" || userType === "staff" ?
+
+					<div onClick={toggleProfile} className={styles.userLink}>
+						<span>
+							<FaUser className={styles.userIcon} />
+							{user.userName} {user.userLastName}
+						</span>
+					</div>
+
+				: null}
+
+
+				{isProfileOpen && <ProfileMenu toggleProfile={toggleProfile} />}
+
+
 			</nav>
 		</div>
 	);
 };
 
+
 export default Nav;
+
+
+

@@ -40,10 +40,10 @@ const TicketResponseForm = ({ ticketData }) => {
 
 		emailjs
 			.sendForm(
-				"service_hre43nq", // Service ID
-				"template_9gkmm5q", // Template ID
+				"service_beowxyr", // Service ID
+				"template_elozfhu", // Template ID
 				form.current,
-				"Qj-2BHcvaJJZlfg9O", // Your Public Key
+				"Kcc3NYDpXQNi9jixp", // Your Public Key
 			)
 			.then(
 				(result) => {

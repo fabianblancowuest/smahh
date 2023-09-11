@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../Dashboard/CombinedStyles.css"
-import { useDispatch, useSelector } from "react-redux";
-import { format } from "date-fns"; 
-import { getAllTickets, updateTicket } from "../../redux/actions/actions";
+import { useDispatch } from "react-redux";
+import { format } from "date-fns";
+import { updateTicket } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 
 const TicketStaff = ({ ticket }) => {
@@ -20,7 +20,6 @@ const TicketStaff = ({ ticket }) => {
 
     const dispatch = useDispatch();
 
-    const newStatusOptions = ["Not Started", "In Progress", "Completed", "Closed"];
     const [selectedStatus, setSelectedStatus] = useState("");
 
     const handleStatusChange = (event) => {
@@ -28,10 +27,9 @@ const TicketStaff = ({ ticket }) => {
         setSelectedStatus(newStatus);
     };
 
-    const handleUpdate = async () => {
-        if (selectedStatus) { 
-            await dispatch(updateTicket(id, selectedStatus)); 
-            await dispatch(getAllTickets()); 
+    const handleUpdate = () => {
+        if (selectedStatus) {
+            dispatch(updateTicket(id, selectedStatus));
         } else {
             alert("Please select a status before updating.");
         }
@@ -40,7 +38,7 @@ const TicketStaff = ({ ticket }) => {
     const formatDate = (stringDate) => {
         const date = new Date(stringDate);
         return format(date, "MMMM dd, yyyy HH:mm:ss");
-      };
+    };
 
     return (
         <div>
@@ -53,11 +51,11 @@ const TicketStaff = ({ ticket }) => {
                 <div className="ticket-item">{status}</div>
                 <div className="ticket-item">
                     <select value={selectedStatus} onChange={handleStatusChange}>
-                        {newStatusOptions.map((option) => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))}
+                        <option value="" disabled hidden>Status</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Closed">Closed</option>
                     </select>
                     <button onClick={handleUpdate}>UPDATE</button>
                 </div>
