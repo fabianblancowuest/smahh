@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { RiLockPasswordLine, RiLogoutCircleLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi"; // Importa el ícono de edición
 
-const ProfileMenu = ({ toggleMenu }) => {
+const ProfileMenu = ({ toggleProfile }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,14 +28,14 @@ const ProfileMenu = ({ toggleMenu }) => {
 
   return (
     <div className={styles.dropdown}>
-      <div className={styles.menuItem} onClick={toggleMenu}>
+      <div className={styles.menuItem} onClick={toggleProfile}>
         <Link className={styles.link} to="/profile" >
           <FiEdit2 className={styles.icon} />
           <span>Edit Profile</span>
         </Link>
       </div>
 
-      <div className={styles.menuItem} onClick={toggleMenu}>
+      <div className={styles.menuItem} onClick={toggleProfile}>
         <Link className={styles.link} to="profile/editpassword">
           <RiLockPasswordLine className={styles.icon} />
           <span>Change Password</span>

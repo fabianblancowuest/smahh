@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap");
 
 html,
@@ -16,9 +15,8 @@ body {
 }
 
 .container {
-	/* max-width: 1200px; */
 	margin: 0 auto;
-	/* padding: 40px; */
+	animation: aparecer 10s ease-in-out;
 }
 
 .mainHeader {
@@ -33,8 +31,12 @@ body {
 	justify-content: center;
 }
 
+.mainHeader img {
+	width: auto;
+}
+
 .title {
-	padding-top: 6rem;
+	width: 38%;
 	font-size: 4rem;
 	line-height: 1.5;
 	letter-spacing: 0.2rem;
@@ -45,7 +47,11 @@ body {
 }
 
 .description {
-	font-size: 1.2rem;
+	width: 58%;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	font-size: 1.3rem;
+	font-weight: bold;
 	color: #666;
 	color: #f5faf8;
 	text-align: center;
@@ -55,15 +61,34 @@ body {
 .cards {
 	padding: 4rem 0;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	width: 85%;
-	flex-wrap: wrap;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	/* width: 85%; */
+	height: 100vh;
 	gap: 5.5rem;
+	width: 100%;
 }
 
+.cards2 {
+	padding: 4rem 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	/* width: 85%; */
+	height: 100vh;
+	gap: 5.5rem;
+	width: 100%;
+}
+#principal-main {
+	background-color: #56317a;
+	height: 200vh;
+}
 a {
 	text-decoration: none;
 }
@@ -107,12 +132,6 @@ a {
 	display: block;
 	margin: 1rem auto;
 	border-radius: 0.5rem;
-}
-
-section {
-	/* width: 80%; */
-	margin-left: auto;
-	margin-right: auto;
 }
 
 main section h2 {
@@ -161,6 +180,24 @@ main section:nth-child(even) {
 		hsla(216, 41%, 79%, 1) 100%
 	);
 	color: black;
+}
+
+/* ... (estilos anteriores) */
+
+/* ... (otros estilos) */
+
+@keyframes aparecer {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.9;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 
 @media (max-width: 767px) {
