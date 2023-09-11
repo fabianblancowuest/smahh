@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap");
 
 html,
@@ -16,9 +15,8 @@ body {
 }
 
 .container {
-	/* max-width: 1200px; */
 	margin: 0 auto;
-	/* padding: 40px; */
+	animation: aparecer 10s ease-in-out;
 }
 
 .mainHeader {
@@ -38,10 +36,9 @@ body {
 }
 
 .title {
-	width: 40%;
+	width: 38%;
 	font-size: 4rem;
-	line-height: 1.8;
-	font-weight: bolder;
+	line-height: 1.5;
 	letter-spacing: 0.2rem;
 	font-weight: 900;
 	color: #f5faf8;
@@ -50,27 +47,48 @@ body {
 }
 
 .description {
-	width: 40%;
-	font-size: 1.4rem;
+	width: 58%;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	color: #666;
 	color: #f5faf8;
 	text-align: center;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	line-height: 1.8;
 }
 
 .cards {
 	padding: 4rem 0;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	flex-direction: row;
-	flex-wrap: wrap;
-	/* width: 100%; */
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	/* width: 85%; */
+	height: 100vh;
 	gap: 5.5rem;
+	width: 100%;
 }
 
+.cards2 {
+	padding: 4rem 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	/* width: 85%; */
+	height: 100vh;
+	gap: 5.5rem;
+	width: 100%;
+}
+#principal-main {
+	background-color: #56317a;
+	height: 200vh;
+}
 a {
 	text-decoration: none;
 }
@@ -116,12 +134,6 @@ a {
 	border-radius: 0.5rem;
 }
 
-section {
-	/* width: 80%; */
-	margin-left: auto;
-	margin-right: auto;
-}
-
 main section h2 {
 	text-align: center;
 	font-size: 2rem;
@@ -130,24 +142,19 @@ main section h2 {
 }
 
 .sectionService {
-	background-image: url(./../../assets/images/Landing/banner-bg-5.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 	height: 100vh;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
-	/* background: linear-gradient(
+	background: linear-gradient(
 		90deg,
 		hsla(208, 33%, 21%, 1) 0%,
 		hsla(211, 36%, 46%, 1) 100%
-	); */
+	);
 	color: white;
 	transition: transform 0.5s ease;
 	text-align: center;
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	gap: 3rem;
 	padding: 2rem;
 }
@@ -173,6 +180,24 @@ main section:nth-child(even) {
 		hsla(216, 41%, 79%, 1) 100%
 	);
 	color: black;
+}
+
+/* ... (estilos anteriores) */
+
+/* ... (otros estilos) */
+
+@keyframes aparecer {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.9;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 
 @media (max-width: 767px) {
