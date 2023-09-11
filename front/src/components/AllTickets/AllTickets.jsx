@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Ticket from "../Ticket/Ticket";
 import styles from "./AllTickets.module.css";
-import { applyCombinedFilters, getUserTickets } from "../../redux/actions/actions"; // Importa la acción applyCombinedFilters
+import { applyCombinedFilters, getUserTickets } from "../../redux/actions/actions"; 
 import Filters from "../Filters/Filters";
 
 const AllTickets = () => {
@@ -10,10 +10,10 @@ const AllTickets = () => {
   const userId = useSelector((state) => state.userId);
 
   const userTicketsCopy = useSelector((state) => state.userTicketsCopy);
-  const filteredTickets = useSelector((state) => state.filteredTickets); // Nuevo estado para los tickets filtrados
+  const filteredTickets = useSelector((state) => state.filteredTickets); 
 
   const totalAmount = userTicketsCopy.length;
-  const totalFilteredTickets = filteredTickets.length; // Usamos el estado de los tickets filtrados
+  const totalFilteredTickets = filteredTickets.length; 
 	
   const dispatch = useDispatch();
 
@@ -21,8 +21,7 @@ const AllTickets = () => {
     if (userTicketsCopy.length === 0) {
       dispatch(getUserTickets(userId));
     } else {
-      // Cuando userTicketsCopy se actualiza, también actualizamos filteredTickets
-      dispatch(applyCombinedFilters("All", "All", "A")); // Aplica los filtros iniciales
+      dispatch(applyCombinedFilters("All", "All", "A")); 
     }
   }, [userTicketsCopy, dispatch]);
 
@@ -41,7 +40,7 @@ const AllTickets = () => {
         </span>
         <span className={styles.spanInfo}>||</span>
         <span className={styles.spanInfo}>
-          Filtered tickets: {totalFilteredTickets} {/* Usamos el estado de los tickets filtrados */}
+          Filtered tickets: {totalFilteredTickets} 
         </span>
       </div>
       <button onClick={handleRefresh} className={styles.button}>

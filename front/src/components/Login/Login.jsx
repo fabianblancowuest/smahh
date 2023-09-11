@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../redux/actions/actions";
 import styles from "./Login.module.css" // Importa la hoja de estilos como "styles"
 import validateLogin from "./validateLogin";
+import { FaLock, FaExclamationCircle, FaAt, FaSignInAlt } from "react-icons/fa";
 
 const Login = () => {
 
@@ -60,7 +61,7 @@ const Login = () => {
       <form className={styles.formContainer} onSubmit={handleSubmit}>
 
         <label htmlFor="email" className={styles.formLabels}>
-          Email:
+         <FaAt/> Email:
         </label>
 
         <input
@@ -75,7 +76,7 @@ const Login = () => {
         {errors.email && <p className={styles.errors}>{errors.email}</p>}
 
         <label htmlFor="password" className={styles.formLabels}>
-          Password:
+          <FaLock/> Password:
         </label>
         <input
           className={styles.formInputs}
@@ -89,17 +90,18 @@ const Login = () => {
         {errors.password && <p className={styles.errors}>{errors.password}</p>}
 
         <button className={styles.formButton} type="submit">
-          Submit
+          <FaSignInAlt/> Submit
         </button>
+
+        {errorMessage && (
+          <p className={styles.errors}><FaExclamationCircle />{errorMessage}</p>
+        )}
+
+        {successMessage && (
+          <p>{successMessage}</p>
+        )}
+
       </form>
-
-      {errorMessage && (
-        <p className={styles.errors}>{errorMessage}</p>
-      )}
-
-      {successMessage && (
-        <p>{successMessage}</p>
-      )}
 
     </div>
   );

@@ -4,7 +4,7 @@ import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import validateSignUp from "./validateSignUp";
-import PopUp from "../PopUp/PopUp";
+import { FaShieldAlt, FaUser, FaPhone, FaEnvelope, FaComment, FaAt, FaLock } from "react-icons/fa";
 
 const SignUp = () => {
 
@@ -88,7 +88,9 @@ const SignUp = () => {
 
 			<form className={styles.form} onSubmit={handleSubmit}>
 				{/* First Name */}
-				<label className={styles.label}>First Name</label>
+				<label className={styles.label}>
+					<FaUser />First Name
+				</label>
 				<input
 					className={styles.input}
 					name="firstName"
@@ -102,7 +104,9 @@ const SignUp = () => {
 				)}
 
 				{/* Last Name */}
-				<label className={styles.label}>Last Name</label>
+				<label className={styles.label}>
+					<FaUser/>Last Name
+				</label>
 				<input
 					className={styles.input}
 					name="lastName"
@@ -115,7 +119,7 @@ const SignUp = () => {
 
 				{/* Phone Number */}
 				<label className={styles.label} htmlFor="phoneNumber">
-					Phone Number:
+					<FaPhone /> Phone Number:
 				</label>
 				<input
 					className={styles.input}
@@ -131,7 +135,9 @@ const SignUp = () => {
 				)}
 
 				{/* Email */}
-				<label className={styles.label}>Email</label>
+				<label className={styles.label}>
+					<FaAt /> Email
+				</label>
 				<input
 					className={styles.input}
 					type="email"
@@ -143,7 +149,9 @@ const SignUp = () => {
 				{errors.email && <p className={styles.errors}>{errors.email}</p>}
 
 				{/* Password */}
-				<label className={styles.label}>Password</label>
+				<label className={styles.label}>
+					<FaLock /> Password
+				</label>
 				<input
 					className={styles.input}
 					name="password"
@@ -155,7 +163,9 @@ const SignUp = () => {
 				{errors.password && <p className={styles.errors}>{errors.password}</p>}
 
 				{/* Confirm Password */}
-				<label className={styles.label}>Confirm Password</label>
+				<label className={styles.label}>
+					<FaLock /> Confirm Password
+				</label>
 				<input
 					className={styles.input}
 					name="confirmPassword"

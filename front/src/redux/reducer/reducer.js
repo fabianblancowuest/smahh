@@ -156,10 +156,15 @@ const rootReducer = (state = inicialState, actions) => {
             };
 
         case SEARCH_BY_ID: {
-            const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload))
-            return {
-                ...state,
-                filteredTickets: [ticketFinded]
+            const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload));
+
+            if (ticketFinded) {
+                return {
+                    ...state,
+                    filteredTickets: [ticketFinded]
+                };
+            } else {
+                return state; 
             }
         }
 

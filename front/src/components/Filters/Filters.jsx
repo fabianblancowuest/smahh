@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { applyCombinedFilters, filterPriority, filterStatus, sortByDate } from "../../redux/actions/actions";
-import styles from "./Filters.module.css"; // Importa la hoja de estilos como "styles"
+import { applyCombinedFilters } from "../../redux/actions/actions";
+import styles from "./Filters.module.css"; 
 
 const Filters = () => {
     const dispatch = useDispatch();
@@ -14,21 +14,21 @@ const Filters = () => {
     const handlePriority = (event) => {
         const selectedPriority = event.target.value;
         setSelectedPriority(selectedPriority);
-        // dispatch(filterPriority(selectedPriority));
+       
         dispatch(applyCombinedFilters(selectedPriority, selectedStatus, selectedOrder));
     };
 
     const handleStatus = (event) => {
         const selectedStatus = event.target.value;
         setSelectedStatus(selectedStatus);
-        // dispatch(filterStatus(selectedStatus));
+        
         dispatch(applyCombinedFilters(selectedPriority, selectedStatus, selectedOrder));
     };
 
     const handleOrder = (event) => {
         const selectedOrder = event.target.value;
         setSelectedOrder(selectedOrder);
-        // dispatch(sortByDate(selectedOrder));
+       
         dispatch(applyCombinedFilters(selectedPriority, selectedStatus, selectedOrder));
     }
 

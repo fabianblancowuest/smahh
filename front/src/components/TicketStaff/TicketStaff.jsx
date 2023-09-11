@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../Dashboard/CombinedStyles.css"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { format } from "date-fns";
-import { getAllTickets, updateTicket } from "../../redux/actions/actions";
+import { updateTicket } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 
 const TicketStaff = ({ ticket }) => {
@@ -51,6 +51,7 @@ const TicketStaff = ({ ticket }) => {
                 <div className="ticket-item">{status}</div>
                 <div className="ticket-item">
                     <select value={selectedStatus} onChange={handleStatusChange}>
+                        <option value="" disabled hidden>Status</option>
                         <option value="Not Started">Not Started</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>

@@ -3,6 +3,7 @@ import styles from "./Contact.module.css";
 import validateContact from "./validateContact"; // Import your validation function
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
+import { FaShieldAlt, FaUser, FaPhone, FaEnvelope, FaComment, FaAt} from "react-icons/fa"; // Importa los iconos de FontAwesome
 
 const Contact = () => {
 	const initialState = {
@@ -104,7 +105,7 @@ const Contact = () => {
 				
 				{/* Name */}
 				<label className={styles.label} htmlFor="name">
-					Name:
+				<FaUser/> Name:
 				</label>
 				<input
 					className={styles.input}
@@ -120,7 +121,7 @@ const Contact = () => {
 
 				{/* Email */}
 				<label className={styles.label} htmlFor="email">
-					Email:
+					<FaAt/> Email:
 				</label>
 				<input
 					className={styles.input}
@@ -136,7 +137,7 @@ const Contact = () => {
 
 				{/* Phone Number */}
 				<label className={styles.label} htmlFor="phoneNumber">
-					Phone Number:
+				<FaPhone/> Phone Number:
 				</label>
 				<input
 					className={styles.input}
@@ -153,7 +154,7 @@ const Contact = () => {
 
 				{/* Subject */}
 				<label className={styles.label} htmlFor="service">
-					Select a Service:
+				<FaShieldAlt/> Select a Service:
 				</label>
 				<select
 					className={styles.select}
@@ -210,7 +211,7 @@ const Contact = () => {
 
 				{/* Message */}
 				<label className={styles.label} htmlFor="message">
-					Message:
+					<FaComment/>Message:
 				</label>
 				<textarea
 					className={styles.textarea}
@@ -230,7 +231,7 @@ const Contact = () => {
 						type="submit"
 						disabled={isButtonDisabled}
 					>
-						Send Message
+						<FaEnvelope/> Send Message
 					</button>
 				)}
 

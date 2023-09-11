@@ -4,13 +4,14 @@ import { riseTicket } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import styles from "./TicketForm.module.css";
 import validateTicketForm from "./validateTicketForm";
+import { FaUser, FaEnvelope, FaExclamationCircle, FaComment, FaShieldAlt, FaTicketAlt } from "react-icons/fa";
 
 
 const TicketForm = () => {
 
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector((state) => state.userName);
-	const userEmail = useSelector((state)=> state.userEmail)
+	const userEmail = useSelector((state) => state.userEmail)
 
 	const initialState = {
 		issueTitle: "",
@@ -18,7 +19,7 @@ const TicketForm = () => {
 		issueType: "",
 		priority: "",
 	};
-	
+
 	const [newTicket, setNewTicket] = useState(initialState);
 	const [errors, setErrors] = useState({})
 	const [successMessage, setSuccessMessage] = useState("");
@@ -28,12 +29,12 @@ const TicketForm = () => {
 
 	useEffect(() => {
 		if (userEmail) {
-		  setNewTicket({
-			...newTicket,
-			userEmail: userEmail,
-		  });
+			setNewTicket({
+				...newTicket,
+				userEmail: userEmail,
+			});
 		}
-	  }, [userEmail]);
+	}, [userEmail]);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -64,8 +65,8 @@ const TicketForm = () => {
 	);
 
 	const isButtonDisabled =
-    Object.values(newTicket).some((value) => !value) ||
-    Object.values(errors).some((error) => error);
+		Object.values(newTicket).some((value) => !value) ||
+		Object.values(errors).some((error) => error);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -101,7 +102,9 @@ const TicketForm = () => {
 			<h3 className={styles.title}>Rise your Ticket</h3>
 
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
-				<label className={styles.formLabels}>Select a Service:</label>
+				<label className={styles.formLabels}>
+					<FaShieldAlt /> Select a Service: {/* Icono para "Select a Service" */}
+				</label>
 				<select
 					className={styles.select}
 					type="text"
@@ -151,7 +154,9 @@ const TicketForm = () => {
 					{/* <option value={navigate("/profile")}>Edit Profile</option> */}
 				</select>
 
-				<label className={styles.formLabels}>Select a Priority</label>
+				<label className={styles.formLabels}>
+					<FaExclamationCircle /> Select a Priority: {/* Icono para "Select a Priority" */}
+				</label>
 				<select
 					className={styles.select}
 					name="priority"
@@ -165,7 +170,9 @@ const TicketForm = () => {
 					<option value="Low">Low</option>
 				</select>
 
-				<label className={styles.formLabels}> Subject: </label>
+				<label className={styles.formLabels}>
+					<FaEnvelope /> Subject:
+				</label>
 				<textarea
 					className={styles.textareaSubject}
 					type="text"
@@ -177,7 +184,9 @@ const TicketForm = () => {
 				/>
 				{errors.issueTitle && <p className={styles.errors}> {errors.issueTitle} </p>}
 
-				<label className={styles.formLabels}>Send us a message:</label>
+				<label className={styles.formLabels}>
+					<FaComment /> Description:
+				</label>
 				<textarea
 					className={styles.textarea}
 					id="description"
@@ -197,7 +206,7 @@ const TicketForm = () => {
 					type="submit"
 					disabled={isButtonDisabled}
 				>
-					Raise Ticket
+					<FaTicketAlt /> Rise Ticket
 				</button>}
 
 				{/* Messages */}

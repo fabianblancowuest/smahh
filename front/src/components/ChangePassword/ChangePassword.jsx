@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styles from "./ChangePassword.module.css"; // Estilos específicos para este componente
-import { useDispatch, useSelector } from "react-redux";
+import styles from "./ChangePassword.module.css";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { FaLock, FaExclamationCircle } from "react-icons/fa"; 
 
 const ChangePassword = () => {
 
@@ -24,6 +25,10 @@ const ChangePassword = () => {
             A message will be sent to you
         </>
     );
+
+    const isButtonDisabled =
+        Object.values(passwordData).some((value) => !value) ||
+        Object.values(errors).some((error) => error);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -81,51 +86,60 @@ const ChangePassword = () => {
 
             <form className={styles.form} onSubmit={handleSubmit} onClick={handleFormClick}>
                 {/* Current Password */}
-                <label className={styles.label}>Current Password</label>
+                <label className={styles.label}>
+                    <FaLock /> Current Password</label>
                 <input
                     type="password"
                     name="currentPassword"
+                    placeholder="Enter your current password"
                     value={passwordData.currentPassword}
                     onChange={handleChange}
                     className={styles.input}
                 />
 
                 {/* New Password */}
-                <label className={styles.label}>New Password</label>
+                <label className={styles.label}>
+                    <FaLock /> New Password
+                </label>
                 <input
                     type="password"
                     name="newPassword"
+                    placeholder="Enter new password"
                     value={passwordData.newPassword}
                     onChange={handleChange}
                     className={styles.input}
                 />
-                {errors.newPassword && <p className={styles.errors}>{errors.newPassword}</p>}
+                {errors.newPassword && <p className={styles.errors}><FaExclamationCircle /> {errors.newPassword}</p>}
 
                 {/* Confirm New Password */}
-                <label className={styles.label}>Confirm New Password</label>
+                <label className={styles.label}>
+                    <FaLock /> Confirm New Password
+                </label>
                 <input
                     type="password"
                     name="confirmPassword"
+                    placeholder="Confirm new password"
                     value={passwordData.confirmPassword}
                     onChange={handleChange}
                     className={styles.input}
                 />
-                {errors.confirmPassword && <p className={styles.errors}>{errors.confirmPassword}</p>}
+                {errors.confirmPassword && <p className={styles.errors}><FaExclamationCircle /> {errors.confirmPassword}</p>}
 
                 {/* Submit Button */}
-                <button type="submit" className={styles.button}>
-                    Change Password
+                <button type="submit"
+                    className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
+                    disabled={isButtonDisabled}
+                >
+                    <FaLock /> Change Password
                 </button>
 
                 {/* Error & Success Messages */}
-                {updateError && <p className={styles.errors}>{updateError}</p>}
-                {updateSuccess && <p>{updateSuccess}</p>}
-
+                {updateError && <p className={styles.errors}><FaExclamationCircle /> {updateError}</p>}
+                {updateSuccess && <p className={styles.success}> {updateSuccess}</p>}
             </form>
         </div>
     );
 };
-
 export default ChangePassword;
 
 const validatePasswordMatch = (input) => {
