@@ -45,6 +45,8 @@ const Nav = () => {
 		<div className={styles.container}>
 			<div className={styles.menuToggle} onClick={handleToggleMenu}>
 				<div className={styles.bars}></div>
+				<div className={styles.bars}></div>
+				<div className={styles.bars}></div>
 			</div>
 			<nav
 				className={`${styles.navContainer} ${isMenuOpen ? styles.open : ""}`}
