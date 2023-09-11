@@ -1,31 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/actions/actions";
-import { FaAtom, FaVirus } from "react-icons/fa";
+import { FaAtom, FaVirus, FaUser } from "react-icons/fa"; // Importa el ícono de usuario
 import Swal from "sweetalert2";
 import Services from "./../Sevices/Services";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 
 const Nav = () => {
 	const user = useSelector((state) => ({
-        userId: state.userId,
-        userType: state.userType,
-        userName: state.userName,
-        userLastName: state.userLastName,
-        userPhone: state.userPhone,
-        email: state.userEmail,
-    }));
+		userId: state.userId,
+		userType: state.userType,
+		userName: state.userName,
+		userLastName: state.userLastName,
+		userPhone: state.userPhone,
+		email: state.userEmail,
+	}));
 
-	const {userType} = user
+	const { userType } = user;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [isMenuOpen, setMenuOpen] = useState(false);
 
 	const toggleMenu = () => {
-	  setMenuOpen(!isMenuOpen);
+		setMenuOpen(!isMenuOpen);
 	};
 
 	return (
@@ -111,7 +111,6 @@ const Nav = () => {
 							>
 								VIEW TICKETS
 							</NavLink>
-
 						</div>
 					</>
 				) : null}
@@ -127,18 +126,20 @@ const Nav = () => {
 					</NavLink>
 				) : null}
 
-				
-				
-				{userType === "user" || userType === "staff" ? (
 
-					<div onClick={toggleMenu} className={styles.navLink} >
-						<span>{user.userName} {user.userLastName} </span>
+				{userType === "user" || userType === "staff" ?
+
+					<div onClick={toggleMenu} className={styles.userLink}>
+						<span>
+							<FaUser className={styles.userIcon} />
+							{user.userName} {user.userLastName}
+						</span>
 					</div>
 
-				) : null}
+				: null}
 
 
-				{isMenuOpen && 	<ProfileMenu toggleMenu={toggleMenu}/>	}
+				{isMenuOpen && <ProfileMenu toggleMenu={toggleMenu} />}
 
 
 			</nav>
@@ -147,3 +148,6 @@ const Nav = () => {
 };
 
 export default Nav;
+
+
+

@@ -75,6 +75,20 @@
 	background-color: #555;
 }
 
+/* Añade el estilo para el ícono de usuario y el cursor pointer */
+.userLink {
+	display: flex;
+	align-items: center;
+	cursor: pointer; /* Cambia el cursor a pointer */
+	color: white;
+	font-weight: bolder;
+	letter-spacing: 0.2rem;
+  }
+  
+  .userIcon {
+	margin-right: 5px;
+}
+
 @media only screen and (max-width: 767px) {
 	.navContainer {
 		flex-direction: column;

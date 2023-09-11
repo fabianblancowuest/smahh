@@ -159,7 +159,7 @@ const rootReducer = (state = inicialState, actions) => {
             const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload))
             return {
                 ...state,
-                userTickets: [ticketFinded]
+                filteredTickets: [ticketFinded]
             }
         }
 
@@ -167,7 +167,7 @@ const rootReducer = (state = inicialState, actions) => {
 
             return {
                 ...state,
-                userTickets: payload.tickets
+                filteredTickets: payload.tickets
             }
         }
 
