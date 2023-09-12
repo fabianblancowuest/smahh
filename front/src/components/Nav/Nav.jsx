@@ -75,6 +75,7 @@ const Nav = () => {
 									className={({ isActive }) =>
 										isActive ? styles.activeLink : styles.navLink
 									}
+									onClick={handleLinkClick}
 								>
 									ABOUT
 								</NavLink>
@@ -85,6 +86,7 @@ const Nav = () => {
 									className={({ isActive }) =>
 										isActive ? styles.activeLink : styles.navLink
 									}
+									onClick={handleLinkClick}
 								>
 									CONTACT
 								</NavLink>
@@ -104,7 +106,7 @@ const Nav = () => {
 								<NavLink
 									to=""
 									className={styles.navLink}
-									onClick={handleGoToPrincipalMain}
+									onClick={(handleGoToPrincipalMain, handleLinkClick)}
 								>
 									SERVICES
 								</NavLink>
@@ -122,6 +124,7 @@ const Nav = () => {
 									className={({ isActive }) =>
 										isActive ? styles.activeLink : styles.navLink
 									}
+									onClick={handleLinkClick}
 								>
 									SIGNUP
 								</NavLink>
@@ -132,6 +135,7 @@ const Nav = () => {
 									className={({ isActive }) =>
 										isActive ? styles.activeLink : styles.navLink
 									}
+									onClick={handleLinkClick}
 								>
 									LOGIN
 								</NavLink>
@@ -150,6 +154,7 @@ const Nav = () => {
 										className={({ isActive }) =>
 											isActive ? styles.activeLink : styles.navLink
 										}
+										onClick={handleLinkClick}
 									>
 										RAISE TICKET
 									</NavLink>
@@ -160,6 +165,7 @@ const Nav = () => {
 										className={({ isActive }) =>
 											isActive ? styles.activeLink : styles.navLink
 										}
+										onClick={handleLinkClick}
 									>
 										VIEW TICKETS
 									</NavLink>

@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 const About = () => {
 	return (
 		<div className={styles.container}>
-			<h2 className={styles.title}>About Our Cybersecurity Initiative</h2>
 			<section className={styles.sectionContainer}>
+				<h2 className={styles.title}>About Our Cybersecurity Initiative</h2>
 				<div className={styles.box1}>
 					<img className={styles.aboutImg} src={about}></img>
 					<p className={styles.description}>
