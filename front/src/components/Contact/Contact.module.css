@@ -8,7 +8,7 @@
 	);
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	margin: 6rem auto;
+	margin: 6rem auto 2rem;
 	max-width: 40vw;
 	max-height: 100vh;
 	padding: 2rem;
@@ -126,7 +126,7 @@
 @media only screen and (max-width: 600px) {
 	.container {
 		max-width: 80vw;
-		margin: 3rem auto;
+		margin: 6rem auto;
 		padding: 1rem;
 	}
 

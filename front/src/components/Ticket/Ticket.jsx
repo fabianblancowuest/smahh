@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./Ticket.module.css";
 import { Link } from "react-router-dom";
-import { format } from "date-fns"; 
+import { format } from "date-fns";
 
 const Ticket = ({ ticket }) => {
 	const {
@@ -19,10 +18,10 @@ const Ticket = ({ ticket }) => {
 		status === "Not Started"
 			? styles.notStarted
 			: status === "In Progress"
-				? styles.inProgress
-				: status === "Completed"
-					? styles.completed
-					: styles.closed;
+			? styles.inProgress
+			: status === "Completed"
+			? styles.completed
+			: styles.closed;
 
 	const formatDate = (stringDate) => {
 		const date = new Date(stringDate);
@@ -41,16 +40,18 @@ const Ticket = ({ ticket }) => {
 					<h3 className={styles.priority}>Priority: </h3>
 					<span>{priority}</span>
 				</div>
-
+				<div className={styles.column}>
+					<h3 className={styles.type}>Type: </h3>
+					<span>{issueType}</span>
+				</div>
+				<div className={styles.column}>
+					<h3 className={styles.type}>Date:</h3>
+					<span>{createdAt && formatDate(createdAt)}</span>
+				</div>
 				<div className={styles.column}>
 					<Link to={`/detail/${id}`}>
 						<button className={styles.detailButton}>Detail</button>
 					</Link>
-					<h3 className={styles.type}>Type: </h3>
-					<span>{issueType}</span>
-					<br />
-					<h4 className={styles.type}>Date:</h4>
-					<span>{createdAt && formatDate(createdAt)}</span>
 				</div>
 			</div>
 		</div>

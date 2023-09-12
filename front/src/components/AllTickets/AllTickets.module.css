@@ -1,10 +1,22 @@
 /* AllTickets.module.css */
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 20px;
+	/* max-width: 1200px; */
+	margin: 6rem auto 0;
+	padding: 4vh 8vh;
+	display: flex;
+	flex-direction: column;
+	/* flex-wrap: wrap; */
 }
+
+/* .ticketContainer {
+	background-color: green ;
+	padding: 5vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+} */
 
 .welcomeContainer {
 	display: flex;
@@ -16,26 +28,32 @@
 	color: white;
 	text-align: start;
 	padding-left: 2rem;
-	margin-bottom: 10px;
 }
 
 .spanContainer {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
+	height: 8vh;
 }
 .spanInfo {
+	/* margin-left: auto; */
 	font-size: 1.5rem;
 	color: white;
 	text-align: start;
 	padding-left: 2rem;
+	letter-spacing: 0.1rem;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .button {
 	font-weight: bold;
+	/* 
 	position: absolute;
-	top: 25vh;
 	right: 0;
-	margin-right: 11vw;
+	*/
+	margin-left: auto;
 	background: linear-gradient(
 		90deg,
 		hsla(236, 100%, 8%, 1) 0%,
@@ -43,12 +61,11 @@
 	);
 	color: #fff;
 	font-size: 1rem;
-	padding: 12px 22px;
+	padding: 1em 2em;
 	border: none;
-	border-radius: 4px;
+	border-radius: 0.2rem;
 	cursor: pointer;
 	transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-	margin-top: 1rem;
 	display: inline-block;
 }
 
@@ -72,10 +89,9 @@
 /* Estilos para el componente Ticket */
 .ticket {
 	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	box-shadow: 0px 0.1px 0.5rem rgba(0, 0, 0, 0.1);
 	padding: 20px;
-	margin-bottom: 20px;
 	position: relative;
 }
 

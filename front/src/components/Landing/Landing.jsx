@@ -16,10 +16,10 @@ import logobanner from "./../../assets/images/Landing/banner-logo.png";
 
 const Landing = () => {
 	return (
-		<div className={styles.container}>
+		<div className={styles.homeContainer}>
 			<section className={styles.mainHeader}>
 				<img src={logobanner}></img>
-				<span>World Class Cyber Security</span>
+				<span className={styles.description}>World Class Cyber Security</span>
 				<h1 className={styles.title}>
 					Real-Time Monitoring Your Infrastructure
 				</h1>
@@ -29,7 +29,7 @@ const Landing = () => {
 					software.
 				</p>
 			</section>
-			<article id="principal-main">
+			<article id="principal-main" className={styles.principalMain}>
 				<section>
 					<div className={styles.cards}>
 						<a href="#website-scanning">
@@ -103,7 +103,7 @@ const Landing = () => {
 				</section>
 			</article>
 
-			<main>
+			<main className={styles.landingMain}>
 				<section className={styles.sectionService} id="website-scanning">
 					<h2>Website Scanning</h2>
 					<img src={websiteSection} alt="website-scanning"></img>

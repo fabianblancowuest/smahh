@@ -1,7 +1,9 @@
 .navContainer {
-	background: linear-gradient(90deg,
-			hsla(213, 77%, 14%, 1) 0%,
-			hsla(202, 27%, 45%, 1) 100%);
+	background: linear-gradient(
+		90deg,
+		hsla(213, 77%, 14%, 1) 0%,
+		hsla(202, 27%, 45%, 1) 100%
+	);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -59,6 +61,18 @@ ul.logs li {
 	text-shadow: 0.1rem 0.1rem 1rem black;
 	border-radius: 0.5rem;
 }
+.logoContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	font-weight: bold;
+	font-size: 1rem;
+	letter-spacing: 0.3rem;
+}
+.logoContainer img {
+	width: 2rem;
+}
 
 .logoText {
 	color: #fff;
@@ -98,7 +112,6 @@ ul.logs li {
 	margin-right: 5px;
 }
 
-
 .bars {
 	display: none;
 }
@@ -125,7 +138,7 @@ ul {
 	background: #fff;
 	display: block;
 	margin: 6px auto;
-	margin-left: 1rem;
+	margin-right: 4rem;
 	transition: all 0.3s ease-in-out;
 }
 

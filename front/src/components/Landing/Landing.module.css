@@ -14,7 +14,7 @@ body {
 	);
 }
 
-.container {
+.homeContainer {
 	margin: 0 auto;
 	animation: aparecer 10s ease-in-out;
 }
@@ -33,6 +33,7 @@ body {
 
 .mainHeader img {
 	width: auto;
+	margin-bottom: 1rem;
 }
 
 .title {
@@ -134,7 +135,7 @@ a {
 	border-radius: 0.5rem;
 }
 
-main section h2 {
+.landingMain .sectionService h2 {
 	text-align: center;
 	font-size: 2rem;
 	letter-spacing: 0.2rem;
@@ -142,12 +143,11 @@ main section h2 {
 }
 
 .sectionService {
+	background-image: url(./../../assets/images/Landing/banner-bg-5.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 	height: 100vh;
-	background: linear-gradient(
-		90deg,
-		hsla(208, 33%, 21%, 1) 0%,
-		hsla(211, 36%, 46%, 1) 100%
-	);
 	color: white;
 	transition: transform 0.5s ease;
 	text-align: center;
@@ -173,7 +173,7 @@ main section h2 {
 	border-radius: 0.5rem;
 }
 
-main section:nth-child(even) {
+.sectionService:nth-child(even) {
 	background: linear-gradient(
 		90deg,
 		hsla(186, 33%, 94%, 1) 0%,

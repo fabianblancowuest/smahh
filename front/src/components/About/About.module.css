@@ -40,7 +40,7 @@ img {
 	border-radius: 0.5rem;
 }
 
-div section {
+.container .sectionContainer {
 	background-image: url(./../../assets/images/Landing/banner-bg-5.jpg);
 	background-size: cover;
 	background-position: center;
@@ -52,7 +52,7 @@ div section {
 	justify-content: center;
 }
 
-div section:nth-child(even) {
+.container .sectionContainer:nth-child(odd) {
 	background: linear-gradient(
 		90deg,
 		hsla(186, 33%, 94%, 1) 0%,
@@ -158,7 +158,7 @@ div section:nth-child(even) {
 		border-radius: 0.2rem; /* Cambiar el radio de borde para dispositivos móviles */
 	}
 
-	div section:nth-child(even) {
+	.container .sectionContainer:nth-child(even) {
 		background: white; /* Cambiar el fondo para dispositivos móviles */
 		color: black; /* Cambiar el color de texto para dispositivos móviles */
 	}
