@@ -15,6 +15,7 @@
 	padding: 2rem;
 	border-radius: 0.5rem;
 	box-shadow: 0px 2px 8px rgb(255, 255, 255);
+	animation: aparecer 5s ease-in-out;
 }
 
 .form {
@@ -79,11 +80,26 @@
 }
 
 .disabledButton {
-	background-color: #ccc; 
-	color: #666; 
-	cursor: not-allowed; 
-	transition: none; 
-  }
+	background-color: #ccc;
+	color: #666;
+	cursor: not-allowed;
+	transition: none;
+}
+
+@keyframes aparecer {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.9;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 @media only screen and (max-width: 600px) {
 	.container {
 		max-width: 80vw;

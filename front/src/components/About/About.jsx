@@ -11,7 +11,7 @@ const About = () => {
 	return (
 		<div className={styles.container}>
 			<section className={styles.sectionContainer}>
-				<h2 className={styles.title}>About Our Cybersecurity Initiative</h2>
+				{/* <h2 className={styles.title}>About Our Cybersecurity Initiative</h2> */}
 				<div className={styles.box1}>
 					<img className={styles.aboutImg} src={about}></img>
 					<p className={styles.description}>
@@ -25,20 +25,6 @@ const About = () => {
 					</p>
 				</div>
 			</section>
-			{/* <section className={styles.sectionContainer}>
-				<div className={styles.box1}>
-					<img className={styles.aboutImg} src={about}></img>
-					<p className={styles.description}>
-						Welcome to our comprehensive Cybersecurity Initiative, where your
-						digital safety is our top priority. In today's interconnected world,
-						where every aspect of our lives relies on technology, the need for
-						robust cybersecurity measures has never been more critical. Our
-						mission is to equip you with the knowledge, tools, and strategies to
-						navigate the complex landscape of cyber threats and ensure your
-						online presence remains secure.
-					</p>
-				</div>
-			</section> */}
 			<section className={styles.sectionContainer}>
 				{/* <h2 className={styles.title}>About Our Cybersecurity Initiative</h2> */}
 				<div className={styles.box2}>
