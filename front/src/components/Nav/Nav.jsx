@@ -42,6 +42,9 @@ const Nav = () => {
 
 	const handleToggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
+		if (isProfileOpen) {
+			setIsProfileOpen(false);
+		}
 	};
 
 	const handleLinkClick = () => {
@@ -198,8 +201,14 @@ const Nav = () => {
 						</span>
 					</div>
 				) : null}
+
 				<div>
-					{isProfileOpen && <ProfileMenu toggleProfile={toggleProfile} />}
+					{isProfileOpen && (
+						<ProfileMenu
+							toggleProfile={toggleProfile}
+							handleLinkClick={handleLinkClick}
+						/>
+					)}
 				</div>
 			</nav>
 		</div>

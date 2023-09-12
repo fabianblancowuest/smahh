@@ -65,7 +65,7 @@ const Landing = () => {
 					</div>
 				</section>
 				<section className={styles.anotherSection}>
-					<div className={styles.cards2}>
+					<div className={styles.cards}>
 						<a href="#data-protection">
 							<div className={styles.card}>
 								<h2 className={styles.cardTitle}>Data Protection</h2>

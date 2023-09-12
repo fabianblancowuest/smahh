@@ -37,7 +37,7 @@ body {
 }
 
 .title {
-	width: 38%;
+	width: 50vw;
 	font-size: 4rem;
 	line-height: 1.5;
 	letter-spacing: 0.2rem;
@@ -48,7 +48,7 @@ body {
 }
 
 .description {
-	width: 58%;
+	width: 50vw;
 	line-height: 1.5;
 	letter-spacing: 0.1rem;
 	font-size: 1.3rem;
@@ -60,32 +60,16 @@ body {
 }
 
 .cards {
-	padding: 4rem 0;
+	padding: 2rem 0;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: center;
-	/* margin-left: auto; */
-	/* margin-right: auto; */
-	/* width: 85%; */
+	justify-content: space-evenly;
 	height: 100vh;
-	gap: 5.5rem;
 	width: 100%;
+	gap: 1rem;
 }
 
-.cards2 {
-	padding: 4rem 0;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	/* margin-left: auto; */
-	/* margin-right: auto; */
-	/* width: 85%; */
-	height: 100vh;
-	gap: 5.5rem;
-	width: 100%;
-}
 #principal-main {
 	background-color: #56317a;
 	height: 200vh;
@@ -99,22 +83,18 @@ a {
 	background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
 	width: 20rem;
 	height: 35rem;
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 	padding: 1.3rem;
 	transition: transform 0.5s ease;
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
+	margin-bottom: 20px;
 }
 
 .card:hover {
 	transform: scale(1.1);
-	/* background-color: #333;
-	.cardTitle,
-	.cardText {
-		color: aliceblue;
-	} */
 }
 
 .cardTitle {
@@ -182,10 +162,6 @@ a {
 	color: black;
 }
 
-/* ... (estilos anteriores) */
-
-/* ... (otros estilos) */
-
 @keyframes aparecer {
 	0% {
 		opacity: 0;
@@ -200,48 +176,30 @@ a {
 	}
 }
 
-@media (max-width: 767px) {
-	.mainHeader {
-		padding-top: 4rem; /* Ajuste del espacio en la cabecera */
-	}
-
+@media (max-width: 575px) {
 	.title {
-		font-size: 3rem; /* Cambio de tamaño de título */
+		font-size: 3rem;
 	}
 
 	.description {
-		font-size: 1rem; /* Cambio de tamaño de descripción */
+		font-size: 1.2rem;
 	}
 
 	.cards {
-		padding: 2rem 0; /* Ajuste del espacio en las tarjetas */
-		width: 100%; /* Ancho completo para dispositivos móviles */
+		height: auto;
 	}
 
 	.card {
-		width: 100%; /* Ancho completo para dispositivos móviles */
-		height: auto; /* Altura automática para dispositivos móviles */
-		margin-bottom: 2rem; /* Espacio entre tarjetas */
-	}
-
-	.cardTitle {
-		font-size: 1.2rem; /* Cambio de tamaño de título de tarjeta */
-	}
-
-	.cardText {
-		font-size: 1rem; /* Cambio de tamaño de texto de tarjeta */
+		width: 100%;
+		height: auto;
+		margin-bottom: 10px;
 	}
 
 	.img {
-		width: 100%; /* Ancho completo para imágenes de tarjetas */
-	}
-
-	.sectionService {
-		height: auto; /* Altura automática para sección de servicios */
-		padding: 1rem; /* Ajuste de espacio en sección de servicios */
+		width: 100%;
 	}
 
 	.sectionService img {
-		width: 100%; /* Ancho completo para imágenes en sección de servicios */
+		width: 70vw;
 	}
 }

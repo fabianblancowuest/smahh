@@ -191,5 +191,10 @@ ul {
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+		width: 100vw;
+	}
+
+	li:hover {
+		background-color: hsla(202, 27%, 45%, 1);
 	}
 }
