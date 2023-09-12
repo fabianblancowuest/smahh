@@ -16,13 +16,9 @@ import {
 } from "./types";
 import axios from "axios";
 
-<<<<<<< HEAD
 const ipDirection= "192.168.1.6"
 
 // COMMON 
-=======
-// COMMON
->>>>>>> c322c38ff81583daa8591a598d32fd79ed7f7587
 
 export const signUp = (userData) => async (dispatch) => {
 	const URL = `http://${ipDirection}:3001/user/register`;
@@ -96,11 +92,7 @@ export const updateUser = (userId, formData) => async (dispatch) => {
 };
 
 export const getUserTickets = (userId) => async (dispatch) => {
-<<<<<<< HEAD
 	const URL = `http://${ipDirection}:3001/user/ticket/`
-=======
-	const URL = `http://localhost:3001/user/ticket/`;
->>>>>>> c322c38ff81583daa8591a598d32fd79ed7f7587
 	try {
 		const { data } = await axios.get(URL + userId); //
 
@@ -130,12 +122,8 @@ export const getAllTickets = () => async (dispatch) => {
 };
 
 export const updateTicket = (ticketId, newStatus) => {
-<<<<<<< HEAD
 
 	const URL = `http://${ipDirection}:3001/staff/update-ticket`;
-=======
-	const URL = "http://localhost:3001/staff/update-ticket";
->>>>>>> c322c38ff81583daa8591a598d32fd79ed7f7587
 
 	return async (dispatch) => {
 		try {
@@ -153,11 +141,7 @@ export const updateTicket = (ticketId, newStatus) => {
 // USER- STAFF
 
 export const getTicketDetail = (id) => {
-<<<<<<< HEAD
 	const URL = `http://${ipDirection}:3001/user/ticket-detail/`
-=======
-	const URL = "http://localhost:3001/user/ticket-detail/";
->>>>>>> c322c38ff81583daa8591a598d32fd79ed7f7587
 
 	return async (dispatch) => {
 		try {
