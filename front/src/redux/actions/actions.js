@@ -1,10 +1,12 @@
 import { SIGN_UP, LOG_IN, LOG_OUT, RISE_TICKET, GET_ALL_TICKETS, GET_USER_TICKETS, UPDATE_TICKET, GET_TICKET_DETAIL, FILTER_BY_PRIORITY, FILTER_BY_STATUS, SORT_BY_DATE, SEARCH_BY_ID, SEARCH_BY_NAME, UPDATE_USER } from "./types";
 import axios from "axios";
 
+const ipDirection= "192.168.1.6"
+
 // COMMON 
 
 export const signUp = (userData) => async (dispatch) => {
-	const URL = "http://localhost:3001/user/register";
+	const URL = `http://${ipDirection}:3001/user/register`;
 
 	try {
 		const { data } = await axios.post(URL, userData);
@@ -22,7 +24,7 @@ export const signUp = (userData) => async (dispatch) => {
 
 export const logIn = (userData) => async (dispatch) => {
 	//LocalHost Request
-	const URL = "http://localhost:3001/login";
+	const URL = `http://${ipDirection}:3001/login`;
 
 	try {
 		const { data } = await axios.post(URL, userData);
@@ -42,7 +44,7 @@ export const logIn = (userData) => async (dispatch) => {
 // USER 
 
 export const riseTicket = (newTicket, userId, userName) => async (dispatch) => {
-	const URL = "http://localhost:3001/user/ticket";
+	const URL = `http://192.168.1.6:3001/user/ticket`;
 
 	newTicket.userId = userId;
 	newTicket.userName = userName
@@ -63,7 +65,7 @@ export const riseTicket = (newTicket, userId, userName) => async (dispatch) => {
 };
 
 export const updateUser = (userId, formData) => async (dispatch) => {
-	const URL = `http://localhost:3001/user/updateUser/${userId}`;
+	const URL = `http://${ipDirection}:3001/user/updateUser/${userId}`;
 
 	try {
 		const { data } = await axios.put(URL, formData);
@@ -80,7 +82,7 @@ export const updateUser = (userId, formData) => async (dispatch) => {
 };
 
 export const getUserTickets = (userId) => async (dispatch) => {
-	const URL = `http://localhost:3001/user/ticket/`
+	const URL = `http://${ipDirection}:3001/user/ticket/`
 	try {
 		const { data } = await axios.get(URL + userId) //
 
@@ -97,7 +99,7 @@ export const getUserTickets = (userId) => async (dispatch) => {
 // STAFF 
 
 export const getAllTickets = () => async (dispatch) => {
-	const URL = "http://localhost:3001/staff/allTickets";
+	const URL = `http://${ipDirection}:3001/staff/allTickets`;
 	try {
 		const { data } = await axios.get(URL);
 
@@ -112,7 +114,7 @@ export const getAllTickets = () => async (dispatch) => {
 
 export const updateTicket = (ticketId, newStatus) => {
 
-	const URL = "http://localhost:3001/staff/update-ticket";
+	const URL = `http://${ipDirection}:3001/staff/update-ticket`;
 
 	return async (dispatch) => {
 		try {
@@ -132,7 +134,7 @@ export const updateTicket = (ticketId, newStatus) => {
 // USER- STAFF
 
 export const getTicketDetail = (id) => {
-	const URL = "http://localhost:3001/user/ticket-detail/"
+	const URL = `http://${ipDirection}:3001/user/ticket-detail/`
 
 	return async (dispatch) => {
 		try {
