@@ -30,77 +30,74 @@ const Landing = () => {
 				</p>
 			</section>
 			<article id="principal-main" className={styles.principalMain}>
-				<section>
-					<div className={styles.cards}>
-						<a href="#website-scanning">
-							<div className={styles.card}>
-								<h2 className={styles.cardTitle}>Website Scanning</h2>
-								<p className={styles.cardText}>
-									Learn about advanced threat detection techniques and tools.
-								</p>
-								<img className={styles.img} src={websiteScanning}></img>
-							</div>
-						</a>
-						<a href="#malware-removal">
-							<div className={styles.card}>
-								<h2 className={styles.cardTitle}>Malware Removal</h2>
-								<p className={styles.cardText}>
-									Understand the importance of data privacy and compliance in an
-									era where personal information is constantly shared and
-									collected.
-								</p>
-								<img className={styles.img} src={malwareRemoval}></img>
-							</div>
-						</a>
-						<a href="#cloud-security">
-							<div className={styles.card}>
-								<h2 className={styles.cardTitle}>Cloud Security</h2>
-								<p className={styles.cardText}>
-									Explore best practices for secure software and application
-									development.
-									<img className={styles.img} src={cloudSecurity}></img>
-								</p>
-							</div>
-						</a>
-					</div>
-				</section>
-				<section className={styles.anotherSection}>
-					<div className={styles.cards}>
-						<a href="#data-protection">
-							<div className={styles.card}>
-								<h2 className={styles.cardTitle}>Data Protection</h2>
-								<p className={styles.cardText}>
-									Join our thriving cybersecurity community where enthusiasts,
-									professionals, and learners come together to share knowledge
-									and experiences.
-								</p>
-								<img className={styles.img} src={dataProtection}></img>
-							</div>
-						</a>
-						<a href="#security-news">
-							<div className={styles.card}>
-								<h2 className={styles.cardTitle}>Security News</h2>
-								<p className={styles.cardText}>
-									Stay updated with the latest cybersecurity news from around
-									the globe like cyber attacks, security vulnerabilities, and
-									regulatory changes.
-								</p>
-								<img className={styles.img} src={securityNews}></img>
-							</div>
-						</a>
-						<a href="#data-loss">
-							<div className={styles.card}>
-								<h2 className={styles.cardTitle}>Data Loss Prevention</h2>
-								<p className={styles.cardText}>
-									Data loss prevention is a security solution that identifies
-									and helps prevent unsafe or inappropriate sharing, transfer,
-									or use of sensitive data.
-								</p>
-								<img className={styles.img} src={dataLossPrevention}></img>
-							</div>
-						</a>
-					</div>
-				</section>
+				<div className={styles.cards}>
+					<a href="#website-scanning">
+						<div className={styles.card}>
+							<h2 className={styles.cardTitle}>Website Scanning</h2>
+							<p className={styles.cardText}>
+								Learn about advanced threat detection techniques and tools.
+							</p>
+							<img className={styles.img} src={websiteScanning}></img>
+						</div>
+					</a>
+					<a href="#malware-removal">
+						<div className={styles.card}>
+							<h2 className={styles.cardTitle}>Malware Removal</h2>
+							<p className={styles.cardText}>
+								Understand the importance of data privacy and compliance in an
+								era where personal information is constantly shared and
+								collected.
+							</p>
+							<img className={styles.img} src={malwareRemoval}></img>
+						</div>
+					</a>
+					<a href="#cloud-security">
+						<div className={styles.card}>
+							<h2 className={styles.cardTitle}>Cloud Security</h2>
+							<p className={styles.cardText}>
+								Explore best practices for secure software and application
+								development.
+								<img className={styles.img} src={cloudSecurity}></img>
+							</p>
+						</div>
+					</a>
+				</div>
+
+				<div className={styles.cards}>
+					<a href="#data-protection">
+						<div className={styles.card}>
+							<h2 className={styles.cardTitle}>Data Protection</h2>
+							<p className={styles.cardText}>
+								Join our thriving cybersecurity community where enthusiasts,
+								professionals, and learners come together to share knowledge and
+								experiences.
+							</p>
+							<img className={styles.img} src={dataProtection}></img>
+						</div>
+					</a>
+					<a href="#security-news">
+						<div className={styles.card}>
+							<h2 className={styles.cardTitle}>Security News</h2>
+							<p className={styles.cardText}>
+								Stay updated with the latest cybersecurity news from around the
+								globe like cyber attacks, security vulnerabilities, and
+								regulatory changes.
+							</p>
+							<img className={styles.img} src={securityNews}></img>
+						</div>
+					</a>
+					<a href="#data-loss">
+						<div className={styles.card}>
+							<h2 className={styles.cardTitle}>Data Loss Prevention</h2>
+							<p className={styles.cardText}>
+								Data loss prevention is a security solution that identifies and
+								helps prevent unsafe or inappropriate sharing, transfer, or use
+								of sensitive data.
+							</p>
+							<img className={styles.img} src={dataLossPrevention}></img>
+						</div>
+					</a>
+				</div>
 			</article>
 
 			<main className={styles.landingMain}>
@@ -156,9 +153,7 @@ const Landing = () => {
 						globe. Our curated news section covers data breaches, cyber attacks,
 						security vulnerabilities, and regulatory changes. Being informed is
 						the first step towards staying secure in an ever-changing digital
-						landscape. Our curated news section covers data breaches, cyber
-						attacks, security vulnerabilities, and regulatory changes. Being
-						informed is the first step towards staying secure.
+						landscape.
 					</p>
 				</section>
 				<section className={styles.sectionService} id="data-loss">
@@ -169,9 +164,7 @@ const Landing = () => {
 						helps prevent unsafe or inappropriate sharing, transfer, or use of
 						sensitive data. It can help your organization monitor and protect
 						sensitive information across on-premises systems, cloud-based
-						locations, and endpoint devices. It also helps you achieve
-						compliance with regulations such as the Health Insurance Portability
-						and Accountability.
+						locations, and endpoint devices.
 					</p>
 				</section>
 			</main>

@@ -30,6 +30,10 @@ const Nav = () => {
 		window.scrollTo(0, 0);
 	}, [pathname]);
 
+	const handleLinkClick = () => {
+		setIsMenuOpen(false);
+	};
+
 	const handleGoToPrincipalMain = () => {
 		navigate("/");
 		setTimeout(() => {
@@ -38,6 +42,7 @@ const Nav = () => {
 				element.scrollIntoView({ behavior: "smooth" });
 			}
 		}, 100); // Espera un momento para que se renderice la página antes de hacer scroll
+		handleLinkClick();
 	};
 
 	const handleToggleMenu = () => {
@@ -45,10 +50,6 @@ const Nav = () => {
 		if (isProfileOpen) {
 			setIsProfileOpen(false);
 		}
-	};
-
-	const handleLinkClick = () => {
-		setIsMenuOpen(false);
 	};
 
 	const toggleProfile = () => {
@@ -109,7 +110,7 @@ const Nav = () => {
 								<NavLink
 									to=""
 									className={styles.navLink}
-									onClick={(handleGoToPrincipalMain, handleLinkClick)}
+									onClick={handleGoToPrincipalMain}
 								>
 									SERVICES
 								</NavLink>

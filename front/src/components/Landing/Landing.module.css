@@ -117,9 +117,11 @@ a {
 
 .landingMain .sectionService h2 {
 	text-align: center;
-	font-size: 2rem;
-	letter-spacing: 0.2rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	font-size: 3rem;
+	font-weight: bolder;
+	letter-spacing: 1rem;
+	text-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.5);
+	text-transform: uppercase;
 }
 
 .sectionService {
@@ -136,7 +138,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	gap: 3rem;
-	padding: 2rem;
+	padding: 1rem;
 }
 
 .sectionService p {
@@ -146,6 +148,7 @@ a {
 	line-height: 1.5;
 	font-weight: bold;
 	font-size: 1.3rem;
+	letter-spacing: 0.1rem;
 }
 
 .sectionService img {
@@ -153,7 +156,7 @@ a {
 	border-radius: 0.5rem;
 }
 
-.sectionService:nth-child(even) {
+.sectionService:nth-child(odd) {
 	background: linear-gradient(
 		90deg,
 		hsla(186, 33%, 94%, 1) 0%,

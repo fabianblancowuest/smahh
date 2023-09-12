@@ -35,7 +35,6 @@ const Ticket = ({ ticket }) => {
 					<h3 className={styles.status}>Status:</h3>
 					<span>{status}</span>
 				</div>
-
 				<div className={styles.column}>
 					<h3 className={styles.priority}>Priority: </h3>
 					<span>{priority}</span>

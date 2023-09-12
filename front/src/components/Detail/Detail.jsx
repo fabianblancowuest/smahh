@@ -7,7 +7,7 @@ import styles from "./Detail.module.css";
 import TicketResponseForm from "../TicketResponseForm/TicketResponseForm";
 
 const DetailTicket = () => {
-	const userType = useSelector(state=> state.userType)
+	const userType = useSelector((state) => state.userType);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 
@@ -44,63 +44,69 @@ const DetailTicket = () => {
 	};
 
 	return (
-		<div>
-			<div className={`${styles.container}  ${statusClass}`}>
+		<div className={styles.container}>
+			<div className={styles.ticketContainer}>
 				<h2 className={styles.title}>Ticket Detail</h2>
+				<main className={styles.main}>
+					<section>
+						<div className={styles.info}>
+							<p className={styles.heading}>User Name:</p>
+							<p>{userName}</p>
+						</div>
 
-				<div className={styles.info}>
-					<p className={styles.heading}>User Name:</p>
-					<p>{userName}</p>
-				</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>User Email:</p>
+							<p>{userEmail}</p>
+						</div>
 
-				<div className={styles.info}>
-					<p className={styles.heading}>User Email:</p>
-					<p>{userEmail}</p>
-				</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>Ticket Id:</p>
+							<p>{id}</p>
+						</div>
 
-				<div className={styles.info}>
-					<p className={styles.heading}>Ticket Id:</p>
-					<p>{id}</p>
-				</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>Type:</p>
+							<p>{issueType}</p>
+						</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>Priority:</p>
+							<p>{priority}</p>
+						</div>
+					</section>
+					<section>
+						<div className={styles.info}>
+							<p className={styles.heading}>Status:</p>
+							<p>{status}</p>
+						</div>
 
-				<div className={styles.info}>
-					<p className={styles.heading}>Type:</p>
-					<p>{issueType}</p>
-				</div>
+						{/* <div className={styles.info}>
+							<p className={styles.heading}>Description:</p>
+							<p className={styles.info}>{issueDescription}</p>
+						</div> */}
 
-				<div className={styles.info}>
-					<p className={styles.heading}>Priority:</p>
-					<p>{priority}</p>
-				</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>Created At:</p>
+							<p>{createdAt && formatDate(createdAt)}</p>
+						</div>
 
-				<div className={styles.info}>
-					<p className={styles.heading}>Status:</p>
-					<p>{status}</p>
-				</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>Updated At:</p>
+							<p>{updatedAt && formatDate(updatedAt)}</p>
+						</div>
 
-				<div className={styles.info}>
-					<p className={styles.heading}>Title:</p>
-					<p>{issueTitle}</p>
-				</div>
+						<div className={styles.info}>
+							<p className={styles.heading}>Subject:</p>
+							<p>{issueTitle}</p>
+						</div>
+					</section>
+				</main>
 
-				<div className={styles.info}>
+				<div className={styles.title}>
 					<p className={styles.heading}>Description:</p>
 					<p className={styles.info}>{issueDescription}</p>
 				</div>
-
-				<div className={styles.info}>
-					<p className={styles.heading}>Created At:</p>
-					<p>{createdAt && formatDate(createdAt)}</p>
-				</div>
-
-				<div className={styles.info}>
-					<p className={styles.heading}>Updated At:</p>
-					<p>{updatedAt && formatDate(updatedAt)}</p>
-				</div>
 			</div>
-
 			{userType == "staff" && <TicketResponseForm ticketData={ticketDetail} />}
-
 		</div>
 	);
 };
