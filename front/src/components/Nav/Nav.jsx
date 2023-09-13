@@ -47,9 +47,11 @@ const Nav = () => {
 
 	const handleToggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
-		if (isProfileOpen) {
-			setIsProfileOpen(false);
-		}
+		// if (isProfileOpen) {
+		// 	setIsProfileOpen(false);
+		// }
+
+		setIsProfileOpen(true)
 	};
 
 	const toggleProfile = () => {

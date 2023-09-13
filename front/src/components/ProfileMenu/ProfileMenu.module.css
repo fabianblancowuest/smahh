@@ -1,7 +1,7 @@
 /* ProfileMenu.module.css */
 .dropdown {
   position: absolute;
-  top: 64px; /* Ajusta la posición según sea necesario */
+  top: 64px; 
   right: 0px;
   background: linear-gradient(90deg,hsla(202, 27%, 45%, 1) 0%,hsla(213, 77%, 14%, 1)	 100%	); /* Cambia al color de fondo deseado */
   border: none;
@@ -37,4 +37,27 @@
 /* Asegúrate de que el menú esté visible cuando sea necesario */
 .dropdown.active {
   display: block;
+}
+
+@media (max-width: 767px){
+  .dropdown {
+    position: absolute;
+    top: 80vh;
+    bottom: 0px; 
+    background: linear-gradient(90deg,hsla(202, 27%, 45%, 1) 0%,hsla(213, 77%, 14%, 1)	 100%	); /* Cambia al color de fondo deseado */
+    border: none;
+    width: 100%;
+    border-radius: 0 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  .menuItem {
+    align-items: self-start;
+    padding: 1rem;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
 }
