@@ -31,7 +31,7 @@ const ProfileMenu = (props) => {
 		<div className={styles.dropdown}>
 			<div
 				className={styles.menuItem}
-				onClick={()=>(toggleProfile(), handleLinkClick())}
+				onClick={() => (toggleProfile(), handleLinkClick())}
 			>
 				<Link className={styles.link} to="/profile">
 					<FiEdit2 className={styles.icon} />
@@ -41,7 +41,7 @@ const ProfileMenu = (props) => {
 
 			<div
 				className={styles.menuItem}
-				onClick={()=>(toggleProfile(), handleLinkClick())}
+				onClick={() => (toggleProfile(), handleLinkClick())}
 			>
 				<Link className={styles.link} to="profile/editpassword">
 					<RiLockPasswordLine className={styles.icon} />
@@ -50,8 +50,10 @@ const ProfileMenu = (props) => {
 			</div>
 
 			<div className={styles.menuItem} onClick={handleLogOut}>
-				<RiLogoutCircleLine className={styles.icon} />
-				<span>Log Out</span>
+				<span>
+					<RiLockPasswordLine className={styles.icon} />
+					<span>Log Out</span>
+				</span>
 			</div>
 		</div>
 	);

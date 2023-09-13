@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { FaAtom, FaVirus, FaUser } from "react-icons/fa"; // Importa el ícono de usuario
+import { FaAtom, FaVirus, FaUser, FaBars } from "react-icons/fa"; // Importa el ícono de usuario
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import { useLocation } from "react-router-dom";
 import logo from "./../../assets/images/Landing/banner-logo.png";
@@ -51,7 +51,7 @@ const Nav = () => {
 		// 	setIsProfileOpen(false);
 		// }
 
-		setIsProfileOpen(true)
+		// setIsProfileOpen(true);
 	};
 
 	const toggleProfile = () => {
@@ -60,11 +60,12 @@ const Nav = () => {
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.menuToggle} onClick={handleToggleMenu}>
+			{/* <div className={styles.menuToggle} onClick={handleToggleMenu}> */}
+			{/* <div className={styles.bars}></div>
 				<div className={styles.bars}></div>
-				<div className={styles.bars}></div>
-				<div className={styles.bars}></div>
-			</div>
+				<div className={styles.bars}></div> */}
+			{/* </div> */}
+			<FaBars className={styles.menuToggle} onClick={handleToggleMenu} />
 			<nav
 				className={`${styles.navContainer} ${isMenuOpen ? styles.open : ""}`}
 			>
@@ -206,7 +207,7 @@ const Nav = () => {
 				) : null}
 
 				<div>
-					{isProfileOpen && (
+					{userType === "user" && isProfileOpen && (
 						<ProfileMenu
 							toggleProfile={toggleProfile}
 							handleLinkClick={handleLinkClick}
