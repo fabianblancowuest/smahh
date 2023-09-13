@@ -64,8 +64,7 @@ body {
 		#051937,
 		#004d7a,
 		#008793,
-		#00bf72,
-		#a8eb12
+		#00bf72 /* #a8eb12 */
 	);
 	/* height: 100vh; */
 	padding: 2rem 0;
@@ -76,6 +75,16 @@ body {
 	height: 100vh;
 	width: 100%;
 	gap: 1rem;
+}
+
+.cards:nth-child(odd) {
+	background-image: linear-gradient(
+		to right bottom,
+		#051937,
+		#004d7a,
+		#008793,
+		#00bf72 /* #a8eb12 */
+	);
 }
 
 /* #principal-main {

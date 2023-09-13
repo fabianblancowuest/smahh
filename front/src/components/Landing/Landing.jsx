@@ -58,6 +58,9 @@ const Landing = () => {
 							</p>
 						</div>
 					</a>
+				</div>
+
+				<div className="cards">
 					<a href="#data-protection">
 						<div className="card">
 							<h2 className="cardTitle">Data Protection</h2>
@@ -80,7 +83,7 @@ const Landing = () => {
 							<img className="img" src={securityNews}></img>
 						</div>
 					</a>
-					{/* <a href="#data-loss">
+					<a href="#data-loss">
 						<div className="card">
 							<h2 className="cardTitle">Data Loss Prevention</h2>
 							<p className="cardText">
@@ -90,7 +93,7 @@ const Landing = () => {
 							</p>
 							<img className="img" src={dataLossPrevention}></img>
 						</div>
-					</a> */}
+					</a>
 				</div>
 			</article>
 
@@ -150,7 +153,7 @@ const Landing = () => {
 						landscape.
 					</p>
 				</section>
-				{/* <section className="sectionService" id="data-loss">
+				<section className="sectionService" id="data-loss">
 					<h2 className="section-title">Data Loss Prevention</h2>
 					<img src={dataLossSection}></img>
 					<p>
@@ -160,7 +163,7 @@ const Landing = () => {
 						sensitive information across on-premises systems, cloud-based
 						locations, and endpoint devices.
 					</p>
-				</section> */}
+				</section>
 			</main>
 		</div>
 	);
