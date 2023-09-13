@@ -68,22 +68,16 @@ const DetailTicket = () => {
 							<p className={styles.heading}>Type:</p>
 							<p>{issueType}</p>
 						</div>
-						<div className={styles.info}>
-							<p className={styles.heading}>Priority:</p>
-							<p>{priority}</p>
-						</div>
 					</section>
 					<section>
 						<div className={styles.info}>
 							<p className={styles.heading}>Status:</p>
 							<p>{status}</p>
 						</div>
-
-						{/* <div className={styles.info}>
-							<p className={styles.heading}>Description:</p>
-							<p className={styles.info}>{issueDescription}</p>
-						</div> */}
-
+						<div className={styles.info}>
+							<p className={styles.heading}>Priority:</p>
+							<p>{priority}</p>
+						</div>
 						<div className={styles.info}>
 							<p className={styles.heading}>Created At:</p>
 							<p>{createdAt && formatDate(createdAt)}</p>
@@ -93,14 +87,12 @@ const DetailTicket = () => {
 							<p className={styles.heading}>Updated At:</p>
 							<p>{updatedAt && formatDate(updatedAt)}</p>
 						</div>
-
-						<div className={styles.info}>
-							<p className={styles.heading}>Subject:</p>
-							<p>{issueTitle}</p>
-						</div>
 					</section>
 				</main>
-
+				<div className={styles.title}>
+					<p className={styles.heading}>Subject:</p>
+					<p className={styles.info}>{issueTitle}</p>
+				</div>
 				<div className={styles.title}>
 					<p className={styles.heading}>Description:</p>
 					<p className={styles.info}>{issueDescription}</p>

@@ -60,18 +60,17 @@
 	border-radius: 0.5rem;
 }
 
-.textareaSubject {
-	width: 80%;
-	padding: 0.5rem;
-	border: 1px solid #ddd;
-	border-radius: 0.5rem;
-}
-
+.textareaSubject,
 .textarea {
 	width: 80%;
 	padding: 0.5rem;
 	border: 1px solid #ddd;
 	border-radius: 0.5rem;
+	font-size: 1.1rem;
+	resize: none;
+}
+
+.textarea {
 	height: 15vh;
 }
 
@@ -142,8 +141,8 @@
 
 @media only screen and (max-width: 768px) {
 	.formBackground {
-		max-width: 80vw;
-		margin: 6rem auto;
+		max-width: 90vw;
+		margin: 5rem auto;
 		padding: 1rem;
 	}
 
@@ -158,10 +157,6 @@
 	.label {
 		font-size: 1rem;
 	}
-
-	/* .textareaSubject{
-		width: 100%;
-	} */
 
 	.input,
 	.select,

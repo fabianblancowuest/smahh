@@ -1,7 +1,11 @@
 /* Profile.module.css*/
 
 .container {
-	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	background: linear-gradient(
+		90deg,
+		hsla(236, 100%, 8%, 1) 0%,
+		hsla(211, 100%, 28%, 1) 100%
+	);
 	color: #f5faf8;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	margin: 6rem auto;
@@ -40,13 +44,17 @@
 }
 
 .errors {
-    color: #f00;
-    font-size: 0.9rem;
-    font-weight: bold;
+	color: #f00;
+	font-size: 0.9rem;
+	font-weight: bold;
 }
 
 .button {
-	background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	background: linear-gradient(
+		90deg,
+		hsla(236, 100%, 8%, 1) 0%,
+		hsla(211, 100%, 28%, 1) 100%
+	);
 	color: #fff;
 	font-size: 1rem;
 	padding: 12px 22px;
@@ -59,22 +67,26 @@
 }
 
 .button:hover {
-	background: linear-gradient(90deg, rgb(9, 19, 160) 0%, rgb(15, 108, 207) 100%);
+	background: linear-gradient(
+		90deg,
+		rgb(9, 19, 160) 0%,
+		rgb(15, 108, 207) 100%
+	);
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .disabledButton {
-	background-color: #ccc; 
-	color: #666; 
+	background-color: #ccc;
+	color: #666;
 	cursor: not-allowed; /* Cambia el cursor a "no permitido" */
 	transition: none; /* Elimina cualquier transición */
-  }
+}
 
-  @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 	.container {
-		max-width: 80vw;
-		margin: 6rem auto;
+		max-width: 90vw;
+		margin: 5rem auto;
 		padding: 1rem;
 	}
 
@@ -88,7 +100,7 @@
 
 	.label {
 		font-size: 1rem;
-		padding:1rem;
+		padding: 1rem;
 	}
 
 	.input,
