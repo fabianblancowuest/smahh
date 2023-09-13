@@ -57,3 +57,22 @@
 .social-links a:hover {
 	color: hsla(202, 27%, 45%, 1);
 }
+
+/* Media query para teléfonos móviles */
+@media (max-width: 768px) {
+	.footer-nav {
+		/* flex-direction: column; */
+		text-align: center;
+		gap: 1.5rem;
+	}
+
+	.footer-nav a,
+	.social-links a {
+		font-size: 0.9rem;
+		margin: 0.5rem 0;
+	}
+
+	.social-links {
+		flex-direction: column;
+	}
+}

@@ -92,7 +92,7 @@ export const updateUser = (userId, formData) => async (dispatch) => {
 };
 
 export const getUserTickets = (userId) => async (dispatch) => {
-	const URL = `http://${ipDirection}:3001/user/ticket/`
+	const URL = `http://${ipDirection}:3001/user/ticket/`;
 	try {
 		const { data } = await axios.get(URL + userId); //
 
@@ -141,7 +141,7 @@ export const updateTicket = (ticketId, newStatus) => {
 // USER- STAFF
 
 export const getTicketDetail = (id) => {
-	const URL = `http://${ipDirection}:3001/user/ticket-detail/`
+	const URL = `http://${ipDirection}:3001/user/ticket-detail/`;
 
 	return async (dispatch) => {
 		try {
