@@ -14,12 +14,12 @@ body {
 	);
 }
 
-.homeContainer {
+.home-container {
 	margin: 0 auto;
 	animation: aparecer 10s ease-in-out;
 }
 
-.mainHeader {
+.home-mainHeader {
 	background-image: url(./../../assets/images/Landing/banner-bg-5.jpg);
 	background-size: cover;
 	background-position: center;
@@ -31,13 +31,13 @@ body {
 	justify-content: center;
 }
 
-.mainHeader img {
+.home-mainHeader img {
 	width: auto;
 	margin-bottom: 1rem;
 }
 
-.title {
-	font-size: 3rem;
+.home-title {
+	font-size: 3em;
 	line-height: 1.5;
 	letter-spacing: 0.2rem;
 	font-weight: 900;
@@ -46,7 +46,7 @@ body {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.description {
+.home-description {
 	width: 50vw;
 	line-height: 1.5;
 	letter-spacing: 0.1rem;
@@ -58,7 +58,7 @@ body {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.cards {
+.home-cards {
 	background-image: linear-gradient(
 		to right top,
 		#051937,
@@ -77,7 +77,7 @@ body {
 	gap: 1rem;
 }
 
-.cards:nth-child(odd) {
+.home-cards:nth-child(odd) {
 	background-image: linear-gradient(
 		to right bottom,
 		#051937,
@@ -98,7 +98,7 @@ a {
 	text-decoration: none;
 }
 
-.card {
+.home-card {
 	background-color: #fff;
 	background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
 	width: 20rem;
@@ -113,29 +113,29 @@ a {
 	margin-bottom: 20px;
 }
 
-.card:hover {
+.home-card:hover {
 	transform: scale(1.1);
 }
 
-.cardTitle {
+.home-cardTitle {
 	font-size: 1.5rem;
 	color: #333;
 	margin-bottom: 10px;
 }
 
-.cardText {
+.home-cardText {
 	font-size: 1.3rem;
 	color: #666;
 }
 
-.img {
+.home-img {
 	width: 18rem;
 	display: block;
 	margin: 1rem auto;
 	border-radius: 0.5rem;
 }
 
-.section-title {
+.home-section-title {
 	text-align: center;
 	font-size: 2rem;
 	font-weight: bolder;
@@ -145,7 +145,7 @@ a {
 	text-transform: uppercase;
 }
 
-.sectionService {
+.home-sectionService {
 	background-image: url(./../../assets/images/Landing/banner-bg-5.jpg);
 	background-size: cover;
 	background-position: center;
@@ -162,7 +162,7 @@ a {
 	padding: 1rem;
 }
 
-.sectionService p {
+.home-sectionService p {
 	margin-left: auto;
 	margin-right: auto;
 	width: 70%;
@@ -172,12 +172,12 @@ a {
 	letter-spacing: 0.1rem;
 }
 
-.sectionService img {
+.home-sectionService img {
 	width: 35vw;
 	border-radius: 0.5rem;
 }
 
-.sectionService:nth-child(odd) {
+.home-sectionService:nth-child(odd) {
 	background: linear-gradient(
 		90deg,
 		hsla(186, 33%, 94%, 1) 0%,
@@ -204,41 +204,41 @@ a {
 }
 
 @media (max-width: 575px) {
-	.title {
-		font-size: 3rem;
+	.home-title {
+		font-size: 1.5rem;
 	}
 
-	.description {
-		font-size: 1.2rem;
+	.home-description {
+		font-size: 1rem;
 	}
 
-	.cards {
+	.home-cards {
 		height: auto;
 	}
 
-	.card {
+	.home-card {
 		width: 100%;
 		height: auto;
 		margin-bottom: 10px;
 	}
 
-	.section-title {
+	.home-section-title {
 		font-size: 1.2rem;
 	}
 
-	.img {
+	.home-img {
 		width: 100%;
 	}
 
-	.sectionService img {
+	.home-sectionService img {
 		width: 70vw;
 	}
 
-	.homeContainer {
+	.home-container {
 		overflow-x: hidden;
 	}
 
-	.sectionService p {
+	.home-sectionService p {
 		font-size: 0.95rem;
 	}
 }
