@@ -173,11 +173,12 @@ const TicketForm = () => {
 				<label className={styles.formLabels}>
 					<FaEnvelope /> Subject:
 				</label>
+				
 				<textarea
 					className={styles.textareaSubject}
 					type="text"
 					name="issueTitle"
-					placeholder="Briefly describe your problem..."
+					placeholder="Briefly describe ."
 					value={newTicket.issueTitle}
 					onChange={handleChange}
 					required
