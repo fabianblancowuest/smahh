@@ -37,8 +37,7 @@ body {
 }
 
 .title {
-	width: 50vw;
-	font-size: 4rem;
+	font-size: 3rem;
 	line-height: 1.5;
 	letter-spacing: 0.2rem;
 	font-weight: 900;
@@ -60,6 +59,15 @@ body {
 }
 
 .cards {
+	background-image: linear-gradient(
+		to right top,
+		#051937,
+		#004d7a,
+		#008793,
+		#00bf72,
+		#a8eb12
+	);
+	/* height: 100vh; */
 	padding: 2rem 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -70,10 +78,13 @@ body {
 	gap: 1rem;
 }
 
-#principal-main {
-	background-color: #56317a;
-	height: 200vh;
-}
+/* #principal-main {
+	background-image: url(./../../assets/images/Landing/cybersecurity-background.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+} */
 a {
 	text-decoration: none;
 }
@@ -115,12 +126,13 @@ a {
 	border-radius: 0.5rem;
 }
 
-.landingMain .sectionService h2 {
+.section-title {
 	text-align: center;
-	font-size: 3rem;
+	font-size: 2rem;
 	font-weight: bolder;
 	letter-spacing: 1rem;
 	text-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.5);
+
 	text-transform: uppercase;
 }
 
@@ -163,6 +175,9 @@ a {
 		hsla(216, 41%, 79%, 1) 100%
 	);
 	color: black;
+	.section-title {
+		text-shadow: 0.1rem 0.1rem 0.5rem rgba(255, 255, 255, 1);
+	}
 }
 
 @keyframes aparecer {
@@ -198,11 +213,23 @@ a {
 		margin-bottom: 10px;
 	}
 
+	.section-title {
+		font-size: 1.2rem;
+	}
+
 	.img {
 		width: 100%;
 	}
 
 	.sectionService img {
 		width: 70vw;
+	}
+
+	.homeContainer {
+		overflow-x: hidden;
+	}
+
+	.sectionService p {
+		font-size: 0.95rem;
 	}
 }
