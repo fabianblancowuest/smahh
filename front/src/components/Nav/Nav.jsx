@@ -207,7 +207,7 @@ const Nav = () => {
 				) : null}
 
 				<div>
-					{userType === "user" && isProfileOpen && (
+					{userType === "user" || userType === "staff" && isProfileOpen && (
 						<ProfileMenu
 							toggleProfile={toggleProfile}
 							handleLinkClick={handleLinkClick}
