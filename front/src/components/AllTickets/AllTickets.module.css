@@ -1,7 +1,11 @@
 /* AllTickets.module.css */
 
+:root {
+	--max-width: 786px;
+}
+
 .container {
-	max-width: 90vw;
+	max-width: 100%;
 	margin: 6rem auto 0;
 	padding: 4vh 8vh;
 	display: flex;
@@ -111,8 +115,13 @@
 
 @media (max-width: 768px) {
 	.container {
+		gap: 2rem;
 		max-width: 100%;
-		padding: 2rem;
+		padding: 0;
+	}
+
+	.filterContainer {
+		padding: 0.5rem;
 	}
 
 	.title {

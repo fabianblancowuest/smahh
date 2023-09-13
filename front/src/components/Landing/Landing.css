@@ -203,7 +203,7 @@ a {
 	}
 }
 
-@media (max-width: 575px) {
+@media (max-width: 768px) {
 	.home-title {
 		font-size: 1.5rem;
 	}

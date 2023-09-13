@@ -50,7 +50,7 @@ const About = () => {
 						Contact Us
 					</Link>
 					<p className={styles.contactParagraph}>
-						...And Start know your Fortified Digital Defense
+						...And Start now your Fortified Digital Defense
 					</p>
 				</div>
 			</section>
