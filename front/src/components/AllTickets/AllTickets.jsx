@@ -35,7 +35,9 @@ const AllTickets = () => {
 	return (
 		<div className={styles.container}>
 			<h2 className={styles.title}>Hi {userName}</h2>
-			<Filters />
+			<div className={styles.filterContainer}>
+				<Filters />
+			</div>
 			<div className={styles.spanContainer}>
 				<span className={styles.spanInfo}>
 					All your tickets: {totalAmount}{" "}

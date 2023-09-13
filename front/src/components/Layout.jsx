@@ -15,7 +15,6 @@ import Footer from "./Footer/Footer";
 import Profile from "./Profile/Profile";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import "./Layout.css";
-import Services from "./Sevices/Services";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -78,7 +77,6 @@ const UserRoutes = () => {
 			<div className="content">
 				<Routes>
 					<Route path="/" element={<Landing></Landing>} />
-					<Route path="/" element={<Services></Services>}></Route>
 					<Route path="/tickets" element={<AllTickets />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/riseticket" element={<TicketForm />} />
