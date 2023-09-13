@@ -4,14 +4,19 @@ import { riseTicket } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import styles from "./TicketForm.module.css";
 import validateTicketForm from "./validateTicketForm";
-import { FaUser, FaEnvelope, FaExclamationCircle, FaComment, FaShieldAlt, FaTicketAlt } from "react-icons/fa";
-
+import {
+	FaUser,
+	FaEnvelope,
+	FaExclamationCircle,
+	FaComment,
+	FaShieldAlt,
+	FaTicketAlt,
+} from "react-icons/fa";
 
 const TicketForm = () => {
-
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector((state) => state.userName);
-	const userEmail = useSelector((state) => state.userEmail)
+	const userEmail = useSelector((state) => state.userEmail);
 
 	const initialState = {
 		issueTitle: "",
@@ -21,7 +26,7 @@ const TicketForm = () => {
 	};
 
 	const [newTicket, setNewTicket] = useState(initialState);
-	const [errors, setErrors] = useState({})
+	const [errors, setErrors] = useState({});
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const dispatch = useDispatch();
@@ -44,17 +49,17 @@ const TicketForm = () => {
 			setSuccessMessage("");
 		}
 
-
 		setNewTicket({
 			...newTicket,
 			[name]: value,
 		});
 
-		setErrors(validateTicketForm({
-			...newTicket,
-			[name]: value,
-		}))
-
+		setErrors(
+			validateTicketForm({
+				...newTicket,
+				[name]: value,
+			}),
+		);
 	};
 
 	const message = (
@@ -84,18 +89,17 @@ const TicketForm = () => {
 			issueDescription: "",
 			issueType: "",
 			priority: "",
-			userEmail: newTicket.userEmail
+			userEmail: newTicket.userEmail,
 		});
-
 	};
 
 	const handleStay = () => {
-		setSuccessMessage("")
-	}
+		setSuccessMessage("");
+	};
 
 	const handleNavigate = () => {
-		navigate("/tickets")
-	}
+		navigate("/tickets");
+	};
 
 	return (
 		<div className={styles.formBackground}>
@@ -103,7 +107,8 @@ const TicketForm = () => {
 
 			<form className={styles.formContainer} onSubmit={handleSubmit}>
 				<label className={styles.formLabels}>
-					<FaShieldAlt /> Select a Service: {/* Icono para "Select a Service" */}
+					<FaShieldAlt /> Select a Service:{" "}
+					{/* Icono para "Select a Service" */}
 				</label>
 				<select
 					className={styles.select}
@@ -155,7 +160,8 @@ const TicketForm = () => {
 				</select>
 
 				<label className={styles.formLabels}>
-					<FaExclamationCircle /> Select a Priority: {/* Icono para "Select a Priority" */}
+					<FaExclamationCircle /> Select a Priority:{" "}
+					{/* Icono para "Select a Priority" */}
 				</label>
 				<select
 					className={styles.select}
@@ -173,17 +179,19 @@ const TicketForm = () => {
 				<label className={styles.formLabels}>
 					<FaEnvelope /> Subject:
 				</label>
-				
+
 				<textarea
 					className={styles.textareaSubject}
 					type="text"
 					name="issueTitle"
-					placeholder="Briefly describe ."
+					placeholder="Briefly describe your problem..."
 					value={newTicket.issueTitle}
 					onChange={handleChange}
 					required
 				/>
-				{errors.issueTitle && <p className={styles.errors}> {errors.issueTitle} </p>}
+				{errors.issueTitle && (
+					<p className={styles.errors}> {errors.issueTitle} </p>
+				)}
 
 				<label className={styles.formLabels}>
 					<FaComment /> Description:
@@ -197,44 +205,43 @@ const TicketForm = () => {
 					onChange={handleChange}
 					required
 				/>
-				{errors.issueDescription && <p className={styles.errors}> {errors.issueDescription} </p>}
-
+				{errors.issueDescription && (
+					<p className={styles.errors}> {errors.issueDescription} </p>
+				)}
 
 				{/*Submit Button */}
 
-				{!successMessage && <button
-					className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
-					type="submit"
-					disabled={isButtonDisabled}
-				>
-					<FaTicketAlt /> Rise Ticket
-				</button>}
+				{!successMessage && (
+					<button
+						className={`${styles.button} ${
+							isButtonDisabled ? styles.disabledButton : ""
+						}`}
+						type="submit"
+						disabled={isButtonDisabled}
+					>
+						<FaTicketAlt /> Rise Ticket
+					</button>
+				)}
 
 				{/* Messages */}
-				{successMessage && (<p className={styles.successMessage}>{successMessage}</p>)}
+				{successMessage && (
+					<p className={styles.successMessage}>{successMessage}</p>
+				)}
 
 				{errorMessage && <p className={styles.errors}>{errorMessage}</p>}
 
 				{/* Conditional Options To Navigate or Stay */}
 				{successMessage && (
-					<button
-						className={styles.button}
-						onClick={handleStay}
-					>
+					<button className={styles.button} onClick={handleStay}>
 						Request Another Ticket
 					</button>
 				)}
 
 				{successMessage && (
-					<button
-						className={styles.button}
-						onClick={handleNavigate}
-					>
+					<button className={styles.button} onClick={handleNavigate}>
 						Go To My Tickets
 					</button>
 				)}
-
-
 			</form>
 		</div>
 	);

@@ -92,13 +92,13 @@
 
 @media only screen and (max-width: 600px) {
 	.formBackground {
-		max-width: 80vw;
-		margin: 3rem auto;
-		padding: 2rem;
+		max-width: 90vw;
+		margin: 5rem auto;
+		padding: 1rem;
 	}
 
 	.formContainer {
-		padding: 2rem;
+		padding: 1rem;
 	}
 
 	.title {

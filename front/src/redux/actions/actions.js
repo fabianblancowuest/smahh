@@ -56,7 +56,7 @@ export const logIn = (userData) => async (dispatch) => {
 // USER
 
 export const riseTicket = (newTicket, userId, userName) => async (dispatch) => {
-	const URL = `http://192.168.1.6:3001/user/ticket`;
+	const URL = `http://${ipDirection}:3001/user/ticket`;
 
 	newTicket.userId = userId;
 	newTicket.userName = userName;
