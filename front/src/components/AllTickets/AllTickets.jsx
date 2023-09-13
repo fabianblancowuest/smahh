@@ -46,7 +46,7 @@ const AllTickets = () => {
 				<span className={styles.spanInfo}>
 					Filtered tickets: {totalFilteredTickets}
 				</span>
-				<button onClick={handleRefresh} className={styles.button}>
+				<button onClick={handleRefresh} className={styles.buttonRefresh}>
 					Refresh status
 				</button>
 			</div>

@@ -16,9 +16,9 @@ import {
 } from "./types";
 import axios from "axios";
 
-const ipDirection= "192.168.1.6"
+const ipDirection = "192.168.0.12";
 
-// COMMON 
+// COMMON
 
 export const signUp = (userData) => async (dispatch) => {
 	const URL = `http://${ipDirection}:3001/user/register`;
@@ -122,7 +122,6 @@ export const getAllTickets = () => async (dispatch) => {
 };
 
 export const updateTicket = (ticketId, newStatus) => {
-
 	const URL = `http://${ipDirection}:3001/staff/update-ticket`;
 
 	return async (dispatch) => {
