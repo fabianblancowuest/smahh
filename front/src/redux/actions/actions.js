@@ -17,7 +17,7 @@ import {
 } from "./types";
 import axios from "axios";
 
-const ipDirection = "192.168.0.12";
+const ipDirection = "192.168.1.6";
 
 // COMMON
 

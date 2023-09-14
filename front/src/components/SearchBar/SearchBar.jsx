@@ -26,13 +26,13 @@ const SearchBar = () => {
     }
 
     return (
-        <div >
-            <div className={styles.searchbar}>
-                <input type='text' onChange={handleChange} value={search} placeholder="Enter your search" />
 
-                <button className={styles.searchButton} onClick={handleSearch}>Search</button>
-            </div>
+        <div className={styles.searchbar}>
+            <input type='text' className={styles.input} onChange={handleChange} value={search} placeholder="Enter your search" />
+
+            <button className={styles.searchButton} onClick={handleSearch}>Search</button>
         </div>
+
 
 
     )

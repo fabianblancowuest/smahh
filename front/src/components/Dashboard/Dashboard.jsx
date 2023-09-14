@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TicketStaff from "../TicketStaff/TicketStaff";
-import { getAllTickets, applyCombinedFilters} from "../../redux/actions/actions";
+import { getAllTickets, applyCombinedFilters } from "../../redux/actions/actions";
 import "./CombinedStyles.css"
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
@@ -12,9 +12,9 @@ const Dashboard = () => {
 
   const totalAmount = userTicketsCopy.length;
   const totalFilteredTickets = filteredTickets.length;
-  
+
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     if (userTicketsCopy.length === 0) {
       dispatch(getAllTickets());
@@ -30,21 +30,24 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <h1 className="title">Ticket Dashboard</h1>
 
-      <div className="span-container">
-        <span className="span-item">All tickets: {totalAmount}</span>
-        <span className="span-item">||</span>
-        <span className="span-item">Filtered tickets: {totalFilteredTickets}</span>
-      <button onClick={handleRefresh} className="buttonRefresh">
-        Refresh
-      </button>
+      <div className="tile-searchBar-container">
+        <h1 className="dashboard-title">Ticket Dashboard</h1>
+        <SearchBar />
       </div>
-  
-      <SearchBar />
-
 
       <Filters />
+
+      <div className="span-container">
+        <div>
+          <span className="span-item">All tickets: {totalAmount}</span>
+          <span className="span-item">||</span>
+          <span className="span-item">Filtered tickets: {totalFilteredTickets}</span>
+        </div>
+        <button onClick={handleRefresh} className="buttonRefresh">
+          Refresh
+        </button>
+      </div>
 
       <div className="dashboard-header">
         <div>User Name</div>

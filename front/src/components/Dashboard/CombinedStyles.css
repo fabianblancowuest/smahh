@@ -4,10 +4,19 @@
 
 .dashboard-container {
 	max-width: 100%;
-	margin: 3rem auto 0;
+	margin: 2rem auto 0;
 	padding: 4vh 0;
 	display: flex;
 	flex-direction: column;
+}
+
+.tile-searchBar-container {
+	padding: 0rem 2rem 2rem 2rem;
+	align-items: center;
+	flex-direction: column;
+	display: flex;
+	gap:1.5rem;
+	justify-content: center;
 }
 
 .ticket-container {
@@ -23,13 +32,14 @@
 
 .span-container {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	height: 8vh;
+	height: 4vh;
+	padding: 0rem 2rem 2rem 2rem;
 }
 
 .span-item{
-	font-size: 1rem;
+	font-size: 1.3rem;
 	color: white;
 	text-align: start;
 	padding-left: 2rem;
@@ -67,43 +77,48 @@
 .dashboard-header div {
 	flex: 1;
 	padding: 10px;
-	border-right: 1px solid #ccc;
-	background-color: #f5f5f5;
-	/* Fondo más claro */
+	border-right: 1px solid #706f6f;
+	background-color: #d6cece;
 	font-weight: bold;
-	/* Peso de fuente en negrita */
+
 }
 
-/* Elimina el borde derecho del último elemento del encabezado del dashboard */
 .dashboard-header div:last-child {
 	border-right: none;
 }
 
-/* Título común */
-.title {
-	font-size: 1.5rem;
+.dashboard-title {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	font-size: 1.3rem;
 	color: white;
-	margin-bottom: 20px;
-	text-align: center;
+	text-align: start;
+	letter-spacing: 0.3rem;
 	font-weight: bold;
-	/* Peso de fuente en negrita */
+	text-transform: uppercase;
 }
 
-/* Botón común */
 .buttonRefresh {
-	background-color: #333;
+	background: linear-gradient(
+		90deg,
+		hsla(211, 100%, 28%, 1) 0%,
+		hsla(236, 100%, 8%, 1) 100%
+	);
 	color: #fff;
 	font-size: 1rem;
-	padding: 10px 20px;
-	margin-left: 2rem;
+	padding: 1em 2em;
 	border: none;
-	border-radius: 4px;
+	margin-left: 1rem;
+	border-radius: 0.2rem;
 	cursor: pointer;
-	font-weight: bold;
-	/* Peso de fuente en negrita */
+	transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Cambio de color al pasar el mouse sobre el botón */
 .buttonRefresh:hover {
-	background-color: #555;
+	background: linear-gradient(
+		90deg,
+		rgb(9, 19, 160) 0%,
+		rgb(15, 108, 207) 100%
+	);
+	transform: scale(1.05);
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
