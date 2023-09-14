@@ -1,6 +1,15 @@
 /* CombinedStyles.css */
 
 /* Contenedor de tickets */
+
+.dashboard-container {
+	max-width: 100%;
+	margin: 3rem auto 0;
+	padding: 4vh 0;
+	display: flex;
+	flex-direction: column;
+}
+
 .ticket-container {
 	display: flex;
 	flex-direction: row;
@@ -12,13 +21,32 @@
 	color: #333;
 }
 
+.span-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 8vh;
+}
+
+.span-item{
+	font-size: 1rem;
+	color: white;
+	text-align: start;
+	padding-left: 2rem;
+	letter-spacing: 0.1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
 /* Elemento de ticket */
 .ticket-item {
 	flex: 1;
 	padding: 10px;
 	border-right: 1px solid #ccc;
-	background-color: #f5f5f5; /* Fondo más claro */
-	font-weight: normal; /* Peso de fuente en negrita */
+	background-color: #f5f5f5;
+	/* Fondo más claro */
+	font-weight: normal;
+	/* Peso de fuente en negrita */
 }
 
 /* Elimina el borde derecho del último elemento de ticket */
@@ -40,8 +68,10 @@
 	flex: 1;
 	padding: 10px;
 	border-right: 1px solid #ccc;
-	background-color: #f5f5f5; /* Fondo más claro */
-	font-weight: bold; /* Peso de fuente en negrita */
+	background-color: #f5f5f5;
+	/* Fondo más claro */
+	font-weight: bold;
+	/* Peso de fuente en negrita */
 }
 
 /* Elimina el borde derecho del último elemento del encabezado del dashboard */
@@ -55,7 +85,8 @@
 	color: white;
 	margin-bottom: 20px;
 	text-align: center;
-	font-weight: bold; /* Peso de fuente en negrita */
+	font-weight: bold;
+	/* Peso de fuente en negrita */
 }
 
 /* Botón común */
@@ -68,7 +99,8 @@
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-	font-weight: bold; /* Peso de fuente en negrita */
+	font-weight: bold;
+	/* Peso de fuente en negrita */
 }
 
 /* Cambio de color al pasar el mouse sobre el botón */

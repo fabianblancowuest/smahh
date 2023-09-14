@@ -29,16 +29,20 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Dashboard</h1>
-      <h2 className="title">All tickets: {totalAmount} </h2>
-      <h2 className="title">Filtered tickets: {totalFilteredTickets}</h2>
+    <div className="dashboard-container">
+      <h1 className="title">Ticket Dashboard</h1>
 
-      <SearchBar />
-
+      <div className="span-container">
+        <span className="span-item">All tickets: {totalAmount}</span>
+        <span className="span-item">||</span>
+        <span className="span-item">Filtered tickets: {totalFilteredTickets}</span>
       <button onClick={handleRefresh} className="buttonRefresh">
         Refresh
       </button>
+      </div>
+  
+      <SearchBar />
+
 
       <Filters />
 
