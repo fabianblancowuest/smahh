@@ -164,7 +164,10 @@ const rootReducer = (state = inicialState, actions) => {
                     filteredTickets: [ticketFinded]
                 };
             } else {
-                return state; 
+                return {
+                    ...state,
+                    filteredTickets: []
+                }; 
             }
         }
 

@@ -67,7 +67,7 @@ const Dashboard = () => {
             <TicketStaff key={ticket.id} ticket={ticket} />
           ))
         ) : (
-          <p className="title">No tickets where found</p>
+          <p className="span-item">No tickets where found</p>
         )}
       </div>
     </div>
