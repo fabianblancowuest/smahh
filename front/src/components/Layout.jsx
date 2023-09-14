@@ -15,6 +15,8 @@ import Footer from "./Footer/Footer";
 import Profile from "./Profile/Profile";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import "./Layout.css";
+// import Slider from "react-slick";
+import Slidere from "./Slider/Slidere";
 
 const Layout = () => {
 	const userType = useSelector((state) => state.userType);
@@ -63,6 +65,7 @@ const CommonRoutes = () => {
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<SignUp />} />
 					<Route path="/contact" element={<Contact />} />
+					<Route path="/slider" element={<Slidere />}></Route>
 				</Routes>
 			</div>
 			<Footer className="footer" />
