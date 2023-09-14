@@ -26,6 +26,8 @@ export const SORT_BY_DATE= "SORT_BY_DATE"
 export const SORT_BY_STATUS= "SORT_BY_STATUS"
 export const SORT_BT_PRIORITY= "SORT_BY_PRIORITY"
 
+export const FILTERED_TICKETS= "FILTERED_TICKETS"
+
 
 export const SET_ERROR = "SET_ERROR"
 export const CLEAR_ERROR = "CLEAR_ERROR"

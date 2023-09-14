@@ -27,6 +27,7 @@ const DetailTicket = () => {
 		updatedAt,
 		userName,
 		userEmail,
+		userLastName
 	} = ticketDetail;
 
 	const statusClass =
@@ -51,12 +52,12 @@ const DetailTicket = () => {
 					<section>
 						<div className={styles.info}>
 							<p className={styles.heading}>User Name:</p>
-							<p>{userName}</p>
+							<p>{userName} {userLastName}</p>
 						</div>
 
 						<div className={styles.info}>
 							<p className={styles.heading}>User Email:</p>
-							<p>{userEmail}</p>
+							<p>{userEmail} </p>
 						</div>
 
 						<div className={styles.info}>

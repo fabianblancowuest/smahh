@@ -17,6 +17,7 @@ const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector((state) => state.userName);
 	const userEmail = useSelector((state) => state.userEmail);
+	const userLastName= useSelector((state)=> state.userLastName)
 
 	const initialState = {
 		issueTitle: "",
@@ -77,7 +78,7 @@ const TicketForm = () => {
 		event.preventDefault();
 
 		try {
-			await dispatch(riseTicket(newTicket, userId, userName));
+			await dispatch(riseTicket(newTicket, userId, userName, userLastName));
 			setSuccessMessage(message);
 		} catch (error) {
 			setNewTicket(initialState);

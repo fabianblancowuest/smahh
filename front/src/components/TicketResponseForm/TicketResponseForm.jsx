@@ -15,8 +15,6 @@ const TicketResponseForm = ({ ticketData }) => {
 		userEmail,
 	} = ticketData;
 
-	console.log(userEmail);
-
 	const [response, setResponse] = useState({
 		userName: userName,
 		userEmail: userEmail,
@@ -98,13 +96,12 @@ const TicketResponseForm = ({ ticketData }) => {
 					placeholder="Send response to user..."
 				></textarea>
 				<label>Response to:</label>
-				<input
+				<span
 					name="userEmail"
 					id="userEmail"
-					value={userEmail}
-					// onChange={handleChange}
-					disabled
-				></input>
+				>
+					{userEmail}
+				</span>
 				{/* </div> */}
 
 				<div>

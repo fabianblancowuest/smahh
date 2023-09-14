@@ -10,7 +10,8 @@ const postTicket = async (req, res) => {
       priority,
       userId,
       userName,
-      userEmail
+      userEmail,
+      userLastName,
     } = req.body;
 
     // Verifica si el ID de usuario existe en la base de datos
@@ -29,7 +30,8 @@ const postTicket = async (req, res) => {
       priority,
       UserId: userId,
       userName,
-      userEmail
+      userEmail,
+      userLastName,
     });
 
     return res.status(201).json({

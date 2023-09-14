@@ -13,6 +13,7 @@ import {
 	SEARCH_BY_ID,
 	SEARCH_BY_NAME,
 	UPDATE_USER,
+	FILTERED_TICKETS,
 } from "./types";
 import axios from "axios";
 
@@ -55,11 +56,12 @@ export const logIn = (userData) => async (dispatch) => {
 
 // USER
 
-export const riseTicket = (newTicket, userId, userName) => async (dispatch) => {
+export const riseTicket = (newTicket, userId, userName, userLastName) => async (dispatch) => {
 	const URL = `http://${ipDirection}:3001/user/ticket`;
 
 	newTicket.userId = userId;
 	newTicket.userName = userName;
+	newTicket.userLastName= userLastName;
 
 	try {
 		const { data } = await axios.post(URL, newTicket);
@@ -165,25 +167,25 @@ export const logOut = (out) => {
 
 // SEARCH-BAR
 
-export const searchById = (id) => {
+export const searchById = (search) => {
 	return {
 		type: SEARCH_BY_ID,
-		payload: id,
+		payload: search,
 	};
 };
 
-export const searchByName = (userName) => {
+export const searchByName = (search) => {
 	return async (dispatch) => {
 		try {
 			const { data } = await axios.get(
-				`http://localhost:3001/staff/userName?userName=${userName}`,
+				`http://localhost:3001/staff/search?search=${search.toLowerCase()}`,
 			);
 			dispatch({
 				type: SEARCH_BY_NAME,
 				payload: data,
 			});
 		} catch (error) {
-			alert(error.response.data.error);
+			console.log(error);
 		}
 	};
 };
@@ -239,7 +241,7 @@ export const applyCombinedFilters = (priority, status, order) => {
 
 		// Dispatch the filtered tickets to update the state
 		dispatch({
-			type: "FILTERED_TICKETS",
+			type: FILTERED_TICKETS,
 			payload: filteredTickets,
 		});
 	};
