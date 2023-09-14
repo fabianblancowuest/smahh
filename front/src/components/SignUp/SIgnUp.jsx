@@ -4,10 +4,17 @@ import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import validateSignUp from "./validateSignUp";
-import { FaShieldAlt, FaUser, FaPhone, FaEnvelope, FaComment, FaAt, FaLock } from "react-icons/fa";
+import {
+	FaShieldAlt,
+	FaUser,
+	FaPhone,
+	FaEnvelope,
+	FaComment,
+	FaAt,
+	FaLock,
+} from "react-icons/fa";
 
 const SignUp = () => {
-
 	const initialState = {
 		firstName: "",
 		lastName: "",
@@ -15,7 +22,7 @@ const SignUp = () => {
 		password: "",
 		confirmPassword: "",
 		phoneNumber: "",
-		userType: "user",
+		userType: "staff",
 	};
 
 	const [userData, setUserData] = useState(initialState);
@@ -89,7 +96,8 @@ const SignUp = () => {
 			<form className={styles.form} onSubmit={handleSubmit}>
 				{/* First Name */}
 				<label className={styles.label}>
-					<FaUser />First Name
+					<FaUser />
+					First Name
 				</label>
 				<input
 					className={styles.input}
@@ -105,7 +113,8 @@ const SignUp = () => {
 
 				{/* Last Name */}
 				<label className={styles.label}>
-					<FaUser/>Last Name
+					<FaUser />
+					Last Name
 				</label>
 				<input
 					className={styles.input}
@@ -183,7 +192,9 @@ const SignUp = () => {
 					<input
 						type="submit"
 						value="Submit"
-						className={`${styles.button} ${isButtonDisabled ? styles.disabledButton : ""}`}
+						className={`${styles.button} ${
+							isButtonDisabled ? styles.disabledButton : ""
+						}`}
 						disabled={isButtonDisabled}
 					/>
 				)}
