@@ -24,6 +24,7 @@ import cyberConsulting from "./../../assets/images/Landing/cyber-consulting.webp
 import darkweb from "./../../assets/images/Landing/darkweb.jpg";
 import managedCard from "./../../assets/images/Landing/managed-detection-card.jpg";
 import compilance from "./../../assets/images/Landing/compilance-sec.jpg";
+
 const Landing = () => {
 	return (
 		<div className="home-container">

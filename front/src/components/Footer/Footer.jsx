@@ -69,7 +69,10 @@ export default function Footer() {
 						</a>
 					))}
 				</div>
-				<p className="copyright">&copy; 2023 Smahh. All rights reserved.</p>
+				<p className="copyright">
+					&copy; 2023 Smahh. Smahh Cybersecurity Services 11A Tully Street,
+					Kilbirnie 6022. All rights reserved.
+				</p>
 			</div>
 		</footer>
 	);

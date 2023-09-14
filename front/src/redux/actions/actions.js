@@ -17,7 +17,7 @@ import {
 } from "./types";
 import axios from "axios";
 
-const ipDirection = "192.168.1.6";
+const ipDirection = "192.168.0.12";
 
 // COMMON
 
@@ -56,25 +56,26 @@ export const logIn = (userData) => async (dispatch) => {
 
 // USER
 
-export const riseTicket = (newTicket, userId, userName, userLastName) => async (dispatch) => {
-	const URL = `http://${ipDirection}:3001/user/ticket`;
+export const riseTicket =
+	(newTicket, userId, userName, userLastName) => async (dispatch) => {
+		const URL = `http://${ipDirection}:3001/user/ticket`;
 
-	newTicket.userId = userId;
-	newTicket.userName = userName;
-	newTicket.userLastName= userLastName;
+		newTicket.userId = userId;
+		newTicket.userName = userName;
+		newTicket.userLastName = userLastName;
 
-	try {
-		const { data } = await axios.post(URL, newTicket);
-		dispatch({
-			type: RISE_TICKET,
-			payload: data,
-		});
+		try {
+			const { data } = await axios.post(URL, newTicket);
+			dispatch({
+				type: RISE_TICKET,
+				payload: data,
+			});
 
-		return data;
-	} catch (error) {
-		throw error;
-	}
-};
+			return data;
+		} catch (error) {
+			throw error;
+		}
+	};
 
 export const updateUser = (userId, formData) => async (dispatch) => {
 	const URL = `http://${ipDirection}:3001/user/updateUser/${userId}`;

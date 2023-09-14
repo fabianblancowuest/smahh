@@ -63,6 +63,8 @@ ul.logs li {
 	color: orangered;
 	text-shadow: 0.1rem 0.1rem 1rem black;
 	border-radius: 0.5rem;
+	/* box-shadow: 0 0.1rem 0.4rem white; */
+	/* border-style: inset; */
 }
 .logoContainer {
 	display: flex;

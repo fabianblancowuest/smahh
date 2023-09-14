@@ -22,7 +22,7 @@ const SignUp = () => {
 		password: "",
 		confirmPassword: "",
 		phoneNumber: "",
-		userType: "staff",
+		userType: "user",
 	};
 
 	const [userData, setUserData] = useState(initialState);
