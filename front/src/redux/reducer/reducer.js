@@ -12,6 +12,7 @@ const inicialState = {
     userTickets: [],
     userTicketsCopy: [],
     filteredTickets: [],
+    totalTickets: 0,
 
     ticketDetail: {}
 
@@ -84,7 +85,8 @@ const rootReducer = (state = inicialState, actions) => {
             return {
                 ...state,
                 userTickets: [...payload.tickets],
-                userTicketsCopy: [...payload.tickets]
+                userTicketsCopy: [...payload.tickets],
+                totalTickets: payload.totalTickets
             }
 
         case UPDATE_TICKET:
@@ -175,7 +177,7 @@ const rootReducer = (state = inicialState, actions) => {
 
             return {
                 ...state,
-                filteredTickets: payload.tickets
+                userTickets: payload.tickets
             }
         }
 

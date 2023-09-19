@@ -17,7 +17,7 @@ import {
 } from "./types";
 import axios from "axios";
 
-const ipDirection = "192.168.1.6";
+const ipDirection = "192.168.1.4";
 
 // COMMON
 
@@ -110,18 +110,20 @@ export const getUserTickets = (userId) => async (dispatch) => {
 
 // STAFF
 
-export const getAllTickets = () => async (dispatch) => {
-	const URL = `http://${ipDirection}:3001/staff/allTickets`;
-	try {
-		const { data } = await axios.get(URL);
+export const getAllTickets = ({ priority, status, order, page, perPage }) => async (dispatch) => {
 
-		dispatch({
-			type: GET_ALL_TICKETS,
-			payload: data,
-		});
-	} catch (error) {
-		alert(error.response.data.error);
-	}
+    const URL = `http://${ipDirection}:3001/staff/allTickets?page=${page}&priority=${priority}&status=${status}&order=${order}`;
+
+    try {
+        const { data } = await axios.get(URL);
+
+        dispatch({
+            type: GET_ALL_TICKETS,
+            payload: data,
+        });
+    } catch (error) {
+        alert(error.response.data.error);
+    }
 };
 
 export const updateTicket = (ticketId, newStatus) => {

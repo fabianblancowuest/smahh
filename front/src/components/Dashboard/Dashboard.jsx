@@ -1,32 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TicketStaff from "../TicketStaff/TicketStaff";
 import { getAllTickets, applyCombinedFilters } from "../../redux/actions/actions";
-import "./CombinedStyles.css"
+import "./CombinedStyles.css";
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Dashboard = () => {
-  const userTicketsCopy = useSelector((state) => state.userTicketsCopy);
-  const filteredTickets = useSelector((state) => state.filteredTickets);
+  const userTickets = useSelector((state) => state.userTickets);
+  const totalTickets = useSelector((state) => state.totalTickets);
 
-  const totalAmount = userTicketsCopy.length;
-  const totalFilteredTickets = filteredTickets.length;
+  const [priority, setPriority] = useState("All");
+  const [status, setStatus] = useState("All");
+  const [order, setOrder] = useState("Asc");
+  const [page, setPage] = useState(1); // Estado para la página actual
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userTicketsCopy.length === 0) {
-      dispatch(getAllTickets());
-    } else {
-      // Cuando userTicketsCopy se actualiza, también actualizamos filteredTickets
-      dispatch(applyCombinedFilters("All", "All", "A")); // Aplica los filtros iniciales
-    }
-  }, [userTicketsCopy, dispatch]);
+    // Llama a getAllTickets con los filtros y la página actual
+    dispatch(getAllTickets({ priority, status, order, page }));
+  }, [priority, status, page, order, dispatch]);
+
+
+  // Funciones para restablecer los estados locales de los filtros
+  const resetFilters = () => {
+    setPriority("All");
+    setStatus("All");
+    setOrder("asc"); // Restablecer a "asc"
+    setPage(1);
+  };
 
   const handleRefresh = () => {
-    dispatch(getAllTickets());
+    resetFilters(); // Llama a la función para restablecer los filtros
+    dispatch(getAllTickets({ priority, status, order, page }));
   };
+
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+
 
   return (
     <div className="dashboard-container">
@@ -36,13 +55,18 @@ const Dashboard = () => {
         <SearchBar />
       </div>
 
-      <Filters />
+      <Filters handlePriority={(e) => setPriority(e.target.value)} handleStatus={(e) => setStatus(e.target.value)} handleOrder={(e) => setOrder(e.target.value)} />
+
+      <div className="pages-container">
+        <button className="prev-next-button" onClick={handlePreviousPage}>Previous</button>
+        <button className="prev-next-button" onClick={handleNextPage}>Next</button>
+      </div>
 
       <div className="span-container">
         <div>
-          <span className="span-item">All tickets: {totalAmount}</span>
+          <span className="span-item">All tickets: {totalTickets}</span>
           <span className="span-item">||</span>
-          <span className="span-item">Filtered tickets: {totalFilteredTickets}</span>
+          <span className="span-item">Filtered tickets: {userTickets?.length}</span>
         </div>
         <button onClick={handleRefresh} className="buttonRefresh">
           Refresh
@@ -62,8 +86,8 @@ const Dashboard = () => {
       </div>
 
       <div>
-        {filteredTickets?.length > 0 ? (
-          filteredTickets.map((ticket) => (
+        {userTickets?.length > 0 ? (
+          userTickets.map((ticket) => (
             <TicketStaff key={ticket.id} ticket={ticket} />
           ))
         ) : (

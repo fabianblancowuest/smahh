@@ -1,36 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { applyCombinedFilters } from "../../redux/actions/actions";
-import styles from "./Filters.module.css"; 
+import { useState } from "react";
+import styles from "./Filters.module.css";
 
-const Filters = () => {
-    const dispatch = useDispatch();
 
-    // FILTRO DE PRIORIDAD
-    const [selectedPriority, setSelectedPriority] = useState("All");
+const Filters = ({ handlePriority, handleStatus, handleOrder }) => {
+
     const [selectedStatus, setSelectedStatus] = useState("All");
-    const [selectedOrder, setSelectedOrder] = useState("A")
-
-    const handlePriority = (event) => {
-        const selectedPriority = event.target.value;
-        setSelectedPriority(selectedPriority);
-       
-        dispatch(applyCombinedFilters(selectedPriority, selectedStatus, selectedOrder));
-    };
-
-    const handleStatus = (event) => {
-        const selectedStatus = event.target.value;
-        setSelectedStatus(selectedStatus);
-        
-        dispatch(applyCombinedFilters(selectedPriority, selectedStatus, selectedOrder));
-    };
-
-    const handleOrder = (event) => {
-        const selectedOrder = event.target.value;
-        setSelectedOrder(selectedOrder);
-       
-        dispatch(applyCombinedFilters(selectedPriority, selectedStatus, selectedOrder));
-    }
+    const [selectedPriority, setSelectedPriority] = useState("All");
+    const [selectedOrder, setSelectedOrder] = useState("asc"); // Valor por defecto "asc"
 
     return (
         <div className={styles.container}>
@@ -50,8 +26,8 @@ const Filters = () => {
             </select>
 
             <select className={styles.select} value={selectedOrder} onChange={handleOrder} >
-                <option value="D">Recent</option>
-                <option value="A">Last</option>
+                <option value="desc">Recent</option>
+                <option value="asc">Last</option>
             </select>
 
         </div>
