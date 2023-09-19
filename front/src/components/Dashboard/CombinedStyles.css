@@ -15,7 +15,7 @@
 	align-items: center;
 	flex-direction: column;
 	display: flex;
-	gap:1.5rem;
+	gap: 1.5rem;
 	justify-content: center;
 }
 
@@ -38,7 +38,7 @@
 	padding: 0rem 2rem 2rem 2rem;
 }
 
-.span-item{
+.span-item {
 	font-size: 1.3rem;
 	color: white;
 	text-align: start;
@@ -80,7 +80,6 @@
 	border-right: 1px solid #706f6f;
 	background-color: #d6cece;
 	font-weight: bold;
-
 }
 
 .dashboard-header div:last-child {
@@ -121,4 +120,54 @@
 	);
 	transform: scale(1.05);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para móviles */
+@media screen and (max-width: 768px) {
+	.dashboard-container {
+		margin: 1rem auto 0;
+		padding: 2rem 0;
+		width: 100vw;
+	}
+
+	.tile-searchBar-container {
+		padding: 0 1rem 1rem 1rem;
+	}
+
+	.ticket-container {
+		margin: 0 1rem;
+		flex-direction: column;
+	}
+
+	.span-container {
+		padding: 0 1rem 1rem 1rem;
+	}
+
+	.span-item {
+		font-size: 1rem;
+		padding-left: 1rem;
+	}
+
+	.ticket-item {
+		padding: 8px;
+	}
+
+	.dashboard-header {
+		margin: 0 1rem;
+	}
+
+	.dashboard-header div {
+		padding: 8px;
+	}
+
+	.dashboard-title {
+		font-size: 1rem;
+		letter-spacing: 0.2rem;
+	}
+
+	.buttonRefresh {
+		font-size: 0.8rem;
+		padding: 0.8em 1.6em;
+		margin-left: 0.5rem;
+	}
 }

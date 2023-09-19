@@ -126,7 +126,7 @@ img {
 		height: auto; /* Cambiar la altura a automática para dispositivos móviles */
 		flex-direction: column; /* Cambiar la dirección de la flexbox para dispositivos móviles */
 		align-items: center; /* Centrar elementos para dispositivos móviles */
-		padding: 0 2rem; /* Cambiar el padding para dispositivos móviles */
+		padding: 0 1rem; /* Cambiar el padding para dispositivos móviles */
 	}
 
 	.box2 {

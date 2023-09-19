@@ -11,7 +11,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 3rem;
+	/* gap: 3rem; */
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -25,7 +25,7 @@
 }
 
 .carrouselParagraph {
-	padding: 3rem;
+	padding: 2rem 0;
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
@@ -43,6 +43,29 @@
 	z-index: 1; /* Asegura que la imagen activa esté en la parte superior */
 }
 
-.carrouselImg {
-	width: 25vw;
+/* .carrouselImg {
+	width: 50vw;
+} */
+
+@media (max-width: 767px) {
+	.carrousel {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100vh; /* Altura de la pantalla completa */
+		font-size: 1rem;
+		letter-spacing: 0.1rem;
+		line-height: 1.5;
+		font-weight: bold;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.imgUrl {
+		width: 90vw;
+	}
 }

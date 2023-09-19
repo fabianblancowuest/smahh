@@ -1,4 +1,4 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import {
 	FaFacebook,
 	FaInstagram,
@@ -52,7 +52,7 @@ export default function Footer() {
 				<nav aria-label="Footer" className="footer-nav">
 					{navigation.main.map((item) => (
 						<div key={item.name}>
-							<a href={item.href}>{item.name}</a>
+							<NavLink to={item.href}>{item.name}</NavLink>
 						</div>
 					))}
 				</nav>
