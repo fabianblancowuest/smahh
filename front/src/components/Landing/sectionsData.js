@@ -111,7 +111,7 @@ const sectionsData = [
 			"In an era of persistent cyber threats, a proactive defense strategy is indispensable. Our Security Operations Center (SOC) stands as the vanguard of your organization's digital security, providing continuous monitoring, rapid incident response, and vigilant threat hunting.",
 	},
 	{
-		id: "vulnerabilty-testing",
+		id: "vulnerability-testing",
 		title: "Vulnerability Testing",
 		image: vulnerabilityTesting,
 		alt: "vulnerabilty-testing",

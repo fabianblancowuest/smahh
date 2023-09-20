@@ -59,9 +59,22 @@ body {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.swiper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Biblioteca Swiper */
 .swiper-wrapper {
+	/* Margenes interiores */
 	padding: 5rem;
-	width: 100vw;
+	align-items: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	color: white !important;
 }
 
 .home-cards {
@@ -115,6 +128,8 @@ a {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
+	/* box-shadow: 0.1rem 0.1rem 1rem #d8efe6; */
+	box-shadow: 0.1rem 0.1rem 0.7rem white;
 }
 
 .home-card:hover {
