@@ -11,8 +11,11 @@ const inicialState = {
 
     userTickets: [],
     userTicketsCopy: [],
-    filteredTickets: [],
-    totalTickets: 0,
+    // filteredTickets: [], // will not use it any more. Check out wich type is using it and change it by userTiceks
+    totalTickets: null,
+    totalPages: null,
+    prev: null,
+    next: null,
 
     ticketDetail: {}
 
@@ -86,15 +89,16 @@ const rootReducer = (state = inicialState, actions) => {
                 ...state,
                 userTickets: [...payload.tickets],
                 userTicketsCopy: [...payload.tickets],
-                totalTickets: payload.totalTickets
+                totalTickets: payload.totalTickets,
+                totalPages: payload.totalPages,
+                prev: payload.prev,
+                next: payload.next,
             }
 
         case UPDATE_TICKET:
 
             return {
                 ...state,
-                userTicketsCopy: [...payload.allTicketsUpdated],
-                userTickets: [...state.userTicketsCopy]
             }
 
         case GET_TICKET_DETAIL:
@@ -105,79 +109,83 @@ const rootReducer = (state = inicialState, actions) => {
 
         //FILTERS
 
-        case FILTER_BY_PRIORITY:
+        // case FILTER_BY_PRIORITY:
 
-            const filteredByPriority = state.userTicketsCopy.filter((tickets) => {
+        //     const filteredByPriority = state.userTicketsCopy.filter((tickets) => {
 
-                if (payload === "All") {
-                    return true;
-                } else {
-                    return tickets.priority === payload
-                }
-            });
+        //         if (payload === "All") {
+        //             return true;
+        //         } else {
+        //             return tickets.priority === payload
+        //         }
+        //     });
 
-            return {
-                ...state,
-                userTickets: filteredByPriority
-            }
+        //     return {
+        //         ...state,
+        //         userTickets: filteredByPriority
+        //     }
 
-        case FILTER_BY_STATUS:
-            const filteredByStatus = state.userTicketsCopy.filter((tickets) => {
+        // case FILTER_BY_STATUS:
+        //     const filteredByStatus = state.userTicketsCopy.filter((tickets) => {
 
-                if (payload === "All") {
-                    return true;
-                } else {
-                    return tickets.status === payload
-                }
-            });
+        //         if (payload === "All") {
+        //             return true;
+        //         } else {
+        //             return tickets.status === payload
+        //         }
+        //     });
 
-            return {
-                ...state,
-                userTickets: filteredByStatus
-            }
+        //     return {
+        //         ...state,
+        //         userTickets: filteredByStatus
+        //     }
 
-        case SORT_BY_DATE:
-            const sortedTickets = [...state.userTickets]
+        // case SORT_BY_DATE:
+        //     const sortedTickets = [...state.userTickets]
 
-            if (payload === "A") {
-                sortedTickets.sort((a, b) => a.id - b.id)
-            }
+        //     if (payload === "A") {
+        //         sortedTickets.sort((a, b) => a.id - b.id)
+        //     }
 
-            if (payload === "D") {
-                sortedTickets.sort((a, b) => b.id - a.id)
-            }
-            return {
-                ...state,
-                userTickets: sortedTickets
-            }
+        //     if (payload === "D") {
+        //         sortedTickets.sort((a, b) => b.id - a.id)
+        //     }
+        //     return {
+        //         ...state,
+        //         userTickets: sortedTickets
+        //     }
 
-        case FILTERED_TICKETS:
-            return {
-                ...state,
-                filteredTickets: payload,
-            };
+        // case FILTERED_TICKETS:
+        //     return {
+        //         ...state,
+        //         filteredTickets: payload,
+        //     };
 
         case SEARCH_BY_ID: {
-            const ticketFinded = state.userTicketsCopy.find(ticket => ticket.id === Number(payload));
 
-            if (ticketFinded) {
-                return {
-                    ...state,
-                    filteredTickets: [ticketFinded]
-                };
-            } else {
-                return {
-                    ...state,
-                    filteredTickets: []
-                }; 
-            }
+            return {
+                ...state,
+                userTickets: payload.ticket,
+                userTicketsCopy: payload.ticket,
+                totalTickets: null,
+                totalPages: null,
+                prev: null,
+                next: null,
+            };
+
+
         }
 
         case SEARCH_BY_NAME: {
 
             return {
                 ...state,
-                userTickets: payload.tickets
+                userTickets: payload.tickets,
+                userTicketsCopy: payload.tickets,
+                totalTickets: null,
+                totalPages: null,
+                prev: null,
+                next: null,
             }
         }
 

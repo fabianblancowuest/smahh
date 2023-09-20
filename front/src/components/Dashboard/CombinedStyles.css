@@ -13,7 +13,6 @@
 .tile-searchBar-container {
 	padding: 0rem 2rem 2rem 2rem;
 	align-items: center;
-	flex-direction: column;
 	display: flex;
 	gap: 1.5rem;
 	justify-content: center;
@@ -38,27 +37,50 @@
 	padding: 0rem 2rem 2rem 2rem;
 }
 
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+}
+
+.page-number,
+.current-page {
+	margin: 0 5px;
+	color:white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.page-number:hover {
+	color: #007bff;
+	/* Cambia el color al pasar el mouse */
+}
+
+.current-page {
+	color: #ff5733;
+	/* Cambia el color de la página actual */
+}
+
 .pages-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 4vh;
-	padding: 0rem 2rem 2rem 2rem;
+	padding: 2rem 2rem 2rem 2rem;
 }
 
 .prev-next-button {
-	background: linear-gradient(90deg,
-			hsla(211, 100%, 28%, 1) 0%,
-			hsla(236, 100%, 8%, 1) 100%);
+	background: rgba(0, 110, 255, 0);
 	color: #fff;
-	font-size: 1rem;
-	padding: 1em 2em;
+	font-size: 1.3rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
 	border: none;
-	margin-left: 1rem;
+	letter-spacing: 0.1rem;
 	border-radius: 0.2rem;
 	cursor: pointer;
-	transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
+
 
 .span-item {
 	font-size: 1.3rem;

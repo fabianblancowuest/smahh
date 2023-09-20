@@ -25,10 +25,28 @@ const getAllTickets = async (req, res) => {
             order: [['createdAt', order.toUpperCase()]],
         });
 
+        const totalTickets = allTickets.count;
+        const totalPages = Math.ceil(totalTickets / perPage);
+
+        // Calcula los valores de "prev" y "next"
+        let prev = null;
+        let next = null;
+
+        if (page > 1) {
+            prev = page - 1;
+        }
+
+        if (page < totalPages) {
+            next = page + 1;
+        }
+
         return res.status(200).json({
             message: "Lista de tickets obtenida correctamente",
             tickets: allTickets.rows,
-            totalTickets: allTickets.count,
+            totalTickets: totalTickets,
+            totalPages: totalPages,
+            prev: prev,
+            next: next,
         });
     } catch (error) {
         console.error(error);

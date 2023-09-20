@@ -2,10 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Ticket from "../Ticket/Ticket";
 import styles from "./AllTickets.module.css";
-import {
-	applyCombinedFilters,
-	getUserTickets,
-} from "../../redux/actions/actions";
+import {getUserTickets} from "../../redux/actions/actions";
 import Filters from "../Filters/Filters";
 
 const AllTickets = () => {
