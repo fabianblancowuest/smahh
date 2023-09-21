@@ -1,4 +1,15 @@
-import { FILTERED_TICKETS, FILTER_BY_PRIORITY, FILTER_BY_STATUS, GET_ALL_TICKETS, GET_TICKET_DETAIL, GET_USER_TICKETS, LOG_IN, LOG_OUT, RISE_TICKET, SEARCH_BY_ID, SEARCH_BY_NAME, SET_ERROR, SET_SUCCESS_MESSAGE, SIGN_UP, SORT_BY_DATE, UPDATE_TICKET, UPDATE_USER } from "../actions/types"
+import {
+    GET_ALL_TICKETS,
+    GET_TICKET_DETAIL,
+    GET_USER_TICKETS,
+    LOG_IN, LOG_OUT,
+    RISE_TICKET,
+    SEARCH_BY_ID,
+    SEARCH_BY_NAME,
+    SIGN_UP,
+    UPDATE_TICKET,
+    UPDATE_USER
+} from "../actions/types"
 
 const inicialState = {
     access: false,
@@ -11,7 +22,7 @@ const inicialState = {
 
     userTickets: [],
     userTicketsCopy: [],
-    // filteredTickets: [], // will not use it any more. Check out wich type is using it and change it by userTiceks
+   
     totalTickets: null,
     totalPages: null,
     prev: null,
@@ -80,8 +91,8 @@ const rootReducer = (state = inicialState, actions) => {
         case GET_USER_TICKETS:
             return {
                 ...state,
-                userTickets: [...payload.tickets],
-                userTicketsCopy: [...payload.tickets]
+                userTickets: [...payload.tickets.rows],
+                userTicketsCopy: [...payload.tickets.rows]
             }
 
         case GET_ALL_TICKETS:
@@ -106,60 +117,6 @@ const rootReducer = (state = inicialState, actions) => {
                 ...state,
                 ticketDetail: { ...payload.ticket }
             }
-
-        //FILTERS
-
-        // case FILTER_BY_PRIORITY:
-
-        //     const filteredByPriority = state.userTicketsCopy.filter((tickets) => {
-
-        //         if (payload === "All") {
-        //             return true;
-        //         } else {
-        //             return tickets.priority === payload
-        //         }
-        //     });
-
-        //     return {
-        //         ...state,
-        //         userTickets: filteredByPriority
-        //     }
-
-        // case FILTER_BY_STATUS:
-        //     const filteredByStatus = state.userTicketsCopy.filter((tickets) => {
-
-        //         if (payload === "All") {
-        //             return true;
-        //         } else {
-        //             return tickets.status === payload
-        //         }
-        //     });
-
-        //     return {
-        //         ...state,
-        //         userTickets: filteredByStatus
-        //     }
-
-        // case SORT_BY_DATE:
-        //     const sortedTickets = [...state.userTickets]
-
-        //     if (payload === "A") {
-        //         sortedTickets.sort((a, b) => a.id - b.id)
-        //     }
-
-        //     if (payload === "D") {
-        //         sortedTickets.sort((a, b) => b.id - a.id)
-        //     }
-        //     return {
-        //         ...state,
-        //         userTickets: sortedTickets
-        //     }
-
-        // case FILTERED_TICKETS:
-        //     return {
-        //         ...state,
-        //         filteredTickets: payload,
-        //     };
 
         case SEARCH_BY_ID: {
 

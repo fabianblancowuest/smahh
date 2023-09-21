@@ -6,7 +6,7 @@ const getAllTickets = async (req, res) => {
         const perPage = parseInt(req.query.perPage) || 10;
         const priority = req.query.priority || "All";
         const status = req.query.status || "All";
-        let order = req.query.order || "asc"; // Valor por defecto es "asc"
+        let order = req.query.order || "asc"; 
 
         let whereClause = {};
 
@@ -28,7 +28,7 @@ const getAllTickets = async (req, res) => {
         const totalTickets = allTickets.count;
         const totalPages = Math.ceil(totalTickets / perPage);
 
-        // Calcula los valores de "prev" y "next"
+        // Calculate the values of "prev" and "next"
         let prev = null;
         let next = null;
 
@@ -41,7 +41,7 @@ const getAllTickets = async (req, res) => {
         }
 
         return res.status(200).json({
-            message: "Lista de tickets obtenida correctamente",
+            message: "List of tickets obtained succesfully",
             tickets: allTickets.rows,
             totalTickets: totalTickets,
             totalPages: totalPages,
@@ -50,7 +50,7 @@ const getAllTickets = async (req, res) => {
         });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Error al obtener los tickets" });
+        return res.status(500).json({ error: "Error while triying to obtain tickets" });
     }
 };
 

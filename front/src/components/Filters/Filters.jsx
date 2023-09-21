@@ -1,18 +1,13 @@
-import { useState } from "react";
+
 import styles from "./Filters.module.css";
 
 
 const Filters = ({ handlePriority, handleStatus, handleOrder }) => {
 
-    // const [selectedStatus, setSelectedStatus] = useState("All");
-    // const [selectedPriority, setSelectedPriority] = useState("All");
-    // const [selectedOrder, setSelectedOrder] = useState("asc"); // Valor por defecto "asc"
-
     return (
         <div className={styles.container}>
             <select
                 className={styles.select}
-                // value={selectedStatus}
                 onChange={handleStatus}
             >
                 <option value="All">All Status</option>
@@ -24,7 +19,6 @@ const Filters = ({ handlePriority, handleStatus, handleOrder }) => {
 
             <select
                 className={styles.select}
-                // value={selectedPriority}
                 onChange={handlePriority}
             >
                 <option value="All">All Priorities</option>
@@ -33,8 +27,8 @@ const Filters = ({ handlePriority, handleStatus, handleOrder }) => {
                 <option value="Low">Low</option>
             </select>
 
-            <select className={styles.select}
-                // value={selectedOrder}
+            <select
+                className={styles.select}
                 onChange={handleOrder}
             >
                 <option value="asc">Last</option>

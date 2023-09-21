@@ -9,15 +9,15 @@ import Pagination from "./Pagination";
 
 const Dashboard = () => {
   const userTickets = useSelector((state) => state.userTickets);
-  const totalTickets = useSelector((state) => state.totalTickets); // number
-  const totalPages = useSelector((state) => state.totalPages); // number
-  const prevPage = useSelector((state) => state.prev); // 
+  const totalTickets = useSelector((state) => state.totalTickets); 
+  const totalPages = useSelector((state) => state.totalPages); 
+  const prevPage = useSelector((state) => state.prev);  
   const nextPage = useSelector((state) => state.next);
 
   const [priority, setPriority] = useState("All");
   const [status, setStatus] = useState("All");
   const [order, setOrder] = useState("Asc");
-  const [page, setPage] = useState(1); // Estado para la página actual
+  const [page, setPage] = useState(1); 
 
   const dispatch = useDispatch();
 
@@ -25,13 +25,10 @@ const Dashboard = () => {
     dispatch(getAllTickets({ priority, status, order, page }));
   }, [priority, status, page, order, dispatch]);
 
-
-  // Funciones para restablecer los estados locales de los filtros
-
   const handleRefresh = () => {
     setPriority("All");
     setStatus("All");
-    setOrder("asc"); // Restablecer a "asc"
+    setOrder("asc");
     setPage(1);
     dispatch(getAllTickets({ priority, status, order, page }));
   };
@@ -46,6 +43,18 @@ const Dashboard = () => {
     setPage(page + 1);
   };
 
+  const handlePriorityChange = (e) => {
+    setPriority(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
+  const handleOrderChange = (e) => {
+    setOrder(e.target.value);
+  };
+
 
   return (
     <div className="dashboard-container">
@@ -54,18 +63,18 @@ const Dashboard = () => {
         <h1 className="dashboard-title">Ticket Dashboard</h1>
         <SearchBar />
       </div>
-      <Filters handlePriority={(e) => setPriority(e.target.value)} handleStatus={(e) => setStatus(e.target.value)} handleOrder={(e) => setOrder(e.target.value)} />
 
-      {/* <div className="span-container">
-        <div>
-          <span className="span-item">All tickets: {totalTickets}</span>
-          <span className="span-item">||</span>
-          <span className="span-item">Filtered tickets: {userTickets?.length}</span>
-        </div>
-      </div> */}
-      {/* <button onClick={handleRefresh} className="buttonRefresh">
-        Refresh
-      </button> */}
+      <Filters
+        handlePriority={handlePriorityChange}
+        handleStatus={handleStatusChange}
+        handleOrder={handleOrderChange}
+      />
+
+      <div className="span-container">
+        <button onClick={handleRefresh} className="buttonRefresh">
+          Refresh
+        </button>
+      </div>
 
       <div className="dashboard-header">
         <div>User Name</div>
