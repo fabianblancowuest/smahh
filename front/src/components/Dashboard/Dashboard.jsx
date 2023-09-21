@@ -13,7 +13,8 @@ const Dashboard = () => {
   const totalPages = useSelector((state) => state.totalPages);
   const prevPage = useSelector((state) => state.prev);
   const nextPage = useSelector((state) => state.next);
-
+  
+  const [filtersKey, setFiltersKey] = useState(0);
   const [priority, setPriority] = useState("All");
   const [status, setStatus] = useState("All");
   const [order, setOrder] = useState("Asc");
@@ -30,6 +31,7 @@ const Dashboard = () => {
     setStatus("All");
     setOrder("asc");
     setPage(1);
+    setFiltersKey(filtersKey + 1);
     dispatch(getAllTickets({ priority, status, order, page }));
   };
 
@@ -77,6 +79,7 @@ const Dashboard = () => {
         handlePriority={handlePriorityChange}
         handleStatus={handleStatusChange}
         handleOrder={handleOrderChange}
+        key={filtersKey}
       />
 
       <div className="span-container">
