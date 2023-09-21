@@ -5,8 +5,6 @@ const { Op } = require("sequelize");
 const getTicketsByUserName = async (req, res) => {
     const { search } = req.query;
 
-    console.log(search);
-
     if (!search) {
         return res.status(400).json({ error: "Search parameter is required" });
     }

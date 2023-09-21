@@ -1,81 +1,131 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TicketStaff from "../TicketStaff/TicketStaff";
-import {
-	getAllTickets,
-	applyCombinedFilters,
-} from "../../redux/actions/actions";
+import { getAllTickets } from "../../redux/actions/actions";
 import "./CombinedStyles.css";
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
+import Pagination from "./Pagination";
 
 const Dashboard = () => {
-	const userTicketsCopy = useSelector((state) => state.userTicketsCopy);
-	const filteredTickets = useSelector((state) => state.filteredTickets);
+  const userTickets = useSelector((state) => state.userTickets);
+  const totalTickets = useSelector((state) => state.totalTickets);
+  const totalPages = useSelector((state) => state.totalPages);
+  const prevPage = useSelector((state) => state.prev);
+  const nextPage = useSelector((state) => state.next);
 
-	const totalAmount = userTicketsCopy.length;
-	const totalFilteredTickets = filteredTickets.length;
+  const [priority, setPriority] = useState("All");
+  const [status, setStatus] = useState("All");
+  const [order, setOrder] = useState("Asc");
+  const [page, setPage] = useState(1);
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		if (userTicketsCopy.length === 0) {
-			dispatch(getAllTickets());
-		} else {
-			// Cuando userTicketsCopy se actualiza, también actualizamos filteredTickets
-			dispatch(applyCombinedFilters("All", "All", "A")); // Aplica los filtros iniciales
-		}
-	}, [userTicketsCopy, dispatch]);
+  useEffect(() => {
+    dispatch(getAllTickets({ priority, status, order, page }))
+  }, [priority, status, order, page, dispatch]);
 
-	const handleRefresh = () => {
-		dispatch(getAllTickets());
-	};
+  const handleRefresh = () => {
+    setPriority("All");
+    setStatus("All");
+    setOrder("asc");
+    setPage(1);
+    dispatch(getAllTickets({ priority, status, order, page }));
+  };
 
-	return (
-		<div className="dashboard-container">
-			<div className="tile-searchBar-container">
-				<h1 className="dashboard-title">Ticket Dashboard</h1>
-				<SearchBar />
-			</div>
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
 
-			<Filters />
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
 
-			<div className="span-container">
-				<div className="span-text-container">
-					<span className="span-item">All tickets: {totalAmount}</span>
-					<span className="span-item">||</span>
-					<span className="span-item">
-						Filtered tickets: {totalFilteredTickets}
-					</span>
-				</div>
-				<button onClick={handleRefresh} className="buttonRefresh">
-					Refresh
-				</button>
-			</div>
+  const handlePriorityChange = (e) => {
+    if (page !== 1) {
+      setPage(1)
+    }
+    setPriority(e.target.value);
+  };
 
-			<div className="dashboard-header">
-				<div>User Name</div>
-				<div>Ticket Id</div>
-				<div>Issue Type</div>
-				<div>Priority</div>
-				<div>Status</div>
-				<div>Update Status</div>
-				<div>Created At</div>
-				<div>Updated At</div>
-				<div>Detail </div>
-			</div>
+  const handleStatusChange = (e) => {
+    if (page !== 1) {
+      setPage(1)
+    }
+    setStatus(e.target.value);
+  };
 
-			<div className="dashboard-tickets">
-				{filteredTickets?.length > 0 ? (
-					filteredTickets.map((ticket) => (
-						<TicketStaff key={ticket.id} ticket={ticket} />
-					))
-				) : (
-					<p className="span-item">No tickets where found</p>
-				)}
-			</div>
-		</div>
-	);
+  const handleOrderChange = (e) => {
+    if (page !== 1) {
+      setPage(1)
+    }
+    setOrder(e.target.value);
+  };
+
+
+
+  return (
+    <div className="dashboard-container">
+      <div className="tile-searchBar-container">
+        <h1 className="dashboard-title">Ticket Dashboard</h1>
+        <SearchBar />
+      </div>
+
+      <Filters
+        handlePriority={handlePriorityChange}
+        handleStatus={handleStatusChange}
+        handleOrder={handleOrderChange}
+      />
+
+      <div className="span-container">
+        <button onClick={handleRefresh} className="buttonRefresh">
+          Refresh
+        </button>
+      </div>
+
+      <div className="dashboard-header">
+        <div>User Name</div>
+        <div>Ticket Id</div>
+        <div>Issue Type</div>
+        <div>Priority</div>
+        <div>Status</div>
+        <div>Update Status</div>
+        <div>Created At</div>
+        <div>Updated At</div>
+        <div>Detail </div>
+      </div>
+
+      <div>
+        {userTickets?.length > 0 ? (
+          userTickets.map((ticket) => (
+            <TicketStaff
+              key={ticket.id}
+              ticket={ticket}
+              currentPage={page}
+              currentPriority={priority}
+              currentStatus={status}
+              currentOrder={order} />
+          ))
+        ) : (
+          <p className="span-item">No tickets where found</p>
+        )}
+      </div>
+
+      <div className="pages-container">
+        {prevPage && <button className="prev-next-button" onClick={handlePreviousPage}>Previous</button>}
+        <Pagination
+          totalPages={totalPages}
+          currentPage={page}
+          onPageChange={(newPage) => setPage(newPage)}
+        />
+        {nextPage && <button className="prev-next-button" onClick={handleNextPage}>Next</button>}
+      </div>
+
+
+    </div>
+  );
 };
 
 export default Dashboard;

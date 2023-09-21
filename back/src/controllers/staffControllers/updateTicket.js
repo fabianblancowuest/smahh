@@ -8,8 +8,12 @@ const updateTicket = async (req, res) => {
   try {
     const { ticketId, newStatus } = req.body;
     if (ticketId, newStatus) {
+      
       await Ticket.update({ status: newStatus }, { where: { id: ticketId } });
-      const allTicketsUpdated = await Ticket.findAll();
+      const allTicketsUpdated = await Ticket.findAll({
+        order: [['createdAt', 'ASC']],
+      });
+
       return res.status(200).json({
         allTicketsUpdated: allTicketsUpdated
       });

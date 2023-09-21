@@ -7,17 +7,13 @@ import {
 	GET_USER_TICKETS,
 	UPDATE_TICKET,
 	GET_TICKET_DETAIL,
-	FILTER_BY_PRIORITY,
-	FILTER_BY_STATUS,
-	SORT_BY_DATE,
 	SEARCH_BY_ID,
 	SEARCH_BY_NAME,
 	UPDATE_USER,
-	FILTERED_TICKETS,
 } from "./types";
 import axios from "axios";
 
-const ipDirection = "192.168.0.12";
+const ipDirection = "192.168.1.4";
 
 // COMMON
 
@@ -38,7 +34,6 @@ export const signUp = (userData) => async (dispatch) => {
 };
 
 export const logIn = (userData) => async (dispatch) => {
-	//LocalHost Request
 	const URL = `http://${ipDirection}:3001/login`;
 
 	try {
@@ -94,15 +89,18 @@ export const updateUser = (userId, formData) => async (dispatch) => {
 	}
 };
 
-export const getUserTickets = (userId) => async (dispatch) => {
-	const URL = `http://${ipDirection}:3001/user/ticket/`;
+export const getUserTickets = (userId, priority, status, order) => async (dispatch) => {
+
+	const URL = `http://${ipDirection}:3001/user/tickets/${userId}?priority=${priority}&status=${status}&order=${order}`;
+
 	try {
-		const { data } = await axios.get(URL + userId); //
+		const { data } = await axios.get(URL); //
 
 		dispatch({
 			type: GET_USER_TICKETS,
 			payload: data,
 		});
+
 	} catch (error) {
 		console.log(error);
 	}
@@ -110,8 +108,10 @@ export const getUserTickets = (userId) => async (dispatch) => {
 
 // STAFF
 
-export const getAllTickets = () => async (dispatch) => {
-	const URL = `http://${ipDirection}:3001/staff/allTickets`;
+export const getAllTickets = ({ priority, status, order, page, perPage }) => async (dispatch) => {
+
+	const URL = `http://${ipDirection}:3001/staff/allTickets?page=${page}&priority=${priority}&status=${status}&order=${order}`;
+
 	try {
 		const { data } = await axios.get(URL);
 
@@ -124,7 +124,7 @@ export const getAllTickets = () => async (dispatch) => {
 	}
 };
 
-export const updateTicket = (ticketId, newStatus) => {
+export const updateTicket = (ticketId, newStatus, currentPage, currentPriority, currentStatus, currentOrder) => {
 	const URL = `http://${ipDirection}:3001/staff/update-ticket`;
 
 	return async (dispatch) => {
@@ -132,8 +132,13 @@ export const updateTicket = (ticketId, newStatus) => {
 			const { data } = await axios.put(URL, { ticketId, newStatus });
 			dispatch({
 				type: UPDATE_TICKET,
-				payload: data,
 			});
+
+			const response = await axios.get(`http://${ipDirection}:3001/staff/allTickets?page=${currentPage}&priority=${currentPriority}&status=${currentStatus}&order=${currentOrder}`)
+			dispatch({
+				type: GET_ALL_TICKETS,
+				payload: response.data,
+			})
 		} catch (error) {
 			alert(error);
 		}
@@ -169,10 +174,20 @@ export const logOut = (out) => {
 // SEARCH-BAR
 
 export const searchById = (search) => {
-	return {
-		type: SEARCH_BY_ID,
-		payload: search,
-	};
+	const URL = `http://localhost:3001/staff/search-id/${search}`
+
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.get(URL)
+
+			dispatch({
+				type: SEARCH_BY_ID,
+				payload: data
+			})
+		} catch (error) {
+			console.log(error);
+		}
+	}
 };
 
 export const searchByName = (search) => {
@@ -188,62 +203,5 @@ export const searchByName = (search) => {
 		} catch (error) {
 			console.log(error);
 		}
-	};
-};
-
-// FILTERS
-
-export const filterPriority = (priority) => {
-	return {
-		type: FILTER_BY_PRIORITY,
-		payload: priority,
-	};
-};
-
-export const filterStatus = (status) => {
-	return {
-		type: FILTER_BY_STATUS,
-		payload: status,
-	};
-};
-
-export const sortByDate = (order) => {
-	return {
-		type: SORT_BY_DATE,
-		payload: order,
-	};
-};
-
-export const applyCombinedFilters = (priority, status, order) => {
-	return (dispatch, getState) => {
-		// Get the current state
-		const { userTicketsCopy } = getState();
-
-		// Apply filters based on user input
-		let filteredTickets = [...userTicketsCopy];
-
-		if (priority !== "All") {
-			filteredTickets = filteredTickets.filter(
-				(ticket) => ticket.priority === priority,
-			);
-		}
-
-		if (status !== "All") {
-			filteredTickets = filteredTickets.filter(
-				(ticket) => ticket.status === status,
-			);
-		}
-
-		if (order === "A") {
-			filteredTickets.sort((a, b) => a.id - b.id);
-		} else if (order === "D") {
-			filteredTickets.sort((a, b) => b.id - a.id);
-		}
-
-		// Dispatch the filtered tickets to update the state
-		dispatch({
-			type: FILTERED_TICKETS,
-			payload: filteredTickets,
-		});
 	};
 };

@@ -1,16 +1,31 @@
-const {Ticket} = require("../../DB_connection")
+const { Ticket } = require("../../DB_connection")
 
 const getTickets = async (req, res) => {
     try {
-        const userId = req.params.id // Obtén el ID del usuario de los parámetros de la solicitud
-        
-        // Busca los tickets relacionados con el ID de usuario
-        const tickets = await Ticket.findAll({
-            where: { UserId: userId }
+        const userId = req.params.id
+        const priority = req.query.priority || "All";
+        const status= req.query.status || "All";
+        const order = req.query.order || "asc";
+
+        let whereClause = {};
+
+        if (priority !== "All") {
+            whereClause.priority = priority
+        }
+
+        if (status !== "All") {
+            whereClause.status = status;
+        }
+
+        whereClause.UserId = userId
+
+        const tickets = await Ticket.findAndCountAll({
+            where: whereClause,
+            order:[["createdAt", order.toUpperCase()]],
         });
 
         return res.status(200).json({
-            message: "Lista de tickets obtenida correctamente",
+            message: "List of tickets obtained succesfully",
             tickets: tickets
         });
     } catch (error) {
@@ -19,6 +34,6 @@ const getTickets = async (req, res) => {
     }
 };
 
-module.exports= {
+module.exports = {
     getTickets
 }
