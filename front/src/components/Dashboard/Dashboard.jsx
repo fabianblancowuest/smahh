@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TicketStaff from "../TicketStaff/TicketStaff";
-import { getAllTickets } from "../../redux/actions/actions";
+import { getAllTickets, searchByName, searchById } from "../../redux/actions/actions"; // Importa tus acciones adecuadas
 import "./CombinedStyles.css";
+import TicketStaff from "../TicketStaff/TicketStaff";
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
 import Pagination from "./Pagination";
@@ -13,18 +13,35 @@ const Dashboard = () => {
   const totalPages = useSelector((state) => state.totalPages);
   const prevPage = useSelector((state) => state.prev);
   const nextPage = useSelector((state) => state.next);
-  
+
   const [filtersKey, setFiltersKey] = useState(0);
   const [priority, setPriority] = useState("All");
   const [status, setStatus] = useState("All");
   const [order, setOrder] = useState("Asc");
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   const dispatch = useDispatch();
 
+  // Función genérica para realizar la búsqueda y paginación
+  const performSearch = async () => {
+    try {
+      if (/^\d+$/.test(search)) {
+        dispatch(searchById(search));
+      }
+      else if (search) {
+        dispatch(searchByName(search, page, priority, status, order));
+      } else {
+        dispatch(getAllTickets(priority, status, order, page));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    dispatch(getAllTickets({ priority, status, order, page }))
-  }, [priority, status, order, page, dispatch]);
+    performSearch();
+  }, [search, priority, status, order, page, dispatch]);
 
   const handleRefresh = () => {
     setPriority("All");
@@ -32,7 +49,7 @@ const Dashboard = () => {
     setOrder("asc");
     setPage(1);
     setFiltersKey(filtersKey + 1);
-    dispatch(getAllTickets({ priority, status, order, page }));
+    setSearch(""); // Limpiar el término de búsqueda
   };
 
   const handlePreviousPage = () => {
@@ -47,32 +64,46 @@ const Dashboard = () => {
 
   const handlePriorityChange = (e) => {
     if (page !== 1) {
-      setPage(1)
+      setPage(1);
     }
     setPriority(e.target.value);
   };
 
   const handleStatusChange = (e) => {
     if (page !== 1) {
-      setPage(1)
+      setPage(1);
     }
     setStatus(e.target.value);
   };
 
   const handleOrderChange = (e) => {
     if (page !== 1) {
-      setPage(1)
+      setPage(1);
     }
     setOrder(e.target.value);
   };
 
-
+  const handleSearchChange = (newSearch) => {
+    setPage(1)
+    setSearch(newSearch);
+  };
 
   return (
     <div className="dashboard-container">
       <div className="tile-searchBar-container">
         <h1 className="dashboard-title">Ticket Dashboard</h1>
-        <SearchBar />
+        <SearchBar
+          page={page}
+          priority={priority}
+          status={status}
+          order={order}
+          onSearchChange={handleSearchChange}
+        />
+        <div className="span-container">
+          <button onClick={handleRefresh} className="buttonRefresh">
+            Refresh
+          </button>
+        </div>
       </div>
 
       <Filters
@@ -82,11 +113,7 @@ const Dashboard = () => {
         key={filtersKey}
       />
 
-      <div className="span-container">
-        <button onClick={handleRefresh} className="buttonRefresh">
-          Refresh
-        </button>
-      </div>
+
 
       <div className="dashboard-header">
         <div>User Name</div>
@@ -106,10 +133,7 @@ const Dashboard = () => {
             <TicketStaff
               key={ticket.id}
               ticket={ticket}
-              currentPage={page}
-              currentPriority={priority}
-              currentStatus={status}
-              currentOrder={order} />
+            />
           ))
         ) : (
           <p className="span-item">No tickets where found</p>

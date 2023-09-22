@@ -108,7 +108,7 @@ export const getUserTickets = (userId, priority, status, order) => async (dispat
 
 // STAFF
 
-export const getAllTickets = ({ priority, status, order, page, perPage }) => async (dispatch) => {
+export const getAllTickets = ( priority, status, order, page, perPage ) => async (dispatch) => {
 
 	const URL = `http://${ipDirection}:3001/staff/allTickets?page=${page}&priority=${priority}&status=${status}&order=${order}`;
 
@@ -124,25 +124,45 @@ export const getAllTickets = ({ priority, status, order, page, perPage }) => asy
 	}
 };
 
-export const updateTicket = (ticketId, newStatus, currentPage, currentPriority, currentStatus, currentOrder) => {
+// export const updateTicket = (ticketId, newStatus, currentPage, currentPriority, currentStatus, currentOrder) => {
+// 	const URL = `http://${ipDirection}:3001/staff/update-ticket`;
+
+// 	return async (dispatch) => {
+// 		try {
+// 			const { data } = await axios.put(URL, { ticketId, newStatus });
+// 			console.log(data);
+// 			dispatch({
+// 				type: UPDATE_TICKET,
+// 				payload: data
+// 			});
+
+// 			const response = await axios.get(`http://${ipDirection}:3001/staff/allTickets?page=${currentPage}&priority=${currentPriority}&status=${currentStatus}&order=${currentOrder}`)
+// 			dispatch({
+// 				type: GET_ALL_TICKETS,
+// 				payload: response.data,
+// 			})
+// 		} catch (error) {
+// 			alert(error);
+// 		}
+// 	};
+// };
+
+export const updateTicket = (ticketId, newStatus) => async (dispatch, getState) => {
 	const URL = `http://${ipDirection}:3001/staff/update-ticket`;
 
-	return async (dispatch) => {
-		try {
-			const { data } = await axios.put(URL, { ticketId, newStatus });
-			dispatch({
-				type: UPDATE_TICKET,
-			});
-
-			const response = await axios.get(`http://${ipDirection}:3001/staff/allTickets?page=${currentPage}&priority=${currentPriority}&status=${currentStatus}&order=${currentOrder}`)
-			dispatch({
-				type: GET_ALL_TICKETS,
-				payload: response.data,
-			})
-		} catch (error) {
-			alert(error);
-		}
-	};
+	try {
+		const { data } = await axios.put(URL, { ticketId, newStatus });
+		const { userTickets } = getState();
+		const updatedUserTickets = userTickets.map((ticket) =>
+			ticket.id === ticketId ? data.updatedTicket : ticket
+		)
+		dispatch({
+			type: UPDATE_TICKET,
+			payload: updatedUserTickets,
+		});
+	} catch (error) {
+		alert(error);
+	}
 };
 
 // USER- STAFF
@@ -190,11 +210,11 @@ export const searchById = (search) => {
 	}
 };
 
-export const searchByName = (search) => {
+export const searchByName = (search, page, priority, status, order) => {
 	return async (dispatch) => {
 		try {
 			const { data } = await axios.get(
-				`http://localhost:3001/staff/search?search=${search.toLowerCase()}`,
+				`http://localhost:3001/staff/search?search=${search}&page=${page}&priority=${priority}&status=${status}&order=${order}`,
 			);
 			dispatch({
 				type: SEARCH_BY_NAME,

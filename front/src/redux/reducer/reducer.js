@@ -110,6 +110,8 @@ const rootReducer = (state = inicialState, actions) => {
 
             return {
                 ...state,
+                userTickets: payload,
+                userTicketsCopy: payload
             }
 
         case GET_TICKET_DETAIL:
@@ -139,10 +141,10 @@ const rootReducer = (state = inicialState, actions) => {
                 ...state,
                 userTickets: payload.tickets,
                 userTicketsCopy: payload.tickets,
-                totalTickets: null,
-                totalPages: null,
-                prev: null,
-                next: null,
+                totalTickets: payload.totalTickets,
+                totalPages: payload.totalPages,
+                prev: payload.prev,
+                next: payload.next,
             }
         }
 

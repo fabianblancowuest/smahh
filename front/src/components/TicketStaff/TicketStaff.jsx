@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { updateTicket } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
 
-const TicketStaff = ({ ticket, currentPage, currentPriority, currentStatus, currentOrder }) => {
+const TicketStaff = ({ ticket }) => {
 	const {
 		issueType,
 		priority,
@@ -28,7 +28,7 @@ const TicketStaff = ({ ticket, currentPage, currentPriority, currentStatus, curr
 
 	const handleUpdate = () => {
 		if (selectedStatus) {
-			dispatch(updateTicket(id, selectedStatus, currentPage, currentPriority, currentStatus, currentOrder));
+			dispatch(updateTicket(id, selectedStatus));
 		} else {
 			alert("Please select a status before updating.");
 		}
