@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllTickets, searchByName, searchById } from "../../redux/actions/actions"; // Importa tus acciones adecuadas
+import { getAllAndSearchTickets } from "../../redux/actions/actions"; // Importa tus acciones adecuadas
 import "./CombinedStyles.css";
 import TicketStaff from "../TicketStaff/TicketStaff";
 import Filters from "../Filters/Filters";
@@ -27,12 +27,12 @@ const Dashboard = () => {
   const performSearch = async () => {
     try {
       if (/^\d+$/.test(search)) {
-        dispatch(searchById(search));
+        dispatch(getAllAndSearchTickets(search, page, priority, status, order));
       }
       else if (search) {
-        dispatch(searchByName(search, page, priority, status, order));
+        dispatch(getAllAndSearchTickets(search, page, priority, status, order));
       } else {
-        dispatch(getAllTickets(priority, status, order, page));
+        dispatch(getAllAndSearchTickets(search, page, priority, status, order));
       }
     } catch (error) {
       console.log(error);
@@ -48,8 +48,8 @@ const Dashboard = () => {
     setStatus("All");
     setOrder("asc");
     setPage(1);
+    setSearch("");
     setFiltersKey(filtersKey + 1);
-    setSearch(""); // Limpiar el término de búsqueda
   };
 
   const handlePreviousPage = () => {
@@ -97,13 +97,9 @@ const Dashboard = () => {
           priority={priority}
           status={status}
           order={order}
+          key={filtersKey}
           onSearchChange={handleSearchChange}
         />
-        <div className="span-container">
-          <button onClick={handleRefresh} className="buttonRefresh">
-            Refresh
-          </button>
-        </div>
       </div>
 
       <Filters
@@ -113,7 +109,11 @@ const Dashboard = () => {
         key={filtersKey}
       />
 
-
+      <div className="span-container">
+        <button onClick={handleRefresh} className="buttonRefresh">
+          Refresh
+        </button>
+      </div>
 
       <div className="dashboard-header">
         <div>User Name</div>
