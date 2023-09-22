@@ -4,6 +4,7 @@ import { riseTicket } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import styles from "./TicketForm.module.css";
 import validateTicketForm from "./validateTicketForm";
+import Swal from "sweetalert2";
 import {
 	FaUser,
 	FaEnvelope,
@@ -17,7 +18,7 @@ const TicketForm = () => {
 	const userId = useSelector((state) => state.userId);
 	const userName = useSelector((state) => state.userName);
 	const userEmail = useSelector((state) => state.userEmail);
-	const userLastName= useSelector((state)=> state.userLastName)
+	const userLastName = useSelector((state) => state.userLastName);
 
 	const initialState = {
 		issueTitle: "",
@@ -64,10 +65,10 @@ const TicketForm = () => {
 	};
 
 	const message = (
-		<>
-			You've raised a ticket ✔️
-			<br />A confirmation email will be sent to you.
-		</>
+		<div className={styles.messageOk}>
+			<span>You've raised a ticket ✔️</span>
+			<span>A confirmation email will be sent to you.</span>
+		</div>
 	);
 
 	const isButtonDisabled =
@@ -78,8 +79,24 @@ const TicketForm = () => {
 		event.preventDefault();
 
 		try {
-			await dispatch(riseTicket(newTicket, userId, userName, userLastName));
+			dispatch(riseTicket(newTicket, userId, userName, userLastName));
 			setSuccessMessage(message);
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: "Ticket created successfully!",
+				showConfirmButton: false,
+				timer: 3000,
+			});
+			// Swal.fire({
+			// 	title: "Ticket created successfully",
+			// 	showClass: {
+			// 		popup: "animate__animated animate__fadeInDown",
+			// 	},
+			// 	hideClass: {
+			// 		popup: "animate__animated animate__fadeOutUp",
+			// 	},
+			// });
 		} catch (error) {
 			setNewTicket(initialState);
 			setErrorMessage(error.response.data.error);
@@ -233,16 +250,18 @@ const TicketForm = () => {
 
 				{/* Conditional Options To Navigate or Stay */}
 				{successMessage && (
-					<button className={styles.button} onClick={handleStay}>
-						Request Another Ticket
-					</button>
+					<div className={styles.successButtons}>
+						<button className={styles.button} onClick={handleStay}>
+							Request Another Ticket
+						</button>
+						<button className={styles.button} onClick={handleNavigate}>
+							Go To My Tickets
+						</button>
+					</div>
 				)}
 
-				{successMessage && (
-					<button className={styles.button} onClick={handleNavigate}>
-						Go To My Tickets
-					</button>
-				)}
+				{/* {successMessage && (
+				)} */}
 			</form>
 		</div>
 	);
