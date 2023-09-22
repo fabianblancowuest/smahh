@@ -1,34 +1,16 @@
-import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { searchById, searchByName } from "../../redux/actions/actions";
+import React from "react";
 import styles from "./Searchbar.module.css";
 
-const SearchBar = () => {
-	const [search, setSearch] = useState("");
-	const inputRef = useRef(null); // Agrega una referencia al campo de entrada
+const SearchBar = ({ onSearchChange }) => {
 
-	const dispatch = useDispatch();
-
-	const handleChange = (event) => {
-		setSearch(event.target.value);
-	};
-
-	const handleSearch = () => {
-		if (!search) {
-			return alert("You must enter a search");
-		}
-		if (/^\d+$/.test(search)) {
-			dispatch(searchById(search));
-			setSearch("");
-		} else {
-			dispatch(searchByName(search));
-			setSearch("");
-		}
+	const handleInputChange = (event) => {
+		const newSearch = event.target.value;
+		onSearchChange(newSearch);
 	};
 
 	const handleKeyUp = (event) => {
 		if (event.key === "Enter") {
-			handleSearch();
+			onSearchChange(event.target.value);
 		}
 	};
 
@@ -37,15 +19,15 @@ const SearchBar = () => {
 			<input
 				type="text"
 				className={styles.input}
-				onChange={handleChange}
-				value={search}
+				onChange={handleInputChange}
 				placeholder="Enter your search..."
-				onKeyUp={handleKeyUp} // Manejador de eventos para la tecla "Enter"
-				ref={inputRef} // Referencia al campo de entrada
+				onKeyUp={handleKeyUp}
 			/>
-			<button className={styles.searchButton} onClick={handleSearch}>
+			
+			<button className={styles.searchButton} onClick={onSearchChange}>
 				Search
 			</button>
+
 		</div>
 	);
 };

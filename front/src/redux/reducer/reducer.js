@@ -1,4 +1,5 @@
 import {
+    GET_ALL_AND_SEARCH_TICKETS,
     GET_ALL_TICKETS,
     GET_TICKET_DETAIL,
     GET_USER_TICKETS,
@@ -22,7 +23,7 @@ const inicialState = {
 
     userTickets: [],
     userTicketsCopy: [],
-   
+
     totalTickets: null,
     totalPages: null,
     prev: null,
@@ -95,7 +96,8 @@ const rootReducer = (state = inicialState, actions) => {
                 userTicketsCopy: [...payload.tickets.rows]
             }
 
-        case GET_ALL_TICKETS:
+        case GET_ALL_AND_SEARCH_TICKETS: {
+
             return {
                 ...state,
                 userTickets: [...payload.tickets],
@@ -105,11 +107,14 @@ const rootReducer = (state = inicialState, actions) => {
                 prev: payload.prev,
                 next: payload.next,
             }
+        }
 
         case UPDATE_TICKET:
 
             return {
                 ...state,
+                userTickets: payload,
+                userTicketsCopy: payload
             }
 
         case GET_TICKET_DETAIL:
@@ -118,33 +123,44 @@ const rootReducer = (state = inicialState, actions) => {
                 ticketDetail: { ...payload.ticket }
             }
 
-        case SEARCH_BY_ID: {
+        // case SEARCH_BY_ID: {
 
-            return {
-                ...state,
-                userTickets: payload.ticket,
-                userTicketsCopy: payload.ticket,
-                totalTickets: null,
-                totalPages: null,
-                prev: null,
-                next: null,
-            };
+        //     return {
+        //         ...state,
+        //         userTickets: payload.ticket,
+        //         userTicketsCopy: payload.ticket,
+        //         totalTickets: null,
+        //         totalPages: null,
+        //         prev: null,
+        //         next: null,
+        //     };
 
 
-        }
+        // }
 
-        case SEARCH_BY_NAME: {
+        // case SEARCH_BY_NAME: {
 
-            return {
-                ...state,
-                userTickets: payload.tickets,
-                userTicketsCopy: payload.tickets,
-                totalTickets: null,
-                totalPages: null,
-                prev: null,
-                next: null,
-            }
-        }
+        //     return {
+        //         ...state,
+        //         userTickets: payload.tickets,
+        //         userTicketsCopy: payload.tickets,
+        //         totalTickets: payload.totalTickets,
+        //         totalPages: payload.totalPages,
+        //         prev: payload.prev,
+        //         next: payload.next,
+        //     }
+        // }
+
+        // case GET_ALL_TICKETS:
+        //     return {
+        //         ...state,
+        //         userTickets: [...payload.tickets],
+        //         userTicketsCopy: [...payload.tickets],
+        //         totalTickets: payload.totalTickets,
+        //         totalPages: payload.totalPages,
+        //         prev: payload.prev,
+        //         next: payload.next,
+        //     }
 
         default:
             return state
