@@ -52,6 +52,13 @@
 	font-weight: bold;
 }
 
+.messageOk {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
 .button {
 	background: linear-gradient(
 		90deg,

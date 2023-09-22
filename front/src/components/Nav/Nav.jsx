@@ -60,11 +60,6 @@ const Nav = () => {
 
 	return (
 		<div className={styles.container}>
-			{/* <div className={styles.menuToggle} onClick={handleToggleMenu}> */}
-			{/* <div className={styles.bars}></div>
-				<div className={styles.bars}></div>
-				<div className={styles.bars}></div> */}
-			{/* </div> */}
 			<FaBars className={styles.menuToggle} onClick={handleToggleMenu} />
 			<nav
 				className={`${styles.navContainer} ${isMenuOpen ? styles.open : ""}`}
@@ -190,6 +185,7 @@ const Nav = () => {
 								className={({ isActive }) =>
 									isActive ? styles.activeLink : styles.navLink
 								}
+								onClick={handleLinkClick}
 							>
 								DASHBOARD
 							</NavLink>

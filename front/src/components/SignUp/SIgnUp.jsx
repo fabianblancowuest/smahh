@@ -4,6 +4,7 @@ import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import validateSignUp from "./validateSignUp";
+import Swal from "sweetalert2";
 import {
 	FaShieldAlt,
 	FaUser,
@@ -35,10 +36,10 @@ const SignUp = () => {
 	const navigate = useNavigate();
 
 	const message = (
-		<>
-			You've signed up succesfuly ✔️
-			<br />A confirmation email will be sent to you.
-		</>
+		<div className={styles.messageOk}>
+			<span>You've signed up succesfuly ✔️</span>
+			<span>A confirmation email will be sent to you.</span>
+		</div>
 	);
 
 	const isButtonDisabled =
@@ -72,11 +73,53 @@ const SignUp = () => {
 			try {
 				await dispatch(signUp(userData));
 				setSuccessMessage(message);
+				Swal.fire({
+					position: "top-end",
+					icon: "success",
+					title: "Registered user successfully",
+					showConfirmButton: false,
+					timer: 3000,
+				});
+				let timerInterval;
+				setTimeout(() => {
+					Swal.fire({
+						title: "User created successfully",
+						html: "You will be directed to login in 3 seconds.",
+						timer: 3000,
+						timerProgressBar: true,
+						didOpen: () => {
+							Swal.showLoading();
+							const b = Swal.getHtmlContainer().querySelector("b");
+							timerInterval = setInterval(() => {
+								b.textContent = Swal.getTimerLeft();
+							}, 3000);
+						},
+						willClose: () => {
+							clearInterval(timerInterval);
+						},
+					}).then((result) => {
+						/* Read more about handling dismissals below */
+						if (result.dismiss === Swal.DismissReason.timer) {
+							console.log("I was closed by the timer");
+						}
+					});
+				}, 1000);
+
+				setTimeout(() => {
+					navigate("/login");
+				}, 3500);
 				setUserData(initialState);
 				setErrorMessage("");
 			} catch (error) {
 				setSuccessMessage("");
-				setErrorMessage(error.response.data.error);
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: error.response.data.error,
+					// footer: '<a href="">Why do I have this issue?</a>',
+				});
+				setUserData(initialState);
+				// setErrorMessage(error.response.data.error);
 			}
 		}
 	};
@@ -198,7 +241,7 @@ const SignUp = () => {
 						disabled={isButtonDisabled}
 					/>
 				)}
-
+				{/* 
 				{successMessage && (
 					<p className={styles.successMessage}>{successMessage}</p>
 				)}
@@ -207,7 +250,7 @@ const SignUp = () => {
 					<button onClick={handleNavigate} className={styles.button}>
 						Go to Log In
 					</button>
-				)}
+				)} */}
 
 				{errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 			</form>

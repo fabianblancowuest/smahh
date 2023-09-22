@@ -65,7 +65,9 @@ const TicketStaff = ({ ticket, currentPage, currentPriority, currentStatus, curr
 				<div className="ticket-item">{formatDate(updatedAt)}</div>
 
 				<div className="ticket-item">
-					<Link to={`/detail/${id}`}>Detail</Link>
+					<Link className="ticket-item-button" to={`/detail/${id}`}>
+						Detail
+					</Link>
 				</div>
 			</div>
 		</div>
