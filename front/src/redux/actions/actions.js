@@ -108,9 +108,9 @@ export const getUserTickets = (userId, priority, status, order) => async (dispat
 
 // STAFF
 
-export const getAllAndSearchTickets = (search, page, priority, status, order) => {
+export const getAllAndSearchTickets = (search, page, perPage, priority, status, order) => {
 
-	const URL = `http://${ipDirection}:3001/staff/tickets?search=${search}&page=${page}&priority=${priority}&status=${status}&order=${order}`
+	const URL = `http://${ipDirection}:3001/staff/tickets?search=${search}&page=${page}&perPage=${perPage}&priority=${priority}&status=${status}&order=${order}`
 
 	return async (dispatch) => {
 		try {
@@ -228,7 +228,7 @@ export const logOut = (out) => {
 // 	}
 // };
 
-// export const searchByName = (search, page, priority, status, order) => {
+// export const searchByName = (search) => {
 // 	return async (dispatch) => {
 // 		try {
 // 			const { data } = await axios.get(

@@ -20,6 +20,7 @@ const Dashboard = () => {
   const [order, setOrder] = useState("Asc");
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [perPage, setPerPage] = useState(8)
 
   const dispatch = useDispatch();
 
@@ -27,12 +28,12 @@ const Dashboard = () => {
   const performSearch = async () => {
     try {
       if (/^\d+$/.test(search)) {
-        dispatch(getAllAndSearchTickets(search, page, priority, status, order));
+        dispatch(getAllAndSearchTickets(search, page, perPage, priority, status, order));
       }
       else if (search) {
-        dispatch(getAllAndSearchTickets(search, page, priority, status, order));
+        dispatch(getAllAndSearchTickets(search, page, perPage, priority, status, order));
       } else {
-        dispatch(getAllAndSearchTickets(search, page, priority, status, order));
+        dispatch(getAllAndSearchTickets(search, page, perPage, priority, status, order));
       }
     } catch (error) {
       console.log(error);
@@ -41,7 +42,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     performSearch();
-  }, [search, priority, status, order, page, dispatch]);
+  }, [search, priority, status, order, page, perPage, dispatch]);
 
   const handleRefresh = () => {
     setPriority("All");

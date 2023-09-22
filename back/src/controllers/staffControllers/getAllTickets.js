@@ -19,7 +19,7 @@ const getAllTickets = async (req, res) => {
         }
 
         const allTickets = await Ticket.findAndCountAll({
-            where: whereClause,
+            where: whereClause, // {priority: hig} {status: not started}
             limit: perPage,
             offset: (page - 1) * perPage,
             order: [['createdAt', order.toUpperCase()]],
