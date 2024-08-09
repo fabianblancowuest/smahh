@@ -11,12 +11,12 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	gap: 2rem;
+	/* gap: 2rem; */
 	align-items: center;
 	height: 3.7rem;
 	z-index: 100;
 	padding: 0 2rem;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 }
 
 .navPrincipalBtns {
@@ -83,11 +83,7 @@ ul.logs li {
 .logoText {
 	color: #fff;
 	text-decoration: none;
-}
-
-.atomIcon {
-	color: #ffffff;
-	font-size: 1.2rem;
+	font-size: 0.8rem;
 }
 
 .logOutButton {
@@ -126,24 +122,28 @@ ul {
 	display: flex;
 	list-style: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 	.navContainer * {
 		margin: 0;
 		padding: 0;
 	}
+
 	.menuToggle {
 		display: inline;
-		width: 35px;
-		height: 35px;
+		width: 30px;
+		height: 30px;
 		position: absolute;
 		top: 0;
 		right: 0;
-		margin: 1rem;
+		margin: 1.2rem 1rem 0.6rem 0;
 		cursor: pointer;
 		z-index: 101;
 		color: white;
 		/* transition: all 0.3s ease-in-out; */
 		transition: transform 0.5s ease-in-out;
+		padding: 0.4rem;
+		border-radius: 15%;
+		border: 3px solid white;
 	}
 
 	.menuToggle:hover {
@@ -155,32 +155,23 @@ ul {
 		transform: scale(1.1);
 	}
 
-	ul.logs li {
-		margin-left: 0;
-	}
-
-	ul:not(.logs) li {
-		margin-left: 0;
-	}
-
 	.navContainer.open {
 		transform: translateX(0);
 	}
 
 	.navContainer {
-		margin: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* justify-content: center; */
-		/* flex-wrap: wrap; */
 		height: 100vh;
+		width: 100vw;
 		transform: translateY(-100%);
 		transition: transform 0.7s ease-in-out;
 		gap: 0;
 		padding: 0;
+		padding-top: 1rem;
 		text-align: center;
-		font-size: 1.2rem;
+		font-size: 1.5rem;
 	}
 
 	.logoContainer img,
@@ -193,12 +184,6 @@ ul {
 		gap: 0;
 	}
 
-	.logs {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
 	.navContainer div {
 		display: flex;
 		flex-direction: column;
@@ -209,22 +194,44 @@ ul {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		gap: 4rem;
 	}
 
 	.bars:hover {
 		color: black;
 	}
 
-	li {
-		display: block;
+	li a {
+		display: flex;
+		justify-content: center;
 		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		width: 100vw;
+		height: 5rem !important;
+		align-items: center;
+		transition: 0.3s ease;
+		margin-left: 0;
 	}
 
+	ul.logs li {
+		margin-left: 0;
+	}
+
+	ul:not(.logs) li {
+		margin-left: 0;
+	}
 	li:hover {
 		background-color: hsla(202, 27%, 45%, 1);
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1150px) {
+	.logoText {
+		display: none;
+	}
+
+	ul {
+		padding: 0;
+	}
+
+	a {
+		font-size: 0.8rem;
 	}
 }

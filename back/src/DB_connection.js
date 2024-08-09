@@ -5,23 +5,23 @@ const { Sequelize } = require("sequelize");
 const TicketModel = require("./models/Ticket");
 const UserModel = require("./models/User");
 
-// const sequelize = new Sequelize(
-// 	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-// 	{ logging: false, native: false },
-// );
+const sequelize = new Sequelize(
+	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+	{ logging: false, native: false },
+);
 
 // const sequelize = new Sequelize(DB_DEPLOY, { logging: false, native: false });
 
 // !Render deploy
-const sequelize = new Sequelize(DB_DEPLOY {
-	logging: false,
-	native: false,
-	dialectOptions: {
-		ssl: {
-			require: true,
-		},
-	},
-});
+// const sequelize = new Sequelize(DB_DEPLOY, {
+// 	logging: false,
+// 	native: false,
+// 	dialectOptions: {
+// 		ssl: {
+// 			require: true,
+// 		},
+// 	},
+// });
 
 TicketModel(sequelize);
 UserModel(sequelize);
