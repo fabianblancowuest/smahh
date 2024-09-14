@@ -20,7 +20,7 @@ const baseURL = "https://smahh-server.onrender.com";
 // COMMON
 
 export const signUp = (userData) => async (dispatch) => {
-	const URL = `${ipDirection}/user/register`;
+	const URL = `http://${ipDirection}:3001/user/register`;
 	// const URL = `${baseURL}/user/register`;
 
 	try {
