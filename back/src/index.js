@@ -25,7 +25,7 @@ server.use((req, res, next) => {
 server.use("/", mainRouter);
 
 conn.sync({ force: false }).then(
-	server.listen(PORT, "0.0.0.0", () => {
+	server.listen(PORT, () => {
 		console.log("Server raised in port: " + PORT);
 	}),
 );
